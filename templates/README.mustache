@@ -1,0 +1,128 @@
+# {{packageName}}
+
+R client for the [IGVF Catalog API](https://api.catalogkg.igvf.org/).
+
+{{#appDescriptionWithNewLines}}
+{{{.}}}
+{{/appDescriptionWithNewLines}}
+
+- API version: {{appVersion}}
+- Package version: {{packageVersion}}
+- Generator version: {{generatorVersion}}
+
+This package is generated with [OpenAPI Generator](https://openapi-generator.tech) by
+[igvf-catalog-client-openapi-spec](https://github.com/IGVF-DACC/igvf-catalog-client-openapi-spec)
+whenever the IGVF Catalog changes. Don't edit generated files by hand; change
+`templates/` here or the pipeline in that repo instead.
+
+## Installation
+
+The package is installed from GitHub (it isn't on CRAN). Releases follow IGVF
+Catalog releases and are tagged `vX.Y.Z`:
+
+```R
+install.packages("remotes")
+remotes::install_github("{{{gitUserId}}}/{{{gitRepoId}}}@vX.Y.Z")  # a release, see the Releases page
+```
+
+Development builds track the catalog's `dev` branch:
+
+```R
+remotes::install_github("{{{gitUserId}}}/{{{gitRepoId}}}@dev")
+```
+
+The default host is the API the package was generated against: releases use
+`https://api.catalogkg.igvf.org/api` and dev builds use
+`https://catalog-api-dev.demo.igvf.org/api`. Pass `ApiClient$new(base_path = ...)` to use another.
+
+## Quick start
+
+```R
+library({{{packageName}}})
+
+api <- IgvfCatalogApi$new(ApiClient$new(base_path = "https://api.catalogkg.igvf.org/api"))
+genes <- api$Genes(name = "ATF3")
+genes[[1]]$name
+```
+
+Every endpoint is a method on `IgvfCatalogApi`, listed below. The interactive API documentation is at
+[api.catalogkg.igvf.org](https://api.catalogkg.igvf.org/).
+
+### Build and check locally
+
+```sh
+R CMD build .
+R CMD check {{{packageName}}}_{{{packageVersion}}}.tar.gz --no-manual
+R CMD INSTALL --preclean {{{packageName}}}_{{{packageVersion}}}.tar.gz
+```
+
+## Documentation for API Endpoints
+
+All URIs are relative to *{{basePath}}*
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{path}} | {{{summary}}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
+
+## Documentation for Models
+
+{{#models}}{{#model}} - [{{classname}}]({{modelDocPath}}{{classname}}.md)
+{{/model}}{{/models}}
+
+## Documentation for Authorization
+
+{{^authMethods}}Endpoints do not require authorization.{{/authMethods}}
+{{#hasAuthMethods}}Authentication schemes defined for the API:{{/hasAuthMethods}}
+{{#authMethods}}
+### {{name}}
+
+{{#isApiKey}}
+- **Type**: API key
+- **API key parameter name**: {{keyParamName}}
+- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+{{/isApiKey}}
+{{#isBasic}}
+{{#isHttpSignature}}
+- **Type**: HTTP signature authentication
+{{/isHttpSignature}}
+{{#isBasicBasic}}
+- **Type**: HTTP basic authentication
+{{/isBasicBasic}}
+{{#isBasicBearer}}
+- **Type**: Bearer authentication
+{{#bearerFormat}}
+- **Bearer Format**: {{{.}}}
+{{/bearerFormat}}
+{{/isBasicBearer}}
+{{/isBasic}}
+{{#isOAuth}}
+- **Type**: OAuth
+- **Flow**: {{flow}}
+{{#authorizationUrl}}
+- **Authorization URL**: {{authorizationUrl}}
+{{/authorizationUrl}}
+{{#tokenUrl}}
+- **Token URL**: {{tokenUrl}}
+{{/tokenUrl}}
+{{#refreshUrl}}
+- **Refresh URL**: {{refreshUrl}}
+{{/refreshUrl}}
+- **Scopes**: {{^scopes}}N/A{{/scopes}}
+{{#scopes}}  - `{{scope}}`: {{description}}
+{{/scopes}}
+{{/isOAuth}}
+
+{{/authMethods}}
+
+{{#apiInfo}}
+{{#apis}}
+{{#-last}}
+{{#infoEmail}}
+## Author
+
+{{{infoEmail}}}
+{{/infoEmail}}
+{{/-last}}
+{{/apis}}
+{{/apiInfo}}
