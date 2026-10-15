@@ -39,6 +39,9 @@
 #' @field ref_score  numeric [optional]
 #' @field relative_binding_affinity  numeric [optional]
 #' @field effect_on_binding  character [optional]
+#' @field pbs  numeric [optional]
+#' @field ref_auc  numeric [optional]
+#' @field alt_auc  numeric [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -77,6 +80,9 @@ ProteinsFromVariants <- R6::R6Class(
     `ref_score` = NULL,
     `relative_binding_affinity` = NULL,
     `effect_on_binding` = NULL,
+    `pbs` = NULL,
+    `ref_auc` = NULL,
+    `alt_auc` = NULL,
 
     #' @description
     #' Initialize a new ProteinsFromVariants class.
@@ -113,8 +119,11 @@ ProteinsFromVariants <- R6::R6Class(
     #' @param ref_score ref_score
     #' @param relative_binding_affinity relative_binding_affinity
     #' @param effect_on_binding effect_on_binding
+    #' @param pbs pbs
+    #' @param ref_auc ref_auc
+    #' @param alt_auc alt_auc
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `is_complex`, `sequence_variant` = NULL, `protein_complex` = NULL, `biosample_term` = NULL, `biological_context` = NULL, `regulatory_type` = NULL, `class` = NULL, `label` = NULL, `method` = NULL, `files_filesets` = NULL, `source` = NULL, `source_url` = NULL, `score` = NULL, `neg_log10_pvalue_adj_ref` = NULL, `neg_log10_pvalue_adj_alt` = NULL, `motif` = NULL, `motif_log2FC` = NULL, `beta` = NULL, `se` = NULL, `gene` = NULL, `gene_consequence` = NULL, `neg_log10_pvalue` = NULL, `p_value` = NULL, `neg_log10_pvalue_adj` = NULL, `variant_effect_score` = NULL, `SEMpl_annotation` = NULL, `SEMpl_baseline` = NULL, `alt_score` = NULL, `ref_score` = NULL, `relative_binding_affinity` = NULL, `effect_on_binding` = NULL, ...) {
+    initialize = function(`name`, `is_complex`, `sequence_variant` = NULL, `protein_complex` = NULL, `biosample_term` = NULL, `biological_context` = NULL, `regulatory_type` = NULL, `class` = NULL, `label` = NULL, `method` = NULL, `files_filesets` = NULL, `source` = NULL, `source_url` = NULL, `score` = NULL, `neg_log10_pvalue_adj_ref` = NULL, `neg_log10_pvalue_adj_alt` = NULL, `motif` = NULL, `motif_log2FC` = NULL, `beta` = NULL, `se` = NULL, `gene` = NULL, `gene_consequence` = NULL, `neg_log10_pvalue` = NULL, `p_value` = NULL, `neg_log10_pvalue_adj` = NULL, `variant_effect_score` = NULL, `SEMpl_annotation` = NULL, `SEMpl_baseline` = NULL, `alt_score` = NULL, `ref_score` = NULL, `relative_binding_affinity` = NULL, `effect_on_binding` = NULL, `pbs` = NULL, `ref_auc` = NULL, `alt_auc` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -258,6 +267,15 @@ ProteinsFromVariants <- R6::R6Class(
           stop(paste("Error! Invalid data for `effect_on_binding`. Must be a string:", `effect_on_binding`))
         }
         self$`effect_on_binding` <- `effect_on_binding`
+      }
+      if (!is.null(`pbs`)) {
+        self$`pbs` <- `pbs`
+      }
+      if (!is.null(`ref_auc`)) {
+        self$`ref_auc` <- `ref_auc`
+      }
+      if (!is.null(`alt_auc`)) {
+        self$`alt_auc` <- `alt_auc`
       }
     },
 
@@ -420,6 +438,18 @@ ProteinsFromVariants <- R6::R6Class(
         ProteinsFromVariantsObject[["effect_on_binding"]] <-
           self$`effect_on_binding`
       }
+      if (!is.null(self$`pbs`)) {
+        ProteinsFromVariantsObject[["pbs"]] <-
+          self$`pbs`
+      }
+      if (!is.null(self$`ref_auc`)) {
+        ProteinsFromVariantsObject[["ref_auc"]] <-
+          self$`ref_auc`
+      }
+      if (!is.null(self$`alt_auc`)) {
+        ProteinsFromVariantsObject[["alt_auc"]] <-
+          self$`alt_auc`
+      }
       return(ProteinsFromVariantsObject)
     },
 
@@ -532,6 +562,15 @@ ProteinsFromVariants <- R6::R6Class(
       if (!is.null(this_object$`effect_on_binding`)) {
         self$`effect_on_binding` <- this_object$`effect_on_binding`
       }
+      if (!is.null(this_object$`pbs`)) {
+        self$`pbs` <- this_object$`pbs`
+      }
+      if (!is.null(this_object$`ref_auc`)) {
+        self$`ref_auc` <- this_object$`ref_auc`
+      }
+      if (!is.null(this_object$`alt_auc`)) {
+        self$`alt_auc` <- this_object$`alt_auc`
+      }
       self
     },
 
@@ -585,6 +624,9 @@ ProteinsFromVariants <- R6::R6Class(
       self$`ref_score` <- this_object$`ref_score`
       self$`relative_binding_affinity` <- this_object$`relative_binding_affinity`
       self$`effect_on_binding` <- this_object$`effect_on_binding`
+      self$`pbs` <- this_object$`pbs`
+      self$`ref_auc` <- this_object$`ref_auc`
+      self$`alt_auc` <- this_object$`alt_auc`
       self
     },
 

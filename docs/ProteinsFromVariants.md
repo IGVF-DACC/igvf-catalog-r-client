@@ -36,5 +36,8 @@ Name | Type | Description | Notes
 **ref_score** | **numeric** |  | [optional] 
 **relative_binding_affinity** | **numeric** |  | [optional] 
 **effect_on_binding** | **character** |  | [optional] 
+**pbs** | **numeric** |  | [optional] 
+**ref_auc** | **numeric** |  | [optional] 
+**alt_auc** | **numeric** |  | [optional] 
 
 
