@@ -61,11 +61,13 @@ R/genes_from_variants_sequence_variant.R
 R/genes_from_variants_study.R
 R/genes_genes.R
 R/genes_genes_gene1.R
+R/genes_genomic_elements_score_summary.R
 R/genes_proteins_from_variants.R
 R/genes_proteins_genes_proteins.R
 R/genes_structure.R
 R/genes_transcripts_genes.R
 R/genes_transcripts_genes_transcript.R
+R/genes_variants_score_summary.R
 R/genomic_element.R
 R/genomic_element2.R
 R/genomic_element4.R
@@ -80,6 +82,8 @@ R/genomic_elements_from_phenotypes_phenotype.R
 R/genomic_elements_from_variants.R
 R/genomic_elements_predictions_from_variant.R
 R/grn.R
+R/groups.R
+R/groups13.R
 R/id_name.R
 R/igvf_catalog_api.R
 R/inline_object.R
@@ -214,11 +218,13 @@ docs/GenesFromVariantsSequenceVariant.md
 docs/GenesFromVariantsStudy.md
 docs/GenesGenes.md
 docs/GenesGenesGene1.md
+docs/GenesGenomicElementsScoreSummary.md
 docs/GenesProteinsFromVariants.md
 docs/GenesProteinsGenesProteins.md
 docs/GenesStructure.md
 docs/GenesTranscriptsGenes.md
 docs/GenesTranscriptsGenesTranscript.md
+docs/GenesVariantsScoreSummary.md
 docs/GenomicElement.md
 docs/GenomicElement2.md
 docs/GenomicElement4.md
@@ -233,6 +239,8 @@ docs/GenomicElementsFromPhenotypesPhenotype.md
 docs/GenomicElementsFromVariants.md
 docs/GenomicElementsPredictionsFromVariant.md
 docs/Grn.md
+docs/Groups.md
+docs/Groups13.md
 docs/IdName.md
 docs/IgvfCatalogApi.md
 docs/InlineObject.md

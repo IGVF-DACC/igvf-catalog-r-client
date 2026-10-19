@@ -31,10 +31,12 @@ Method | HTTP request | Description
 [**GenesFromTranscripts**](IgvfCatalogApi.md#GenesFromTranscripts) | **GET** /transcripts/genes | 
 [**GenesFromVariants**](IgvfCatalogApi.md#GenesFromVariants) | **GET** /variants/genes | 
 [**GenesGenes**](IgvfCatalogApi.md#GenesGenes) | **GET** /genes/genes | 
+[**GenesGenomicElementsScoreSummary**](IgvfCatalogApi.md#GenesGenomicElementsScoreSummary) | **GET** /genes/genomic-elements/score-summary | 
 [**GenesProteinsFromVariants**](IgvfCatalogApi.md#GenesProteinsFromVariants) | **GET** /variants/genes-proteins | 
 [**GenesProteinsGenesProteins**](IgvfCatalogApi.md#GenesProteinsGenesProteins) | **GET** /genes-proteins/genes-proteins | 
 [**GenesStructure**](IgvfCatalogApi.md#GenesStructure) | **GET** /genes-structure | 
 [**GenesTranscriptsGenes**](IgvfCatalogApi.md#GenesTranscriptsGenes) | **GET** /genes/transcripts/genes | 
+[**GenesVariantsScoreSummary**](IgvfCatalogApi.md#GenesVariantsScoreSummary) | **GET** /genes/variants/score-summary | 
 [**GenomicElements**](IgvfCatalogApi.md#GenomicElements) | **GET** /genomic-elements | 
 [**GenomicElementsFromBiosamples**](IgvfCatalogApi.md#GenomicElementsFromBiosamples) | **GET** /biosamples/genomic-elements | 
 [**GenomicElementsFromGenes**](IgvfCatalogApi.md#GenomicElementsFromGenes) | **GET** /genes/genomic-elements | 
@@ -1788,6 +1790,72 @@ No authorization required
 | **200** | Successful response |  -  |
 | **0** | Error response |  -  |
 
+# **GenesGenomicElementsScoreSummary**
+> GenesGenomicElementsScoreSummary GenesGenomicElementsScoreSummary(gene_id, score_field, method = var.method, files_fileset = var.files_fileset, source = var.source, biosample_term = var.biosample_term, biological_context = var.biological_context, cell_annotation = var.cell_annotation, cell_annotation_term = var.cell_annotation_term, page = 0, limit = var.limit)
+
+
+
+Observed min/max and counts for a score field across every genomic-element-to-gene edge for one gene - without paginating through the edges themselves.<br>     Optional filters are combined with and matched exactly.<br>     Results are grouped by every distinct combination of those fields plus crispr_modality, so     measurements from incompatible sources are never pooled. Groups with no numeric scores are omitted, and total_edge_count     only counts edges with a numeric score.<br>     Default page size is 25, maximum 500; pagination is     0-based.<br><br><div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"crispr-screen\">CRISPR screen</button> <button class=\"method-example-tab\" data-method-example-tab=\"perturb-seq\">Perturb-seq</button> <button class=\"method-example-tab\" data-method-example-tab=\"encode-re2g\">ENCODE-rE2G</button> <button class=\"method-example-tab\" data-method-example-tab=\"sce2g\">scE2G</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"crispr-screen\"> <strong>CRISPR screen:</strong> <div class=\"method-query-example\"> <strong>Element effect sizes on a CRISPR screen target gene</strong>  <ul> <li>gene_id = ENSG00000102145</li> <li>score_field = effect_size</li> <li>method = CRISPR screen</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"perturb-seq\"> <strong>Perturb-seq:</strong> <div class=\"method-query-example\"> <strong>Perturb-seq significance distribution for a gene</strong>  <ul> <li>gene_id = ENSG00000108179</li> <li>score_field = neg_log10_pvalue</li> <li>method = Perturb-seq</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"encode-re2g\"> <strong>ENCODE-rE2G:</strong> <div class=\"method-query-example\"> <strong>ENCODE-rE2G prediction scores for a gene</strong>  <ul> <li>gene_id = ENSG00000108179</li> <li>score_field = score</li> <li>method = ENCODE-rE2G</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"sce2g\"> <strong>scE2G:</strong> <div class=\"method-query-example\"> <strong>scE2G prediction scores for a gene</strong>  <ul> <li>gene_id = ENSG00000108179</li> <li>score_field = score</li> <li>method = scE2G</li> </ul> </div> </div> </div>
+
+### Example
+```R
+library(igvfcatalogclient)
+
+# prepare function argument(s)
+var_gene_id <- "gene_id_example" # character | 
+var_score_field <- "score_field_example" # character | 
+var_method <- "method_example" # character |  (Optional)
+var_files_fileset <- "files_fileset_example" # character |  (Optional)
+var_source <- "source_example" # character |  (Optional)
+var_biosample_term <- "biosample_term_example" # character |  (Optional)
+var_biological_context <- "biological_context_example" # character |  (Optional)
+var_cell_annotation <- "cell_annotation_example" # character |  (Optional)
+var_cell_annotation_term <- "cell_annotation_term_example" # character |  (Optional)
+var_page <- 0 # numeric |  (Optional)
+var_limit <- 3.4 # numeric |  (Optional)
+
+api_instance <- IgvfCatalogApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GenesGenomicElementsScoreSummary(var_gene_id, var_score_field, method = var_method, files_fileset = var_files_fileset, source = var_source, biosample_term = var_biosample_term, biological_context = var_biological_context, cell_annotation = var_cell_annotation, cell_annotation_term = var_cell_annotation_term, page = var_page, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GenesGenomicElementsScoreSummary(var_gene_id, var_score_field, method = var_method, files_fileset = var_files_fileset, source = var_source, biosample_term = var_biosample_term, biological_context = var_biological_context, cell_annotation = var_cell_annotation, cell_annotation_term = var_cell_annotation_term, page = var_page, limit = var_limit)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gene_id** | **character**|  | 
+ **score_field** | Enum [score, log2FC, effect_size, z_score, t_score, idr, neg_log10_pvalue, neg_log10_pvalue_adj] |  | 
+ **method** | Enum [CRISPR screen, ENCODE-rE2G, Perturb-seq, scE2G] |  | [optional] 
+ **files_fileset** | **character**|  | [optional] 
+ **source** | Enum [ENCODE, IGVF] |  | [optional] 
+ **biosample_term** | **character**|  | [optional] 
+ **biological_context** | **character**|  | [optional] 
+ **cell_annotation** | **character**|  | [optional] 
+ **cell_annotation_term** | **character**|  | [optional] 
+ **page** | **numeric**|  | [optional] [default to 0]
+ **limit** | **numeric**|  | [optional] 
+
+### Return type
+
+[**GenesGenomicElementsScoreSummary**](GenesGenomicElementsScoreSummary.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response |  -  |
+| **0** | Error response |  -  |
+
 # **GenesProteinsFromVariants**
 > array[GenesProteinsFromVariants] GenesProteinsFromVariants(variant_id, page = 0, limit = var.limit)
 
@@ -2022,6 +2090,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**array[GenesTranscriptsGenes]**](GenesTranscriptsGenes.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response |  -  |
+| **0** | Error response |  -  |
+
+# **GenesVariantsScoreSummary**
+> GenesVariantsScoreSummary GenesVariantsScoreSummary(gene_id, score_field, files_fileset = var.files_fileset, source = var.source, biosample_term = var.biosample_term, biological_context = var.biological_context, perturbation = var.perturbation, page = 0, limit = var.limit)
+
+
+
+Observed min/max and counts for a score field across every IGVF CRISPR screen variant-to-gene edge for one gene - without paginating through the edges themselves. Always restricted to method = \"CRISPR screen\" and label = \"variant effect on gene expression\", so QTL records sharing the variants_genes collection (AFGR eQTL/spliceQTL, EBI eQTL Catalog) are excluded.<br>     Optional filters are     combined with and matched exactly. Perturbation filters the stored crispr_modality field.<br>     Results are grouped by every distinct combination of those fields, so measurements from     incompatible sources are never pooled.     Groups with no numeric scores are omitted, and total_edge_count only counts edges with a     numeric score.<br>     Default page size is 25, maximum 500; pagination is     0-based.<br><br><div class=\"method-examples\"> <strong>Examples by perturbation</strong> <p class=\"method-example-description\">These examples are grouped by CRISPR perturbation type; use the <code>perturbation</code> filter to return data from a specific modality.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"prime-editing\">Prime editing</button> <button class=\"method-example-tab\" data-method-example-tab=\"base-editing\">Base editing</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"prime-editing\"> <strong>Prime editing:</strong> <div class=\"method-query-example\"> <strong>Effect size distribution for a prime-edited gene</strong>  <ul> <li>gene_id = ENSG00000108179</li> <li>score_field = effect_size</li> <li>perturbation = prime editing</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"base-editing\"> <strong>Base editing:</strong> <div class=\"method-query-example\"> <strong>Effect size distribution for a base-edited gene</strong>  <ul> <li>gene_id = ENSG00000177455</li> <li>score_field = effect_size</li> <li>perturbation = base editing</li> </ul> </div> </div> </div>
+
+### Example
+```R
+library(igvfcatalogclient)
+
+# prepare function argument(s)
+var_gene_id <- "gene_id_example" # character | 
+var_score_field <- "score_field_example" # character | 
+var_files_fileset <- "files_fileset_example" # character |  (Optional)
+var_source <- "source_example" # character |  (Optional)
+var_biosample_term <- "biosample_term_example" # character |  (Optional)
+var_biological_context <- "biological_context_example" # character |  (Optional)
+var_perturbation <- "perturbation_example" # character |  (Optional)
+var_page <- 0 # numeric |  (Optional)
+var_limit <- 3.4 # numeric |  (Optional)
+
+api_instance <- IgvfCatalogApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GenesVariantsScoreSummary(var_gene_id, var_score_field, files_fileset = var_files_fileset, source = var_source, biosample_term = var_biosample_term, biological_context = var_biological_context, perturbation = var_perturbation, page = var_page, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GenesVariantsScoreSummary(var_gene_id, var_score_field, files_fileset = var_files_fileset, source = var_source, biosample_term = var_biosample_term, biological_context = var_biological_context, perturbation = var_perturbation, page = var_page, limit = var_limit)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gene_id** | **character**|  | 
+ **score_field** | Enum [effect_size, log2FC, neg_log10_pvalue, neg_log10_pvalue_adj, power, posterior_inclusion_probability, coefficient_stddev] |  | 
+ **files_fileset** | **character**|  | [optional] 
+ **source** | Enum [IGVF] |  | [optional] 
+ **biosample_term** | **character**|  | [optional] 
+ **biological_context** | **character**|  | [optional] 
+ **perturbation** | Enum [base editing, prime editing] |  | [optional] 
+ **page** | **numeric**|  | [optional] [default to 0]
+ **limit** | **numeric**|  | [optional] 
+
+### Return type
+
+[**GenesVariantsScoreSummary**](GenesVariantsScoreSummary.md)
 
 ### Authorization
 
