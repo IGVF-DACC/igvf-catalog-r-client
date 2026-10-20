@@ -199,11 +199,11 @@ No authorization required
 | **0** | Error response |  -  |
 
 # **BiosamplesFromGenomicElements**
-> array[BiosamplesFromGenomicElements] BiosamplesFromGenomicElements(region = var.region, region_type = var.region_type, source = var.source, method = var.method, files_fileset = var.files_fileset, verbose = "false", page = 0, limit = var.limit)
+> array[BiosamplesFromGenomicElements] BiosamplesFromGenomicElements(region = var.region, region_type = var.region_type, source = var.source, method = var.method, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
 
 
 
-Retrieve MPRA experiments by querying positions of genomic elements. <br>   Set verbose = true to retrieve full info on the cell ontology terms. <br>   Example: region_type = tested elements, <br>   region = chr10:100038743-100038963. <br>   files_fileset = ENCFF475FKV,<br>   method = MPRA,<br>   source = IGVF. <br>   The limit parameter controls the page size and can not exceed 50. <br>   Pagination is 0-based.
+Retrieve MPRA experiments by querying positions of genomic elements. Set organism = Mus musculus for mouse MPRA sequences (GRCm39); the default is Homo sapiens (GRCh38). <br>   Set verbose = true to retrieve full info on the cell ontology terms. <br>   Human MPRA example: organism = Homo sapiens, <br>   region_type = tested elements, <br>   region = chr10:100038743-100038963. <br>   files_fileset = ENCFF475FKV,<br>   method = MPRA,<br>   source = IGVF. <br>   Mouse MPRA example: organism = Mus musculus, <br>   region = chr11:55319627-55319927, <br>   files_fileset = IGVFFI0975AQKF, <br>   method = MPRA, verbose = true. <br>   The limit parameter controls the page size and can not exceed 50. <br>   Pagination is 0-based.
 
 ### Example
 ```R
@@ -215,14 +215,15 @@ var_region_type <- "region_type_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
+var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
 var_page <- 0 # numeric |  (Optional)
 var_limit <- 3.4 # numeric |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BiosamplesFromGenomicElements(region = var_region, region_type = var_region_type, source = var_source, method = var_method, files_fileset = var_files_fileset, verbose = var_verbose, page = var_page, limit = var_limitdata_file = "result.txt")
-result <- api_instance$BiosamplesFromGenomicElements(region = var_region, region_type = var_region_type, source = var_source, method = var_method, files_fileset = var_files_fileset, verbose = var_verbose, page = var_page, limit = var_limit)
+# result <- api_instance$BiosamplesFromGenomicElements(region = var_region, region_type = var_region_type, source = var_source, method = var_method, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limitdata_file = "result.txt")
+result <- api_instance$BiosamplesFromGenomicElements(region = var_region, region_type = var_region_type, source = var_source, method = var_method, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limit)
 dput(result)
 ```
 
@@ -235,6 +236,7 @@ Name | Type | Description  | Notes
  **source** | Enum [ENCODE, IGVF] |  | [optional] 
  **method** | Enum [MPRA] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
+ **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
  **page** | **numeric**|  | [optional] [default to 0]
  **limit** | **numeric**|  | [optional] 
@@ -263,7 +265,7 @@ No authorization required
 
 
 
-Retrieve data from STARR-seq, BlueSTARR, and MPRA for a given variant.<br>     At least one of these fields is required: variant_id, spdi, hgvs, rsid, ca_id, region, method, or files_fileset. <br>     The limit parameter controls the page size and can not exceed 100. <br>     Pagination is 0-based. <br> <br>     <div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"mpra\">MPRA</button> <button class=\"method-example-tab\" data-method-example-tab=\"starr-seq\">STARR-seq</button> <button class=\"method-example-tab\" data-method-example-tab=\"bluestarr\">BlueSTARR</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"mpra\"> <strong>MPRA:</strong> <div class=\"method-query-example\"> <strong>query by variant identifier</strong>  <ul> <li>spdi = NC_000001.11:1000161:C:A</li> <li>method = MPRA</li> </ul> </div> <div class=\"method-query-example\"> <strong>query by region</strong>  <ul> <li>region = chr1:1000160-1000163 (maximum length: 10kb)</li> <li>method = MPRA</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"starr-seq\"> <strong>STARR-seq:</strong> <div class=\"method-query-example\"> <strong>query by variant identifier</strong>  <ul> <li>spdi = NC_000001.11:14772:C:T</li> <li>method = STARR-seq</li> </ul> </div> <div class=\"method-query-example\"> <strong>query by region</strong>  <ul> <li>region = chr1:14771-14775 (maximum length: 10kb)</li> <li>method = STARR-seq</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"bluestarr\"> <strong>BlueSTARR:</strong> <div class=\"method-query-example\"> <strong>query by variant identifier</strong>  <ul> <li>spdi = NC_000001.11:100003415:C:A</li> <li>method = BlueSTARR</li> </ul> </div> <div class=\"method-query-example\"> <strong>query by region</strong>  <ul> <li>region = chr1:100003414-100003418 (maximum length: 10kb)</li> <li>method = BlueSTARR</li> </ul> </div> </div> </div>
+Retrieve data from STARR-seq, BlueSTARR, and MPRA for a given variant. Set organism = Mus musculus for mouse MPRA sequences (GRCm39); the default is Homo sapiens (GRCh38).<br>     At least one of these fields is required: variant_id, spdi, hgvs, rsid, ca_id, region, method, or files_fileset. <br>     The limit parameter controls the page size and can not exceed 100. <br>     Pagination is 0-based. <br> <br>     <div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"mpra\">MPRA</button> <button class=\"method-example-tab\" data-method-example-tab=\"starr-seq\">STARR-seq</button> <button class=\"method-example-tab\" data-method-example-tab=\"bluestarr\">BlueSTARR</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"mpra\"> <strong>MPRA:</strong> <div class=\"method-query-example\"> <strong>human MPRA by variant identifier</strong>  <ul> <li>organism = Homo sapiens</li> <li>spdi = NC_000001.11:1000161:C:A</li> <li>method = MPRA</li> </ul> </div> <div class=\"method-query-example\"> <strong>human MPRA by region</strong>  <ul> <li>organism = Homo sapiens</li> <li>region = chr1:1000160-1000163 (maximum length: 10kb)</li> <li>method = MPRA</li> </ul> </div> <div class=\"method-query-example\"> <strong>mouse MPRA by variant identifier</strong>  <ul> <li>organism = Mus musculus</li> <li>spdi = NC_000077.7:55319687:T:C</li> <li>files_fileset = IGVFFI5939ZOZQ</li> <li>method = MPRA</li> <li>verbose = true</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"starr-seq\"> <strong>STARR-seq:</strong> <div class=\"method-query-example\"> <strong>query by variant identifier</strong>  <ul> <li>spdi = NC_000001.11:14772:C:T</li> <li>method = STARR-seq</li> </ul> </div> <div class=\"method-query-example\"> <strong>query by region</strong>  <ul> <li>region = chr1:14771-14775 (maximum length: 10kb)</li> <li>method = STARR-seq</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"bluestarr\"> <strong>BlueSTARR:</strong> <div class=\"method-query-example\"> <strong>query by variant identifier</strong>  <ul> <li>spdi = NC_000001.11:100003415:C:A</li> <li>method = BlueSTARR</li> </ul> </div> <div class=\"method-query-example\"> <strong>query by region</strong>  <ul> <li>region = chr1:100003414-100003418 (maximum length: 10kb)</li> <li>method = BlueSTARR</li> </ul> </div> </div> </div>
 
 ### Example
 ```R
@@ -306,7 +308,7 @@ Name | Type | Description  | Notes
  **method** | Enum [BlueSTARR, MPRA, STARR-seq] |  | [optional] 
  **element_id** | **character**|  | [optional] 
  **significant** | Enum [true, false] |  | [optional] 
- **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
+ **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
  **page** | **numeric**|  | [optional] [default to 0]
  **limit** | **numeric**|  | [optional] 
@@ -2235,7 +2237,7 @@ No authorization required
 
 
 
-Retrieve MPRA expriments by querying cell ontology terms. <br>   Set verbose = true to retrieve full info on the tested genomic elements. <br>   Example: biosample_name = hepg2, <br>   method = MPRA, <br>   source = IGVF, <br>   files_fileset = ENCFF475FKV. <br>   The limit parameter controls the page size and can not exceed 50. <br>   Pagination is 0-based.
+Retrieve MPRA experiments by querying cell ontology terms. Set organism = Mus musculus for mouse MPRA sequences (GRCm39); the default is Homo sapiens (GRCh38). <br>   Set verbose = true to retrieve full info on the tested genomic elements. <br>   Human MPRA example: organism = Homo sapiens, <br>   biosample_name = hepg2, <br>   method = MPRA, <br>   source = IGVF, <br>   files_fileset = ENCFF475FKV. <br>   Mouse MPRA example: organism = Mus musculus, <br>   files_fileset = IGVFFI0975AQKF (mouse PYS-2 biosample), <br>   method = MPRA, verbose = true. <br>   The limit parameter controls the page size and can not exceed 50. <br>   Pagination is 0-based.
 
 ### Example
 ```R
@@ -2266,7 +2268,7 @@ Name | Type | Description  | Notes
  **method** | Enum [MPRA] |  | [optional] 
  **source** | Enum [ENCODE, IGVF] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
+ **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
  **page** | **numeric**|  | [optional] [default to 0]
  **limit** | **numeric**|  | [optional] 
@@ -4777,7 +4779,7 @@ No authorization required
 
 
 
-Retrieve data from STARR-seq, BlueSTARR, and MPRA for a given biosample.<br>     At least one of these fields is required: biosample_id or biosample_name. <br>     The limit parameter controls the page size and can not exceed 100. <br>     Pagination is 0-based. <br> <br>     <div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"mpra\">MPRA</button> <button class=\"method-example-tab\" data-method-example-tab=\"starr-seq\">STARR-seq</button> <button class=\"method-example-tab\" data-method-example-tab=\"bluestarr\">BlueSTARR</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"mpra\"> <strong>MPRA:</strong> <div class=\"method-query-example\"> <strong>query by biosample identifier</strong>  <ul> <li>biosample_id = EFO_0001182</li> <li>method = MPRA</li> <li>element_id = MPRA_chr1_1000079_1000279_GRCh38_plus_IGVFFI7321WGMD</li> <li>significant = true</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"starr-seq\"> <strong>STARR-seq:</strong> <div class=\"method-query-example\"> <strong>query by biosample identifier</strong>  <ul> <li>biosample_id = EFO_0002067</li> <li>method = STARR-seq</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"bluestarr\"> <strong>BlueSTARR:</strong> <div class=\"method-query-example\"> <strong>query by biosample identifier</strong>  <ul> <li>biosample_id = EFO_0002067</li> <li>method = BlueSTARR</li> </ul> </div> </div> </div>
+Retrieve data from STARR-seq, BlueSTARR, and MPRA for a given biosample. Set organism = Mus musculus for mouse MPRA sequences (GRCm39); the default is Homo sapiens (GRCh38).<br>     At least one of these fields is required: biosample_id or biosample_name. <br>     The limit parameter controls the page size and can not exceed 100. <br>     Pagination is 0-based. <br> <br>     <div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"mpra\">MPRA</button> <button class=\"method-example-tab\" data-method-example-tab=\"starr-seq\">STARR-seq</button> <button class=\"method-example-tab\" data-method-example-tab=\"bluestarr\">BlueSTARR</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"mpra\"> <strong>MPRA:</strong> <div class=\"method-query-example\"> <strong>human MPRA by biosample identifier</strong>  <ul> <li>organism = Homo sapiens</li> <li>biosample_id = EFO_0001182</li> <li>method = MPRA</li> <li>element_id = MPRA_chr1_1000079_1000279_GRCh38_plus_IGVFFI7321WGMD</li> <li>significant = true</li> </ul> </div> <div class=\"method-query-example\"> <strong>mouse MPRA by biosample identifier</strong>  <ul> <li>organism = Mus musculus</li> <li>biosample_id = CLO_0008675</li> <li>files_fileset = IGVFFI5939ZOZQ</li> <li>method = MPRA</li> <li>verbose = true</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"starr-seq\"> <strong>STARR-seq:</strong> <div class=\"method-query-example\"> <strong>query by biosample identifier</strong>  <ul> <li>biosample_id = EFO_0002067</li> <li>method = STARR-seq</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"bluestarr\"> <strong>BlueSTARR:</strong> <div class=\"method-query-example\"> <strong>query by biosample identifier</strong>  <ul> <li>biosample_id = EFO_0002067</li> <li>method = BlueSTARR</li> </ul> </div> </div> </div>
 
 ### Example
 ```R
@@ -4812,7 +4814,7 @@ Name | Type | Description  | Notes
  **method** | Enum [BlueSTARR, MPRA, STARR-seq] |  | [optional] 
  **element_id** | **character**|  | [optional] 
  **significant** | Enum [true, false] |  | [optional] 
- **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
+ **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
  **page** | **numeric**|  | [optional] [default to 0]
  **limit** | **numeric**|  | [optional] 
