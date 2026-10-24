@@ -24,7 +24,7 @@
 #' @field z_score  numeric [optional]
 #' @field credible_set_min_r2  numeric [optional]
 #' @field method  character [optional]
-#' @field crispr_modality  character [optional]
+#' @field perturbation  character [optional]
 #' @field source  character
 #' @field source_url  character
 #' @field label  character
@@ -59,7 +59,7 @@ GenesFromVariants <- R6::R6Class(
     `z_score` = NULL,
     `credible_set_min_r2` = NULL,
     `method` = NULL,
-    `crispr_modality` = NULL,
+    `perturbation` = NULL,
     `source` = NULL,
     `source_url` = NULL,
     `label` = NULL,
@@ -97,7 +97,7 @@ GenesFromVariants <- R6::R6Class(
     #' @param z_score z_score
     #' @param credible_set_min_r2 credible_set_min_r2
     #' @param method method
-    #' @param crispr_modality crispr_modality
+    #' @param perturbation perturbation
     #' @param p_value p_value
     #' @param chr chr
     #' @param study study
@@ -105,7 +105,7 @@ GenesFromVariants <- R6::R6Class(
     #' @param class class
     #' @param files_filesets files_filesets
     #' @param ... Other optional arguments.
-    initialize = function(`gene`, `sequence_variant`, `source`, `source_url`, `label`, `biological_context`, `biosample_term`, `intron_chr` = NULL, `intron_start` = NULL, `intron_end` = NULL, `effect_size` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `log2FC` = NULL, `posterior_inclusion_probability` = NULL, `coefficient_stddev` = NULL, `power` = NULL, `significant` = NULL, `standard_error` = NULL, `z_score` = NULL, `credible_set_min_r2` = NULL, `method` = NULL, `crispr_modality` = NULL, `p_value` = NULL, `chr` = NULL, `study` = NULL, `name` = NULL, `class` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`gene`, `sequence_variant`, `source`, `source_url`, `label`, `biological_context`, `biosample_term`, `intron_chr` = NULL, `intron_start` = NULL, `intron_end` = NULL, `effect_size` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `log2FC` = NULL, `posterior_inclusion_probability` = NULL, `coefficient_stddev` = NULL, `power` = NULL, `significant` = NULL, `standard_error` = NULL, `z_score` = NULL, `credible_set_min_r2` = NULL, `method` = NULL, `perturbation` = NULL, `p_value` = NULL, `chr` = NULL, `study` = NULL, `name` = NULL, `class` = NULL, `files_filesets` = NULL, ...) {
       if (!missing(`gene`)) {
         stopifnot(R6::is.R6(`gene`))
         self$`gene` <- `gene`
@@ -198,11 +198,11 @@ GenesFromVariants <- R6::R6Class(
         }
         self$`method` <- `method`
       }
-      if (!is.null(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`perturbation` <- `perturbation`
       }
       if (!is.null(`p_value`)) {
         self$`p_value` <- `p_value`
@@ -336,9 +336,9 @@ GenesFromVariants <- R6::R6Class(
         GenesFromVariantsObject[["method"]] <-
           self$`method`
       }
-      if (!is.null(self$`crispr_modality`)) {
-        GenesFromVariantsObject[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`perturbation`)) {
+        GenesFromVariantsObject[["perturbation"]] <-
+          self$`perturbation`
       }
       if (!is.null(self$`source`)) {
         GenesFromVariantsObject[["source"]] <-
@@ -449,8 +449,8 @@ GenesFromVariants <- R6::R6Class(
       if (!is.null(this_object$`method`)) {
         self$`method` <- this_object$`method`
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       if (!is.null(this_object$`source`)) {
         self$`source` <- this_object$`source`
@@ -525,7 +525,7 @@ GenesFromVariants <- R6::R6Class(
       self$`z_score` <- this_object$`z_score`
       self$`credible_set_min_r2` <- this_object$`credible_set_min_r2`
       self$`method` <- this_object$`method`
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`perturbation` <- this_object$`perturbation`
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
       self$`label` <- this_object$`label`

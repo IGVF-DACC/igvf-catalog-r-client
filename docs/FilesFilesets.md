@@ -23,6 +23,6 @@ Name | Type | Description | Notes
 **cell_annotation** | **character** |  | [optional] 
 **cell_annotation_term** | **character** |  | [optional] 
 **genome_browser_link** | **character** |  | [optional] 
-**crispr_modality** | **character** |  | [optional] 
+**perturbation** | **character** |  | [optional] 
 
 

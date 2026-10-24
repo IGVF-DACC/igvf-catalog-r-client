@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **effect_size_ci95_upper** | **numeric** |  | [optional] 
 **p_value_adj** | **numeric** |  | [optional] 
 **neg_log10_pvalue_adj** | **numeric** |  | [optional] 
-**crispr_modality** | **character** |  | [optional] 
+**perturbation** | **character** |  | [optional] 
 **protein_id** | **character** |  | [optional] 
 **exon** | **character** |  | [optional] 
 **target** | **character** |  | [optional] 

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **z_score** | **numeric** |  | [optional] 
 **credible_set_min_r2** | **numeric** |  | [optional] 
 **method** | **character** |  | [optional] 
-**crispr_modality** | **character** |  | [optional] 
+**perturbation** | **character** |  | [optional] 
 **source** | **character** |  | 
 **source_url** | **character** |  | 
 **label** | **character** |  | 

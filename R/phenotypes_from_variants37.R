@@ -23,7 +23,7 @@
 #' @field effect_size_ci95_upper  numeric [optional]
 #' @field p_value_adj  numeric [optional]
 #' @field neg_log10_pvalue_adj  numeric [optional]
-#' @field crispr_modality  character [optional]
+#' @field perturbation  character [optional]
 #' @field protein_id  character [optional]
 #' @field exon  character [optional]
 #' @field target  character [optional]
@@ -66,7 +66,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
     `effect_size_ci95_upper` = NULL,
     `p_value_adj` = NULL,
     `neg_log10_pvalue_adj` = NULL,
-    `crispr_modality` = NULL,
+    `perturbation` = NULL,
     `protein_id` = NULL,
     `exon` = NULL,
     `target` = NULL,
@@ -112,7 +112,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
     #' @param effect_size_ci95_upper effect_size_ci95_upper
     #' @param p_value_adj p_value_adj
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
-    #' @param crispr_modality crispr_modality
+    #' @param perturbation perturbation
     #' @param protein_id protein_id
     #' @param exon exon
     #' @param target target
@@ -129,7 +129,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
     #' @param label label
     #' @param biosample_term biosample_term
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `source`, `source_url`, `method`, `files_filesets`, `phenotype_term`, `variant`, `phenotype_id`, `biological_context` = NULL, `score` = NULL, `effect_size` = NULL, `z_score` = NULL, `p_value` = NULL, `neg_log10_pvalue` = NULL, `significant` = NULL, `num_guides` = NULL, `edit_rate_mean` = NULL, `effect_size_ci95_lower` = NULL, `effect_size_ci95_upper` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue_adj` = NULL, `crispr_modality` = NULL, `protein_id` = NULL, `exon` = NULL, `target` = NULL, `consequence` = NULL, `standard_error` = NULL, `95_ci_upper` = NULL, `95_ci_lower` = NULL, `amino_acid_change` = NULL, `hgvs_p` = NULL, `functional_consequence` = NULL, `functional_consequence_zscore` = NULL, `variant_qc_flag` = NULL, `class` = NULL, `label` = NULL, `biosample_term` = NULL, ...) {
+    initialize = function(`name`, `source`, `source_url`, `method`, `files_filesets`, `phenotype_term`, `variant`, `phenotype_id`, `biological_context` = NULL, `score` = NULL, `effect_size` = NULL, `z_score` = NULL, `p_value` = NULL, `neg_log10_pvalue` = NULL, `significant` = NULL, `num_guides` = NULL, `edit_rate_mean` = NULL, `effect_size_ci95_lower` = NULL, `effect_size_ci95_upper` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue_adj` = NULL, `perturbation` = NULL, `protein_id` = NULL, `exon` = NULL, `target` = NULL, `consequence` = NULL, `standard_error` = NULL, `95_ci_upper` = NULL, `95_ci_lower` = NULL, `amino_acid_change` = NULL, `hgvs_p` = NULL, `functional_consequence` = NULL, `functional_consequence_zscore` = NULL, `variant_qc_flag` = NULL, `class` = NULL, `label` = NULL, `biosample_term` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -221,11 +221,11 @@ PhenotypesFromVariants37 <- R6::R6Class(
       if (!is.null(`neg_log10_pvalue_adj`)) {
         self$`neg_log10_pvalue_adj` <- `neg_log10_pvalue_adj`
       }
-      if (!is.null(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`perturbation` <- `perturbation`
       }
       if (!is.null(`protein_id`)) {
         if (!(is.character(`protein_id`) && length(`protein_id`) == 1)) {
@@ -402,9 +402,9 @@ PhenotypesFromVariants37 <- R6::R6Class(
         PhenotypesFromVariants37Object[["neg_log10_pvalue_adj"]] <-
           self$`neg_log10_pvalue_adj`
       }
-      if (!is.null(self$`crispr_modality`)) {
-        PhenotypesFromVariants37Object[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`perturbation`)) {
+        PhenotypesFromVariants37Object[["perturbation"]] <-
+          self$`perturbation`
       }
       if (!is.null(self$`protein_id`)) {
         PhenotypesFromVariants37Object[["protein_id"]] <-
@@ -544,8 +544,8 @@ PhenotypesFromVariants37 <- R6::R6Class(
       if (!is.null(this_object$`neg_log10_pvalue_adj`)) {
         self$`neg_log10_pvalue_adj` <- this_object$`neg_log10_pvalue_adj`
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       if (!is.null(this_object$`protein_id`)) {
         self$`protein_id` <- this_object$`protein_id`
@@ -646,7 +646,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
       self$`effect_size_ci95_upper` <- this_object$`effect_size_ci95_upper`
       self$`p_value_adj` <- this_object$`p_value_adj`
       self$`neg_log10_pvalue_adj` <- this_object$`neg_log10_pvalue_adj`
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`perturbation` <- this_object$`perturbation`
       self$`protein_id` <- this_object$`protein_id`
       self$`exon` <- this_object$`exon`
       self$`target` <- this_object$`target`

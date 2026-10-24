@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **biological_context** | **character** |  | [optional] 
 **biosample_term** | **character** |  | [optional] 
 **treatments_term_ids** | **array[character]** |  | [optional] 
-**crispr_modality** | **character** |  | [optional] 
+**perturbation** | **character** |  | [optional] 
 **log2FC** | **numeric** |  | [optional] 
 **p_value** | **numeric** |  | [optional] 
 **p_value_adj** | **numeric** |  | [optional] 

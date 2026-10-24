@@ -26,6 +26,7 @@
 #' @field label  character
 #' @field class  character
 #' @field method  character
+#' @field perturbation  character
 #' @field source  character
 #' @field source_url  character
 #' @field files_filesets  character
@@ -57,6 +58,7 @@ GenesTranscriptsGenes <- R6::R6Class(
     `label` = NULL,
     `class` = NULL,
     `method` = NULL,
+    `perturbation` = NULL,
     `source` = NULL,
     `source_url` = NULL,
     `files_filesets` = NULL,
@@ -80,6 +82,7 @@ GenesTranscriptsGenes <- R6::R6Class(
     #' @param label label
     #' @param class class
     #' @param method method
+    #' @param perturbation perturbation
     #' @param source source
     #' @param source_url source_url
     #' @param files_filesets files_filesets
@@ -93,7 +96,7 @@ GenesTranscriptsGenes <- R6::R6Class(
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
     #' @param treatments_term_ids treatments_term_ids
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `gene_transcript`, `gene`, `transcript`, `readout_gene`, `morf_id`, `transcript_mapping_method`, `log2FC`, `significant`, `name`, `label`, `class`, `method`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `standard_error` = NULL, `base_mean` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `treatments_term_ids` = NULL, ...) {
+    initialize = function(`_id`, `gene_transcript`, `gene`, `transcript`, `readout_gene`, `morf_id`, `transcript_mapping_method`, `log2FC`, `significant`, `name`, `label`, `class`, `method`, `perturbation`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `standard_error` = NULL, `base_mean` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `treatments_term_ids` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.character(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
@@ -162,6 +165,12 @@ GenesTranscriptsGenes <- R6::R6Class(
           stop(paste("Error! Invalid data for `method`. Must be a string:", `method`))
         }
         self$`method` <- `method`
+      }
+      if (!missing(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
+        }
+        self$`perturbation` <- `perturbation`
       }
       if (!missing(`source`)) {
         if (!(is.character(`source`) && length(`source`) == 1)) {
@@ -325,6 +334,10 @@ GenesTranscriptsGenes <- R6::R6Class(
         GenesTranscriptsGenesObject[["method"]] <-
           self$`method`
       }
+      if (!is.null(self$`perturbation`)) {
+        GenesTranscriptsGenesObject[["perturbation"]] <-
+          self$`perturbation`
+      }
       if (!is.null(self$`source`)) {
         GenesTranscriptsGenesObject[["source"]] <-
           self$`source`
@@ -422,6 +435,9 @@ GenesTranscriptsGenes <- R6::R6Class(
       if (!is.null(this_object$`method`)) {
         self$`method` <- this_object$`method`
       }
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
+      }
       if (!is.null(this_object$`source`)) {
         self$`source` <- this_object$`source`
       }
@@ -480,6 +496,7 @@ GenesTranscriptsGenes <- R6::R6Class(
       self$`label` <- this_object$`label`
       self$`class` <- this_object$`class`
       self$`method` <- this_object$`method`
+      self$`perturbation` <- this_object$`perturbation`
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
       self$`files_filesets` <- this_object$`files_filesets`
@@ -590,6 +607,14 @@ GenesTranscriptsGenes <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for GenesTranscriptsGenes: the required field `method` is missing."))
       }
+      # check the required field `perturbation`
+      if (!is.null(input_json$`perturbation`)) {
+        if (!(is.character(input_json$`perturbation`) && length(input_json$`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", input_json$`perturbation`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for GenesTranscriptsGenes: the required field `perturbation` is missing."))
+      }
       # check the required field `source`
       if (!is.null(input_json$`source`)) {
         if (!(is.character(input_json$`source`) && length(input_json$`source`) == 1)) {
@@ -695,6 +720,11 @@ GenesTranscriptsGenes <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `perturbation` is null
+      if (is.null(self$`perturbation`)) {
+        return(FALSE)
+      }
+
       # check if the required `source` is null
       if (is.null(self$`source`)) {
         return(FALSE)
@@ -777,6 +807,11 @@ GenesTranscriptsGenes <- R6::R6Class(
       # check if the required `method` is null
       if (is.null(self$`method`)) {
         invalid_fields["method"] <- "Non-nullable required field `method` cannot be null."
+      }
+
+      # check if the required `perturbation` is null
+      if (is.null(self$`perturbation`)) {
+        invalid_fields["perturbation"] <- "Non-nullable required field `perturbation` cannot be null."
       }
 
       # check if the required `source` is null

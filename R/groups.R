@@ -14,7 +14,7 @@
 #' @field biological_context  character
 #' @field cell_annotation  character
 #' @field cell_annotation_term  character
-#' @field crispr_modality  character
+#' @field perturbation  character
 #' @field min  numeric
 #' @field max  numeric
 #' @field edge_count  numeric
@@ -35,7 +35,7 @@ Groups <- R6::R6Class(
     `biological_context` = NULL,
     `cell_annotation` = NULL,
     `cell_annotation_term` = NULL,
-    `crispr_modality` = NULL,
+    `perturbation` = NULL,
     `min` = NULL,
     `max` = NULL,
     `edge_count` = NULL,
@@ -54,7 +54,7 @@ Groups <- R6::R6Class(
     #' @param biological_context biological_context
     #' @param cell_annotation cell_annotation
     #' @param cell_annotation_term cell_annotation_term
-    #' @param crispr_modality crispr_modality
+    #' @param perturbation perturbation
     #' @param min min
     #' @param max max
     #' @param edge_count edge_count
@@ -63,7 +63,7 @@ Groups <- R6::R6Class(
     #' @param invalid_count invalid_count
     #' @param zero_count zero_count
     #' @param ... Other optional arguments.
-    initialize = function(`method`, `source`, `files_filesets`, `biosample_term`, `biological_context`, `cell_annotation`, `cell_annotation_term`, `crispr_modality`, `min`, `max`, `edge_count`, `numeric_count`, `missing_count`, `invalid_count`, `zero_count`, ...) {
+    initialize = function(`method`, `source`, `files_filesets`, `biosample_term`, `biological_context`, `cell_annotation`, `cell_annotation_term`, `perturbation`, `min`, `max`, `edge_count`, `numeric_count`, `missing_count`, `invalid_count`, `zero_count`, ...) {
       if (!missing(`method`)) {
         if (!(is.character(`method`) && length(`method`) == 1)) {
           stop(paste("Error! Invalid data for `method`. Must be a string:", `method`))
@@ -106,11 +106,11 @@ Groups <- R6::R6Class(
         }
         self$`cell_annotation_term` <- `cell_annotation_term`
       }
-      if (!missing(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!missing(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`perturbation` <- `perturbation`
       }
       if (!missing(`min`)) {
         self$`min` <- `min`
@@ -194,9 +194,9 @@ Groups <- R6::R6Class(
         GroupsObject[["cell_annotation_term"]] <-
           self$`cell_annotation_term`
       }
-      if (!is.null(self$`crispr_modality`)) {
-        GroupsObject[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`perturbation`)) {
+        GroupsObject[["perturbation"]] <-
+          self$`perturbation`
       }
       if (!is.null(self$`min`)) {
         GroupsObject[["min"]] <-
@@ -257,8 +257,8 @@ Groups <- R6::R6Class(
       if (!is.null(this_object$`cell_annotation_term`)) {
         self$`cell_annotation_term` <- this_object$`cell_annotation_term`
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       if (!is.null(this_object$`min`)) {
         self$`min` <- this_object$`min`
@@ -309,7 +309,7 @@ Groups <- R6::R6Class(
       self$`biological_context` <- this_object$`biological_context`
       self$`cell_annotation` <- this_object$`cell_annotation`
       self$`cell_annotation_term` <- this_object$`cell_annotation_term`
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`perturbation` <- this_object$`perturbation`
       self$`min` <- this_object$`min`
       self$`max` <- this_object$`max`
       self$`edge_count` <- this_object$`edge_count`
@@ -382,13 +382,13 @@ Groups <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Groups: the required field `cell_annotation_term` is missing."))
       }
-      # check the required field `crispr_modality`
-      if (!is.null(input_json$`crispr_modality`)) {
-        if (!(is.character(input_json$`crispr_modality`) && length(input_json$`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", input_json$`crispr_modality`))
+      # check the required field `perturbation`
+      if (!is.null(input_json$`perturbation`)) {
+        if (!(is.character(input_json$`perturbation`) && length(input_json$`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", input_json$`perturbation`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Groups: the required field `crispr_modality` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for Groups: the required field `perturbation` is missing."))
       }
       # check the required field `min`
       if (!is.null(input_json$`min`)) {

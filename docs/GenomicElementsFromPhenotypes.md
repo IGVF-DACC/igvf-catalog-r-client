@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **biological_context** | **character** |  | 
 **biosample_term** | **character** |  | 
 **files_filesets** | **character** |  | 
-**crispr_modality** | **character** |  | [optional] 
+**perturbation** | **character** |  | [optional] 
 **z_score** | **numeric** |  | [optional] 
 **p_value** | **numeric** |  | [optional] 
 **neg_log10_pvalue** | **numeric** |  | [optional] 

@@ -26,7 +26,7 @@
 #' @field cell_annotation  character [optional]
 #' @field cell_annotation_term  character [optional]
 #' @field genome_browser_link  character [optional]
-#' @field crispr_modality  character [optional]
+#' @field perturbation  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -52,7 +52,7 @@ FilesFilesets <- R6::R6Class(
     `cell_annotation` = NULL,
     `cell_annotation_term` = NULL,
     `genome_browser_link` = NULL,
-    `crispr_modality` = NULL,
+    `perturbation` = NULL,
 
     #' @description
     #' Initialize a new FilesFilesets class.
@@ -76,9 +76,9 @@ FilesFilesets <- R6::R6Class(
     #' @param cell_annotation cell_annotation
     #' @param cell_annotation_term cell_annotation_term
     #' @param genome_browser_link genome_browser_link
-    #' @param crispr_modality crispr_modality
+    #' @param perturbation perturbation
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `file_set_id`, `lab`, `class`, `source`, `download_link`, `preferred_assay_titles` = NULL, `assay_term_ids` = NULL, `method` = NULL, `software` = NULL, `collections` = NULL, `samples` = NULL, `sample_ids` = NULL, `simple_sample_summaries` = NULL, `donors` = NULL, `source_url` = NULL, `cell_annotation` = NULL, `cell_annotation_term` = NULL, `genome_browser_link` = NULL, `crispr_modality` = NULL, ...) {
+    initialize = function(`_id`, `file_set_id`, `lab`, `class`, `source`, `download_link`, `preferred_assay_titles` = NULL, `assay_term_ids` = NULL, `method` = NULL, `software` = NULL, `collections` = NULL, `samples` = NULL, `sample_ids` = NULL, `simple_sample_summaries` = NULL, `donors` = NULL, `source_url` = NULL, `cell_annotation` = NULL, `cell_annotation_term` = NULL, `genome_browser_link` = NULL, `perturbation` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.character(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
@@ -185,11 +185,11 @@ FilesFilesets <- R6::R6Class(
         }
         self$`genome_browser_link` <- `genome_browser_link`
       }
-      if (!is.null(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`perturbation` <- `perturbation`
       }
     },
 
@@ -300,9 +300,9 @@ FilesFilesets <- R6::R6Class(
         FilesFilesetsObject[["genome_browser_link"]] <-
           self$`genome_browser_link`
       }
-      if (!is.null(self$`crispr_modality`)) {
-        FilesFilesetsObject[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`perturbation`)) {
+        FilesFilesetsObject[["perturbation"]] <-
+          self$`perturbation`
       }
       return(FilesFilesetsObject)
     },
@@ -371,8 +371,8 @@ FilesFilesets <- R6::R6Class(
       if (!is.null(this_object$`genome_browser_link`)) {
         self$`genome_browser_link` <- this_object$`genome_browser_link`
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       self
     },
@@ -414,7 +414,7 @@ FilesFilesets <- R6::R6Class(
       self$`cell_annotation` <- this_object$`cell_annotation`
       self$`cell_annotation_term` <- this_object$`cell_annotation_term`
       self$`genome_browser_link` <- this_object$`genome_browser_link`
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`perturbation` <- this_object$`perturbation`
       self
     },
 

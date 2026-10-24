@@ -8,8 +8,10 @@
 #' @description Grn Class
 #' @format An \code{R6Class} generator object
 #' @field response_gene  character
-#' @field genomic_element  \link{GenomicElement4}
-#' @field crispr_modality  character [optional]
+#' @field genomic_element  \link{GenomicElement4} [optional]
+#' @field regulator_gene  character [optional]
+#' @field transcript  \link{GenesTranscriptsGenesTranscript} [optional]
+#' @field perturbation  character [optional]
 #' @field class  character
 #' @field method  character
 #' @field source  character
@@ -19,6 +21,8 @@
 #' @field neg_log10_pvalue  \link{GenesFromGenomicElementsPValue} [optional]
 #' @field neg_log10_pvalue_adj  \link{GenesFromGenomicElementsPValue} [optional]
 #' @field significant  character [optional]
+#' @field p_value  \link{GenesFromGenomicElementsPValue} [optional]
+#' @field p_value_adj  \link{GenesFromGenomicElementsPValue} [optional]
 #' @field perturbation_efficiency_log2FC  numeric [optional]
 #' @field perturbation_efficiency_neg_log10_pvalue  \link{GenesFromGenomicElementsPValue} [optional]
 #' @field perturbation_efficiency_neg_log10_pvalue_adj  \link{GenesFromGenomicElementsPValue} [optional]
@@ -31,7 +35,9 @@ Grn <- R6::R6Class(
   public = list(
     `response_gene` = NULL,
     `genomic_element` = NULL,
-    `crispr_modality` = NULL,
+    `regulator_gene` = NULL,
+    `transcript` = NULL,
+    `perturbation` = NULL,
     `class` = NULL,
     `method` = NULL,
     `source` = NULL,
@@ -41,6 +47,8 @@ Grn <- R6::R6Class(
     `neg_log10_pvalue` = NULL,
     `neg_log10_pvalue_adj` = NULL,
     `significant` = NULL,
+    `p_value` = NULL,
+    `p_value_adj` = NULL,
     `perturbation_efficiency_log2FC` = NULL,
     `perturbation_efficiency_neg_log10_pvalue` = NULL,
     `perturbation_efficiency_neg_log10_pvalue_adj` = NULL,
@@ -50,32 +58,32 @@ Grn <- R6::R6Class(
     #' Initialize a new Grn class.
     #'
     #' @param response_gene response_gene
-    #' @param genomic_element genomic_element
     #' @param class class
     #' @param method method
     #' @param source source
     #' @param biological_context biological_context
     #' @param files_filesets files_filesets
-    #' @param crispr_modality crispr_modality
+    #' @param genomic_element genomic_element
+    #' @param regulator_gene regulator_gene
+    #' @param transcript transcript
+    #' @param perturbation perturbation
     #' @param log2FC log2FC
     #' @param neg_log10_pvalue neg_log10_pvalue
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
     #' @param significant significant
+    #' @param p_value p_value
+    #' @param p_value_adj p_value_adj
     #' @param perturbation_efficiency_log2FC perturbation_efficiency_log2FC
     #' @param perturbation_efficiency_neg_log10_pvalue perturbation_efficiency_neg_log10_pvalue
     #' @param perturbation_efficiency_neg_log10_pvalue_adj perturbation_efficiency_neg_log10_pvalue_adj
     #' @param perturbation_efficiency_significant perturbation_efficiency_significant
     #' @param ... Other optional arguments.
-    initialize = function(`response_gene`, `genomic_element`, `class`, `method`, `source`, `biological_context`, `files_filesets`, `crispr_modality` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, `perturbation_efficiency_log2FC` = NULL, `perturbation_efficiency_neg_log10_pvalue` = NULL, `perturbation_efficiency_neg_log10_pvalue_adj` = NULL, `perturbation_efficiency_significant` = NULL, ...) {
+    initialize = function(`response_gene`, `class`, `method`, `source`, `biological_context`, `files_filesets`, `genomic_element` = NULL, `regulator_gene` = NULL, `transcript` = NULL, `perturbation` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `perturbation_efficiency_log2FC` = NULL, `perturbation_efficiency_neg_log10_pvalue` = NULL, `perturbation_efficiency_neg_log10_pvalue_adj` = NULL, `perturbation_efficiency_significant` = NULL, ...) {
       if (!missing(`response_gene`)) {
         if (!(is.character(`response_gene`) && length(`response_gene`) == 1)) {
           stop(paste("Error! Invalid data for `response_gene`. Must be a string:", `response_gene`))
         }
         self$`response_gene` <- `response_gene`
-      }
-      if (!missing(`genomic_element`)) {
-        stopifnot(R6::is.R6(`genomic_element`))
-        self$`genomic_element` <- `genomic_element`
       }
       if (!missing(`class`)) {
         if (!(is.character(`class`) && length(`class`) == 1)) {
@@ -107,11 +115,25 @@ Grn <- R6::R6Class(
         }
         self$`files_filesets` <- `files_filesets`
       }
-      if (!is.null(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!is.null(`genomic_element`)) {
+        stopifnot(R6::is.R6(`genomic_element`))
+        self$`genomic_element` <- `genomic_element`
+      }
+      if (!is.null(`regulator_gene`)) {
+        if (!(is.character(`regulator_gene`) && length(`regulator_gene`) == 1)) {
+          stop(paste("Error! Invalid data for `regulator_gene`. Must be a string:", `regulator_gene`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`regulator_gene` <- `regulator_gene`
+      }
+      if (!is.null(`transcript`)) {
+        stopifnot(R6::is.R6(`transcript`))
+        self$`transcript` <- `transcript`
+      }
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
+        }
+        self$`perturbation` <- `perturbation`
       }
       if (!is.null(`log2FC`)) {
         self$`log2FC` <- `log2FC`
@@ -129,6 +151,14 @@ Grn <- R6::R6Class(
           stop(paste("Error! Invalid data for `significant`. Must be a boolean:", `significant`))
         }
         self$`significant` <- `significant`
+      }
+      if (!is.null(`p_value`)) {
+        stopifnot(R6::is.R6(`p_value`))
+        self$`p_value` <- `p_value`
+      }
+      if (!is.null(`p_value_adj`)) {
+        stopifnot(R6::is.R6(`p_value_adj`))
+        self$`p_value_adj` <- `p_value_adj`
       }
       if (!is.null(`perturbation_efficiency_log2FC`)) {
         self$`perturbation_efficiency_log2FC` <- `perturbation_efficiency_log2FC`
@@ -188,9 +218,17 @@ Grn <- R6::R6Class(
         GrnObject[["genomic_element"]] <-
           self$`genomic_element`$toSimpleType()
       }
-      if (!is.null(self$`crispr_modality`)) {
-        GrnObject[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`regulator_gene`)) {
+        GrnObject[["regulator_gene"]] <-
+          self$`regulator_gene`
+      }
+      if (!is.null(self$`transcript`)) {
+        GrnObject[["transcript"]] <-
+          self$`transcript`$toSimpleType()
+      }
+      if (!is.null(self$`perturbation`)) {
+        GrnObject[["perturbation"]] <-
+          self$`perturbation`
       }
       if (!is.null(self$`class`)) {
         GrnObject[["class"]] <-
@@ -228,6 +266,14 @@ Grn <- R6::R6Class(
         GrnObject[["significant"]] <-
           self$`significant`
       }
+      if (!is.null(self$`p_value`)) {
+        GrnObject[["p_value"]] <-
+          self$`p_value`$toSimpleType()
+      }
+      if (!is.null(self$`p_value_adj`)) {
+        GrnObject[["p_value_adj"]] <-
+          self$`p_value_adj`$toSimpleType()
+      }
       if (!is.null(self$`perturbation_efficiency_log2FC`)) {
         GrnObject[["perturbation_efficiency_log2FC"]] <-
           self$`perturbation_efficiency_log2FC`
@@ -262,8 +308,16 @@ Grn <- R6::R6Class(
         `genomic_element_object`$fromJSON(jsonlite::toJSON(this_object$`genomic_element`, auto_unbox = TRUE, digits = NA))
         self$`genomic_element` <- `genomic_element_object`
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`regulator_gene`)) {
+        self$`regulator_gene` <- this_object$`regulator_gene`
+      }
+      if (!is.null(this_object$`transcript`)) {
+        `transcript_object` <- GenesTranscriptsGenesTranscript$new()
+        `transcript_object`$fromJSON(jsonlite::toJSON(this_object$`transcript`, auto_unbox = TRUE, digits = NA))
+        self$`transcript` <- `transcript_object`
+      }
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       if (!is.null(this_object$`class`)) {
         self$`class` <- this_object$`class`
@@ -295,6 +349,16 @@ Grn <- R6::R6Class(
       }
       if (!is.null(this_object$`significant`)) {
         self$`significant` <- this_object$`significant`
+      }
+      if (!is.null(this_object$`p_value`)) {
+        `p_value_object` <- GenesFromGenomicElementsPValue$new()
+        `p_value_object`$fromJSON(jsonlite::toJSON(this_object$`p_value`, auto_unbox = TRUE, digits = NA))
+        self$`p_value` <- `p_value_object`
+      }
+      if (!is.null(this_object$`p_value_adj`)) {
+        `p_value_adj_object` <- GenesFromGenomicElementsPValue$new()
+        `p_value_adj_object`$fromJSON(jsonlite::toJSON(this_object$`p_value_adj`, auto_unbox = TRUE, digits = NA))
+        self$`p_value_adj` <- `p_value_adj_object`
       }
       if (!is.null(this_object$`perturbation_efficiency_log2FC`)) {
         self$`perturbation_efficiency_log2FC` <- this_object$`perturbation_efficiency_log2FC`
@@ -335,7 +399,9 @@ Grn <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`response_gene` <- this_object$`response_gene`
       self$`genomic_element` <- GenomicElement4$new()$fromJSON(jsonlite::toJSON(this_object$`genomic_element`, auto_unbox = TRUE, digits = NA))
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`regulator_gene` <- this_object$`regulator_gene`
+      self$`transcript` <- GenesTranscriptsGenesTranscript$new()$fromJSON(jsonlite::toJSON(this_object$`transcript`, auto_unbox = TRUE, digits = NA))
+      self$`perturbation` <- this_object$`perturbation`
       self$`class` <- this_object$`class`
       self$`method` <- this_object$`method`
       self$`source` <- this_object$`source`
@@ -345,6 +411,8 @@ Grn <- R6::R6Class(
       self$`neg_log10_pvalue` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`neg_log10_pvalue`, auto_unbox = TRUE, digits = NA))
       self$`neg_log10_pvalue_adj` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`neg_log10_pvalue_adj`, auto_unbox = TRUE, digits = NA))
       self$`significant` <- this_object$`significant`
+      self$`p_value` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`p_value`, auto_unbox = TRUE, digits = NA))
+      self$`p_value_adj` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`p_value_adj`, auto_unbox = TRUE, digits = NA))
       self$`perturbation_efficiency_log2FC` <- this_object$`perturbation_efficiency_log2FC`
       self$`perturbation_efficiency_neg_log10_pvalue` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`perturbation_efficiency_neg_log10_pvalue`, auto_unbox = TRUE, digits = NA))
       self$`perturbation_efficiency_neg_log10_pvalue_adj` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`perturbation_efficiency_neg_log10_pvalue_adj`, auto_unbox = TRUE, digits = NA))
@@ -365,12 +433,6 @@ Grn <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Grn: the required field `response_gene` is missing."))
-      }
-      # check the required field `genomic_element`
-      if (!is.null(input_json$`genomic_element`)) {
-        stopifnot(R6::is.R6(input_json$`genomic_element`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for Grn: the required field `genomic_element` is missing."))
       }
       # check the required field `class`
       if (!is.null(input_json$`class`)) {
@@ -432,11 +494,6 @@ Grn <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `genomic_element` is null
-      if (is.null(self$`genomic_element`)) {
-        return(FALSE)
-      }
-
       # check if the required `class` is null
       if (is.null(self$`class`)) {
         return(FALSE)
@@ -474,11 +531,6 @@ Grn <- R6::R6Class(
       # check if the required `response_gene` is null
       if (is.null(self$`response_gene`)) {
         invalid_fields["response_gene"] <- "Non-nullable required field `response_gene` cannot be null."
-      }
-
-      # check if the required `genomic_element` is null
-      if (is.null(self$`genomic_element`)) {
-        invalid_fields["genomic_element"] <- "Non-nullable required field `genomic_element` cannot be null."
       }
 
       # check if the required `class` is null

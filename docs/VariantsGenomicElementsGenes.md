@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **files_filesets** | **character** |  | 
 **biological_context** | **character** |  | 
 **biosample_term** | **character** |  | 
-**crispr_modality** | **character** |  | [optional] 
+**perturbation** | **character** |  | [optional] 
 **log2FC** | **numeric** |  | [optional] 
 **neg_log10_pvalue** | **numeric** |  | [optional] 
 **neg_log10_pvalue_adj** | [**GenesFromGenomicElementsPValue**](GenesFromGenomicElements_p_value.md) |  | [optional] 

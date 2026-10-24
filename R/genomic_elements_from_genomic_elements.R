@@ -20,7 +20,7 @@
 #' @field biological_context  character [optional]
 #' @field biosample_term  character [optional]
 #' @field treatments_term_ids  list(character) [optional]
-#' @field crispr_modality  character [optional]
+#' @field perturbation  character [optional]
 #' @field log2FC  numeric [optional]
 #' @field p_value  numeric [optional]
 #' @field p_value_adj  numeric [optional]
@@ -46,7 +46,7 @@ GenomicElementsFromGenomicElements <- R6::R6Class(
     `biological_context` = NULL,
     `biosample_term` = NULL,
     `treatments_term_ids` = NULL,
-    `crispr_modality` = NULL,
+    `perturbation` = NULL,
     `log2FC` = NULL,
     `p_value` = NULL,
     `p_value_adj` = NULL,
@@ -70,7 +70,7 @@ GenomicElementsFromGenomicElements <- R6::R6Class(
     #' @param biological_context biological_context
     #' @param biosample_term biosample_term
     #' @param treatments_term_ids treatments_term_ids
-    #' @param crispr_modality crispr_modality
+    #' @param perturbation perturbation
     #' @param log2FC log2FC
     #' @param p_value p_value
     #' @param p_value_adj p_value_adj
@@ -78,7 +78,7 @@ GenomicElementsFromGenomicElements <- R6::R6Class(
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
     #' @param significant significant
     #' @param ... Other optional arguments.
-    initialize = function(`perturbed_genomic_element`, `accessible_genomic_element`, `name`, `inverse_name`, `label`, `class`, `method`, `source`, `source_url`, `files_filesets`, `biological_context` = NULL, `biosample_term` = NULL, `treatments_term_ids` = NULL, `crispr_modality` = NULL, `log2FC` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, ...) {
+    initialize = function(`perturbed_genomic_element`, `accessible_genomic_element`, `name`, `inverse_name`, `label`, `class`, `method`, `source`, `source_url`, `files_filesets`, `biological_context` = NULL, `biosample_term` = NULL, `treatments_term_ids` = NULL, `perturbation` = NULL, `log2FC` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, ...) {
       if (!missing(`perturbed_genomic_element`)) {
         stopifnot(R6::is.R6(`perturbed_genomic_element`))
         self$`perturbed_genomic_element` <- `perturbed_genomic_element`
@@ -152,11 +152,11 @@ GenomicElementsFromGenomicElements <- R6::R6Class(
         sapply(`treatments_term_ids`, function(x) stopifnot(is.character(x)))
         self$`treatments_term_ids` <- `treatments_term_ids`
       }
-      if (!is.null(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`perturbation` <- `perturbation`
       }
       if (!is.null(`log2FC`)) {
         self$`log2FC` <- `log2FC`
@@ -264,9 +264,9 @@ GenomicElementsFromGenomicElements <- R6::R6Class(
         GenomicElementsFromGenomicElementsObject[["treatments_term_ids"]] <-
           self$`treatments_term_ids`
       }
-      if (!is.null(self$`crispr_modality`)) {
-        GenomicElementsFromGenomicElementsObject[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`perturbation`)) {
+        GenomicElementsFromGenomicElementsObject[["perturbation"]] <-
+          self$`perturbation`
       }
       if (!is.null(self$`log2FC`)) {
         GenomicElementsFromGenomicElementsObject[["log2FC"]] <-
@@ -345,8 +345,8 @@ GenomicElementsFromGenomicElements <- R6::R6Class(
       if (!is.null(this_object$`treatments_term_ids`)) {
         self$`treatments_term_ids` <- ApiClient$new()$deserializeObj(this_object$`treatments_term_ids`, "array[character]", loadNamespace("igvfcatalogclient"))
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       if (!is.null(this_object$`log2FC`)) {
         self$`log2FC` <- this_object$`log2FC`
@@ -400,7 +400,7 @@ GenomicElementsFromGenomicElements <- R6::R6Class(
       self$`biological_context` <- this_object$`biological_context`
       self$`biosample_term` <- this_object$`biosample_term`
       self$`treatments_term_ids` <- ApiClient$new()$deserializeObj(this_object$`treatments_term_ids`, "array[character]", loadNamespace("igvfcatalogclient"))
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`perturbation` <- this_object$`perturbation`
       self$`log2FC` <- this_object$`log2FC`
       self$`p_value` <- this_object$`p_value`
       self$`p_value_adj` <- this_object$`p_value_adj`

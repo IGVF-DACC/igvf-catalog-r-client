@@ -20,7 +20,7 @@
 #' @field files_filesets  character
 #' @field biological_context  character
 #' @field biosample_term  character
-#' @field crispr_modality  character [optional]
+#' @field perturbation  character [optional]
 #' @field log2FC  numeric [optional]
 #' @field neg_log10_pvalue  numeric [optional]
 #' @field neg_log10_pvalue_adj  \link{GenesFromGenomicElementsPValue} [optional]
@@ -47,7 +47,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
     `files_filesets` = NULL,
     `biological_context` = NULL,
     `biosample_term` = NULL,
-    `crispr_modality` = NULL,
+    `perturbation` = NULL,
     `log2FC` = NULL,
     `neg_log10_pvalue` = NULL,
     `neg_log10_pvalue_adj` = NULL,
@@ -72,7 +72,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
     #' @param biological_context biological_context
     #' @param biosample_term biosample_term
     #' @param distance_to_tss distance_to_tss
-    #' @param crispr_modality crispr_modality
+    #' @param perturbation perturbation
     #' @param log2FC log2FC
     #' @param neg_log10_pvalue neg_log10_pvalue
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
@@ -81,7 +81,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
     #' @param effect_size effect_size
     #' @param significant significant
     #' @param ... Other optional arguments.
-    initialize = function(`variant`, `genomic_element`, `gene`, `name`, `label`, `method`, `class`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `distance_to_tss` = NULL, `crispr_modality` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `effect_size` = NULL, `significant` = NULL, ...) {
+    initialize = function(`variant`, `genomic_element`, `gene`, `name`, `label`, `method`, `class`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `distance_to_tss` = NULL, `perturbation` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `effect_size` = NULL, `significant` = NULL, ...) {
       if (!missing(`variant`)) {
         stopifnot(R6::is.R6(`variant`))
         self$`variant` <- `variant`
@@ -151,11 +151,11 @@ VariantsGenomicElementsGenes <- R6::R6Class(
       if (!is.null(`distance_to_tss`)) {
         self$`distance_to_tss` <- `distance_to_tss`
       }
-      if (!is.null(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`perturbation` <- `perturbation`
       }
       if (!is.null(`log2FC`)) {
         self$`log2FC` <- `log2FC`
@@ -269,9 +269,9 @@ VariantsGenomicElementsGenes <- R6::R6Class(
         VariantsGenomicElementsGenesObject[["biosample_term"]] <-
           self$`biosample_term`
       }
-      if (!is.null(self$`crispr_modality`)) {
-        VariantsGenomicElementsGenesObject[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`perturbation`)) {
+        VariantsGenomicElementsGenesObject[["perturbation"]] <-
+          self$`perturbation`
       }
       if (!is.null(self$`log2FC`)) {
         VariantsGenomicElementsGenesObject[["log2FC"]] <-
@@ -356,8 +356,8 @@ VariantsGenomicElementsGenes <- R6::R6Class(
       if (!is.null(this_object$`biosample_term`)) {
         self$`biosample_term` <- this_object$`biosample_term`
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       if (!is.null(this_object$`log2FC`)) {
         self$`log2FC` <- this_object$`log2FC`
@@ -420,7 +420,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
       self$`files_filesets` <- this_object$`files_filesets`
       self$`biological_context` <- this_object$`biological_context`
       self$`biosample_term` <- this_object$`biosample_term`
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`perturbation` <- this_object$`perturbation`
       self$`log2FC` <- this_object$`log2FC`
       self$`neg_log10_pvalue` <- this_object$`neg_log10_pvalue`
       self$`neg_log10_pvalue_adj` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`neg_log10_pvalue_adj`, auto_unbox = TRUE, digits = NA))

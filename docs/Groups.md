@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **biological_context** | **character** |  | 
 **cell_annotation** | **character** |  | 
 **cell_annotation_term** | **character** |  | 
-**crispr_modality** | **character** |  | 
+**perturbation** | **character** |  | 
 **min** | **numeric** |  | 
 **max** | **numeric** |  | 
 **edge_count** | **numeric** |  | 

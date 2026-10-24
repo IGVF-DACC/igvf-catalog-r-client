@@ -19,10 +19,22 @@
 #' @field cell_annotation_term  character [optional]
 #' @field treatments_term_ids  list(character) [optional]
 #' @field files_filesets  character
-#' @field crispr_modality  character [optional]
+#' @field perturbation  character [optional]
 #' @field score  numeric [optional]
 #' @field transcription_start_site  numeric [optional]
 #' @field rna_pseudobulk_tpm  numeric [optional]
+#' @field negative_selection_log2FC  numeric [optional]
+#' @field negative_selection_p_value  numeric [optional]
+#' @field negative_selection_p_value_adj  numeric [optional]
+#' @field negative_selection_neg_log10_pvalue  numeric [optional]
+#' @field negative_selection_neg_log10_pvalue_adj  numeric [optional]
+#' @field negative_selection_significant  character [optional]
+#' @field positive_selection_log2FC  numeric [optional]
+#' @field positive_selection_p_value  numeric [optional]
+#' @field positive_selection_p_value_adj  numeric [optional]
+#' @field positive_selection_neg_log10_pvalue  numeric [optional]
+#' @field positive_selection_neg_log10_pvalue_adj  numeric [optional]
+#' @field positive_selection_significant  character [optional]
 #' @field log2FC  numeric [optional]
 #' @field log2FC_ci95_lower  numeric [optional]
 #' @field log2FC_ci95_upper  numeric [optional]
@@ -67,10 +79,22 @@ GenesFromGenomicElements <- R6::R6Class(
     `cell_annotation_term` = NULL,
     `treatments_term_ids` = NULL,
     `files_filesets` = NULL,
-    `crispr_modality` = NULL,
+    `perturbation` = NULL,
     `score` = NULL,
     `transcription_start_site` = NULL,
     `rna_pseudobulk_tpm` = NULL,
+    `negative_selection_log2FC` = NULL,
+    `negative_selection_p_value` = NULL,
+    `negative_selection_p_value_adj` = NULL,
+    `negative_selection_neg_log10_pvalue` = NULL,
+    `negative_selection_neg_log10_pvalue_adj` = NULL,
+    `negative_selection_significant` = NULL,
+    `positive_selection_log2FC` = NULL,
+    `positive_selection_p_value` = NULL,
+    `positive_selection_p_value_adj` = NULL,
+    `positive_selection_neg_log10_pvalue` = NULL,
+    `positive_selection_neg_log10_pvalue_adj` = NULL,
+    `positive_selection_significant` = NULL,
     `log2FC` = NULL,
     `log2FC_ci95_lower` = NULL,
     `log2FC_ci95_upper` = NULL,
@@ -115,10 +139,22 @@ GenesFromGenomicElements <- R6::R6Class(
     #' @param cell_annotation cell_annotation
     #' @param cell_annotation_term cell_annotation_term
     #' @param treatments_term_ids treatments_term_ids
-    #' @param crispr_modality crispr_modality
+    #' @param perturbation perturbation
     #' @param score score
     #' @param transcription_start_site transcription_start_site
     #' @param rna_pseudobulk_tpm rna_pseudobulk_tpm
+    #' @param negative_selection_log2FC negative_selection_log2FC
+    #' @param negative_selection_p_value negative_selection_p_value
+    #' @param negative_selection_p_value_adj negative_selection_p_value_adj
+    #' @param negative_selection_neg_log10_pvalue negative_selection_neg_log10_pvalue
+    #' @param negative_selection_neg_log10_pvalue_adj negative_selection_neg_log10_pvalue_adj
+    #' @param negative_selection_significant negative_selection_significant
+    #' @param positive_selection_log2FC positive_selection_log2FC
+    #' @param positive_selection_p_value positive_selection_p_value
+    #' @param positive_selection_p_value_adj positive_selection_p_value_adj
+    #' @param positive_selection_neg_log10_pvalue positive_selection_neg_log10_pvalue
+    #' @param positive_selection_neg_log10_pvalue_adj positive_selection_neg_log10_pvalue_adj
+    #' @param positive_selection_significant positive_selection_significant
     #' @param log2FC log2FC
     #' @param log2FC_ci95_lower log2FC_ci95_lower
     #' @param log2FC_ci95_upper log2FC_ci95_upper
@@ -144,7 +180,7 @@ GenesFromGenomicElements <- R6::R6Class(
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
     #' @param significant significant
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `files_filesets`, `genomic_element`, `gene`, `biological_context` = NULL, `biosample_term` = NULL, `cell_annotation` = NULL, `cell_annotation_term` = NULL, `treatments_term_ids` = NULL, `crispr_modality` = NULL, `score` = NULL, `transcription_start_site` = NULL, `rna_pseudobulk_tpm` = NULL, `log2FC` = NULL, `log2FC_ci95_lower` = NULL, `log2FC_ci95_upper` = NULL, `effect_size` = NULL, `effect_size_ci_95` = NULL, `z_score` = NULL, `t_score` = NULL, `idr` = NULL, `pct_1` = NULL, `pct_2` = NULL, `num_guides` = NULL, `num_cells` = NULL, `fold_change` = NULL, `background_corrected_fold_change` = NULL, `cpm_perturb` = NULL, `cpm_bg` = NULL, `gamma_approximation_ln_p_value` = NULL, `hypergeometric_ln_p_value` = NULL, `empirical_p_value` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, ...) {
+    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `files_filesets`, `genomic_element`, `gene`, `biological_context` = NULL, `biosample_term` = NULL, `cell_annotation` = NULL, `cell_annotation_term` = NULL, `treatments_term_ids` = NULL, `perturbation` = NULL, `score` = NULL, `transcription_start_site` = NULL, `rna_pseudobulk_tpm` = NULL, `negative_selection_log2FC` = NULL, `negative_selection_p_value` = NULL, `negative_selection_p_value_adj` = NULL, `negative_selection_neg_log10_pvalue` = NULL, `negative_selection_neg_log10_pvalue_adj` = NULL, `negative_selection_significant` = NULL, `positive_selection_log2FC` = NULL, `positive_selection_p_value` = NULL, `positive_selection_p_value_adj` = NULL, `positive_selection_neg_log10_pvalue` = NULL, `positive_selection_neg_log10_pvalue_adj` = NULL, `positive_selection_significant` = NULL, `log2FC` = NULL, `log2FC_ci95_lower` = NULL, `log2FC_ci95_upper` = NULL, `effect_size` = NULL, `effect_size_ci_95` = NULL, `z_score` = NULL, `t_score` = NULL, `idr` = NULL, `pct_1` = NULL, `pct_2` = NULL, `num_guides` = NULL, `num_cells` = NULL, `fold_change` = NULL, `background_corrected_fold_change` = NULL, `cpm_perturb` = NULL, `cpm_bg` = NULL, `gamma_approximation_ln_p_value` = NULL, `hypergeometric_ln_p_value` = NULL, `empirical_p_value` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -224,11 +260,11 @@ GenesFromGenomicElements <- R6::R6Class(
         sapply(`treatments_term_ids`, function(x) stopifnot(is.character(x)))
         self$`treatments_term_ids` <- `treatments_term_ids`
       }
-      if (!is.null(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`perturbation` <- `perturbation`
       }
       if (!is.null(`score`)) {
         self$`score` <- `score`
@@ -238,6 +274,48 @@ GenesFromGenomicElements <- R6::R6Class(
       }
       if (!is.null(`rna_pseudobulk_tpm`)) {
         self$`rna_pseudobulk_tpm` <- `rna_pseudobulk_tpm`
+      }
+      if (!is.null(`negative_selection_log2FC`)) {
+        self$`negative_selection_log2FC` <- `negative_selection_log2FC`
+      }
+      if (!is.null(`negative_selection_p_value`)) {
+        self$`negative_selection_p_value` <- `negative_selection_p_value`
+      }
+      if (!is.null(`negative_selection_p_value_adj`)) {
+        self$`negative_selection_p_value_adj` <- `negative_selection_p_value_adj`
+      }
+      if (!is.null(`negative_selection_neg_log10_pvalue`)) {
+        self$`negative_selection_neg_log10_pvalue` <- `negative_selection_neg_log10_pvalue`
+      }
+      if (!is.null(`negative_selection_neg_log10_pvalue_adj`)) {
+        self$`negative_selection_neg_log10_pvalue_adj` <- `negative_selection_neg_log10_pvalue_adj`
+      }
+      if (!is.null(`negative_selection_significant`)) {
+        if (!(is.logical(`negative_selection_significant`) && length(`negative_selection_significant`) == 1)) {
+          stop(paste("Error! Invalid data for `negative_selection_significant`. Must be a boolean:", `negative_selection_significant`))
+        }
+        self$`negative_selection_significant` <- `negative_selection_significant`
+      }
+      if (!is.null(`positive_selection_log2FC`)) {
+        self$`positive_selection_log2FC` <- `positive_selection_log2FC`
+      }
+      if (!is.null(`positive_selection_p_value`)) {
+        self$`positive_selection_p_value` <- `positive_selection_p_value`
+      }
+      if (!is.null(`positive_selection_p_value_adj`)) {
+        self$`positive_selection_p_value_adj` <- `positive_selection_p_value_adj`
+      }
+      if (!is.null(`positive_selection_neg_log10_pvalue`)) {
+        self$`positive_selection_neg_log10_pvalue` <- `positive_selection_neg_log10_pvalue`
+      }
+      if (!is.null(`positive_selection_neg_log10_pvalue_adj`)) {
+        self$`positive_selection_neg_log10_pvalue_adj` <- `positive_selection_neg_log10_pvalue_adj`
+      }
+      if (!is.null(`positive_selection_significant`)) {
+        if (!(is.logical(`positive_selection_significant`) && length(`positive_selection_significant`) == 1)) {
+          stop(paste("Error! Invalid data for `positive_selection_significant`. Must be a boolean:", `positive_selection_significant`))
+        }
+        self$`positive_selection_significant` <- `positive_selection_significant`
       }
       if (!is.null(`log2FC`)) {
         self$`log2FC` <- `log2FC`
@@ -399,9 +477,9 @@ GenesFromGenomicElements <- R6::R6Class(
         GenesFromGenomicElementsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
-      if (!is.null(self$`crispr_modality`)) {
-        GenesFromGenomicElementsObject[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`perturbation`)) {
+        GenesFromGenomicElementsObject[["perturbation"]] <-
+          self$`perturbation`
       }
       if (!is.null(self$`score`)) {
         GenesFromGenomicElementsObject[["score"]] <-
@@ -414,6 +492,54 @@ GenesFromGenomicElements <- R6::R6Class(
       if (!is.null(self$`rna_pseudobulk_tpm`)) {
         GenesFromGenomicElementsObject[["rna_pseudobulk_tpm"]] <-
           self$`rna_pseudobulk_tpm`
+      }
+      if (!is.null(self$`negative_selection_log2FC`)) {
+        GenesFromGenomicElementsObject[["negative_selection_log2FC"]] <-
+          self$`negative_selection_log2FC`
+      }
+      if (!is.null(self$`negative_selection_p_value`)) {
+        GenesFromGenomicElementsObject[["negative_selection_p_value"]] <-
+          self$`negative_selection_p_value`
+      }
+      if (!is.null(self$`negative_selection_p_value_adj`)) {
+        GenesFromGenomicElementsObject[["negative_selection_p_value_adj"]] <-
+          self$`negative_selection_p_value_adj`
+      }
+      if (!is.null(self$`negative_selection_neg_log10_pvalue`)) {
+        GenesFromGenomicElementsObject[["negative_selection_neg_log10_pvalue"]] <-
+          self$`negative_selection_neg_log10_pvalue`
+      }
+      if (!is.null(self$`negative_selection_neg_log10_pvalue_adj`)) {
+        GenesFromGenomicElementsObject[["negative_selection_neg_log10_pvalue_adj"]] <-
+          self$`negative_selection_neg_log10_pvalue_adj`
+      }
+      if (!is.null(self$`negative_selection_significant`)) {
+        GenesFromGenomicElementsObject[["negative_selection_significant"]] <-
+          self$`negative_selection_significant`
+      }
+      if (!is.null(self$`positive_selection_log2FC`)) {
+        GenesFromGenomicElementsObject[["positive_selection_log2FC"]] <-
+          self$`positive_selection_log2FC`
+      }
+      if (!is.null(self$`positive_selection_p_value`)) {
+        GenesFromGenomicElementsObject[["positive_selection_p_value"]] <-
+          self$`positive_selection_p_value`
+      }
+      if (!is.null(self$`positive_selection_p_value_adj`)) {
+        GenesFromGenomicElementsObject[["positive_selection_p_value_adj"]] <-
+          self$`positive_selection_p_value_adj`
+      }
+      if (!is.null(self$`positive_selection_neg_log10_pvalue`)) {
+        GenesFromGenomicElementsObject[["positive_selection_neg_log10_pvalue"]] <-
+          self$`positive_selection_neg_log10_pvalue`
+      }
+      if (!is.null(self$`positive_selection_neg_log10_pvalue_adj`)) {
+        GenesFromGenomicElementsObject[["positive_selection_neg_log10_pvalue_adj"]] <-
+          self$`positive_selection_neg_log10_pvalue_adj`
+      }
+      if (!is.null(self$`positive_selection_significant`)) {
+        GenesFromGenomicElementsObject[["positive_selection_significant"]] <-
+          self$`positive_selection_significant`
       }
       if (!is.null(self$`log2FC`)) {
         GenesFromGenomicElementsObject[["log2FC"]] <-
@@ -565,8 +691,8 @@ GenesFromGenomicElements <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       if (!is.null(this_object$`score`)) {
         self$`score` <- this_object$`score`
@@ -576,6 +702,42 @@ GenesFromGenomicElements <- R6::R6Class(
       }
       if (!is.null(this_object$`rna_pseudobulk_tpm`)) {
         self$`rna_pseudobulk_tpm` <- this_object$`rna_pseudobulk_tpm`
+      }
+      if (!is.null(this_object$`negative_selection_log2FC`)) {
+        self$`negative_selection_log2FC` <- this_object$`negative_selection_log2FC`
+      }
+      if (!is.null(this_object$`negative_selection_p_value`)) {
+        self$`negative_selection_p_value` <- this_object$`negative_selection_p_value`
+      }
+      if (!is.null(this_object$`negative_selection_p_value_adj`)) {
+        self$`negative_selection_p_value_adj` <- this_object$`negative_selection_p_value_adj`
+      }
+      if (!is.null(this_object$`negative_selection_neg_log10_pvalue`)) {
+        self$`negative_selection_neg_log10_pvalue` <- this_object$`negative_selection_neg_log10_pvalue`
+      }
+      if (!is.null(this_object$`negative_selection_neg_log10_pvalue_adj`)) {
+        self$`negative_selection_neg_log10_pvalue_adj` <- this_object$`negative_selection_neg_log10_pvalue_adj`
+      }
+      if (!is.null(this_object$`negative_selection_significant`)) {
+        self$`negative_selection_significant` <- this_object$`negative_selection_significant`
+      }
+      if (!is.null(this_object$`positive_selection_log2FC`)) {
+        self$`positive_selection_log2FC` <- this_object$`positive_selection_log2FC`
+      }
+      if (!is.null(this_object$`positive_selection_p_value`)) {
+        self$`positive_selection_p_value` <- this_object$`positive_selection_p_value`
+      }
+      if (!is.null(this_object$`positive_selection_p_value_adj`)) {
+        self$`positive_selection_p_value_adj` <- this_object$`positive_selection_p_value_adj`
+      }
+      if (!is.null(this_object$`positive_selection_neg_log10_pvalue`)) {
+        self$`positive_selection_neg_log10_pvalue` <- this_object$`positive_selection_neg_log10_pvalue`
+      }
+      if (!is.null(this_object$`positive_selection_neg_log10_pvalue_adj`)) {
+        self$`positive_selection_neg_log10_pvalue_adj` <- this_object$`positive_selection_neg_log10_pvalue_adj`
+      }
+      if (!is.null(this_object$`positive_selection_significant`)) {
+        self$`positive_selection_significant` <- this_object$`positive_selection_significant`
       }
       if (!is.null(this_object$`log2FC`)) {
         self$`log2FC` <- this_object$`log2FC`
@@ -700,10 +862,22 @@ GenesFromGenomicElements <- R6::R6Class(
       self$`cell_annotation_term` <- this_object$`cell_annotation_term`
       self$`treatments_term_ids` <- ApiClient$new()$deserializeObj(this_object$`treatments_term_ids`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`files_filesets` <- this_object$`files_filesets`
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`perturbation` <- this_object$`perturbation`
       self$`score` <- this_object$`score`
       self$`transcription_start_site` <- this_object$`transcription_start_site`
       self$`rna_pseudobulk_tpm` <- this_object$`rna_pseudobulk_tpm`
+      self$`negative_selection_log2FC` <- this_object$`negative_selection_log2FC`
+      self$`negative_selection_p_value` <- this_object$`negative_selection_p_value`
+      self$`negative_selection_p_value_adj` <- this_object$`negative_selection_p_value_adj`
+      self$`negative_selection_neg_log10_pvalue` <- this_object$`negative_selection_neg_log10_pvalue`
+      self$`negative_selection_neg_log10_pvalue_adj` <- this_object$`negative_selection_neg_log10_pvalue_adj`
+      self$`negative_selection_significant` <- this_object$`negative_selection_significant`
+      self$`positive_selection_log2FC` <- this_object$`positive_selection_log2FC`
+      self$`positive_selection_p_value` <- this_object$`positive_selection_p_value`
+      self$`positive_selection_p_value_adj` <- this_object$`positive_selection_p_value_adj`
+      self$`positive_selection_neg_log10_pvalue` <- this_object$`positive_selection_neg_log10_pvalue`
+      self$`positive_selection_neg_log10_pvalue_adj` <- this_object$`positive_selection_neg_log10_pvalue_adj`
+      self$`positive_selection_significant` <- this_object$`positive_selection_significant`
       self$`log2FC` <- this_object$`log2FC`
       self$`log2FC_ci95_lower` <- this_object$`log2FC_ci95_lower`
       self$`log2FC_ci95_upper` <- this_object$`log2FC_ci95_upper`

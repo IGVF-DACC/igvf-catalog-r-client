@@ -4,18 +4,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | **character** |  | 
-**transcript_type** | **character** |  | 
-**chr** | **character** |  | 
-**start** | **numeric** |  | 
-**end** | **numeric** |  | 
-**strand** | **character** |  | 
-**name** | **character** |  | 
-**gene_name** | **character** |  | 
+**_id** | **character** |  | [optional] 
+**transcript_type** | **character** |  | [optional] 
+**chr** | **character** |  | [optional] 
+**start** | **numeric** |  | [optional] 
+**end** | **numeric** |  | [optional] 
+**strand** | **character** |  | [optional] 
+**name** | **character** |  | [optional] 
+**gene_name** | **character** |  | [optional] 
 **refseq_transcript_ids** | **array[character]** |  | [optional] 
 **MANE_Select** | **character** |  | [optional] 
-**source** | **character** |  | 
-**version** | **character** |  | 
-**source_url** | **character** |  | 
+**source** | **character** |  | [optional] 
+**version** | **character** |  | [optional] 
+**source_url** | **character** |  | [optional] 
 
 

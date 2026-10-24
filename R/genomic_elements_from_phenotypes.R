@@ -16,7 +16,7 @@
 #' @field biological_context  character
 #' @field biosample_term  character
 #' @field files_filesets  character
-#' @field crispr_modality  character [optional]
+#' @field perturbation  character [optional]
 #' @field z_score  numeric [optional]
 #' @field p_value  numeric [optional]
 #' @field neg_log10_pvalue  numeric [optional]
@@ -43,7 +43,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     `biological_context` = NULL,
     `biosample_term` = NULL,
     `files_filesets` = NULL,
-    `crispr_modality` = NULL,
+    `perturbation` = NULL,
     `z_score` = NULL,
     `p_value` = NULL,
     `neg_log10_pvalue` = NULL,
@@ -70,7 +70,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     #' @param files_filesets files_filesets
     #' @param genomic_element genomic_element
     #' @param phenotype phenotype
-    #' @param crispr_modality crispr_modality
+    #' @param perturbation perturbation
     #' @param z_score z_score
     #' @param p_value p_value
     #' @param neg_log10_pvalue neg_log10_pvalue
@@ -81,7 +81,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     #' @param fraction_guides_hit fraction_guides_hit
     #' @param phenotype_name phenotype_name
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `biological_context`, `biosample_term`, `files_filesets`, `genomic_element`, `phenotype`, `crispr_modality` = NULL, `z_score` = NULL, `p_value` = NULL, `neg_log10_pvalue` = NULL, `significant` = NULL, `num_guides` = NULL, `num_guides_hit` = NULL, `num_guides_nonhit` = NULL, `fraction_guides_hit` = NULL, `phenotype_name` = NULL, ...) {
+    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `biological_context`, `biosample_term`, `files_filesets`, `genomic_element`, `phenotype`, `perturbation` = NULL, `z_score` = NULL, `p_value` = NULL, `neg_log10_pvalue` = NULL, `significant` = NULL, `num_guides` = NULL, `num_guides_hit` = NULL, `num_guides_nonhit` = NULL, `fraction_guides_hit` = NULL, `phenotype_name` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -144,11 +144,11 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
         stopifnot(R6::is.R6(`phenotype`))
         self$`phenotype` <- `phenotype`
       }
-      if (!is.null(`crispr_modality`)) {
-        if (!(is.character(`crispr_modality`) && length(`crispr_modality`) == 1)) {
-          stop(paste("Error! Invalid data for `crispr_modality`. Must be a string:", `crispr_modality`))
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
-        self$`crispr_modality` <- `crispr_modality`
+        self$`perturbation` <- `perturbation`
       }
       if (!is.null(`z_score`)) {
         self$`z_score` <- `z_score`
@@ -252,9 +252,9 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
         GenomicElementsFromPhenotypesObject[["files_filesets"]] <-
           self$`files_filesets`
       }
-      if (!is.null(self$`crispr_modality`)) {
-        GenomicElementsFromPhenotypesObject[["crispr_modality"]] <-
-          self$`crispr_modality`
+      if (!is.null(self$`perturbation`)) {
+        GenomicElementsFromPhenotypesObject[["perturbation"]] <-
+          self$`perturbation`
       }
       if (!is.null(self$`z_score`)) {
         GenomicElementsFromPhenotypesObject[["z_score"]] <-
@@ -337,8 +337,8 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
-      if (!is.null(this_object$`crispr_modality`)) {
-        self$`crispr_modality` <- this_object$`crispr_modality`
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
       }
       if (!is.null(this_object$`z_score`)) {
         self$`z_score` <- this_object$`z_score`
@@ -407,7 +407,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
       self$`biological_context` <- this_object$`biological_context`
       self$`biosample_term` <- this_object$`biosample_term`
       self$`files_filesets` <- this_object$`files_filesets`
-      self$`crispr_modality` <- this_object$`crispr_modality`
+      self$`perturbation` <- this_object$`perturbation`
       self$`z_score` <- this_object$`z_score`
       self$`p_value` <- this_object$`p_value`
       self$`neg_log10_pvalue` <- this_object$`neg_log10_pvalue`
