@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **coding_variant** | [**CodingVariant**](CodingVariant.md) |  | [optional] 
 **phenotype** | [**PhenotypeRef**](PhenotypeRef.md) |  | [optional] 
 **score** | **numeric** |  | 
+**property_scores** | [**array[PropertyScores]**](PropertyScores.md) |  | [optional] 
 **method** | **character** |  | [optional] 
 **class** | **character** |  | [optional] 
 **label** | **character** |  | [optional] 

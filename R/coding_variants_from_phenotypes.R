@@ -10,6 +10,7 @@
 #' @field coding_variant  \link{CodingVariant} [optional]
 #' @field phenotype  \link{PhenotypeRef} [optional]
 #' @field score  numeric
+#' @field property_scores  list(\link{PropertyScores}) [optional]
 #' @field method  character [optional]
 #' @field class  character [optional]
 #' @field label  character [optional]
@@ -26,6 +27,7 @@ CodingVariantsFromPhenotypes <- R6::R6Class(
     `coding_variant` = NULL,
     `phenotype` = NULL,
     `score` = NULL,
+    `property_scores` = NULL,
     `method` = NULL,
     `class` = NULL,
     `label` = NULL,
@@ -42,13 +44,14 @@ CodingVariantsFromPhenotypes <- R6::R6Class(
     #' @param source_url source_url
     #' @param coding_variant coding_variant
     #' @param phenotype phenotype
+    #' @param property_scores property_scores
     #' @param method method
     #' @param class class
     #' @param label label
     #' @param files_filesets files_filesets
     #' @param variant variant
     #' @param ... Other optional arguments.
-    initialize = function(`score`, `source`, `source_url`, `coding_variant` = NULL, `phenotype` = NULL, `method` = NULL, `class` = NULL, `label` = NULL, `files_filesets` = NULL, `variant` = NULL, ...) {
+    initialize = function(`score`, `source`, `source_url`, `coding_variant` = NULL, `phenotype` = NULL, `property_scores` = NULL, `method` = NULL, `class` = NULL, `label` = NULL, `files_filesets` = NULL, `variant` = NULL, ...) {
       if (!missing(`score`)) {
         self$`score` <- `score`
       }
@@ -71,6 +74,11 @@ CodingVariantsFromPhenotypes <- R6::R6Class(
       if (!is.null(`phenotype`)) {
         stopifnot(R6::is.R6(`phenotype`))
         self$`phenotype` <- `phenotype`
+      }
+      if (!is.null(`property_scores`)) {
+        stopifnot(is.vector(`property_scores`), length(`property_scores`) != 0)
+        sapply(`property_scores`, function(x) stopifnot(R6::is.R6(x)))
+        self$`property_scores` <- `property_scores`
       }
       if (!is.null(`method`)) {
         if (!(is.character(`method`) && length(`method`) == 1)) {
@@ -145,6 +153,10 @@ CodingVariantsFromPhenotypes <- R6::R6Class(
         CodingVariantsFromPhenotypesObject[["score"]] <-
           self$`score`
       }
+      if (!is.null(self$`property_scores`)) {
+        CodingVariantsFromPhenotypesObject[["property_scores"]] <-
+          lapply(self$`property_scores`, function(x) x$toSimpleType())
+      }
       if (!is.null(self$`method`)) {
         CodingVariantsFromPhenotypesObject[["method"]] <-
           self$`method`
@@ -196,6 +208,9 @@ CodingVariantsFromPhenotypes <- R6::R6Class(
       if (!is.null(this_object$`score`)) {
         self$`score` <- this_object$`score`
       }
+      if (!is.null(this_object$`property_scores`)) {
+        self$`property_scores` <- ApiClient$new()$deserializeObj(this_object$`property_scores`, "array[PropertyScores]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`method`)) {
         self$`method` <- this_object$`method`
       }
@@ -243,6 +258,7 @@ CodingVariantsFromPhenotypes <- R6::R6Class(
       self$`coding_variant` <- CodingVariant$new()$fromJSON(jsonlite::toJSON(this_object$`coding_variant`, auto_unbox = TRUE, digits = NA))
       self$`phenotype` <- PhenotypeRef$new()$fromJSON(jsonlite::toJSON(this_object$`phenotype`, auto_unbox = TRUE, digits = NA))
       self$`score` <- this_object$`score`
+      self$`property_scores` <- ApiClient$new()$deserializeObj(this_object$`property_scores`, "array[PropertyScores]", loadNamespace("igvfcatalogclient"))
       self$`method` <- this_object$`method`
       self$`class` <- this_object$`class`
       self$`label` <- this_object$`label`

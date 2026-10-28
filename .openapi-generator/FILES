@@ -114,6 +114,7 @@ R/phenotypes_from_variants_variant.R
 R/predictions.R
 R/predictions2.R
 R/predictions_from_variants.R
+R/property_scores.R
 R/protein.R
 R/protein_basic.R
 R/protein_change.R
@@ -271,6 +272,7 @@ docs/PhenotypesFromVariantsVariant.md
 docs/Predictions.md
 docs/Predictions2.md
 docs/PredictionsFromVariants.md
+docs/PropertyScores.md
 docs/Protein.md
 docs/ProteinBasic.md
 docs/ProteinChange.md
