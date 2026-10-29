@@ -3,6 +3,7 @@
 DESCRIPTION
 NAMESPACE
 R/accessible_genomic_element.R
+R/accessible_genomic_element11.R
 R/accessible_genomic_element_promoter_of.R
 R/annotations.R
 R/annotations_from_go_terms.R
@@ -67,6 +68,8 @@ R/genes_proteins_genes_proteins.R
 R/genes_structure.R
 R/genes_transcripts_genes.R
 R/genes_transcripts_genes_transcript.R
+R/genes_transcripts_genomic_elements.R
+R/genes_transcripts_genomic_elements_accessible_genomic_element.R
 R/genes_variants_score_summary.R
 R/genomic_element.R
 R/genomic_element2.R
@@ -163,6 +166,7 @@ R/variants_genomic_elements_genes.R
 R/variants_region_summary.R
 README.md
 docs/AccessibleGenomicElement.md
+docs/AccessibleGenomicElement11.md
 docs/AccessibleGenomicElementPromoterOf.md
 docs/Annotations.md
 docs/AnnotationsFromGoTerms.md
@@ -225,6 +229,8 @@ docs/GenesProteinsGenesProteins.md
 docs/GenesStructure.md
 docs/GenesTranscriptsGenes.md
 docs/GenesTranscriptsGenesTranscript.md
+docs/GenesTranscriptsGenomicElements.md
+docs/GenesTranscriptsGenomicElementsAccessibleGenomicElement.md
 docs/GenesVariantsScoreSummary.md
 docs/GenomicElement.md
 docs/GenomicElement2.md

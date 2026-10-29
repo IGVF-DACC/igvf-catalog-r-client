@@ -37,6 +37,7 @@ Method | HTTP request | Description
 [**GenesProteinsGenesProteins**](IgvfCatalogApi.md#GenesProteinsGenesProteins) | **GET** /genes-proteins/genes-proteins | 
 [**GenesStructure**](IgvfCatalogApi.md#GenesStructure) | **GET** /genes-structure | 
 [**GenesTranscriptsGenes**](IgvfCatalogApi.md#GenesTranscriptsGenes) | **GET** /genes/transcripts/genes | 
+[**GenesTranscriptsGenomicElements**](IgvfCatalogApi.md#GenesTranscriptsGenomicElements) | **GET** /genes/transcripts/genomic-elements | 
 [**GenesVariantsScoreSummary**](IgvfCatalogApi.md#GenesVariantsScoreSummary) | **GET** /genes/variants/score-summary | 
 [**GenomicElements**](IgvfCatalogApi.md#GenomicElements) | **GET** /genomic-elements | 
 [**GenomicElementsFromBiosamples**](IgvfCatalogApi.md#GenomicElementsFromBiosamples) | **GET** /biosamples/genomic-elements | 
@@ -1247,8 +1248,8 @@ Name | Type | Description  | Notes
  **file_fileset_id** | **character**|  | [optional] 
  **fileset_id** | **character**|  | [optional] 
  **lab** | Enum [alan-boyle, bill-majoros, charles-gersbach, community, danwei-huangfu, doug-fowler, encode, gary-hon, j-michael-cherry, jay-shendure, jesse-engreitz, karen-mohlke, kushal-dey, lea-starita, luca-pinello, marc-vidal, mark-craven, nadav-ahituv, predrag-radivojac, richard-sherwood, thomas-quertermous, tim-reddy, tom-norman, zhiping-weng] |  | [optional] 
- **preferred_assay_title** | Enum [CRISPR FACS screen, CRISPR FlowFISH screen, CRISPR MACS screen, DNase-seq, DUAL-IPA, MORF screen, MPRA, Migration CRISPR screen, Multiome Perturb-seq, Parse Perturb-seq, Perturb-seq, Proliferation CRISPR screen, SGE, STARR-seq, TAP-seq, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, Variant-EFFECTS, electroporated MPRA, in vivo Perturb-seq, lentiMPRA, scCRISPR screen, snATAC-seq] |  | [optional] 
- **method** | Enum [ADASTRA, BlueSTARR, COXPRESdb, CRISPR screen, ClinGen, ColocBoost, DUAL-IPA, DepMap, ENCODE-rE2G, ESM-1v, GVATdb, GWAS, GenCC, HOCOMOCO, Homology, MORF screen, MPRA, Multiome Perturb-seq, MutPred2, Orphanet, Perturb-seq, PharmGKB, SEMVAR, SEMpl, SGE, STARR-seq, TopLD, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, cV2F, caQTL, candidate Cis-Regulatory Elements, eQTL, elements, genes, guide RNAs, pQTL, scE2G, snATAC-seq, spliceQTL, training data for predictive models] |  | [optional] 
+ **preferred_assay_title** | Enum [ATAC-seq, CRISPR FACS screen, CRISPR FlowFISH screen, CRISPR MACS screen, DNase-seq, DUAL-IPA, MORF screen, MPRA, Migration CRISPR screen, Multiome Perturb-seq, Parse Perturb-seq, Perturb-seq, Proliferation CRISPR screen, SGE, STARR-seq, TAP-seq, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, Variant-EFFECTS, electroporated MPRA, in vivo Perturb-seq, lentiMPRA, scCRISPR screen, snATAC-seq] |  | [optional] 
+ **method** | Enum [ADASTRA, ATAC-seq, BlueSTARR, COXPRESdb, CRISPR screen, ClinGen, ColocBoost, DUAL-IPA, DepMap, ENCODE-rE2G, ESM-1v, GVATdb, GWAS, GenCC, HOCOMOCO, Homology, MORF screen, MPRA, Multiome Perturb-seq, MutPred2, Orphanet, Perturb-seq, PharmGKB, SEMVAR, SEMpl, SGE, STARR-seq, TopLD, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, cV2F, caQTL, candidate Cis-Regulatory Elements, eQTL, elements, genes, guide RNAs, pQTL, scE2G, snATAC-seq, spliceQTL, training data for predictive models] |  | [optional] 
  **perturbation** | Enum [CRISPR activation, CRISPR base editing, CRISPR cutting, CRISPR interference, CRISPR knockout, CRISPR prime editing, ORF overexpression] |  | [optional] 
  **donor_id** | **character**|  | [optional] 
  **sample_term** | **character**|  | [optional] 
@@ -2165,6 +2166,94 @@ No authorization required
 | **200** | Successful response |  -  |
 | **0** | Error response |  -  |
 
+# **GenesTranscriptsGenomicElements**
+> array[GenesTranscriptsGenomicElements] GenesTranscriptsGenomicElements(gene_id = var.gene_id, gene_name = var.gene_name, transcript_id = var.transcript_id, genomic_element_id = var.genomic_element_id, accessible_region = var.accessible_region, files_fileset = var.files_fileset, method = var.method, perturbation = var.perturbation, source = var.source, significant = var.significant, biological_context = var.biological_context, biosample_term = var.biosample_term, base_mean = var.base_mean, log2_fc = var.log2_fc, p_value = var.p_value, p_value_adj = var.p_value_adj, neg_log10_pvalue = var.neg_log10_pvalue, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
+
+
+
+Retrieve gene overexpression effects on chromatin accessibility through the source gene–transcript relationship.<br> Source gene_id and transcript_id identify the overexpressed construct; genomic_element_id or accessible_region identifies the readout peaks. Filter by a source gene, transcript, peak, region, files_fileset, or method. Set verbose=true to expand gene, transcript, and genomic element nodes. Pagination is 0-based; maximum page size is 500.<br><br><div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"overexpression-atac\">ATAC-seq</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"overexpression-atac\"> <strong>ATAC-seq:</strong> <div class=\"method-query-example\"> <strong>BATF3 transcript overexpression effects on accessibility</strong>  <ul> <li>gene_id = ENSG00000123685</li> <li>transcript_id = ENST00000243440</li> <li>files_fileset = IGVFFI0911IUZS</li> <li>significant = true</li> </ul> </div> <div class=\"method-query-example\"> <strong>Differential accessibility in the second BATF3 analysis</strong>  <ul> <li>files_fileset = IGVFFI2320OTYL</li> <li>p_value_adj = lt:0.05</li> <li>verbose = true</li> </ul> </div> </div> </div>
+
+### Example
+```R
+library(igvfcatalogclient)
+
+# prepare function argument(s)
+var_gene_id <- "gene_id_example" # character |  (Optional)
+var_gene_name <- "gene_name_example" # character |  (Optional)
+var_transcript_id <- "transcript_id_example" # character |  (Optional)
+var_genomic_element_id <- "genomic_element_id_example" # character |  (Optional)
+var_accessible_region <- "accessible_region_example" # character |  (Optional)
+var_files_fileset <- "files_fileset_example" # character |  (Optional)
+var_method <- "method_example" # character |  (Optional)
+var_perturbation <- "perturbation_example" # character |  (Optional)
+var_source <- "source_example" # character |  (Optional)
+var_significant <- "significant_example" # character |  (Optional)
+var_biological_context <- "biological_context_example" # character |  (Optional)
+var_biosample_term <- "biosample_term_example" # character |  (Optional)
+var_base_mean <- "base_mean_example" # character |  (Optional)
+var_log2_fc <- "log2_fc_example" # character |  (Optional)
+var_p_value <- "p_value_example" # character |  (Optional)
+var_p_value_adj <- "p_value_adj_example" # character |  (Optional)
+var_neg_log10_pvalue <- "neg_log10_pvalue_example" # character |  (Optional)
+var_neg_log10_pvalue_adj <- "neg_log10_pvalue_adj_example" # character |  (Optional)
+var_organism <- "Homo sapiens" # character |  (Optional)
+var_verbose <- "false" # character |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
+
+api_instance <- IgvfCatalogApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GenesTranscriptsGenomicElements(gene_id = var_gene_id, gene_name = var_gene_name, transcript_id = var_transcript_id, genomic_element_id = var_genomic_element_id, accessible_region = var_accessible_region, files_fileset = var_files_fileset, method = var_method, perturbation = var_perturbation, source = var_source, significant = var_significant, biological_context = var_biological_context, biosample_term = var_biosample_term, base_mean = var_base_mean, log2_fc = var_log2_fc, p_value = var_p_value, p_value_adj = var_p_value_adj, neg_log10_pvalue = var_neg_log10_pvalue, neg_log10_pvalue_adj = var_neg_log10_pvalue_adj, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GenesTranscriptsGenomicElements(gene_id = var_gene_id, gene_name = var_gene_name, transcript_id = var_transcript_id, genomic_element_id = var_genomic_element_id, accessible_region = var_accessible_region, files_fileset = var_files_fileset, method = var_method, perturbation = var_perturbation, source = var_source, significant = var_significant, biological_context = var_biological_context, biosample_term = var_biosample_term, base_mean = var_base_mean, log2_fc = var_log2_fc, p_value = var_p_value, p_value_adj = var_p_value_adj, neg_log10_pvalue = var_neg_log10_pvalue, neg_log10_pvalue_adj = var_neg_log10_pvalue_adj, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limit)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gene_id** | **character**|  | [optional] 
+ **gene_name** | **character**|  | [optional] 
+ **transcript_id** | **character**|  | [optional] 
+ **genomic_element_id** | **character**|  | [optional] 
+ **accessible_region** | **character**|  | [optional] 
+ **files_fileset** | **character**|  | [optional] 
+ **method** | Enum [ATAC-seq] |  | [optional] 
+ **perturbation** | Enum [ORF overexpression] |  | [optional] 
+ **source** | Enum [IGVF] |  | [optional] 
+ **significant** | Enum [true, false] |  | [optional] 
+ **biological_context** | **character**|  | [optional] 
+ **biosample_term** | **character**|  | [optional] 
+ **base_mean** | **character**|  | [optional] 
+ **log2_fc** | **character**|  | [optional] 
+ **p_value** | **character**|  | [optional] 
+ **p_value_adj** | **character**|  | [optional] 
+ **neg_log10_pvalue** | **character**|  | [optional] 
+ **neg_log10_pvalue_adj** | **character**|  | [optional] 
+ **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
+ **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
+
+### Return type
+
+[**array[GenesTranscriptsGenomicElements]**](GenesTranscriptsGenomicElements.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response |  -  |
+| **0** | Error response |  -  |
+
 # **GenesVariantsScoreSummary**
 > GenesVariantsScoreSummary GenesVariantsScoreSummary(gene_id, score_field, files_fileset = var.files_fileset, source = var.source, biosample_term = var.biosample_term, biological_context = var.biological_context, perturbation = var.perturbation, page = 0, limit = var.limit)
 
@@ -2263,7 +2352,7 @@ Name | Type | Description  | Notes
  **region** | **character**|  | [optional] 
  **source_annotation** | Enum [CA-CTCF: chromatin accessible + CTCF binding, CA-H3K4me3: chromatin accessible + H3K4me3 high signal, CA-TF: chromatin accessible + TF binding, CA: chromatin accessible, PLS: Promoter-like signal, TF: TF binding, candidate enhancer, dELS: distal Enhancer-like signal, distal element, enhancer, genic, intergenic, negative control, pELS: proximal Enhancer-like signal, promoter] |  | [optional] 
  **type** | Enum [accessible dna elements, candidate cis regulatory element, tested elements] |  | [optional] 
- **method** | Enum [CRISPR screen, ENCODE-rE2G, MPRA, Multiome Perturb-seq, Perturb-seq, caQTL, candidate Cis-Regulatory Elements, scE2G] |  | [optional] 
+ **method** | Enum [ATAC-seq, CRISPR screen, ENCODE-rE2G, MPRA, Multiome Perturb-seq, Perturb-seq, caQTL, candidate Cis-Regulatory Elements, scE2G] |  | [optional] 
  **source** | Enum [AFGR, ENCODE, FUNCODE, IGVF] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **page** | **numeric**|  | [optional] [default to 0]

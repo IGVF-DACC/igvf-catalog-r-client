@@ -16,6 +16,7 @@
 #' @field transcript_mapping_method  character
 #' @field log2FC  numeric
 #' @field standard_error  numeric [optional]
+#' @field stat  numeric [optional]
 #' @field base_mean  numeric [optional]
 #' @field p_value  numeric [optional]
 #' @field p_value_adj  numeric [optional]
@@ -48,6 +49,7 @@ GenesTranscriptsGenes <- R6::R6Class(
     `transcript_mapping_method` = NULL,
     `log2FC` = NULL,
     `standard_error` = NULL,
+    `stat` = NULL,
     `base_mean` = NULL,
     `p_value` = NULL,
     `p_value_adj` = NULL,
@@ -89,6 +91,7 @@ GenesTranscriptsGenes <- R6::R6Class(
     #' @param biological_context biological_context
     #' @param biosample_term biosample_term
     #' @param standard_error standard_error
+    #' @param stat stat
     #' @param base_mean base_mean
     #' @param p_value p_value
     #' @param p_value_adj p_value_adj
@@ -96,7 +99,7 @@ GenesTranscriptsGenes <- R6::R6Class(
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
     #' @param treatments_term_ids treatments_term_ids
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `gene_transcript`, `gene`, `transcript`, `readout_gene`, `morf_id`, `transcript_mapping_method`, `log2FC`, `significant`, `name`, `label`, `class`, `method`, `perturbation`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `standard_error` = NULL, `base_mean` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `treatments_term_ids` = NULL, ...) {
+    initialize = function(`_id`, `gene_transcript`, `gene`, `transcript`, `readout_gene`, `morf_id`, `transcript_mapping_method`, `log2FC`, `significant`, `name`, `label`, `class`, `method`, `perturbation`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `standard_error` = NULL, `stat` = NULL, `base_mean` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `treatments_term_ids` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.character(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
@@ -205,6 +208,9 @@ GenesTranscriptsGenes <- R6::R6Class(
       if (!is.null(`standard_error`)) {
         self$`standard_error` <- `standard_error`
       }
+      if (!is.null(`stat`)) {
+        self$`stat` <- `stat`
+      }
       if (!is.null(`base_mean`)) {
         self$`base_mean` <- `base_mean`
       }
@@ -293,6 +299,10 @@ GenesTranscriptsGenes <- R6::R6Class(
       if (!is.null(self$`standard_error`)) {
         GenesTranscriptsGenesObject[["standard_error"]] <-
           self$`standard_error`
+      }
+      if (!is.null(self$`stat`)) {
+        GenesTranscriptsGenesObject[["stat"]] <-
+          self$`stat`
       }
       if (!is.null(self$`base_mean`)) {
         GenesTranscriptsGenesObject[["base_mean"]] <-
@@ -405,6 +415,9 @@ GenesTranscriptsGenes <- R6::R6Class(
       if (!is.null(this_object$`standard_error`)) {
         self$`standard_error` <- this_object$`standard_error`
       }
+      if (!is.null(this_object$`stat`)) {
+        self$`stat` <- this_object$`stat`
+      }
       if (!is.null(this_object$`base_mean`)) {
         self$`base_mean` <- this_object$`base_mean`
       }
@@ -486,6 +499,7 @@ GenesTranscriptsGenes <- R6::R6Class(
       self$`transcript_mapping_method` <- this_object$`transcript_mapping_method`
       self$`log2FC` <- this_object$`log2FC`
       self$`standard_error` <- this_object$`standard_error`
+      self$`stat` <- this_object$`stat`
       self$`base_mean` <- this_object$`base_mean`
       self$`p_value` <- this_object$`p_value`
       self$`p_value_adj` <- this_object$`p_value_adj`

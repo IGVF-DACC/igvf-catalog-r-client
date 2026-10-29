@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **transcript_mapping_method** | **character** |  | 
 **log2FC** | **numeric** |  | 
 **standard_error** | **numeric** |  | [optional] 
+**stat** | **numeric** |  | [optional] 
 **base_mean** | **numeric** |  | [optional] 
 **p_value** | **numeric** |  | [optional] 
 **p_value_adj** | **numeric** |  | [optional] 
