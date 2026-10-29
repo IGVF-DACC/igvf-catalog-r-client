@@ -8,7 +8,7 @@ Our database uses 0-based, half-open coordinates for genomic coordinates in the 
 
 Data is licensed under the <a href=https://creativecommons.org/licenses/by/4.0/ target=\"_blank\">Creative Commons license</a> and the software is licensed under the <a href=https://spdx.org/licenses/MIT.html target=\"_blank\">MIT license</a>.
 
-- API version: 1.3.1.dev20261029002350
+- API version: 1.3.1.dev20261029003053
 - Package version: 1.3.0.9000
 - Generator version: 7.14.0
 
@@ -108,7 +108,7 @@ Class | Method | HTTP request | Description
 *IgvfCatalogApi* | [**GenomicElementsFromVariantsCount**](docs/IgvfCatalogApi.md#GenomicElementsFromVariantsCount) | **GET** /variants/predictions-count | 
 *IgvfCatalogApi* | [**PredictionsFromVariants**](docs/IgvfCatalogApi.md#PredictionsFromVariants) | **GET** /variants/predictions | 
 *IgvfCatalogApi* | [**DeprecatedCodingVariantsSummary**](docs/IgvfCatalogApi.md#DeprecatedCodingVariantsSummary) | **GET** /variants/phenotypes/score-summary | 
-*IgvfCatalogApi* | [**NearestGenes**](docs/IgvfCatalogApi.md#NearestGenes) | **GET** /variants/nearest-genes | 
+*IgvfCatalogApi* | [**DeprecatedNearestGenes**](docs/IgvfCatalogApi.md#DeprecatedNearestGenes) | **GET** /variants/nearest-genes | 
 *IgvfCatalogApi* | [**VariantsAlleles**](docs/IgvfCatalogApi.md#VariantsAlleles) | **GET** /variants/gnomad-alleles | 
 *IgvfCatalogApi* | [**VariantsGenomicElementsGenes**](docs/IgvfCatalogApi.md#VariantsGenomicElementsGenes) | **GET** /variants/genomic-elements/genes | 
 *IgvfCatalogApi* | [**GenomicElementsPredictionsFromVariant**](docs/IgvfCatalogApi.md#GenomicElementsPredictionsFromVariant) | **GET** /variants/genomic-elements/cell-gene-predictions | 
@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *IgvfCatalogApi* | [**LlmQuery**](docs/IgvfCatalogApi.md#LlmQuery) | **POST** /llm-query | 
 *IgvfCatalogApi* | [**GenesGenomicElementsScoreSummary**](docs/IgvfCatalogApi.md#GenesGenomicElementsScoreSummary) | **GET** /genes/genomic-elements/score-summary | 
 *IgvfCatalogApi* | [**GenesVariantsScoreSummary**](docs/IgvfCatalogApi.md#GenesVariantsScoreSummary) | **GET** /genes/variants/score-summary | 
+*IgvfCatalogApi* | [**NearestGenes**](docs/IgvfCatalogApi.md#NearestGenes) | **GET** /nearest-genes | 
 
 ## Documentation for Models
 
