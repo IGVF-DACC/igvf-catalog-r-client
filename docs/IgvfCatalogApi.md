@@ -2617,7 +2617,7 @@ No authorization required
 
 
 
-Retrieve genomic elements associated with phenotypes.<br>     At least one of these properties must be defined: phenotype_id, phenotype_name, files_fileset, or method. <br>     Set significant = true to return only significant associations.<br>     Set verbose = true to retrieve full info on the genomic element.<br>     Example: phenotype_id = GO_0008283, <br>     phenotype_name = cell population proliferation, <br>     method = CRISPR screen, <br>     significant = true, <br>     files_fileset = IGVFFI9584UDAS. <br>     The limit parameter controls the page size and can not exceed 500. <br>     Pagination is 0-based.
+Retrieve genomic elements associated with cell migration or cell population proliferation.<br>     At least one filter is required: phenotype_id, phenotype_name, files_fileset, or method.     Set significant=true to return only significant associations.     Set verbose=true to expand both the genomic element and phenotype records.     Pagination is 0-based; maximum page size is 500.<br><br><div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"crispr-screen\">CRISPR screen</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"crispr-screen\"> <strong>CRISPR screen:</strong> <div class=\"method-query-example\"> <strong>Query by phenotype identifier</strong>  <ul> <li>phenotype_id = GO_0008283</li> <li>method = CRISPR screen</li> </ul> </div> <div class=\"method-query-example\"> <strong>Cell migration screen</strong>  <ul> <li>phenotype_name = cell migration</li> <li>files_fileset = IGVFFI5135QZCS</li> </ul> </div> <div class=\"method-query-example\"> <strong>K562 proliferation screen</strong>  <ul> <li>phenotype_name = cell population proliferation</li> <li>files_fileset = IGVFFI4336LSYJ</li> </ul> </div> <div class=\"method-query-example\"> <strong>Significant proliferation associations</strong>  <ul> <li>phenotype_id = GO_0008283</li> <li>significant = true</li> <li>verbose = true</li> </ul> </div> </div> </div>
 
 ### Example
 ```R
@@ -2631,8 +2631,8 @@ var_method <- "method_example" # character |  (Optional)
 var_significant <- "significant_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2652,8 +2652,8 @@ Name | Type | Description  | Notes
  **significant** | Enum [true] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3667,7 +3667,7 @@ No authorization required
 
 
 
-Retrieve genomic element to phenotype associations by querying genomic elements.<br>     At least one of these properties must be defined: region, files_fileset, phenotype_id, phenotype_name, or method. <br>     Set significant = true to return only significant associations.<br>     Set verbose = true to retrieve full info on the genomic element.<br>     Example: phenotype_id = GO_0016477, <br>     phenotype_name = cell migration, <br>     method = CRISPR screen, <br>     significant = true, <br>     files_fileset = IGVFFI5135QZCS, <br>     region = chr1:101174581-101175330 (maximum length: 10kb). <br>     The limit parameter controls the page size and can not exceed 500. <br>     Pagination is 0-based.
+Retrieve phenotype associations for perturbed genomic elements.<br>     At least one filter is required: region (chr:start-end; maximum length: 10kb), files_fileset, phenotype_id, phenotype_name, or method.     Set significant=true to return only significant associations.     Set verbose=true to expand both the genomic element and phenotype records.     Pagination is 0-based; maximum page size is 500.<br><br><div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"crispr-screen\">CRISPR screen</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"crispr-screen\"> <strong>CRISPR screen:</strong> <div class=\"method-query-example\"> <strong>Query by genomic element region</strong>  <ul> <li>region = chr1:101174581-101175330</li> <li>method = CRISPR screen</li> </ul> </div> <div class=\"method-query-example\"> <strong>Cell migration screen</strong>  <ul> <li>phenotype_name = cell migration</li> <li>files_fileset = IGVFFI5135QZCS</li> </ul> </div> <div class=\"method-query-example\"> <strong>K562 proliferation screen</strong>  <ul> <li>phenotype_name = cell population proliferation</li> <li>files_fileset = IGVFFI4336LSYJ</li> </ul> </div> <div class=\"method-query-example\"> <strong>Significant proliferation associations</strong>  <ul> <li>phenotype_id = GO_0008283</li> <li>significant = true</li> <li>verbose = true</li> </ul> </div> </div> </div>
 
 ### Example
 ```R
@@ -3682,8 +3682,8 @@ var_method <- "method_example" # character |  (Optional)
 var_significant <- "significant_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3704,8 +3704,8 @@ Name | Type | Description  | Notes
  **significant** | Enum [true] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 

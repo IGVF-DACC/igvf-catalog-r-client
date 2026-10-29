@@ -18,8 +18,11 @@
 #' @field files_filesets  character
 #' @field perturbation  character [optional]
 #' @field z_score  numeric [optional]
+#' @field log2FC  numeric [optional]
 #' @field p_value  numeric [optional]
+#' @field p_value_adj  numeric [optional]
 #' @field neg_log10_pvalue  numeric [optional]
+#' @field neg_log10_pvalue_adj  numeric [optional]
 #' @field significant  character [optional]
 #' @field num_guides  numeric [optional]
 #' @field num_guides_hit  numeric [optional]
@@ -45,8 +48,11 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     `files_filesets` = NULL,
     `perturbation` = NULL,
     `z_score` = NULL,
+    `log2FC` = NULL,
     `p_value` = NULL,
+    `p_value_adj` = NULL,
     `neg_log10_pvalue` = NULL,
+    `neg_log10_pvalue_adj` = NULL,
     `significant` = NULL,
     `num_guides` = NULL,
     `num_guides_hit` = NULL,
@@ -72,8 +78,11 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     #' @param phenotype phenotype
     #' @param perturbation perturbation
     #' @param z_score z_score
+    #' @param log2FC log2FC
     #' @param p_value p_value
+    #' @param p_value_adj p_value_adj
     #' @param neg_log10_pvalue neg_log10_pvalue
+    #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
     #' @param significant significant
     #' @param num_guides num_guides
     #' @param num_guides_hit num_guides_hit
@@ -81,7 +90,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     #' @param fraction_guides_hit fraction_guides_hit
     #' @param phenotype_name phenotype_name
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `biological_context`, `biosample_term`, `files_filesets`, `genomic_element`, `phenotype`, `perturbation` = NULL, `z_score` = NULL, `p_value` = NULL, `neg_log10_pvalue` = NULL, `significant` = NULL, `num_guides` = NULL, `num_guides_hit` = NULL, `num_guides_nonhit` = NULL, `fraction_guides_hit` = NULL, `phenotype_name` = NULL, ...) {
+    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `biological_context`, `biosample_term`, `files_filesets`, `genomic_element`, `phenotype`, `perturbation` = NULL, `z_score` = NULL, `log2FC` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, `num_guides` = NULL, `num_guides_hit` = NULL, `num_guides_nonhit` = NULL, `fraction_guides_hit` = NULL, `phenotype_name` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -153,11 +162,20 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
       if (!is.null(`z_score`)) {
         self$`z_score` <- `z_score`
       }
+      if (!is.null(`log2FC`)) {
+        self$`log2FC` <- `log2FC`
+      }
       if (!is.null(`p_value`)) {
         self$`p_value` <- `p_value`
       }
+      if (!is.null(`p_value_adj`)) {
+        self$`p_value_adj` <- `p_value_adj`
+      }
       if (!is.null(`neg_log10_pvalue`)) {
         self$`neg_log10_pvalue` <- `neg_log10_pvalue`
+      }
+      if (!is.null(`neg_log10_pvalue_adj`)) {
+        self$`neg_log10_pvalue_adj` <- `neg_log10_pvalue_adj`
       }
       if (!is.null(`significant`)) {
         if (!(is.logical(`significant`) && length(`significant`) == 1)) {
@@ -260,13 +278,25 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
         GenomicElementsFromPhenotypesObject[["z_score"]] <-
           self$`z_score`
       }
+      if (!is.null(self$`log2FC`)) {
+        GenomicElementsFromPhenotypesObject[["log2FC"]] <-
+          self$`log2FC`
+      }
       if (!is.null(self$`p_value`)) {
         GenomicElementsFromPhenotypesObject[["p_value"]] <-
           self$`p_value`
       }
+      if (!is.null(self$`p_value_adj`)) {
+        GenomicElementsFromPhenotypesObject[["p_value_adj"]] <-
+          self$`p_value_adj`
+      }
       if (!is.null(self$`neg_log10_pvalue`)) {
         GenomicElementsFromPhenotypesObject[["neg_log10_pvalue"]] <-
           self$`neg_log10_pvalue`
+      }
+      if (!is.null(self$`neg_log10_pvalue_adj`)) {
+        GenomicElementsFromPhenotypesObject[["neg_log10_pvalue_adj"]] <-
+          self$`neg_log10_pvalue_adj`
       }
       if (!is.null(self$`significant`)) {
         GenomicElementsFromPhenotypesObject[["significant"]] <-
@@ -343,11 +373,20 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
       if (!is.null(this_object$`z_score`)) {
         self$`z_score` <- this_object$`z_score`
       }
+      if (!is.null(this_object$`log2FC`)) {
+        self$`log2FC` <- this_object$`log2FC`
+      }
       if (!is.null(this_object$`p_value`)) {
         self$`p_value` <- this_object$`p_value`
       }
+      if (!is.null(this_object$`p_value_adj`)) {
+        self$`p_value_adj` <- this_object$`p_value_adj`
+      }
       if (!is.null(this_object$`neg_log10_pvalue`)) {
         self$`neg_log10_pvalue` <- this_object$`neg_log10_pvalue`
+      }
+      if (!is.null(this_object$`neg_log10_pvalue_adj`)) {
+        self$`neg_log10_pvalue_adj` <- this_object$`neg_log10_pvalue_adj`
       }
       if (!is.null(this_object$`significant`)) {
         self$`significant` <- this_object$`significant`
@@ -409,8 +448,11 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
       self$`files_filesets` <- this_object$`files_filesets`
       self$`perturbation` <- this_object$`perturbation`
       self$`z_score` <- this_object$`z_score`
+      self$`log2FC` <- this_object$`log2FC`
       self$`p_value` <- this_object$`p_value`
+      self$`p_value_adj` <- this_object$`p_value_adj`
       self$`neg_log10_pvalue` <- this_object$`neg_log10_pvalue`
+      self$`neg_log10_pvalue_adj` <- this_object$`neg_log10_pvalue_adj`
       self$`significant` <- this_object$`significant`
       self$`num_guides` <- this_object$`num_guides`
       self$`num_guides_hit` <- this_object$`num_guides_hit`
