@@ -23,6 +23,10 @@
 #' @field significant  character [optional]
 #' @field neg_log10_pvalue  numeric [optional]
 #' @field neg_log10_pvalue_adj  numeric [optional]
+#' @field phenotype  character [optional]
+#' @field VCP  numeric [optional]
+#' @field gene  character [optional]
+#' @field phenotype_name  character [optional]
 #' @field label  character
 #' @field method  character
 #' @field class  character [optional]
@@ -55,6 +59,10 @@ BiosamplesFromVariants <- R6::R6Class(
     `significant` = NULL,
     `neg_log10_pvalue` = NULL,
     `neg_log10_pvalue_adj` = NULL,
+    `phenotype` = NULL,
+    `VCP` = NULL,
+    `gene` = NULL,
+    `phenotype_name` = NULL,
     `label` = NULL,
     `method` = NULL,
     `class` = NULL,
@@ -90,13 +98,17 @@ BiosamplesFromVariants <- R6::R6Class(
     #' @param significant significant
     #' @param neg_log10_pvalue neg_log10_pvalue
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
+    #' @param phenotype phenotype
+    #' @param VCP VCP
+    #' @param gene gene
+    #' @param phenotype_name phenotype_name
     #' @param class class
     #' @param files_filesets files_filesets
     #' @param biological_context biological_context
     #' @param biosample_term biosample_term
     #' @param treatments_term_ids treatments_term_ids
     #' @param ... Other optional arguments.
-    initialize = function(`label`, `method`, `source`, `source_url`, `name`, `variant` = NULL, `biosample` = NULL, `genomic_element` = NULL, `strand` = NULL, `log2FC` = NULL, `bed_score` = NULL, `DNA_count_ref` = NULL, `DNA_count_alt` = NULL, `RNA_count_ref` = NULL, `RNA_count_alt` = NULL, `postProbEffect` = NULL, `CI_lower_95` = NULL, `CI_upper_95` = NULL, `significant` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `class` = NULL, `files_filesets` = NULL, `biological_context` = NULL, `biosample_term` = NULL, `treatments_term_ids` = NULL, ...) {
+    initialize = function(`label`, `method`, `source`, `source_url`, `name`, `variant` = NULL, `biosample` = NULL, `genomic_element` = NULL, `strand` = NULL, `log2FC` = NULL, `bed_score` = NULL, `DNA_count_ref` = NULL, `DNA_count_alt` = NULL, `RNA_count_ref` = NULL, `RNA_count_alt` = NULL, `postProbEffect` = NULL, `CI_lower_95` = NULL, `CI_upper_95` = NULL, `significant` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `phenotype` = NULL, `VCP` = NULL, `gene` = NULL, `phenotype_name` = NULL, `class` = NULL, `files_filesets` = NULL, `biological_context` = NULL, `biosample_term` = NULL, `treatments_term_ids` = NULL, ...) {
       if (!missing(`label`)) {
         if (!(is.character(`label`) && length(`label`) == 1)) {
           stop(paste("Error! Invalid data for `label`. Must be a string:", `label`))
@@ -183,6 +195,27 @@ BiosamplesFromVariants <- R6::R6Class(
       }
       if (!is.null(`neg_log10_pvalue_adj`)) {
         self$`neg_log10_pvalue_adj` <- `neg_log10_pvalue_adj`
+      }
+      if (!is.null(`phenotype`)) {
+        if (!(is.character(`phenotype`) && length(`phenotype`) == 1)) {
+          stop(paste("Error! Invalid data for `phenotype`. Must be a string:", `phenotype`))
+        }
+        self$`phenotype` <- `phenotype`
+      }
+      if (!is.null(`VCP`)) {
+        self$`VCP` <- `VCP`
+      }
+      if (!is.null(`gene`)) {
+        if (!(is.character(`gene`) && length(`gene`) == 1)) {
+          stop(paste("Error! Invalid data for `gene`. Must be a string:", `gene`))
+        }
+        self$`gene` <- `gene`
+      }
+      if (!is.null(`phenotype_name`)) {
+        if (!(is.character(`phenotype_name`) && length(`phenotype_name`) == 1)) {
+          stop(paste("Error! Invalid data for `phenotype_name`. Must be a string:", `phenotype_name`))
+        }
+        self$`phenotype_name` <- `phenotype_name`
       }
       if (!is.null(`class`)) {
         if (!(is.character(`class`) && length(`class`) == 1)) {
@@ -310,6 +343,22 @@ BiosamplesFromVariants <- R6::R6Class(
         BiosamplesFromVariantsObject[["neg_log10_pvalue_adj"]] <-
           self$`neg_log10_pvalue_adj`
       }
+      if (!is.null(self$`phenotype`)) {
+        BiosamplesFromVariantsObject[["phenotype"]] <-
+          self$`phenotype`
+      }
+      if (!is.null(self$`VCP`)) {
+        BiosamplesFromVariantsObject[["VCP"]] <-
+          self$`VCP`
+      }
+      if (!is.null(self$`gene`)) {
+        BiosamplesFromVariantsObject[["gene"]] <-
+          self$`gene`
+      }
+      if (!is.null(self$`phenotype_name`)) {
+        BiosamplesFromVariantsObject[["phenotype_name"]] <-
+          self$`phenotype_name`
+      }
       if (!is.null(self$`label`)) {
         BiosamplesFromVariantsObject[["label"]] <-
           self$`label`
@@ -414,6 +463,18 @@ BiosamplesFromVariants <- R6::R6Class(
       if (!is.null(this_object$`neg_log10_pvalue_adj`)) {
         self$`neg_log10_pvalue_adj` <- this_object$`neg_log10_pvalue_adj`
       }
+      if (!is.null(this_object$`phenotype`)) {
+        self$`phenotype` <- this_object$`phenotype`
+      }
+      if (!is.null(this_object$`VCP`)) {
+        self$`VCP` <- this_object$`VCP`
+      }
+      if (!is.null(this_object$`gene`)) {
+        self$`gene` <- this_object$`gene`
+      }
+      if (!is.null(this_object$`phenotype_name`)) {
+        self$`phenotype_name` <- this_object$`phenotype_name`
+      }
       if (!is.null(this_object$`label`)) {
         self$`label` <- this_object$`label`
       }
@@ -481,6 +542,10 @@ BiosamplesFromVariants <- R6::R6Class(
       self$`significant` <- this_object$`significant`
       self$`neg_log10_pvalue` <- this_object$`neg_log10_pvalue`
       self$`neg_log10_pvalue_adj` <- this_object$`neg_log10_pvalue_adj`
+      self$`phenotype` <- this_object$`phenotype`
+      self$`VCP` <- this_object$`VCP`
+      self$`gene` <- this_object$`gene`
+      self$`phenotype_name` <- this_object$`phenotype_name`
       self$`label` <- this_object$`label`
       self$`method` <- this_object$`method`
       self$`class` <- this_object$`class`

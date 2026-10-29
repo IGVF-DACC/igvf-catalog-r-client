@@ -20,6 +20,10 @@ Name | Type | Description | Notes
 **significant** | **character** |  | [optional] 
 **neg_log10_pvalue** | **numeric** |  | [optional] 
 **neg_log10_pvalue_adj** | **numeric** |  | [optional] 
+**phenotype** | **character** |  | [optional] 
+**VCP** | **numeric** |  | [optional] 
+**gene** | **character** |  | [optional] 
+**phenotype_name** | **character** |  | [optional] 
 **label** | **character** |  | 
 **method** | **character** |  | 
 **class** | **character** |  | [optional] 
