@@ -2776,7 +2776,7 @@ Name | Type | Description  | Notes
  **hgvs** | **character**|  | [optional] 
  **ca_id** | **character**|  | [optional] 
  **variant_id** | **character**|  | [optional] 
- **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
+ **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **files_fileset** | **character**|  | [optional] 
 
 ### Return type
@@ -3839,7 +3839,7 @@ Name | Type | Description  | Notes
  **hgvs** | **character**|  | [optional] 
  **ca_id** | **character**|  | [optional] 
  **variant_id** | **character**|  | [optional] 
- **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
+ **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **files_fileset** | **character**|  | [optional] 
  **method** | Enum [scE2G, ENCODE-rE2G] |  | [optional] 
  **limit** | **numeric**|  | [optional] 
@@ -4358,7 +4358,7 @@ Name | Type | Description  | Notes
  **hgvs** | **character**|  | [optional] 
  **ca_id** | **character**|  | [optional] 
  **variant_id** | **character**|  | [optional] 
- **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
+ **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **page** | **numeric**|  | [optional] 
  **limit** | **numeric**|  | [optional] 
  **files_fileset** | **character**|  | [optional] 
@@ -5619,7 +5619,7 @@ Name | Type | Description  | Notes
  **hgvs** | **character**|  | [optional] 
  **ca_id** | **character**|  | [optional] 
  **variant_id** | **character**|  | [optional] 
- **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
+ **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **page** | **numeric**|  | [optional] [default to 0]
  **limit** | **numeric**|  | [optional] 
 

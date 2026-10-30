@@ -8,7 +8,7 @@ Our database uses 0-based, half-open coordinates for genomic coordinates in the 
 
 Data is licensed under the <a href=https://creativecommons.org/licenses/by/4.0/ target=\"_blank\">Creative Commons license</a> and the software is licensed under the <a href=https://spdx.org/licenses/MIT.html target=\"_blank\">MIT license</a>.
 
-- API version: 1.3.1.dev20261029225042
+- API version: 1.3.1.dev20261030174037
 - Package version: 1.3.0.9000
 - Generator version: 7.14.0
 
