@@ -16,23 +16,23 @@ GenesTranscriptsGenomicElementsAccessibleGenomicElement <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("AccessibleGenomicElement11", "character"),
+    any_of = list("AccessibleGenomicElement12", "character"),
 
     #' @description
     #' Initialize a new GenesTranscriptsGenomicElementsAccessibleGenomicElement.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "AccessibleGenomicElement11", "character"
+    #' @param instance an instance of the object defined in the anyOf schemas: "AccessibleGenomicElement12", "character"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "AccessibleGenomicElement11") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "AccessibleGenomicElement12") {
         self$actual_instance <- instance
-        self$actual_type <- "AccessibleGenomicElement11"
+        self$actual_type <- "AccessibleGenomicElement12"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "character") {
         self$actual_instance <- instance
         self$actual_type <- "character"
       } else {
-        stop(paste("Failed to initialize GenesTranscriptsGenomicElementsAccessibleGenomicElement with anyOf schemas AccessibleGenomicElement11, character. Provided class name: ",
+        stop(paste("Failed to initialize GenesTranscriptsGenomicElementsAccessibleGenomicElement with anyOf schemas AccessibleGenomicElement12, character. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -73,22 +73,22 @@ GenesTranscriptsGenomicElementsAccessibleGenomicElement <- R6::R6Class(
         error_messages <- append(error_messages, `character_result`["message"])
       }
 
-      `AccessibleGenomicElement11_result` <- tryCatch({
-          `AccessibleGenomicElement11`$public_methods$validateJSON(input)
-          `AccessibleGenomicElement11_instance` <- `AccessibleGenomicElement11`$new()
-          self$actual_instance <- `AccessibleGenomicElement11_instance`$fromJSON(input)
-          self$actual_type <- "AccessibleGenomicElement11"
+      `AccessibleGenomicElement12_result` <- tryCatch({
+          `AccessibleGenomicElement12`$public_methods$validateJSON(input)
+          `AccessibleGenomicElement12_instance` <- `AccessibleGenomicElement12`$new()
+          self$actual_instance <- `AccessibleGenomicElement12_instance`$fromJSON(input)
+          self$actual_type <- "AccessibleGenomicElement12"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`AccessibleGenomicElement11_result`["error"])) {
-        error_messages <- append(error_messages, `AccessibleGenomicElement11_result`["message"])
+      if (!is.null(`AccessibleGenomicElement12_result`["error"])) {
+        error_messages <- append(error_messages, `AccessibleGenomicElement12_result`["message"])
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into GenesTranscriptsGenomicElementsAccessibleGenomicElement with anyOf schemas AccessibleGenomicElement11, character. Details: >>",
+      stop(paste("No match found when deserializing the input into GenesTranscriptsGenomicElementsAccessibleGenomicElement with anyOf schemas AccessibleGenomicElement12, character. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

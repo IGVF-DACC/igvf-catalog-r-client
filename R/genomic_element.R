@@ -8,14 +8,14 @@
 #' @description GenomicElement Class
 #' @format An \code{R6Class} generator object
 #' @field _id  character
-#' @field name  character [optional]
-#' @field chr  character [optional]
-#' @field start  numeric [optional]
-#' @field end  numeric [optional]
-#' @field type  character [optional]
-#' @field source  character [optional]
-#' @field source_url  character [optional]
+#' @field name  character
+#' @field chr  character
+#' @field start  numeric
+#' @field end  numeric
+#' @field type  character
 #' @field source_annotation  character [optional]
+#' @field source  character
+#' @field source_url  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -28,9 +28,9 @@ GenomicElement <- R6::R6Class(
     `start` = NULL,
     `end` = NULL,
     `type` = NULL,
+    `source_annotation` = NULL,
     `source` = NULL,
     `source_url` = NULL,
-    `source_annotation` = NULL,
 
     #' @description
     #' Initialize a new GenomicElement class.
@@ -45,44 +45,44 @@ GenomicElement <- R6::R6Class(
     #' @param source_url source_url
     #' @param source_annotation source_annotation
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `name` = NULL, `chr` = NULL, `start` = NULL, `end` = NULL, `type` = NULL, `source` = NULL, `source_url` = NULL, `source_annotation` = NULL, ...) {
+    initialize = function(`_id`, `name`, `chr`, `start`, `end`, `type`, `source`, `source_url`, `source_annotation` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.character(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
         }
         self$`_id` <- `_id`
       }
-      if (!is.null(`name`)) {
+      if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
         }
         self$`name` <- `name`
       }
-      if (!is.null(`chr`)) {
+      if (!missing(`chr`)) {
         if (!(is.character(`chr`) && length(`chr`) == 1)) {
           stop(paste("Error! Invalid data for `chr`. Must be a string:", `chr`))
         }
         self$`chr` <- `chr`
       }
-      if (!is.null(`start`)) {
+      if (!missing(`start`)) {
         self$`start` <- `start`
       }
-      if (!is.null(`end`)) {
+      if (!missing(`end`)) {
         self$`end` <- `end`
       }
-      if (!is.null(`type`)) {
+      if (!missing(`type`)) {
         if (!(is.character(`type`) && length(`type`) == 1)) {
           stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
         }
         self$`type` <- `type`
       }
-      if (!is.null(`source`)) {
+      if (!missing(`source`)) {
         if (!(is.character(`source`) && length(`source`) == 1)) {
           stop(paste("Error! Invalid data for `source`. Must be a string:", `source`))
         }
         self$`source` <- `source`
       }
-      if (!is.null(`source_url`)) {
+      if (!missing(`source_url`)) {
         if (!(is.character(`source_url`) && length(`source_url`) == 1)) {
           stop(paste("Error! Invalid data for `source_url`. Must be a string:", `source_url`))
         }
@@ -151,6 +151,10 @@ GenomicElement <- R6::R6Class(
         GenomicElementObject[["type"]] <-
           self$`type`
       }
+      if (!is.null(self$`source_annotation`)) {
+        GenomicElementObject[["source_annotation"]] <-
+          self$`source_annotation`
+      }
       if (!is.null(self$`source`)) {
         GenomicElementObject[["source"]] <-
           self$`source`
@@ -158,10 +162,6 @@ GenomicElement <- R6::R6Class(
       if (!is.null(self$`source_url`)) {
         GenomicElementObject[["source_url"]] <-
           self$`source_url`
-      }
-      if (!is.null(self$`source_annotation`)) {
-        GenomicElementObject[["source_annotation"]] <-
-          self$`source_annotation`
       }
       return(GenomicElementObject)
     },
@@ -191,14 +191,14 @@ GenomicElement <- R6::R6Class(
       if (!is.null(this_object$`type`)) {
         self$`type` <- this_object$`type`
       }
+      if (!is.null(this_object$`source_annotation`)) {
+        self$`source_annotation` <- this_object$`source_annotation`
+      }
       if (!is.null(this_object$`source`)) {
         self$`source` <- this_object$`source`
       }
       if (!is.null(this_object$`source_url`)) {
         self$`source_url` <- this_object$`source_url`
-      }
-      if (!is.null(this_object$`source_annotation`)) {
-        self$`source_annotation` <- this_object$`source_annotation`
       }
       self
     },
@@ -227,9 +227,9 @@ GenomicElement <- R6::R6Class(
       self$`start` <- this_object$`start`
       self$`end` <- this_object$`end`
       self$`type` <- this_object$`type`
+      self$`source_annotation` <- this_object$`source_annotation`
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
-      self$`source_annotation` <- this_object$`source_annotation`
       self
     },
 
@@ -246,6 +246,56 @@ GenomicElement <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for GenomicElement: the required field `_id` is missing."))
+      }
+      # check the required field `name`
+      if (!is.null(input_json$`name`)) {
+        if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement: the required field `name` is missing."))
+      }
+      # check the required field `chr`
+      if (!is.null(input_json$`chr`)) {
+        if (!(is.character(input_json$`chr`) && length(input_json$`chr`) == 1)) {
+          stop(paste("Error! Invalid data for `chr`. Must be a string:", input_json$`chr`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement: the required field `chr` is missing."))
+      }
+      # check the required field `start`
+      if (!is.null(input_json$`start`)) {
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement: the required field `start` is missing."))
+      }
+      # check the required field `end`
+      if (!is.null(input_json$`end`)) {
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement: the required field `end` is missing."))
+      }
+      # check the required field `type`
+      if (!is.null(input_json$`type`)) {
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement: the required field `type` is missing."))
+      }
+      # check the required field `source`
+      if (!is.null(input_json$`source`)) {
+        if (!(is.character(input_json$`source`) && length(input_json$`source`) == 1)) {
+          stop(paste("Error! Invalid data for `source`. Must be a string:", input_json$`source`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement: the required field `source` is missing."))
+      }
+      # check the required field `source_url`
+      if (!is.null(input_json$`source_url`)) {
+        if (!(is.character(input_json$`source_url`) && length(input_json$`source_url`) == 1)) {
+          stop(paste("Error! Invalid data for `source_url`. Must be a string:", input_json$`source_url`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement: the required field `source_url` is missing."))
       }
     },
 
@@ -267,6 +317,41 @@ GenomicElement <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `name` is null
+      if (is.null(self$`name`)) {
+        return(FALSE)
+      }
+
+      # check if the required `chr` is null
+      if (is.null(self$`chr`)) {
+        return(FALSE)
+      }
+
+      # check if the required `start` is null
+      if (is.null(self$`start`)) {
+        return(FALSE)
+      }
+
+      # check if the required `end` is null
+      if (is.null(self$`end`)) {
+        return(FALSE)
+      }
+
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        return(FALSE)
+      }
+
+      # check if the required `source` is null
+      if (is.null(self$`source`)) {
+        return(FALSE)
+      }
+
+      # check if the required `source_url` is null
+      if (is.null(self$`source_url`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -279,6 +364,41 @@ GenomicElement <- R6::R6Class(
       # check if the required `_id` is null
       if (is.null(self$`_id`)) {
         invalid_fields["_id"] <- "Non-nullable required field `_id` cannot be null."
+      }
+
+      # check if the required `name` is null
+      if (is.null(self$`name`)) {
+        invalid_fields["name"] <- "Non-nullable required field `name` cannot be null."
+      }
+
+      # check if the required `chr` is null
+      if (is.null(self$`chr`)) {
+        invalid_fields["chr"] <- "Non-nullable required field `chr` cannot be null."
+      }
+
+      # check if the required `start` is null
+      if (is.null(self$`start`)) {
+        invalid_fields["start"] <- "Non-nullable required field `start` cannot be null."
+      }
+
+      # check if the required `end` is null
+      if (is.null(self$`end`)) {
+        invalid_fields["end"] <- "Non-nullable required field `end` cannot be null."
+      }
+
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+      }
+
+      # check if the required `source` is null
+      if (is.null(self$`source`)) {
+        invalid_fields["source"] <- "Non-nullable required field `source` cannot be null."
+      }
+
+      # check if the required `source_url` is null
+      if (is.null(self$`source_url`)) {
+        invalid_fields["source_url"] <- "Non-nullable required field `source_url` cannot be null."
       }
 
       invalid_fields

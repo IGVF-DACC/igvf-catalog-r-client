@@ -11,8 +11,8 @@
 #' @field strand  character
 #' @field neg_log10_pvalue  numeric
 #' @field neg_log10_pvalue_adj  numeric
-#' @field DNA_count  numeric [optional]
-#' @field RNA_count  numeric [optional]
+#' @field inputCount  numeric [optional]
+#' @field outputCount  numeric [optional]
 #' @field significant  character [optional]
 #' @field source  character [optional]
 #' @field source_url  character [optional]
@@ -32,8 +32,8 @@ BiosamplesFromGenomicElements <- R6::R6Class(
     `strand` = NULL,
     `neg_log10_pvalue` = NULL,
     `neg_log10_pvalue_adj` = NULL,
-    `DNA_count` = NULL,
-    `RNA_count` = NULL,
+    `inputCount` = NULL,
+    `outputCount` = NULL,
     `significant` = NULL,
     `source` = NULL,
     `source_url` = NULL,
@@ -52,8 +52,8 @@ BiosamplesFromGenomicElements <- R6::R6Class(
     #' @param neg_log10_pvalue neg_log10_pvalue
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
     #' @param name name
-    #' @param DNA_count DNA_count
-    #' @param RNA_count RNA_count
+    #' @param inputCount inputCount
+    #' @param outputCount outputCount
     #' @param significant significant
     #' @param source source
     #' @param source_url source_url
@@ -63,7 +63,7 @@ BiosamplesFromGenomicElements <- R6::R6Class(
     #' @param method method
     #' @param files_filesets files_filesets
     #' @param ... Other optional arguments.
-    initialize = function(`log2FC`, `strand`, `neg_log10_pvalue`, `neg_log10_pvalue_adj`, `name`, `DNA_count` = NULL, `RNA_count` = NULL, `significant` = NULL, `source` = NULL, `source_url` = NULL, `genomic_element` = NULL, `biosample` = NULL, `class` = NULL, `method` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`log2FC`, `strand`, `neg_log10_pvalue`, `neg_log10_pvalue_adj`, `name`, `inputCount` = NULL, `outputCount` = NULL, `significant` = NULL, `source` = NULL, `source_url` = NULL, `genomic_element` = NULL, `biosample` = NULL, `class` = NULL, `method` = NULL, `files_filesets` = NULL, ...) {
       if (!missing(`log2FC`)) {
         self$`log2FC` <- `log2FC`
       }
@@ -85,11 +85,11 @@ BiosamplesFromGenomicElements <- R6::R6Class(
         }
         self$`name` <- `name`
       }
-      if (!is.null(`DNA_count`)) {
-        self$`DNA_count` <- `DNA_count`
+      if (!is.null(`inputCount`)) {
+        self$`inputCount` <- `inputCount`
       }
-      if (!is.null(`RNA_count`)) {
-        self$`RNA_count` <- `RNA_count`
+      if (!is.null(`outputCount`)) {
+        self$`outputCount` <- `outputCount`
       }
       if (!is.null(`significant`)) {
         if (!(is.logical(`significant`) && length(`significant`) == 1)) {
@@ -184,13 +184,13 @@ BiosamplesFromGenomicElements <- R6::R6Class(
         BiosamplesFromGenomicElementsObject[["neg_log10_pvalue_adj"]] <-
           self$`neg_log10_pvalue_adj`
       }
-      if (!is.null(self$`DNA_count`)) {
-        BiosamplesFromGenomicElementsObject[["DNA_count"]] <-
-          self$`DNA_count`
+      if (!is.null(self$`inputCount`)) {
+        BiosamplesFromGenomicElementsObject[["inputCount"]] <-
+          self$`inputCount`
       }
-      if (!is.null(self$`RNA_count`)) {
-        BiosamplesFromGenomicElementsObject[["RNA_count"]] <-
-          self$`RNA_count`
+      if (!is.null(self$`outputCount`)) {
+        BiosamplesFromGenomicElementsObject[["outputCount"]] <-
+          self$`outputCount`
       }
       if (!is.null(self$`significant`)) {
         BiosamplesFromGenomicElementsObject[["significant"]] <-
@@ -250,11 +250,11 @@ BiosamplesFromGenomicElements <- R6::R6Class(
       if (!is.null(this_object$`neg_log10_pvalue_adj`)) {
         self$`neg_log10_pvalue_adj` <- this_object$`neg_log10_pvalue_adj`
       }
-      if (!is.null(this_object$`DNA_count`)) {
-        self$`DNA_count` <- this_object$`DNA_count`
+      if (!is.null(this_object$`inputCount`)) {
+        self$`inputCount` <- this_object$`inputCount`
       }
-      if (!is.null(this_object$`RNA_count`)) {
-        self$`RNA_count` <- this_object$`RNA_count`
+      if (!is.null(this_object$`outputCount`)) {
+        self$`outputCount` <- this_object$`outputCount`
       }
       if (!is.null(this_object$`significant`)) {
         self$`significant` <- this_object$`significant`
@@ -312,8 +312,8 @@ BiosamplesFromGenomicElements <- R6::R6Class(
       self$`strand` <- this_object$`strand`
       self$`neg_log10_pvalue` <- this_object$`neg_log10_pvalue`
       self$`neg_log10_pvalue_adj` <- this_object$`neg_log10_pvalue_adj`
-      self$`DNA_count` <- this_object$`DNA_count`
-      self$`RNA_count` <- this_object$`RNA_count`
+      self$`inputCount` <- this_object$`inputCount`
+      self$`outputCount` <- this_object$`outputCount`
       self$`significant` <- this_object$`significant`
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`

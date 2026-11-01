@@ -8,7 +8,7 @@ Our database uses 0-based, half-open coordinates for genomic coordinates in the 
 
 Data is licensed under the <a href=https://creativecommons.org/licenses/by/4.0/ target=\"_blank\">Creative Commons license</a> and the software is licensed under the <a href=https://spdx.org/licenses/MIT.html target=\"_blank\">MIT license</a>.
 
-- API version: 1.3.1.dev20261030174037
+- API version: 1.3.1.dev20261101032520
 - Package version: 1.3.0.9000
 - Generator version: 7.14.0
 
@@ -158,7 +158,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [AccessibleGenomicElement](docs/AccessibleGenomicElement.md)
- - [AccessibleGenomicElement11](docs/AccessibleGenomicElement11.md)
+ - [AccessibleGenomicElement12](docs/AccessibleGenomicElement12.md)
  - [AccessibleGenomicElementPromoterOf](docs/AccessibleGenomicElementPromoterOf.md)
  - [Annotations](docs/Annotations.md)
  - [AnnotationsFromGoTerms](docs/AnnotationsFromGoTerms.md)
@@ -225,12 +225,12 @@ Class | Method | HTTP request | Description
  - [GenesTranscriptsGenomicElementsAccessibleGenomicElement](docs/GenesTranscriptsGenomicElementsAccessibleGenomicElement.md)
  - [GenesVariantsScoreSummary](docs/GenesVariantsScoreSummary.md)
  - [GenomicElement](docs/GenomicElement.md)
- - [GenomicElement2](docs/GenomicElement2.md)
+ - [GenomicElement10](docs/GenomicElement10.md)
+ - [GenomicElement11](docs/GenomicElement11.md)
  - [GenomicElement4](docs/GenomicElement4.md)
  - [GenomicElement5](docs/GenomicElement5.md)
  - [GenomicElement7](docs/GenomicElement7.md)
  - [GenomicElement9](docs/GenomicElement9.md)
- - [GenomicElementFull](docs/GenomicElementFull.md)
  - [GenomicElementsFromGenomicElements](docs/GenomicElementsFromGenomicElements.md)
  - [GenomicElementsFromGenomicElementsPerturbedGenomicElement](docs/GenomicElementsFromGenomicElementsPerturbedGenomicElement.md)
  - [GenomicElementsFromPhenotypes](docs/GenomicElementsFromPhenotypes.md)

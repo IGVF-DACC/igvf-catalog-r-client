@@ -1247,14 +1247,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file_fileset_id** | **character**|  | [optional] 
  **fileset_id** | **character**|  | [optional] 
- **lab** | Enum [alan-boyle, bill-majoros, charles-gersbach, community, danwei-huangfu, doug-fowler, encode, gary-hon, j-michael-cherry, jay-shendure, jesse-engreitz, karen-mohlke, kushal-dey, lea-starita, luca-pinello, marc-vidal, mark-craven, nadav-ahituv, predrag-radivojac, richard-sherwood, thomas-quertermous, tim-reddy, tom-norman, zhiping-weng] |  | [optional] 
- **preferred_assay_title** | Enum [ATAC-seq, CRISPR FACS screen, CRISPR FlowFISH screen, CRISPR MACS screen, DNase-seq, DUAL-IPA, MORF screen, MPRA, Migration CRISPR screen, Multiome Perturb-seq, Parse Perturb-seq, Perturb-seq, Proliferation CRISPR screen, SGE, STARR-seq, TAP-seq, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, Variant-EFFECTS, electroporated MPRA, in vivo Perturb-seq, lentiMPRA, scCRISPR screen, snATAC-seq] |  | [optional] 
+ **lab** | Enum [alan-boyle, bill-majoros, charles-gersbach, community, danwei-huangfu, doug-fowler, encode, gary-hon, hyejung-won, j-michael-cherry, jay-shendure, jesse-engreitz, karen-mohlke, kushal-dey, lea-starita, luca-pinello, marc-vidal, mark-craven, nadav-ahituv, predrag-radivojac, richard-sherwood, thomas-quertermous, tim-reddy, tom-norman, zhiping-weng] |  | [optional] 
+ **preferred_assay_title** | Enum [AAV-MPRA, ATAC-seq, CRISPR FACS screen, CRISPR FlowFISH screen, CRISPR MACS screen, DNase-seq, DUAL-IPA, MORF screen, MPRA, Migration CRISPR screen, Multiome Perturb-seq, Parse Perturb-seq, Perturb-seq, Proliferation CRISPR screen, SGE, STARR-seq, TAP-seq, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, Variant-EFFECTS, electroporated MPRA, in vivo MPRA, in vivo Perturb-seq, lentiMPRA, scCRISPR screen, snATAC-seq] |  | [optional] 
  **method** | Enum [ADASTRA, ATAC-seq, BlueSTARR, COXPRESdb, CRISPR screen, ClinGen, ColocBoost, DUAL-IPA, DepMap, ENCODE-rE2G, ESM-1v, GVATdb, GWAS, GenCC, HOCOMOCO, Homology, MORF screen, MPRA, Multiome Perturb-seq, MutPred2, Orphanet, Perturb-seq, PharmGKB, SEMVAR, SEMpl, SGE, STARR-seq, TopLD, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, cV2F, caQTL, candidate Cis-Regulatory Elements, eQTL, elements, genes, guide RNAs, pQTL, scE2G, snATAC-seq, spliceQTL, training data for predictive models] |  | [optional] 
  **perturbation** | Enum [CRISPR activation, CRISPR base editing, CRISPR cutting, CRISPR interference, CRISPR knockout, CRISPR prime editing, ORF overexpression] |  | [optional] 
  **donor_id** | **character**|  | [optional] 
  **sample_term** | **character**|  | [optional] 
  **sample_summary** | **character**|  | [optional] 
- **software** | Enum [2024_multistep, BCalm, BEDTools, BIRD, BlueSTARR, CRISPR BEAN, CRISPR-Millipede, CRISPR-SURF, CRISPResso2, Cell Profiler, ColocBoost, Cooler, CountESS, DESeq2, DUAL-IPA analysis scripts, Distal regulation ENCODE-rE2G, DistalRegulationCRISPRdata, ESM-1v, FRACTEL, Irreproducible Discovery Rate, MAGeCK, MPRAflow tsv-to-bed, MutPred2, NumPy, Pysam, R, SEMVAR, SEMpl, SGE Pipeline, Samtools, Sceptre, SciPy, Seaborn, Seurat, Snakemake, Straw, Variant-EFFECTS, bigWigAverageOverBed, cV2F, cyp2c19_2c9, matplotlib, mpralm, pandas, pySpade, pybedtools, scATAC-seq processing, scE2G, snapATAC2, statsmodels] |  | [optional] 
+ **software** | Enum [2024_multistep, AD_MPRA, BCalm, BEDTools, BIRD, BlueSTARR, CRISPR BEAN, CRISPR-Millipede, CRISPR-SURF, CRISPResso2, Cell Profiler, ColocBoost, Cooler, CountESS, DESeq2, DUAL-IPA analysis scripts, Distal regulation ENCODE-rE2G, DistalRegulationCRISPRdata, ESM-1v, FRACTEL, Irreproducible Discovery Rate, MAGeCK, MPRAflow tsv-to-bed, MutPred2, NumPy, Pysam, R, SEMVAR, SEMpl, SGE Pipeline, Samtools, Sceptre, SciPy, Seaborn, Seurat, Snakemake, Straw, Tewhey ENCODE allelic MPRA to IGVF converter, Variant-EFFECTS, bigWigAverageOverBed, cV2F, crossdisorder-MPRA, cyp2c19_2c9, in_vivo_MPRA_downstream_analysis, matplotlib, mpralm, pandas, pySpade, pybedtools, scATAC-seq processing, scE2G, schizophrenia-MPRA, snapATAC2, statsmodels] |  | [optional] 
  **cell_annotation** | **character**|  | [optional] 
  **cell_annotation_term** | **character**|  | [optional] 
  **has_genome_browser_link** | Enum [true, false] |  | [optional] 
@@ -2317,7 +2317,7 @@ No authorization required
 | **0** | Error response |  -  |
 
 # **GenomicElements**
-> array[GenomicElementFull] GenomicElements(region = var.region, source_annotation = var.source_annotation, type = var.type, method = var.method, source = var.source, organism = "Homo sapiens", page = 0, limit = var.limit, files_fileset = var.files_fileset)
+> array[GenomicElement11] GenomicElements(region = var.region, source_annotation = var.source_annotation, type = var.type, method = var.method, source = var.source, organism = "Homo sapiens", page = 0, limit = var.limit, files_fileset = var.files_fileset)
 
 
 
@@ -2361,7 +2361,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**array[GenomicElementFull]**](GenomicElementFull.md)
+[**array[GenomicElement11]**](GenomicElement11.md)
 
 ### Authorization
 

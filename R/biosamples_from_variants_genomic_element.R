@@ -16,23 +16,23 @@ BiosamplesFromVariantsGenomicElement <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("GenomicElement", "character"),
+    any_of = list("GenomicElement10", "character"),
 
     #' @description
     #' Initialize a new BiosamplesFromVariantsGenomicElement.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "GenomicElement", "character"
+    #' @param instance an instance of the object defined in the anyOf schemas: "GenomicElement10", "character"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "GenomicElement") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "GenomicElement10") {
         self$actual_instance <- instance
-        self$actual_type <- "GenomicElement"
+        self$actual_type <- "GenomicElement10"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "character") {
         self$actual_instance <- instance
         self$actual_type <- "character"
       } else {
-        stop(paste("Failed to initialize BiosamplesFromVariantsGenomicElement with anyOf schemas GenomicElement, character. Provided class name: ",
+        stop(paste("Failed to initialize BiosamplesFromVariantsGenomicElement with anyOf schemas GenomicElement10, character. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -73,22 +73,22 @@ BiosamplesFromVariantsGenomicElement <- R6::R6Class(
         error_messages <- append(error_messages, `character_result`["message"])
       }
 
-      `GenomicElement_result` <- tryCatch({
-          `GenomicElement`$public_methods$validateJSON(input)
-          `GenomicElement_instance` <- `GenomicElement`$new()
-          self$actual_instance <- `GenomicElement_instance`$fromJSON(input)
-          self$actual_type <- "GenomicElement"
+      `GenomicElement10_result` <- tryCatch({
+          `GenomicElement10`$public_methods$validateJSON(input)
+          `GenomicElement10_instance` <- `GenomicElement10`$new()
+          self$actual_instance <- `GenomicElement10_instance`$fromJSON(input)
+          self$actual_type <- "GenomicElement10"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`GenomicElement_result`["error"])) {
-        error_messages <- append(error_messages, `GenomicElement_result`["message"])
+      if (!is.null(`GenomicElement10_result`["error"])) {
+        error_messages <- append(error_messages, `GenomicElement10_result`["message"])
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into BiosamplesFromVariantsGenomicElement with anyOf schemas GenomicElement, character. Details: >>",
+      stop(paste("No match found when deserializing the input into BiosamplesFromVariantsGenomicElement with anyOf schemas GenomicElement10, character. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

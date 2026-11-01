@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **end** | **numeric** |  | 
 **strand** | **character** |  | [optional] 
 **name** | **character** |  | 
+**aliases** | **array[character]** |  | [optional] 
 **method** | **character** |  | [optional] 
 **source_annotation** | **character** |  | 
 **type** | **character** |  | 

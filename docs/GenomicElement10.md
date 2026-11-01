@@ -1,14 +1,15 @@
-# igvfcatalogclient::GenomicElement2
+# igvfcatalogclient::GenomicElement10
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **character** |  | 
-**name** | **character** |  | 
-**chr** | **character** |  | 
-**start** | **numeric** |  | 
-**end** | **numeric** |  | 
+**name** | **character** |  | [optional] 
+**aliases** | **array[character]** |  | [optional] 
+**chr** | **character** |  | [optional] 
+**start** | **numeric** |  | [optional] 
+**end** | **numeric** |  | [optional] 
 **type** | **character** |  | [optional] 
 **source** | **character** |  | [optional] 
 **source_url** | **character** |  | [optional] 

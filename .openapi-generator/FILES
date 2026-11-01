@@ -3,7 +3,7 @@
 DESCRIPTION
 NAMESPACE
 R/accessible_genomic_element.R
-R/accessible_genomic_element11.R
+R/accessible_genomic_element12.R
 R/accessible_genomic_element_promoter_of.R
 R/annotations.R
 R/annotations_from_go_terms.R
@@ -72,12 +72,12 @@ R/genes_transcripts_genomic_elements.R
 R/genes_transcripts_genomic_elements_accessible_genomic_element.R
 R/genes_variants_score_summary.R
 R/genomic_element.R
-R/genomic_element2.R
+R/genomic_element10.R
+R/genomic_element11.R
 R/genomic_element4.R
 R/genomic_element5.R
 R/genomic_element7.R
 R/genomic_element9.R
-R/genomic_element_full.R
 R/genomic_elements_from_genomic_elements.R
 R/genomic_elements_from_genomic_elements_perturbed_genomic_element.R
 R/genomic_elements_from_phenotypes.R
@@ -166,7 +166,7 @@ R/variants_genomic_elements_genes.R
 R/variants_region_summary.R
 README.md
 docs/AccessibleGenomicElement.md
-docs/AccessibleGenomicElement11.md
+docs/AccessibleGenomicElement12.md
 docs/AccessibleGenomicElementPromoterOf.md
 docs/Annotations.md
 docs/AnnotationsFromGoTerms.md
@@ -233,12 +233,12 @@ docs/GenesTranscriptsGenomicElements.md
 docs/GenesTranscriptsGenomicElementsAccessibleGenomicElement.md
 docs/GenesVariantsScoreSummary.md
 docs/GenomicElement.md
-docs/GenomicElement2.md
+docs/GenomicElement10.md
+docs/GenomicElement11.md
 docs/GenomicElement4.md
 docs/GenomicElement5.md
 docs/GenomicElement7.md
 docs/GenomicElement9.md
-docs/GenomicElementFull.md
 docs/GenomicElementsFromGenomicElements.md
 docs/GenomicElementsFromGenomicElementsPerturbedGenomicElement.md
 docs/GenomicElementsFromPhenotypes.md

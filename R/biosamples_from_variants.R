@@ -13,10 +13,10 @@
 #' @field strand  character [optional]
 #' @field log2FC  numeric [optional]
 #' @field bed_score  numeric [optional]
-#' @field DNA_count_ref  numeric [optional]
-#' @field DNA_count_alt  numeric [optional]
-#' @field RNA_count_ref  numeric [optional]
-#' @field RNA_count_alt  numeric [optional]
+#' @field inputCountRef  numeric [optional]
+#' @field inputCountAlt  numeric [optional]
+#' @field outputCountRef  numeric [optional]
+#' @field outputCountAlt  numeric [optional]
 #' @field postProbEffect  numeric [optional]
 #' @field CI_lower_95  numeric [optional]
 #' @field CI_upper_95  numeric [optional]
@@ -49,10 +49,10 @@ BiosamplesFromVariants <- R6::R6Class(
     `strand` = NULL,
     `log2FC` = NULL,
     `bed_score` = NULL,
-    `DNA_count_ref` = NULL,
-    `DNA_count_alt` = NULL,
-    `RNA_count_ref` = NULL,
-    `RNA_count_alt` = NULL,
+    `inputCountRef` = NULL,
+    `inputCountAlt` = NULL,
+    `outputCountRef` = NULL,
+    `outputCountAlt` = NULL,
     `postProbEffect` = NULL,
     `CI_lower_95` = NULL,
     `CI_upper_95` = NULL,
@@ -88,10 +88,10 @@ BiosamplesFromVariants <- R6::R6Class(
     #' @param strand strand
     #' @param log2FC log2FC
     #' @param bed_score bed_score
-    #' @param DNA_count_ref DNA_count_ref
-    #' @param DNA_count_alt DNA_count_alt
-    #' @param RNA_count_ref RNA_count_ref
-    #' @param RNA_count_alt RNA_count_alt
+    #' @param inputCountRef inputCountRef
+    #' @param inputCountAlt inputCountAlt
+    #' @param outputCountRef outputCountRef
+    #' @param outputCountAlt outputCountAlt
     #' @param postProbEffect postProbEffect
     #' @param CI_lower_95 CI_lower_95
     #' @param CI_upper_95 CI_upper_95
@@ -108,7 +108,7 @@ BiosamplesFromVariants <- R6::R6Class(
     #' @param biosample_term biosample_term
     #' @param treatments_term_ids treatments_term_ids
     #' @param ... Other optional arguments.
-    initialize = function(`label`, `method`, `source`, `source_url`, `name`, `variant` = NULL, `biosample` = NULL, `genomic_element` = NULL, `strand` = NULL, `log2FC` = NULL, `bed_score` = NULL, `DNA_count_ref` = NULL, `DNA_count_alt` = NULL, `RNA_count_ref` = NULL, `RNA_count_alt` = NULL, `postProbEffect` = NULL, `CI_lower_95` = NULL, `CI_upper_95` = NULL, `significant` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `phenotype` = NULL, `VCP` = NULL, `gene` = NULL, `phenotype_name` = NULL, `class` = NULL, `files_filesets` = NULL, `biological_context` = NULL, `biosample_term` = NULL, `treatments_term_ids` = NULL, ...) {
+    initialize = function(`label`, `method`, `source`, `source_url`, `name`, `variant` = NULL, `biosample` = NULL, `genomic_element` = NULL, `strand` = NULL, `log2FC` = NULL, `bed_score` = NULL, `inputCountRef` = NULL, `inputCountAlt` = NULL, `outputCountRef` = NULL, `outputCountAlt` = NULL, `postProbEffect` = NULL, `CI_lower_95` = NULL, `CI_upper_95` = NULL, `significant` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `phenotype` = NULL, `VCP` = NULL, `gene` = NULL, `phenotype_name` = NULL, `class` = NULL, `files_filesets` = NULL, `biological_context` = NULL, `biosample_term` = NULL, `treatments_term_ids` = NULL, ...) {
       if (!missing(`label`)) {
         if (!(is.character(`label`) && length(`label`) == 1)) {
           stop(paste("Error! Invalid data for `label`. Must be a string:", `label`))
@@ -163,17 +163,17 @@ BiosamplesFromVariants <- R6::R6Class(
       if (!is.null(`bed_score`)) {
         self$`bed_score` <- `bed_score`
       }
-      if (!is.null(`DNA_count_ref`)) {
-        self$`DNA_count_ref` <- `DNA_count_ref`
+      if (!is.null(`inputCountRef`)) {
+        self$`inputCountRef` <- `inputCountRef`
       }
-      if (!is.null(`DNA_count_alt`)) {
-        self$`DNA_count_alt` <- `DNA_count_alt`
+      if (!is.null(`inputCountAlt`)) {
+        self$`inputCountAlt` <- `inputCountAlt`
       }
-      if (!is.null(`RNA_count_ref`)) {
-        self$`RNA_count_ref` <- `RNA_count_ref`
+      if (!is.null(`outputCountRef`)) {
+        self$`outputCountRef` <- `outputCountRef`
       }
-      if (!is.null(`RNA_count_alt`)) {
-        self$`RNA_count_alt` <- `RNA_count_alt`
+      if (!is.null(`outputCountAlt`)) {
+        self$`outputCountAlt` <- `outputCountAlt`
       }
       if (!is.null(`postProbEffect`)) {
         self$`postProbEffect` <- `postProbEffect`
@@ -303,21 +303,21 @@ BiosamplesFromVariants <- R6::R6Class(
         BiosamplesFromVariantsObject[["bed_score"]] <-
           self$`bed_score`
       }
-      if (!is.null(self$`DNA_count_ref`)) {
-        BiosamplesFromVariantsObject[["DNA_count_ref"]] <-
-          self$`DNA_count_ref`
+      if (!is.null(self$`inputCountRef`)) {
+        BiosamplesFromVariantsObject[["inputCountRef"]] <-
+          self$`inputCountRef`
       }
-      if (!is.null(self$`DNA_count_alt`)) {
-        BiosamplesFromVariantsObject[["DNA_count_alt"]] <-
-          self$`DNA_count_alt`
+      if (!is.null(self$`inputCountAlt`)) {
+        BiosamplesFromVariantsObject[["inputCountAlt"]] <-
+          self$`inputCountAlt`
       }
-      if (!is.null(self$`RNA_count_ref`)) {
-        BiosamplesFromVariantsObject[["RNA_count_ref"]] <-
-          self$`RNA_count_ref`
+      if (!is.null(self$`outputCountRef`)) {
+        BiosamplesFromVariantsObject[["outputCountRef"]] <-
+          self$`outputCountRef`
       }
-      if (!is.null(self$`RNA_count_alt`)) {
-        BiosamplesFromVariantsObject[["RNA_count_alt"]] <-
-          self$`RNA_count_alt`
+      if (!is.null(self$`outputCountAlt`)) {
+        BiosamplesFromVariantsObject[["outputCountAlt"]] <-
+          self$`outputCountAlt`
       }
       if (!is.null(self$`postProbEffect`)) {
         BiosamplesFromVariantsObject[["postProbEffect"]] <-
@@ -433,17 +433,17 @@ BiosamplesFromVariants <- R6::R6Class(
       if (!is.null(this_object$`bed_score`)) {
         self$`bed_score` <- this_object$`bed_score`
       }
-      if (!is.null(this_object$`DNA_count_ref`)) {
-        self$`DNA_count_ref` <- this_object$`DNA_count_ref`
+      if (!is.null(this_object$`inputCountRef`)) {
+        self$`inputCountRef` <- this_object$`inputCountRef`
       }
-      if (!is.null(this_object$`DNA_count_alt`)) {
-        self$`DNA_count_alt` <- this_object$`DNA_count_alt`
+      if (!is.null(this_object$`inputCountAlt`)) {
+        self$`inputCountAlt` <- this_object$`inputCountAlt`
       }
-      if (!is.null(this_object$`RNA_count_ref`)) {
-        self$`RNA_count_ref` <- this_object$`RNA_count_ref`
+      if (!is.null(this_object$`outputCountRef`)) {
+        self$`outputCountRef` <- this_object$`outputCountRef`
       }
-      if (!is.null(this_object$`RNA_count_alt`)) {
-        self$`RNA_count_alt` <- this_object$`RNA_count_alt`
+      if (!is.null(this_object$`outputCountAlt`)) {
+        self$`outputCountAlt` <- this_object$`outputCountAlt`
       }
       if (!is.null(this_object$`postProbEffect`)) {
         self$`postProbEffect` <- this_object$`postProbEffect`
@@ -532,10 +532,10 @@ BiosamplesFromVariants <- R6::R6Class(
       self$`strand` <- this_object$`strand`
       self$`log2FC` <- this_object$`log2FC`
       self$`bed_score` <- this_object$`bed_score`
-      self$`DNA_count_ref` <- this_object$`DNA_count_ref`
-      self$`DNA_count_alt` <- this_object$`DNA_count_alt`
-      self$`RNA_count_ref` <- this_object$`RNA_count_ref`
-      self$`RNA_count_alt` <- this_object$`RNA_count_alt`
+      self$`inputCountRef` <- this_object$`inputCountRef`
+      self$`inputCountAlt` <- this_object$`inputCountAlt`
+      self$`outputCountRef` <- this_object$`outputCountRef`
+      self$`outputCountAlt` <- this_object$`outputCountAlt`
       self$`postProbEffect` <- this_object$`postProbEffect`
       self$`CI_lower_95` <- this_object$`CI_lower_95`
       self$`CI_upper_95` <- this_object$`CI_upper_95`

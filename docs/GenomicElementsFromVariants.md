@@ -17,6 +17,6 @@ Name | Type | Description | Notes
 **biosample_term** | **character** |  | [optional] 
 **source** | **character** |  | [optional] 
 **source_url** | **character** |  | [optional] 
-**genomic_element** | [**GenomicElement9**](GenomicElement9.md) |  | [optional] 
+**genomic_element** | [**GenomicElement**](GenomicElement.md) |  | [optional] 
 
 

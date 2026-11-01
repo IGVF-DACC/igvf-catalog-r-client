@@ -1,43 +1,43 @@
-#' Create a new AccessibleGenomicElement11
+#' Create a new GenomicElement11
 #'
 #' @description
-#' AccessibleGenomicElement11 Class
+#' GenomicElement11 Class
 #'
 #' @docType class
-#' @title AccessibleGenomicElement11
-#' @description AccessibleGenomicElement11 Class
+#' @title GenomicElement11
+#' @description GenomicElement11 Class
 #' @format An \code{R6Class} generator object
 #' @field chr  character
 #' @field start  numeric
 #' @field end  numeric
 #' @field strand  character [optional]
 #' @field name  character
+#' @field aliases  list(character) [optional]
 #' @field method  character [optional]
 #' @field source_annotation  character
 #' @field type  character
 #' @field source  character
 #' @field source_url  character
-#' @field _id  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-AccessibleGenomicElement11 <- R6::R6Class(
-  "AccessibleGenomicElement11",
+GenomicElement11 <- R6::R6Class(
+  "GenomicElement11",
   public = list(
     `chr` = NULL,
     `start` = NULL,
     `end` = NULL,
     `strand` = NULL,
     `name` = NULL,
+    `aliases` = NULL,
     `method` = NULL,
     `source_annotation` = NULL,
     `type` = NULL,
     `source` = NULL,
     `source_url` = NULL,
-    `_id` = NULL,
 
     #' @description
-    #' Initialize a new AccessibleGenomicElement11 class.
+    #' Initialize a new GenomicElement11 class.
     #'
     #' @param chr chr
     #' @param start start
@@ -47,11 +47,11 @@ AccessibleGenomicElement11 <- R6::R6Class(
     #' @param type type
     #' @param source source
     #' @param source_url source_url
-    #' @param _id _id
     #' @param strand strand
+    #' @param aliases aliases
     #' @param method method
     #' @param ... Other optional arguments.
-    initialize = function(`chr`, `start`, `end`, `name`, `source_annotation`, `type`, `source`, `source_url`, `_id`, `strand` = NULL, `method` = NULL, ...) {
+    initialize = function(`chr`, `start`, `end`, `name`, `source_annotation`, `type`, `source`, `source_url`, `strand` = NULL, `aliases` = NULL, `method` = NULL, ...) {
       if (!missing(`chr`)) {
         if (!(is.character(`chr`) && length(`chr`) == 1)) {
           stop(paste("Error! Invalid data for `chr`. Must be a string:", `chr`))
@@ -94,17 +94,16 @@ AccessibleGenomicElement11 <- R6::R6Class(
         }
         self$`source_url` <- `source_url`
       }
-      if (!missing(`_id`)) {
-        if (!(is.character(`_id`) && length(`_id`) == 1)) {
-          stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
-        }
-        self$`_id` <- `_id`
-      }
       if (!is.null(`strand`)) {
         if (!(is.character(`strand`) && length(`strand`) == 1)) {
           stop(paste("Error! Invalid data for `strand`. Must be a string:", `strand`))
         }
         self$`strand` <- `strand`
+      }
+      if (!is.null(`aliases`)) {
+        stopifnot(is.vector(`aliases`), length(`aliases`) != 0)
+        sapply(`aliases`, function(x) stopifnot(is.character(x)))
+        self$`aliases` <- `aliases`
       }
       if (!is.null(`method`)) {
         if (!(is.character(`method`) && length(`method`) == 1)) {
@@ -126,9 +125,9 @@ AccessibleGenomicElement11 <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return AccessibleGenomicElement11 as a base R list.
+    #' @return GenomicElement11 as a base R list.
     #' @examples
-    #' # convert array of AccessibleGenomicElement11 (x) to a data frame
+    #' # convert array of GenomicElement11 (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -140,63 +139,63 @@ AccessibleGenomicElement11 <- R6::R6Class(
     },
 
     #' @description
-    #' Convert AccessibleGenomicElement11 to a base R type
+    #' Convert GenomicElement11 to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      AccessibleGenomicElement11Object <- list()
+      GenomicElement11Object <- list()
       if (!is.null(self$`chr`)) {
-        AccessibleGenomicElement11Object[["chr"]] <-
+        GenomicElement11Object[["chr"]] <-
           self$`chr`
       }
       if (!is.null(self$`start`)) {
-        AccessibleGenomicElement11Object[["start"]] <-
+        GenomicElement11Object[["start"]] <-
           self$`start`
       }
       if (!is.null(self$`end`)) {
-        AccessibleGenomicElement11Object[["end"]] <-
+        GenomicElement11Object[["end"]] <-
           self$`end`
       }
       if (!is.null(self$`strand`)) {
-        AccessibleGenomicElement11Object[["strand"]] <-
+        GenomicElement11Object[["strand"]] <-
           self$`strand`
       }
       if (!is.null(self$`name`)) {
-        AccessibleGenomicElement11Object[["name"]] <-
+        GenomicElement11Object[["name"]] <-
           self$`name`
       }
+      if (!is.null(self$`aliases`)) {
+        GenomicElement11Object[["aliases"]] <-
+          self$`aliases`
+      }
       if (!is.null(self$`method`)) {
-        AccessibleGenomicElement11Object[["method"]] <-
+        GenomicElement11Object[["method"]] <-
           self$`method`
       }
       if (!is.null(self$`source_annotation`)) {
-        AccessibleGenomicElement11Object[["source_annotation"]] <-
+        GenomicElement11Object[["source_annotation"]] <-
           self$`source_annotation`
       }
       if (!is.null(self$`type`)) {
-        AccessibleGenomicElement11Object[["type"]] <-
+        GenomicElement11Object[["type"]] <-
           self$`type`
       }
       if (!is.null(self$`source`)) {
-        AccessibleGenomicElement11Object[["source"]] <-
+        GenomicElement11Object[["source"]] <-
           self$`source`
       }
       if (!is.null(self$`source_url`)) {
-        AccessibleGenomicElement11Object[["source_url"]] <-
+        GenomicElement11Object[["source_url"]] <-
           self$`source_url`
       }
-      if (!is.null(self$`_id`)) {
-        AccessibleGenomicElement11Object[["_id"]] <-
-          self$`_id`
-      }
-      return(AccessibleGenomicElement11Object)
+      return(GenomicElement11Object)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of AccessibleGenomicElement11
+    #' Deserialize JSON string into an instance of GenomicElement11
     #'
     #' @param input_json the JSON input
-    #' @return the instance of AccessibleGenomicElement11
+    #' @return the instance of GenomicElement11
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`chr`)) {
@@ -214,6 +213,9 @@ AccessibleGenomicElement11 <- R6::R6Class(
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
       }
+      if (!is.null(this_object$`aliases`)) {
+        self$`aliases` <- ApiClient$new()$deserializeObj(this_object$`aliases`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`method`)) {
         self$`method` <- this_object$`method`
       }
@@ -229,9 +231,6 @@ AccessibleGenomicElement11 <- R6::R6Class(
       if (!is.null(this_object$`source_url`)) {
         self$`source_url` <- this_object$`source_url`
       }
-      if (!is.null(this_object$`_id`)) {
-        self$`_id` <- this_object$`_id`
-      }
       self
     },
 
@@ -239,7 +238,7 @@ AccessibleGenomicElement11 <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return AccessibleGenomicElement11 in JSON format
+    #' @return GenomicElement11 in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -247,10 +246,10 @@ AccessibleGenomicElement11 <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of AccessibleGenomicElement11
+    #' Deserialize JSON string into an instance of GenomicElement11
     #'
     #' @param input_json the JSON input
-    #' @return the instance of AccessibleGenomicElement11
+    #' @return the instance of GenomicElement11
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`chr` <- this_object$`chr`
@@ -258,17 +257,17 @@ AccessibleGenomicElement11 <- R6::R6Class(
       self$`end` <- this_object$`end`
       self$`strand` <- this_object$`strand`
       self$`name` <- this_object$`name`
+      self$`aliases` <- ApiClient$new()$deserializeObj(this_object$`aliases`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`method` <- this_object$`method`
       self$`source_annotation` <- this_object$`source_annotation`
       self$`type` <- this_object$`type`
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
-      self$`_id` <- this_object$`_id`
       self
     },
 
     #' @description
-    #' Validate JSON input with respect to AccessibleGenomicElement11 and throw an exception if invalid
+    #' Validate JSON input with respect to GenomicElement11 and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -279,17 +278,17 @@ AccessibleGenomicElement11 <- R6::R6Class(
           stop(paste("Error! Invalid data for `chr`. Must be a string:", input_json$`chr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `chr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement11: the required field `chr` is missing."))
       }
       # check the required field `start`
       if (!is.null(input_json$`start`)) {
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `start` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement11: the required field `start` is missing."))
       }
       # check the required field `end`
       if (!is.null(input_json$`end`)) {
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `end` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement11: the required field `end` is missing."))
       }
       # check the required field `name`
       if (!is.null(input_json$`name`)) {
@@ -297,7 +296,7 @@ AccessibleGenomicElement11 <- R6::R6Class(
           stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `name` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement11: the required field `name` is missing."))
       }
       # check the required field `source_annotation`
       if (!is.null(input_json$`source_annotation`)) {
@@ -305,7 +304,7 @@ AccessibleGenomicElement11 <- R6::R6Class(
           stop(paste("Error! Invalid data for `source_annotation`. Must be a string:", input_json$`source_annotation`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `source_annotation` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement11: the required field `source_annotation` is missing."))
       }
       # check the required field `type`
       if (!is.null(input_json$`type`)) {
@@ -313,7 +312,7 @@ AccessibleGenomicElement11 <- R6::R6Class(
           stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `type` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement11: the required field `type` is missing."))
       }
       # check the required field `source`
       if (!is.null(input_json$`source`)) {
@@ -321,7 +320,7 @@ AccessibleGenomicElement11 <- R6::R6Class(
           stop(paste("Error! Invalid data for `source`. Must be a string:", input_json$`source`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `source` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement11: the required field `source` is missing."))
       }
       # check the required field `source_url`
       if (!is.null(input_json$`source_url`)) {
@@ -329,22 +328,14 @@ AccessibleGenomicElement11 <- R6::R6Class(
           stop(paste("Error! Invalid data for `source_url`. Must be a string:", input_json$`source_url`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `source_url` is missing."))
-      }
-      # check the required field `_id`
-      if (!is.null(input_json$`_id`)) {
-        if (!(is.character(input_json$`_id`) && length(input_json$`_id`) == 1)) {
-          stop(paste("Error! Invalid data for `_id`. Must be a string:", input_json$`_id`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for AccessibleGenomicElement11: the required field `_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for GenomicElement11: the required field `source_url` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of AccessibleGenomicElement11
+    #' @return String representation of GenomicElement11
     toString = function() {
       self$toJSONString()
     },
@@ -386,11 +377,6 @@ AccessibleGenomicElement11 <- R6::R6Class(
 
       # check if the required `source_url` is null
       if (is.null(self$`source_url`)) {
-        return(FALSE)
-      }
-
-      # check if the required `_id` is null
-      if (is.null(self$`_id`)) {
         return(FALSE)
       }
 
@@ -438,11 +424,6 @@ AccessibleGenomicElement11 <- R6::R6Class(
         invalid_fields["source_url"] <- "Non-nullable required field `source_url` cannot be null."
       }
 
-      # check if the required `_id` is null
-      if (is.null(self$`_id`)) {
-        invalid_fields["_id"] <- "Non-nullable required field `_id` cannot be null."
-      }
-
       invalid_fields
     },
 
@@ -457,13 +438,13 @@ AccessibleGenomicElement11 <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# AccessibleGenomicElement11$unlock()
+# GenomicElement11$unlock()
 #
 ## Below is an example to define the print function
-# AccessibleGenomicElement11$set("public", "print", function(...) {
+# GenomicElement11$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# AccessibleGenomicElement11$lock()
+# GenomicElement11$lock()
 

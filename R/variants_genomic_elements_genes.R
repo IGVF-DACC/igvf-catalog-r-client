@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field variant  \link{VariantBasic}
 #' @field distance_to_tss  numeric [optional]
-#' @field genomic_element  \link{GenomicElement2}
+#' @field genomic_element  \link{GenomicElement9}
 #' @field gene  \link{Gene6}
 #' @field name  character
 #' @field label  character
@@ -320,7 +320,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
         self$`distance_to_tss` <- this_object$`distance_to_tss`
       }
       if (!is.null(this_object$`genomic_element`)) {
-        `genomic_element_object` <- GenomicElement2$new()
+        `genomic_element_object` <- GenomicElement9$new()
         `genomic_element_object`$fromJSON(jsonlite::toJSON(this_object$`genomic_element`, auto_unbox = TRUE, digits = NA))
         self$`genomic_element` <- `genomic_element_object`
       }
@@ -409,7 +409,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`variant` <- VariantBasic$new()$fromJSON(jsonlite::toJSON(this_object$`variant`, auto_unbox = TRUE, digits = NA))
       self$`distance_to_tss` <- this_object$`distance_to_tss`
-      self$`genomic_element` <- GenomicElement2$new()$fromJSON(jsonlite::toJSON(this_object$`genomic_element`, auto_unbox = TRUE, digits = NA))
+      self$`genomic_element` <- GenomicElement9$new()$fromJSON(jsonlite::toJSON(this_object$`genomic_element`, auto_unbox = TRUE, digits = NA))
       self$`gene` <- Gene6$new()$fromJSON(jsonlite::toJSON(this_object$`gene`, auto_unbox = TRUE, digits = NA))
       self$`name` <- this_object$`name`
       self$`label` <- this_object$`label`

@@ -16,23 +16,23 @@ BiosamplesFromGenomicElementsGenomicElement <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("GenomicElementFull", "character"),
+    any_of = list("GenomicElement11", "character"),
 
     #' @description
     #' Initialize a new BiosamplesFromGenomicElementsGenomicElement.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "GenomicElementFull", "character"
+    #' @param instance an instance of the object defined in the anyOf schemas: "GenomicElement11", "character"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "GenomicElementFull") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "GenomicElement11") {
         self$actual_instance <- instance
-        self$actual_type <- "GenomicElementFull"
+        self$actual_type <- "GenomicElement11"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "character") {
         self$actual_instance <- instance
         self$actual_type <- "character"
       } else {
-        stop(paste("Failed to initialize BiosamplesFromGenomicElementsGenomicElement with anyOf schemas GenomicElementFull, character. Provided class name: ",
+        stop(paste("Failed to initialize BiosamplesFromGenomicElementsGenomicElement with anyOf schemas GenomicElement11, character. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -73,22 +73,22 @@ BiosamplesFromGenomicElementsGenomicElement <- R6::R6Class(
         error_messages <- append(error_messages, `character_result`["message"])
       }
 
-      `GenomicElementFull_result` <- tryCatch({
-          `GenomicElementFull`$public_methods$validateJSON(input)
-          `GenomicElementFull_instance` <- `GenomicElementFull`$new()
-          self$actual_instance <- `GenomicElementFull_instance`$fromJSON(input)
-          self$actual_type <- "GenomicElementFull"
+      `GenomicElement11_result` <- tryCatch({
+          `GenomicElement11`$public_methods$validateJSON(input)
+          `GenomicElement11_instance` <- `GenomicElement11`$new()
+          self$actual_instance <- `GenomicElement11_instance`$fromJSON(input)
+          self$actual_type <- "GenomicElement11"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`GenomicElementFull_result`["error"])) {
-        error_messages <- append(error_messages, `GenomicElementFull_result`["message"])
+      if (!is.null(`GenomicElement11_result`["error"])) {
+        error_messages <- append(error_messages, `GenomicElement11_result`["message"])
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into BiosamplesFromGenomicElementsGenomicElement with anyOf schemas GenomicElementFull, character. Details: >>",
+      stop(paste("No match found when deserializing the input into BiosamplesFromGenomicElementsGenomicElement with anyOf schemas GenomicElement11, character. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

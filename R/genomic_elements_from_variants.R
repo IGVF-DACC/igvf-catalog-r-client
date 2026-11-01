@@ -20,7 +20,7 @@
 #' @field biosample_term  character [optional]
 #' @field source  character [optional]
 #' @field source_url  character [optional]
-#' @field genomic_element  \link{GenomicElement9} [optional]
+#' @field genomic_element  \link{GenomicElement} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -273,7 +273,7 @@ GenomicElementsFromVariants <- R6::R6Class(
         self$`source_url` <- this_object$`source_url`
       }
       if (!is.null(this_object$`genomic_element`)) {
-        `genomic_element_object` <- GenomicElement9$new()
+        `genomic_element_object` <- GenomicElement$new()
         `genomic_element_object`$fromJSON(jsonlite::toJSON(this_object$`genomic_element`, auto_unbox = TRUE, digits = NA))
         self$`genomic_element` <- `genomic_element_object`
       }
@@ -311,7 +311,7 @@ GenomicElementsFromVariants <- R6::R6Class(
       self$`biosample_term` <- this_object$`biosample_term`
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
-      self$`genomic_element` <- GenomicElement9$new()$fromJSON(jsonlite::toJSON(this_object$`genomic_element`, auto_unbox = TRUE, digits = NA))
+      self$`genomic_element` <- GenomicElement$new()$fromJSON(jsonlite::toJSON(this_object$`genomic_element`, auto_unbox = TRUE, digits = NA))
       self
     },
 

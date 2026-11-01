@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **character** |  | 
 **name** | **character** |  | [optional] 
+**aliases** | **array[character]** |  | [optional] 
 **chr** | **character** |  | [optional] 
 **start** | **numeric** |  | [optional] 
 **end** | **numeric** |  | [optional] 

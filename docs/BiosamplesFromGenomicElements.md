@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **strand** | **character** |  | 
 **neg_log10_pvalue** | **numeric** |  | 
 **neg_log10_pvalue_adj** | **numeric** |  | 
-**DNA_count** | **numeric** |  | [optional] 
-**RNA_count** | **numeric** |  | [optional] 
+**inputCount** | **numeric** |  | [optional] 
+**outputCount** | **numeric** |  | [optional] 
 **significant** | **character** |  | [optional] 
 **source** | **character** |  | [optional] 
 **source_url** | **character** |  | [optional] 

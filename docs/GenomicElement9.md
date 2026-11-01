@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **chr** | **character** |  | 
 **start** | **numeric** |  | 
 **end** | **numeric** |  | 
-**type** | **character** |  | 
+**type** | **character** |  | [optional] 
+**source** | **character** |  | [optional] 
+**source_url** | **character** |  | [optional] 
 **source_annotation** | **character** |  | [optional] 
-**source** | **character** |  | 
-**source_url** | **character** |  | 
 
 
