@@ -201,11 +201,11 @@ No authorization required
 | **0** | Error response |  -  |
 
 # **BiosamplesFromGenomicElements**
-> array[BiosamplesFromGenomicElements] BiosamplesFromGenomicElements(region = var.region, region_type = var.region_type, source = var.source, method = var.method, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
+> array[BiosamplesFromGenomicElements] BiosamplesFromGenomicElements(region = var.region, source = var.source, method = var.method, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
 
 
 
-Retrieve MPRA experiments by querying positions of genomic elements. Set organism = Mus musculus for mouse MPRA sequences (GRCm39); the default is Homo sapiens (GRCh38). <br>   Set verbose = true to retrieve full info on the cell ontology terms. <br>   Human MPRA example: organism = Homo sapiens, <br>   region_type = tested elements, <br>   region = chr10:100038743-100038963. <br>   files_fileset = ENCFF475FKV,<br>   method = MPRA,<br>   source = IGVF. <br>   Mouse MPRA example: organism = Mus musculus, <br>   region = chr11:55319627-55319927, <br>   files_fileset = IGVFFI0975AQKF, <br>   method = MPRA, verbose = true. <br>   The limit parameter controls the page size and can not exceed 50. <br>   Pagination is 0-based.
+Retrieve MPRA experiments by querying positions of genomic elements. Set organism = Mus musculus for mouse MPRA sequences (GRCm39); the default is Homo sapiens (GRCh38). <br>     Set verbose = true to retrieve full info on the cell ontology terms. <br>     The limit parameter controls the page size and can not exceed 50. <br>     Pagination is 0-based. <br> <br>     <div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">These examples are grouped by method; use the <code>method</code> filter to return data from a specific method.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"mpra\">MPRA</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"mpra\"> <strong>MPRA:</strong> <div class=\"method-query-example\"> <strong>human IGVF MPRA by region (cardiac muscle cells)</strong>  <ul> <li>organism = Homo sapiens</li> <li>region = chr1:1000216-1000485</li> <li>files_fileset = IGVFFI0625ESRH</li> <li>method = MPRA</li> <li>source = IGVF</li> <li>verbose = true</li> </ul> </div> <div class=\"method-query-example\"> <strong>mouse IGVF MPRA by region (PYS-2 cells)</strong>  <ul> <li>organism = Mus musculus</li> <li>region = chr11:55319627-55319927</li> <li>files_fileset = IGVFFI0975AQKF</li> <li>method = MPRA</li> <li>source = IGVF</li> <li>verbose = true</li> </ul> </div> </div> </div>
 
 ### Example
 ```R
@@ -213,7 +213,6 @@ library(igvfcatalogclient)
 
 # prepare function argument(s)
 var_region <- "region_example" # character |  (Optional)
-var_region_type <- "region_type_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
@@ -224,8 +223,8 @@ var_limit <- 3.4 # numeric |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$BiosamplesFromGenomicElements(region = var_region, region_type = var_region_type, source = var_source, method = var_method, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limitdata_file = "result.txt")
-result <- api_instance$BiosamplesFromGenomicElements(region = var_region, region_type = var_region_type, source = var_source, method = var_method, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limit)
+# result <- api_instance$BiosamplesFromGenomicElements(region = var_region, source = var_source, method = var_method, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limitdata_file = "result.txt")
+result <- api_instance$BiosamplesFromGenomicElements(region = var_region, source = var_source, method = var_method, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limit)
 dput(result)
 ```
 
@@ -234,7 +233,6 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **region** | **character**|  | [optional] 
- **region_type** | Enum [accessible dna elements, candidate cis regulatory element, tested elements] |  | [optional] 
  **source** | Enum [ENCODE, IGVF] |  | [optional] 
  **method** | Enum [MPRA] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
