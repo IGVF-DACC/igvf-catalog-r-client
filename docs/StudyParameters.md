@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **study_type** | **character** |  | [optional] 
 **study_cases** | **character** |  | [optional] 
 **study_controls** | **character** |  | [optional] 
-**p-value** | **character** |  | [optional] 
+**p_value** | **character** |  | [optional] 
 **biogeographical_groups** | **character** |  | [optional] 
 
 

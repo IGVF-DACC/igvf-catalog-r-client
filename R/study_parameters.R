@@ -11,7 +11,7 @@
 #' @field study_type  character [optional]
 #' @field study_cases  character [optional]
 #' @field study_controls  character [optional]
-#' @field p-value  character [optional]
+#' @field p_value  character [optional]
 #' @field biogeographical_groups  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +23,7 @@ StudyParameters <- R6::R6Class(
     `study_type` = NULL,
     `study_cases` = NULL,
     `study_controls` = NULL,
-    `p-value` = NULL,
+    `p_value` = NULL,
     `biogeographical_groups` = NULL,
 
     #' @description
@@ -33,10 +33,10 @@ StudyParameters <- R6::R6Class(
     #' @param study_type study_type
     #' @param study_cases study_cases
     #' @param study_controls study_controls
-    #' @param p-value p-value
+    #' @param p_value p_value
     #' @param biogeographical_groups biogeographical_groups
     #' @param ... Other optional arguments.
-    initialize = function(`study_parameter_id`, `study_type` = NULL, `study_cases` = NULL, `study_controls` = NULL, `p-value` = NULL, `biogeographical_groups` = NULL, ...) {
+    initialize = function(`study_parameter_id`, `study_type` = NULL, `study_cases` = NULL, `study_controls` = NULL, `p_value` = NULL, `biogeographical_groups` = NULL, ...) {
       if (!missing(`study_parameter_id`)) {
         if (!(is.character(`study_parameter_id`) && length(`study_parameter_id`) == 1)) {
           stop(paste("Error! Invalid data for `study_parameter_id`. Must be a string:", `study_parameter_id`))
@@ -61,11 +61,11 @@ StudyParameters <- R6::R6Class(
         }
         self$`study_controls` <- `study_controls`
       }
-      if (!is.null(`p-value`)) {
-        if (!(is.character(`p-value`) && length(`p-value`) == 1)) {
-          stop(paste("Error! Invalid data for `p-value`. Must be a string:", `p-value`))
+      if (!is.null(`p_value`)) {
+        if (!(is.character(`p_value`) && length(`p_value`) == 1)) {
+          stop(paste("Error! Invalid data for `p_value`. Must be a string:", `p_value`))
         }
-        self$`p-value` <- `p-value`
+        self$`p_value` <- `p_value`
       }
       if (!is.null(`biogeographical_groups`)) {
         if (!(is.character(`biogeographical_groups`) && length(`biogeographical_groups`) == 1)) {
@@ -122,9 +122,9 @@ StudyParameters <- R6::R6Class(
         StudyParametersObject[["study_controls"]] <-
           self$`study_controls`
       }
-      if (!is.null(self$`p-value`)) {
-        StudyParametersObject[["p-value"]] <-
-          self$`p-value`
+      if (!is.null(self$`p_value`)) {
+        StudyParametersObject[["p_value"]] <-
+          self$`p_value`
       }
       if (!is.null(self$`biogeographical_groups`)) {
         StudyParametersObject[["biogeographical_groups"]] <-
@@ -152,8 +152,8 @@ StudyParameters <- R6::R6Class(
       if (!is.null(this_object$`study_controls`)) {
         self$`study_controls` <- this_object$`study_controls`
       }
-      if (!is.null(this_object$`p-value`)) {
-        self$`p-value` <- this_object$`p-value`
+      if (!is.null(this_object$`p_value`)) {
+        self$`p_value` <- this_object$`p_value`
       }
       if (!is.null(this_object$`biogeographical_groups`)) {
         self$`biogeographical_groups` <- this_object$`biogeographical_groups`
@@ -183,7 +183,7 @@ StudyParameters <- R6::R6Class(
       self$`study_type` <- this_object$`study_type`
       self$`study_cases` <- this_object$`study_cases`
       self$`study_controls` <- this_object$`study_controls`
-      self$`p-value` <- this_object$`p-value`
+      self$`p_value` <- this_object$`p_value`
       self$`biogeographical_groups` <- this_object$`biogeographical_groups`
       self
     },
