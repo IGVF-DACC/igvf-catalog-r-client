@@ -24,8 +24,12 @@ Method | HTTP request | Description
 [**DrugsFromVariants**](IgvfCatalogApi.md#DrugsFromVariants) | **GET** /variants/drugs | 
 [**EnhancerGenePredictions**](IgvfCatalogApi.md#EnhancerGenePredictions) | **GET** /enhancer-gene-predictions | 
 [**FilesFilesets**](IgvfCatalogApi.md#FilesFilesets) | **GET** /files-filesets | 
+[**GenePrograms**](IgvfCatalogApi.md#GenePrograms) | **GET** /gene-programs | 
+[**GeneProgramsFromGenes**](IgvfCatalogApi.md#GeneProgramsFromGenes) | **GET** /genes/gene-programs | 
+[**GeneProgramsGenePrograms**](IgvfCatalogApi.md#GeneProgramsGenePrograms) | **GET** /gene-programs/gene-programs | 
 [**Genes**](IgvfCatalogApi.md#Genes) | **GET** /genes | 
 [**GenesFromDiseases**](IgvfCatalogApi.md#GenesFromDiseases) | **GET** /diseases/genes | 
+[**GenesFromGenePrograms**](IgvfCatalogApi.md#GenesFromGenePrograms) | **GET** /gene-programs/genes | 
 [**GenesFromGenomicElements**](IgvfCatalogApi.md#GenesFromGenomicElements) | **GET** /genomic-elements/genes | 
 [**GenesFromPathways**](IgvfCatalogApi.md#GenesFromPathways) | **GET** /pathways/genes | 
 [**GenesFromProteins**](IgvfCatalogApi.md#GenesFromProteins) | **GET** /proteins/genes | 
@@ -1246,13 +1250,13 @@ Name | Type | Description  | Notes
  **file_fileset_id** | **character**|  | [optional] 
  **fileset_id** | **character**|  | [optional] 
  **lab** | Enum [alan-boyle, bill-majoros, charles-gersbach, community, danwei-huangfu, doug-fowler, encode, gary-hon, hyejung-won, j-michael-cherry, jay-shendure, jesse-engreitz, karen-mohlke, kushal-dey, lea-starita, luca-pinello, marc-vidal, mark-craven, nadav-ahituv, predrag-radivojac, richard-sherwood, thomas-quertermous, tim-reddy, tom-norman, zhiping-weng] |  | [optional] 
- **preferred_assay_title** | Enum [AAV-MPRA, ATAC-seq, CRISPR FACS screen, CRISPR FlowFISH screen, CRISPR MACS screen, DNase-seq, DUAL-IPA, MORF screen, MPRA, Migration CRISPR screen, Multiome Perturb-seq, Parse Perturb-seq, Perturb-seq, Proliferation CRISPR screen, SGE, STARR-seq, TAP-seq, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, Variant-EFFECTS, electroporated MPRA, in vivo MPRA, in vivo Perturb-seq, lentiMPRA, scCRISPR screen, snATAC-seq] |  | [optional] 
+ **preferred_assay_title** | Enum [AAV-MPRA, ATAC-seq, CC-Perturb-seq, CRISPR FACS screen, CRISPR FlowFISH screen, CRISPR MACS screen, DNase-seq, DUAL-IPA, MORF screen, MPRA, Migration CRISPR screen, Multiome Perturb-seq, Parse Perturb-seq, Perturb-seq, Proliferation CRISPR screen, SGE, STARR-seq, TAP-seq, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, Variant-EFFECTS, electroporated MPRA, in vivo MPRA, in vivo Perturb-seq, lentiMPRA, scCRISPR screen, snATAC-seq] |  | [optional] 
  **method** | Enum [ADASTRA, ATAC-seq, BlueSTARR, COXPRESdb, CRISPR screen, ClinGen, ColocBoost, DUAL-IPA, DepMap, ENCODE-rE2G, ESM-1v, GVATdb, GWAS, GenCC, HOCOMOCO, Homology, MORF screen, MPRA, Multiome Perturb-seq, MutPred2, Orphanet, Perturb-seq, PharmGKB, SEMVAR, SEMpl, SGE, STARR-seq, TopLD, VAMP-seq, VAMP-seq (MultiSTEP), Variant painting via fluorescence, cV2F, caQTL, candidate Cis-Regulatory Elements, eQTL, elements, genes, guide RNAs, pQTL, scE2G, snATAC-seq, spliceQTL, training data for predictive models] |  | [optional] 
  **perturbation** | Enum [CRISPR activation, CRISPR base editing, CRISPR cutting, CRISPR interference, CRISPR knockout, CRISPR prime editing, ORF overexpression] |  | [optional] 
  **donor_id** | **character**|  | [optional] 
  **sample_term** | **character**|  | [optional] 
  **sample_summary** | **character**|  | [optional] 
- **software** | Enum [2024_multistep, AD_MPRA, BCalm, BEDTools, BIRD, BlueSTARR, CRISPR BEAN, CRISPR-Millipede, CRISPR-SURF, CRISPResso2, Cell Profiler, ColocBoost, Cooler, CountESS, DESeq2, DUAL-IPA analysis scripts, Distal regulation ENCODE-rE2G, DistalRegulationCRISPRdata, ESM-1v, FRACTEL, Irreproducible Discovery Rate, MAGeCK, MPRAflow tsv-to-bed, MutPred2, NumPy, Pysam, R, SEMVAR, SEMpl, SGE Pipeline, Samtools, Sceptre, SciPy, Seaborn, Seurat, Snakemake, Straw, Tewhey ENCODE allelic MPRA to IGVF converter, Variant-EFFECTS, bigWigAverageOverBed, cV2F, crossdisorder-MPRA, cyp2c19_2c9, in_vivo_MPRA_downstream_analysis, matplotlib, mpralm, pandas, pySpade, pybedtools, scATAC-seq processing, scE2G, schizophrenia-MPRA, snapATAC2, statsmodels] |  | [optional] 
+ **software** | Enum [2024_multistep, AD_MPRA, BCalm, BEDTools, BIRD, BlueSTARR, CRISPR BEAN, CRISPR-Millipede, CRISPR-SURF, CRISPResso2, Cell Profiler, ColocBoost, Cooler, CountESS, DESeq2, DUAL-IPA analysis scripts, Distal regulation ENCODE-rE2G, DistalRegulationCRISPRdata, ESM-1v, FRACTEL, Irreproducible Discovery Rate, MAGeCK, MAST, MPRAflow tsv-to-bed, MutPred2, NumPy, PerturbNMF, Pysam, R, SEMVAR, SEMpl, SGE Pipeline, Samtools, Sceptre, SciPy, Seaborn, Seurat, Snakemake, Straw, TeloHAEC genome-wide Perturb-seq analysis, Tewhey ENCODE allelic MPRA to IGVF converter, Variant-EFFECTS, bigWigAverageOverBed, cNMF, cV2F, crossdisorder-MPRA, cyp2c19_2c9, in_vivo_MPRA_downstream_analysis, matplotlib, mpralm, pandas, pySpade, pybedtools, scATAC-seq processing, scE2G, schizophrenia-MPRA, snapATAC2, statsmodels] |  | [optional] 
  **cell_annotation** | **character**|  | [optional] 
  **cell_annotation_term** | **character**|  | [optional] 
  **has_genome_browser_link** | Enum [true, false] |  | [optional] 
@@ -1264,6 +1268,210 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**array[FilesFilesets]**](FilesFilesets.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response |  -  |
+| **0** | Error response |  -  |
+
+# **GenePrograms**
+> array[GeneProgram] GenePrograms(files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id, page = 0, limit = 25, id = var.id, program_id = var.program_id, name = var.name)
+
+
+
+Retrieve gene program definitions. Program identifiers are local to the defining file; catalog IDs include that file accession. Pagination is 0-based, with at most 100 results per page.<br><br><div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">Perturb-seq examples from the HCASMC-hTERT gene-program dataset. Membership uses the definition file; regulation and correlation use their respective result files.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"gene-programs-perturb-seq\">Perturb-seq</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"gene-programs-perturb-seq\"> <strong>Perturb-seq:</strong> <div class=\"method-query-example\"> <strong>Program definition</strong>  <ul> <li>id = IGVFFI9532OEFJ_GP_1</li> </ul> </div> <div class=\"method-query-example\"> <strong>File-local program identifier</strong>  <ul> <li>program_id = GP_1</li> <li>files_fileset = IGVFFI9532OEFJ</li> </ul> </div> </div> </div>
+
+### Example
+```R
+library(igvfcatalogclient)
+
+# prepare function argument(s)
+var_files_fileset <- "files_fileset_example" # character |  (Optional)
+var_biosample_term <- "biosample_term_example" # character |  (Optional)
+var_biological_context <- "biological_context_example" # character |  (Optional)
+var_treatment_term_id <- "treatment_term_id_example" # character |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 25 # integer |  (Optional)
+var_id <- "id_example" # character |  (Optional)
+var_program_id <- "program_id_example" # character |  (Optional)
+var_name <- "name_example" # character |  (Optional)
+
+api_instance <- IgvfCatalogApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GenePrograms(files_fileset = var_files_fileset, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id, page = var_page, limit = var_limit, id = var_id, program_id = var_program_id, name = var_namedata_file = "result.txt")
+result <- api_instance$GenePrograms(files_fileset = var_files_fileset, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id, page = var_page, limit = var_limit, id = var_id, program_id = var_program_id, name = var_name)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **files_fileset** | **character**|  | [optional] 
+ **biosample_term** | **character**|  | [optional] 
+ **biological_context** | **character**|  | [optional] 
+ **treatment_term_id** | **character**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] [default to 25]
+ **id** | **character**|  | [optional] 
+ **program_id** | **character**|  | [optional] 
+ **name** | **character**|  | [optional] 
+
+### Return type
+
+[**array[GeneProgram]**](GeneProgram.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response |  -  |
+| **0** | Error response |  -  |
+
+# **GeneProgramsFromGenes**
+> array[GeneProgramsFromGenes] GeneProgramsFromGenes(files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id, page = 0, limit = 25, gene_id = var.gene_id, gene_name = var.gene_name, hgnc_id = var.hgnc_id, synonym = var.synonym, gene_program_id = var.gene_program_id, label = var.label, score = var.score, log2_fc = var.log2_fc, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, significant = var.significant, verbose = "false")
+
+
+
+Retrieve gene program membership weights and regulator effects for a gene. Filter label to distinguish membership from regulation. Numeric filters accept gt:, gte:, lt:, lte:. Pagination is 0-based; maximum page size is 100.<br><br><div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">Perturb-seq examples from the HCASMC-hTERT gene-program dataset. Membership uses the definition file; regulation and correlation use their respective result files.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"genes-gene-programs-perturb-seq\">Perturb-seq</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"genes-gene-programs-perturb-seq\"> <strong>Perturb-seq:</strong> <div class=\"method-query-example\"> <strong>Programs containing ACTB</strong>  <ul> <li>gene_id = ENSG00000075624</li> <li>label = gene program membership</li> <li>files_fileset = IGVFFI9532OEFJ</li> </ul> </div> <div class=\"method-query-example\"> <strong>Programs regulated by AAGAB</strong>  <ul> <li>gene_id = ENSG00000103591</li> <li>label = gene program regulation</li> <li>files_fileset = IGVFFI7611VVSS</li> </ul> </div> </div> </div>
+
+### Example
+```R
+library(igvfcatalogclient)
+
+# prepare function argument(s)
+var_files_fileset <- "files_fileset_example" # character |  (Optional)
+var_biosample_term <- "biosample_term_example" # character |  (Optional)
+var_biological_context <- "biological_context_example" # character |  (Optional)
+var_treatment_term_id <- "treatment_term_id_example" # character |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 25 # integer |  (Optional)
+var_gene_id <- "gene_id_example" # character |  (Optional)
+var_gene_name <- "gene_name_example" # character |  (Optional)
+var_hgnc_id <- "hgnc_id_example" # character |  (Optional)
+var_synonym <- "synonym_example" # character |  (Optional)
+var_gene_program_id <- "gene_program_id_example" # character |  (Optional)
+var_label <- "label_example" # character |  (Optional)
+var_score <- "score_example" # character |  (Optional)
+var_log2_fc <- "log2_fc_example" # character |  (Optional)
+var_neg_log10_pvalue_adj <- "neg_log10_pvalue_adj_example" # character |  (Optional)
+var_significant <- "significant_example" # character |  (Optional)
+var_verbose <- "false" # character |  (Optional)
+
+api_instance <- IgvfCatalogApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GeneProgramsFromGenes(files_fileset = var_files_fileset, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id, page = var_page, limit = var_limit, gene_id = var_gene_id, gene_name = var_gene_name, hgnc_id = var_hgnc_id, synonym = var_synonym, gene_program_id = var_gene_program_id, label = var_label, score = var_score, log2_fc = var_log2_fc, neg_log10_pvalue_adj = var_neg_log10_pvalue_adj, significant = var_significant, verbose = var_verbosedata_file = "result.txt")
+result <- api_instance$GeneProgramsFromGenes(files_fileset = var_files_fileset, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id, page = var_page, limit = var_limit, gene_id = var_gene_id, gene_name = var_gene_name, hgnc_id = var_hgnc_id, synonym = var_synonym, gene_program_id = var_gene_program_id, label = var_label, score = var_score, log2_fc = var_log2_fc, neg_log10_pvalue_adj = var_neg_log10_pvalue_adj, significant = var_significant, verbose = var_verbose)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **files_fileset** | **character**|  | [optional] 
+ **biosample_term** | **character**|  | [optional] 
+ **biological_context** | **character**|  | [optional] 
+ **treatment_term_id** | **character**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] [default to 25]
+ **gene_id** | **character**|  | [optional] 
+ **gene_name** | **character**|  | [optional] 
+ **hgnc_id** | **character**|  | [optional] 
+ **synonym** | **character**|  | [optional] 
+ **gene_program_id** | **character**|  | [optional] 
+ **label** | Enum [gene program membership, gene program regulation] |  | [optional] 
+ **score** | **character**|  | [optional] 
+ **log2_fc** | **character**|  | [optional] 
+ **neg_log10_pvalue_adj** | **character**|  | [optional] 
+ **significant** | Enum [true, false] |  | [optional] 
+ **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
+
+### Return type
+
+[**array[GeneProgramsFromGenes]**](GeneProgramsFromGenes.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response |  -  |
+| **0** | Error response |  -  |
+
+# **GeneProgramsGenePrograms**
+> array[GeneProgramsGenePrograms] GeneProgramsGenePrograms(gene_program_id, files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id, page = 0, limit = 25, associated_gene_program_id = var.associated_gene_program_id, pearson_correlation = var.pearson_correlation, verbose = "false")
+
+
+
+Retrieve program-program correlations in perturbation log2FC. Matches either endpoint; optional associated_gene_program_id restricts the pair. Pearson filters accept gt:, gte:, lt:, lte: and exclude missing coefficients. Pagination is 0-based; maximum page size is 100.<br><br><div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">Perturb-seq examples from the HCASMC-hTERT gene-program dataset. Membership uses the definition file; regulation and correlation use their respective result files.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"gene-programs-gene-programs-perturb-seq\">Perturb-seq</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"gene-programs-gene-programs-perturb-seq\"> <strong>Perturb-seq:</strong> <div class=\"method-query-example\"> <strong>Correlations for GP_1</strong>  <ul> <li>gene_program_id = IGVFFI9532OEFJ_GP_1</li> <li>files_fileset = IGVFFI9407YNQA</li> </ul> </div> <div class=\"method-query-example\"> <strong>Correlation between GP_1 and GP_2</strong>  <ul> <li>gene_program_id = IGVFFI9532OEFJ_GP_1</li> <li>associated_gene_program_id = IGVFFI9532OEFJ_GP_2</li> <li>files_fileset = IGVFFI9407YNQA</li> <li>pearson_correlation = lt:0</li> </ul> </div> </div> </div>
+
+### Example
+```R
+library(igvfcatalogclient)
+
+# prepare function argument(s)
+var_gene_program_id <- "gene_program_id_example" # character | Catalog program key including defining file accession, or document ID.
+var_files_fileset <- "files_fileset_example" # character |  (Optional)
+var_biosample_term <- "biosample_term_example" # character |  (Optional)
+var_biological_context <- "biological_context_example" # character |  (Optional)
+var_treatment_term_id <- "treatment_term_id_example" # character |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 25 # integer |  (Optional)
+var_associated_gene_program_id <- "associated_gene_program_id_example" # character |  (Optional)
+var_pearson_correlation <- "pearson_correlation_example" # character |  (Optional)
+var_verbose <- "false" # character |  (Optional)
+
+api_instance <- IgvfCatalogApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GeneProgramsGenePrograms(var_gene_program_id, files_fileset = var_files_fileset, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id, page = var_page, limit = var_limit, associated_gene_program_id = var_associated_gene_program_id, pearson_correlation = var_pearson_correlation, verbose = var_verbosedata_file = "result.txt")
+result <- api_instance$GeneProgramsGenePrograms(var_gene_program_id, files_fileset = var_files_fileset, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id, page = var_page, limit = var_limit, associated_gene_program_id = var_associated_gene_program_id, pearson_correlation = var_pearson_correlation, verbose = var_verbose)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gene_program_id** | **character**| Catalog program key including defining file accession, or document ID. | 
+ **files_fileset** | **character**|  | [optional] 
+ **biosample_term** | **character**|  | [optional] 
+ **biological_context** | **character**|  | [optional] 
+ **treatment_term_id** | **character**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] [default to 25]
+ **associated_gene_program_id** | **character**|  | [optional] 
+ **pearson_correlation** | **character**|  | [optional] 
+ **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
+
+### Return type
+
+[**array[GeneProgramsGenePrograms]**](GeneProgramsGenePrograms.md)
 
 ### Authorization
 
@@ -1390,6 +1598,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**array[DiseasesFromGenes]**](DiseasesFromGenes.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response |  -  |
+| **0** | Error response |  -  |
+
+# **GenesFromGenePrograms**
+> array[GeneProgramsFromGenes] GenesFromGenePrograms(files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id, page = 0, limit = 25, gene_id = var.gene_id, gene_name = var.gene_name, hgnc_id = var.hgnc_id, synonym = var.synonym, gene_program_id = var.gene_program_id, label = var.label, score = var.score, log2_fc = var.log2_fc, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, significant = var.significant, verbose = "false")
+
+
+
+Retrieve member genes or regulators for a catalog gene_program_id. Filter label to distinguish membership from regulation. Numeric filters accept gt:, gte:, lt:, lte:. Pagination is 0-based; maximum page size is 100.<br><br><div class=\"method-examples\"> <strong>Examples by method</strong> <p class=\"method-example-description\">Perturb-seq examples from the HCASMC-hTERT gene-program dataset. Membership uses the definition file; regulation and correlation use their respective result files.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"gene-programs-genes-perturb-seq\">Perturb-seq</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"gene-programs-genes-perturb-seq\"> <strong>Perturb-seq:</strong> <div class=\"method-query-example\"> <strong>Members of GP_1</strong>  <ul> <li>gene_program_id = IGVFFI9532OEFJ_GP_1</li> <li>label = gene program membership</li> <li>files_fileset = IGVFFI9532OEFJ</li> </ul> </div> <div class=\"method-query-example\"> <strong>Regulators of GP_1</strong>  <ul> <li>gene_program_id = IGVFFI9532OEFJ_GP_1</li> <li>label = gene program regulation</li> <li>files_fileset = IGVFFI7611VVSS</li> </ul> </div> </div> </div>
+
+### Example
+```R
+library(igvfcatalogclient)
+
+# prepare function argument(s)
+var_files_fileset <- "files_fileset_example" # character |  (Optional)
+var_biosample_term <- "biosample_term_example" # character |  (Optional)
+var_biological_context <- "biological_context_example" # character |  (Optional)
+var_treatment_term_id <- "treatment_term_id_example" # character |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 25 # integer |  (Optional)
+var_gene_id <- "gene_id_example" # character |  (Optional)
+var_gene_name <- "gene_name_example" # character |  (Optional)
+var_hgnc_id <- "hgnc_id_example" # character |  (Optional)
+var_synonym <- "synonym_example" # character |  (Optional)
+var_gene_program_id <- "gene_program_id_example" # character |  (Optional)
+var_label <- "label_example" # character |  (Optional)
+var_score <- "score_example" # character |  (Optional)
+var_log2_fc <- "log2_fc_example" # character |  (Optional)
+var_neg_log10_pvalue_adj <- "neg_log10_pvalue_adj_example" # character |  (Optional)
+var_significant <- "significant_example" # character |  (Optional)
+var_verbose <- "false" # character |  (Optional)
+
+api_instance <- IgvfCatalogApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GenesFromGenePrograms(files_fileset = var_files_fileset, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id, page = var_page, limit = var_limit, gene_id = var_gene_id, gene_name = var_gene_name, hgnc_id = var_hgnc_id, synonym = var_synonym, gene_program_id = var_gene_program_id, label = var_label, score = var_score, log2_fc = var_log2_fc, neg_log10_pvalue_adj = var_neg_log10_pvalue_adj, significant = var_significant, verbose = var_verbosedata_file = "result.txt")
+result <- api_instance$GenesFromGenePrograms(files_fileset = var_files_fileset, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id, page = var_page, limit = var_limit, gene_id = var_gene_id, gene_name = var_gene_name, hgnc_id = var_hgnc_id, synonym = var_synonym, gene_program_id = var_gene_program_id, label = var_label, score = var_score, log2_fc = var_log2_fc, neg_log10_pvalue_adj = var_neg_log10_pvalue_adj, significant = var_significant, verbose = var_verbose)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **files_fileset** | **character**|  | [optional] 
+ **biosample_term** | **character**|  | [optional] 
+ **biological_context** | **character**|  | [optional] 
+ **treatment_term_id** | **character**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] [default to 25]
+ **gene_id** | **character**|  | [optional] 
+ **gene_name** | **character**|  | [optional] 
+ **hgnc_id** | **character**|  | [optional] 
+ **synonym** | **character**|  | [optional] 
+ **gene_program_id** | **character**|  | [optional] 
+ **label** | Enum [gene program membership, gene program regulation] |  | [optional] 
+ **score** | **character**|  | [optional] 
+ **log2_fc** | **character**|  | [optional] 
+ **neg_log10_pvalue_adj** | **character**|  | [optional] 
+ **significant** | Enum [true, false] |  | [optional] 
+ **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
+
+### Return type
+
+[**array[GeneProgramsFromGenes]**](GeneProgramsFromGenes.md)
 
 ### Authorization
 
@@ -1763,11 +2049,11 @@ No authorization required
 | **0** | Error response |  -  |
 
 # **GenesGenes**
-> array[GenesGenes] GenesGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, associated_gene_id = var.associated_gene_id, associated_hgnc_id = var.associated_hgnc_id, associated_gene_name = var.associated_gene_name, associated_synonym = var.associated_synonym, z_score = var.z_score, interaction_type = var.interaction_type, label = var.label, method = var.method, source = var.source, name = var.name, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
+> array[GenesGenes] GenesGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, associated_gene_id = var.associated_gene_id, associated_hgnc_id = var.associated_hgnc_id, associated_gene_name = var.associated_gene_name, associated_synonym = var.associated_synonym, z_score = var.z_score, interaction_type = var.interaction_type, label = var.label, method = var.method, pearson_correlation = var.pearson_correlation, source = var.source, name = var.name, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id)
 
 
 
-Retrieve coexpressed gene pairs from CoXPresdb and genetic interactions from BioGRID. <br>     The following parameters can be used to set thresholds on z_score: gt (>), gte (>=), lt (<), lte (<=). z_score only exists on CoXPresdb edges; BioGRID edges do not have this field at all.<br>     At least one of these fields is required: gene_id, hgnc_id, gene_name, synonym. <br>     The limit parameter controls the page size and can not exceed 100. <br>     Pagination is 0-based. <br> <br>     <div class=\"method-examples\"> <strong>Examples by source</strong> <p class=\"method-example-description\">These examples are grouped by source; use the <code>source</code> filter to return data from a specific source.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"biogrid\">BioGRID</button> <button class=\"method-example-tab\" data-method-example-tab=\"coxpresdb\">COXPRESdb</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"biogrid\"> <strong>BioGRID:</strong> <div class=\"method-query-example\"> <strong>Single result</strong>  <ul> <li>gene_id = ENSG00000112592</li> <li>associated_gene_id = ENSG00000163132</li> <li>source = BioGRID</li> <li>files_fileset = IGVFFI4317VDGK</li> </ul> </div> <div class=\"method-query-example\"> <strong>Group results</strong>  <ul> <li>gene_id = ENSG00000112592</li> <li>source = BioGRID</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"coxpresdb\"> <strong>COXPRESdb:</strong> <div class=\"method-query-example\"> <strong>Single result</strong>  <ul> <li>gene_id = ENSG00000153048</li> <li>associated_gene_id = ENSG00000233369</li> <li>source = COXPRESdb</li> </ul> </div> <div class=\"method-query-example\"> <strong>Group results</strong>  <ul> <li>gene_id = ENSG00000153048</li> <li>source = COXPRESdb</li> </ul> </div> </div> </div>
+Retrieve coexpressed gene pairs from CoXPresdb, genetic interactions from BioGRID, and IGVF regulator-regulator correlations across gene programs. Filter label and files_fileset to select a relationship and experiment. pearson_correlation accepts gt:, gte:, lt:, lte: and excludes missing coefficients. <br>     The following parameters can be used to set thresholds on z_score: gt (>), gte (>=), lt (<), lte (<=). z_score only exists on CoXPresdb edges; BioGRID edges do not have this field at all.<br>     At least one of these fields is required: gene_id, hgnc_id, gene_name, synonym. <br>     The limit parameter controls the page size and can not exceed 100. <br>     Pagination is 0-based. <br> <br>     <div class=\"method-examples\"> <strong>Examples by source</strong> <p class=\"method-example-description\">These examples are grouped by source; use the <code>source</code> filter to return data from a specific source.</p> <div class=\"method-example-tabs\"> <button class=\"method-example-tab is-active\" data-method-example-tab=\"igvf-perturb-seq\">Perturb-seq</button> <button class=\"method-example-tab\" data-method-example-tab=\"biogrid\">BioGRID</button> <button class=\"method-example-tab\" data-method-example-tab=\"coxpresdb\">COXPRESdb</button> </div> <div class=\"method-example-panel is-active\" data-method-example-panel=\"igvf-perturb-seq\"> <strong>Perturb-seq:</strong> <div class=\"method-query-example\"> <strong>Single regulator pair in IL-1 beta-treated TeloHAEC cells</strong>  <ul> <li>gene_id = ENSG00000000003</li> <li>associated_gene_id = ENSG00000000005</li> <li>label = regulator-regulator correlation</li> <li>files_fileset = IGVFFI6502THLB</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"biogrid\"> <strong>BioGRID:</strong> <div class=\"method-query-example\"> <strong>Single result</strong>  <ul> <li>gene_id = ENSG00000112592</li> <li>associated_gene_id = ENSG00000163132</li> <li>source = BioGRID</li> <li>files_fileset = IGVFFI4317VDGK</li> </ul> </div> <div class=\"method-query-example\"> <strong>Group results</strong>  <ul> <li>gene_id = ENSG00000112592</li> <li>source = BioGRID</li> </ul> </div> </div> <div class=\"method-example-panel\" data-method-example-panel=\"coxpresdb\"> <strong>COXPRESdb:</strong> <div class=\"method-query-example\"> <strong>Single result</strong>  <ul> <li>gene_id = ENSG00000153048</li> <li>associated_gene_id = ENSG00000233369</li> <li>source = COXPRESdb</li> </ul> </div> <div class=\"method-query-example\"> <strong>Group results</strong>  <ul> <li>gene_id = ENSG00000153048</li> <li>source = COXPRESdb</li> </ul> </div> </div> </div>
 
 ### Example
 ```R
@@ -1787,18 +2073,22 @@ var_z_score <- "z_score_example" # character |  (Optional)
 var_interaction_type <- "interaction_type_example" # character |  (Optional)
 var_label <- "label_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
+var_pearson_correlation <- "pearson_correlation_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_name <- "name_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
+var_biosample_term <- "biosample_term_example" # character |  (Optional)
+var_biological_context <- "biological_context_example" # character |  (Optional)
+var_treatment_term_id <- "treatment_term_id_example" # character |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$GenesGenes(gene_id = var_gene_id, hgnc_id = var_hgnc_id, gene_name = var_gene_name, synonym = var_synonym, region = var_region, associated_gene_id = var_associated_gene_id, associated_hgnc_id = var_associated_hgnc_id, associated_gene_name = var_associated_gene_name, associated_synonym = var_associated_synonym, z_score = var_z_score, interaction_type = var_interaction_type, label = var_label, method = var_method, source = var_source, name = var_name, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limitdata_file = "result.txt")
-result <- api_instance$GenesGenes(gene_id = var_gene_id, hgnc_id = var_hgnc_id, gene_name = var_gene_name, synonym = var_synonym, region = var_region, associated_gene_id = var_associated_gene_id, associated_hgnc_id = var_associated_hgnc_id, associated_gene_name = var_associated_gene_name, associated_synonym = var_associated_synonym, z_score = var_z_score, interaction_type = var_interaction_type, label = var_label, method = var_method, source = var_source, name = var_name, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limit)
+# result <- api_instance$GenesGenes(gene_id = var_gene_id, hgnc_id = var_hgnc_id, gene_name = var_gene_name, synonym = var_synonym, region = var_region, associated_gene_id = var_associated_gene_id, associated_hgnc_id = var_associated_hgnc_id, associated_gene_name = var_associated_gene_name, associated_synonym = var_associated_synonym, z_score = var_z_score, interaction_type = var_interaction_type, label = var_label, method = var_method, pearson_correlation = var_pearson_correlation, source = var_source, name = var_name, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limit, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_iddata_file = "result.txt")
+result <- api_instance$GenesGenes(gene_id = var_gene_id, hgnc_id = var_hgnc_id, gene_name = var_gene_name, synonym = var_synonym, region = var_region, associated_gene_id = var_associated_gene_id, associated_hgnc_id = var_associated_hgnc_id, associated_gene_name = var_associated_gene_name, associated_synonym = var_associated_synonym, z_score = var_z_score, interaction_type = var_interaction_type, label = var_label, method = var_method, pearson_correlation = var_pearson_correlation, source = var_source, name = var_name, files_fileset = var_files_fileset, organism = var_organism, verbose = var_verbose, page = var_page, limit = var_limit, biosample_term = var_biosample_term, biological_context = var_biological_context, treatment_term_id = var_treatment_term_id)
 dput(result)
 ```
 
@@ -1817,15 +2107,19 @@ Name | Type | Description  | Notes
  **associated_synonym** | **character**|  | [optional] 
  **z_score** | **character**|  | [optional] 
  **interaction_type** | Enum [dosage growth defect (sensu BioGRID), dosage lethality (sensu BioGRID), dosage rescue (sensu BioGRID), negative genetic interaction (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), positive genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID), synthetic rescue (sensu BioGRID)] |  | [optional] 
- **label** | Enum [co-expression, genetic interference] |  | [optional] 
- **method** | Enum [COXPRESdb, dosage growth defect (sensu BioGRID), dosage lethality (sensu BioGRID), dosage lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID), dosage lethality (sensu BioGRID), synthetic lethality (sensu BioGRID), dosage rescue (sensu BioGRID), dosage rescue (sensu BioGRID), phenotypic enhancement (sensu BioGRID), dosage rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID), dosage rescue (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID), negative genetic interaction (sensu BioGRID), negative genetic interaction (sensu BioGRID), phenotypic suppression (sensu BioGRID), negative genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID), negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID), negative genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID), positive genetic interaction (sensu BioGRID), phenotypic enhancement (sensu BioGRID), synthetic growth defect (sensu BioGRID), phenotypic enhancement (sensu BioGRID), synthetic lethality (sensu BioGRID), phenotypic suppression (sensu BioGRID), positive genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID), positive genetic interaction (sensu BioGRID), synthetic rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID), synthetic lethality (sensu BioGRID), synthetic rescue (sensu BioGRID)] |  | [optional] 
- **source** | Enum [BioGRID, COXPRESdb] |  | [optional] 
- **name** | Enum [coexpressed with, interacts with] |  | [optional] 
+ **label** | Enum [co-expression, genetic interference, regulator-regulator correlation] |  | [optional] 
+ **method** | Enum [COXPRESdb, Perturb-seq, dosage growth defect (sensu BioGRID), dosage lethality (sensu BioGRID), dosage lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID), dosage lethality (sensu BioGRID), synthetic lethality (sensu BioGRID), dosage rescue (sensu BioGRID), dosage rescue (sensu BioGRID), phenotypic enhancement (sensu BioGRID), dosage rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID), dosage rescue (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID), negative genetic interaction (sensu BioGRID), negative genetic interaction (sensu BioGRID), phenotypic suppression (sensu BioGRID), negative genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID), negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID), negative genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID), phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID), positive genetic interaction (sensu BioGRID), phenotypic enhancement (sensu BioGRID), synthetic growth defect (sensu BioGRID), phenotypic enhancement (sensu BioGRID), synthetic lethality (sensu BioGRID), phenotypic suppression (sensu BioGRID), positive genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID), positive genetic interaction (sensu BioGRID), synthetic rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID), synthetic lethality (sensu BioGRID), synthetic rescue (sensu BioGRID)] |  | [optional] 
+ **pearson_correlation** | **character**|  | [optional] 
+ **source** | Enum [BioGRID, COXPRESdb, IGVF] |  | [optional] 
+ **name** | Enum [coexpressed with, correlated with, interacts with] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
+ **biosample_term** | **character**|  | [optional] 
+ **biological_context** | **character**|  | [optional] 
+ **treatment_term_id** | **character**|  | [optional] 
 
 ### Return type
 

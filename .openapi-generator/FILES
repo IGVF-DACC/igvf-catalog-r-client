@@ -45,6 +45,10 @@ R/gene4.R
 R/gene6.R
 R/gene_compact.R
 R/gene_no_synonyms.R
+R/gene_program.R
+R/gene_programs_from_genes.R
+R/gene_programs_from_genes_gene_program.R
+R/gene_programs_gene_programs.R
 R/gene_ref.R
 R/genes.R
 R/genes2.R
@@ -206,6 +210,10 @@ docs/Gene4.md
 docs/Gene6.md
 docs/GeneCompact.md
 docs/GeneNoSynonyms.md
+docs/GeneProgram.md
+docs/GeneProgramsFromGenes.md
+docs/GeneProgramsFromGenesGeneProgram.md
+docs/GeneProgramsGenePrograms.md
 docs/GeneRef.md
 docs/Genes.md
 docs/Genes2.md

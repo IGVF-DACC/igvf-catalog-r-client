@@ -8,7 +8,7 @@ Our database uses 0-based, half-open coordinates for genomic coordinates in the 
 
 Data is licensed under the <a href=https://creativecommons.org/licenses/by/4.0/ target=\"_blank\">Creative Commons license</a> and the software is licensed under the <a href=https://spdx.org/licenses/MIT.html target=\"_blank\">MIT license</a>.
 
-- API version: 1.3.1.dev20261106195012
+- API version: 1.3.1.dev20261107033540
 - Package version: 1.3.0.9000
 - Generator version: 7.14.0
 
@@ -150,6 +150,10 @@ Class | Method | HTTP request | Description
 *IgvfCatalogApi* | [**VariantsFromDrugs**](docs/IgvfCatalogApi.md#VariantsFromDrugs) | **GET** /drugs/variants | 
 *IgvfCatalogApi* | [**FilesFilesets**](docs/IgvfCatalogApi.md#FilesFilesets) | **GET** /files-filesets | 
 *IgvfCatalogApi* | [**LlmQuery**](docs/IgvfCatalogApi.md#LlmQuery) | **POST** /llm-query | 
+*IgvfCatalogApi* | [**GenePrograms**](docs/IgvfCatalogApi.md#GenePrograms) | **GET** /gene-programs | 
+*IgvfCatalogApi* | [**GeneProgramsGenePrograms**](docs/IgvfCatalogApi.md#GeneProgramsGenePrograms) | **GET** /gene-programs/gene-programs | 
+*IgvfCatalogApi* | [**GenesFromGenePrograms**](docs/IgvfCatalogApi.md#GenesFromGenePrograms) | **GET** /gene-programs/genes | 
+*IgvfCatalogApi* | [**GeneProgramsFromGenes**](docs/IgvfCatalogApi.md#GeneProgramsFromGenes) | **GET** /genes/gene-programs | 
 *IgvfCatalogApi* | [**GenesGenomicElementsScoreSummary**](docs/IgvfCatalogApi.md#GenesGenomicElementsScoreSummary) | **GET** /genes/genomic-elements/score-summary | 
 *IgvfCatalogApi* | [**GenesTranscriptsGenomicElements**](docs/IgvfCatalogApi.md#GenesTranscriptsGenomicElements) | **GET** /genes/transcripts/genomic-elements | 
 *IgvfCatalogApi* | [**GenesVariantsScoreSummary**](docs/IgvfCatalogApi.md#GenesVariantsScoreSummary) | **GET** /genes/variants/score-summary | 
@@ -198,6 +202,10 @@ Class | Method | HTTP request | Description
  - [Gene6](docs/Gene6.md)
  - [GeneCompact](docs/GeneCompact.md)
  - [GeneNoSynonyms](docs/GeneNoSynonyms.md)
+ - [GeneProgram](docs/GeneProgram.md)
+ - [GeneProgramsFromGenes](docs/GeneProgramsFromGenes.md)
+ - [GeneProgramsFromGenesGeneProgram](docs/GeneProgramsFromGenesGeneProgram.md)
+ - [GeneProgramsGenePrograms](docs/GeneProgramsGenePrograms.md)
  - [GeneRef](docs/GeneRef.md)
  - [Genes](docs/Genes.md)
  - [Genes2](docs/Genes2.md)

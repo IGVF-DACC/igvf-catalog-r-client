@@ -10,6 +10,14 @@
 #' @field _id  character
 #' @field gene_1  \link{GenesGenesGene1}
 #' @field gene_2  \link{GenesGenesGene1}
+#' @field pearson_correlation  numeric [optional]
+#' @field genomic_elements_from  list(character) [optional]
+#' @field genomic_elements_to  list(character) [optional]
+#' @field biosample_term  character [optional]
+#' @field biological_context  character [optional]
+#' @field treatments_term_ids  list(character) [optional]
+#' @field perturbation  character [optional]
+#' @field inverse_name  character [optional]
 #' @field z_score  numeric [optional]
 #' @field associated_process  character [optional]
 #' @field detection_method  character [optional]
@@ -35,6 +43,14 @@ GenesGenes <- R6::R6Class(
     `_id` = NULL,
     `gene_1` = NULL,
     `gene_2` = NULL,
+    `pearson_correlation` = NULL,
+    `genomic_elements_from` = NULL,
+    `genomic_elements_to` = NULL,
+    `biosample_term` = NULL,
+    `biological_context` = NULL,
+    `treatments_term_ids` = NULL,
+    `perturbation` = NULL,
+    `inverse_name` = NULL,
     `z_score` = NULL,
     `associated_process` = NULL,
     `detection_method` = NULL,
@@ -63,6 +79,14 @@ GenesGenes <- R6::R6Class(
     #' @param class class
     #' @param source source
     #' @param name name
+    #' @param pearson_correlation pearson_correlation
+    #' @param genomic_elements_from genomic_elements_from
+    #' @param genomic_elements_to genomic_elements_to
+    #' @param biosample_term biosample_term
+    #' @param biological_context biological_context
+    #' @param treatments_term_ids treatments_term_ids
+    #' @param perturbation perturbation
+    #' @param inverse_name inverse_name
     #' @param z_score z_score
     #' @param associated_process associated_process
     #' @param detection_method detection_method
@@ -75,7 +99,7 @@ GenesGenes <- R6::R6Class(
     #' @param source_url source_url
     #' @param files_filesets files_filesets
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `gene_1`, `gene_2`, `label`, `method`, `class`, `source`, `name`, `z_score` = NULL, `associated_process` = NULL, `detection_method` = NULL, `detection_method_code` = NULL, `interaction_type` = NULL, `interaction_type_code` = NULL, `confidence_value_biogrid` = NULL, `confidence_value_intact` = NULL, `pmids` = NULL, `source_url` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`_id`, `gene_1`, `gene_2`, `label`, `method`, `class`, `source`, `name`, `pearson_correlation` = NULL, `genomic_elements_from` = NULL, `genomic_elements_to` = NULL, `biosample_term` = NULL, `biological_context` = NULL, `treatments_term_ids` = NULL, `perturbation` = NULL, `inverse_name` = NULL, `z_score` = NULL, `associated_process` = NULL, `detection_method` = NULL, `detection_method_code` = NULL, `interaction_type` = NULL, `interaction_type_code` = NULL, `confidence_value_biogrid` = NULL, `confidence_value_intact` = NULL, `pmids` = NULL, `source_url` = NULL, `files_filesets` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.character(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
@@ -97,6 +121,9 @@ GenesGenes <- R6::R6Class(
         self$`label` <- `label`
       }
       if (!missing(`method`)) {
+        if (!(`method` %in% c("COXPRESdb", "Perturb-seq", "dosage growth defect (sensu BioGRID)", "dosage lethality (sensu BioGRID)", "dosage lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID)", "dosage lethality (sensu BioGRID), synthetic lethality (sensu BioGRID)", "dosage rescue (sensu BioGRID)", "dosage rescue (sensu BioGRID), phenotypic enhancement (sensu BioGRID)", "dosage rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "dosage rescue (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)", "negative genetic interaction (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), phenotypic suppression (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), positive genetic interaction (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic suppression (sensu BioGRID)", "positive genetic interaction (sensu BioGRID)", "positive genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)", "positive genetic interaction (sensu BioGRID), synthetic rescue (sensu BioGRID)", "synthetic growth defect (sensu BioGRID)", "synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)", "synthetic haploinsufficiency (sensu BioGRID)", "synthetic lethality (sensu BioGRID)", "synthetic rescue (sensu BioGRID)"))) {
+          stop(paste("Error! \"", `method`, "\" cannot be assigned to `method`. Must be \"COXPRESdb\", \"Perturb-seq\", \"dosage growth defect (sensu BioGRID)\", \"dosage lethality (sensu BioGRID)\", \"dosage lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID)\", \"dosage lethality (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"dosage rescue (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), phenotypic enhancement (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), phenotypic suppression (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), positive genetic interaction (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic suppression (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID), synthetic rescue (sensu BioGRID)\", \"synthetic growth defect (sensu BioGRID)\", \"synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"synthetic haploinsufficiency (sensu BioGRID)\", \"synthetic lethality (sensu BioGRID)\", \"synthetic rescue (sensu BioGRID)\".", sep = ""))
+        }
         if (!(is.character(`method`) && length(`method`) == 1)) {
           stop(paste("Error! Invalid data for `method`. Must be a string:", `method`))
         }
@@ -119,6 +146,48 @@ GenesGenes <- R6::R6Class(
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
         }
         self$`name` <- `name`
+      }
+      if (!is.null(`pearson_correlation`)) {
+        self$`pearson_correlation` <- `pearson_correlation`
+      }
+      if (!is.null(`genomic_elements_from`)) {
+        stopifnot(is.vector(`genomic_elements_from`), length(`genomic_elements_from`) != 0)
+        sapply(`genomic_elements_from`, function(x) stopifnot(is.character(x)))
+        self$`genomic_elements_from` <- `genomic_elements_from`
+      }
+      if (!is.null(`genomic_elements_to`)) {
+        stopifnot(is.vector(`genomic_elements_to`), length(`genomic_elements_to`) != 0)
+        sapply(`genomic_elements_to`, function(x) stopifnot(is.character(x)))
+        self$`genomic_elements_to` <- `genomic_elements_to`
+      }
+      if (!is.null(`biosample_term`)) {
+        if (!(is.character(`biosample_term`) && length(`biosample_term`) == 1)) {
+          stop(paste("Error! Invalid data for `biosample_term`. Must be a string:", `biosample_term`))
+        }
+        self$`biosample_term` <- `biosample_term`
+      }
+      if (!is.null(`biological_context`)) {
+        if (!(is.character(`biological_context`) && length(`biological_context`) == 1)) {
+          stop(paste("Error! Invalid data for `biological_context`. Must be a string:", `biological_context`))
+        }
+        self$`biological_context` <- `biological_context`
+      }
+      if (!is.null(`treatments_term_ids`)) {
+        stopifnot(is.vector(`treatments_term_ids`), length(`treatments_term_ids`) != 0)
+        sapply(`treatments_term_ids`, function(x) stopifnot(is.character(x)))
+        self$`treatments_term_ids` <- `treatments_term_ids`
+      }
+      if (!is.null(`perturbation`)) {
+        if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
+          stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
+        }
+        self$`perturbation` <- `perturbation`
+      }
+      if (!is.null(`inverse_name`)) {
+        if (!(is.character(`inverse_name`) && length(`inverse_name`) == 1)) {
+          stop(paste("Error! Invalid data for `inverse_name`. Must be a string:", `inverse_name`))
+        }
+        self$`inverse_name` <- `inverse_name`
       }
       if (!is.null(`z_score`)) {
         self$`z_score` <- `z_score`
@@ -219,6 +288,38 @@ GenesGenes <- R6::R6Class(
         GenesGenesObject[["gene_2"]] <-
           self$`gene_2`$toSimpleType()
       }
+      if (!is.null(self$`pearson_correlation`)) {
+        GenesGenesObject[["pearson_correlation"]] <-
+          self$`pearson_correlation`
+      }
+      if (!is.null(self$`genomic_elements_from`)) {
+        GenesGenesObject[["genomic_elements_from"]] <-
+          self$`genomic_elements_from`
+      }
+      if (!is.null(self$`genomic_elements_to`)) {
+        GenesGenesObject[["genomic_elements_to"]] <-
+          self$`genomic_elements_to`
+      }
+      if (!is.null(self$`biosample_term`)) {
+        GenesGenesObject[["biosample_term"]] <-
+          self$`biosample_term`
+      }
+      if (!is.null(self$`biological_context`)) {
+        GenesGenesObject[["biological_context"]] <-
+          self$`biological_context`
+      }
+      if (!is.null(self$`treatments_term_ids`)) {
+        GenesGenesObject[["treatments_term_ids"]] <-
+          self$`treatments_term_ids`
+      }
+      if (!is.null(self$`perturbation`)) {
+        GenesGenesObject[["perturbation"]] <-
+          self$`perturbation`
+      }
+      if (!is.null(self$`inverse_name`)) {
+        GenesGenesObject[["inverse_name"]] <-
+          self$`inverse_name`
+      }
       if (!is.null(self$`z_score`)) {
         GenesGenesObject[["z_score"]] <-
           self$`z_score`
@@ -306,6 +407,30 @@ GenesGenes <- R6::R6Class(
         `gene_2_object`$fromJSON(jsonlite::toJSON(this_object$`gene_2`, auto_unbox = TRUE, digits = NA))
         self$`gene_2` <- `gene_2_object`
       }
+      if (!is.null(this_object$`pearson_correlation`)) {
+        self$`pearson_correlation` <- this_object$`pearson_correlation`
+      }
+      if (!is.null(this_object$`genomic_elements_from`)) {
+        self$`genomic_elements_from` <- ApiClient$new()$deserializeObj(this_object$`genomic_elements_from`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
+      if (!is.null(this_object$`genomic_elements_to`)) {
+        self$`genomic_elements_to` <- ApiClient$new()$deserializeObj(this_object$`genomic_elements_to`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
+      if (!is.null(this_object$`biosample_term`)) {
+        self$`biosample_term` <- this_object$`biosample_term`
+      }
+      if (!is.null(this_object$`biological_context`)) {
+        self$`biological_context` <- this_object$`biological_context`
+      }
+      if (!is.null(this_object$`treatments_term_ids`)) {
+        self$`treatments_term_ids` <- ApiClient$new()$deserializeObj(this_object$`treatments_term_ids`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
+      if (!is.null(this_object$`perturbation`)) {
+        self$`perturbation` <- this_object$`perturbation`
+      }
+      if (!is.null(this_object$`inverse_name`)) {
+        self$`inverse_name` <- this_object$`inverse_name`
+      }
       if (!is.null(this_object$`z_score`)) {
         self$`z_score` <- this_object$`z_score`
       }
@@ -337,6 +462,9 @@ GenesGenes <- R6::R6Class(
         self$`label` <- this_object$`label`
       }
       if (!is.null(this_object$`method`)) {
+        if (!is.null(this_object$`method`) && !(this_object$`method` %in% c("COXPRESdb", "Perturb-seq", "dosage growth defect (sensu BioGRID)", "dosage lethality (sensu BioGRID)", "dosage lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID)", "dosage lethality (sensu BioGRID), synthetic lethality (sensu BioGRID)", "dosage rescue (sensu BioGRID)", "dosage rescue (sensu BioGRID), phenotypic enhancement (sensu BioGRID)", "dosage rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "dosage rescue (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)", "negative genetic interaction (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), phenotypic suppression (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), positive genetic interaction (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic suppression (sensu BioGRID)", "positive genetic interaction (sensu BioGRID)", "positive genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)", "positive genetic interaction (sensu BioGRID), synthetic rescue (sensu BioGRID)", "synthetic growth defect (sensu BioGRID)", "synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)", "synthetic haploinsufficiency (sensu BioGRID)", "synthetic lethality (sensu BioGRID)", "synthetic rescue (sensu BioGRID)"))) {
+          stop(paste("Error! \"", this_object$`method`, "\" cannot be assigned to `method`. Must be \"COXPRESdb\", \"Perturb-seq\", \"dosage growth defect (sensu BioGRID)\", \"dosage lethality (sensu BioGRID)\", \"dosage lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID)\", \"dosage lethality (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"dosage rescue (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), phenotypic enhancement (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), phenotypic suppression (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), positive genetic interaction (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic suppression (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID), synthetic rescue (sensu BioGRID)\", \"synthetic growth defect (sensu BioGRID)\", \"synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"synthetic haploinsufficiency (sensu BioGRID)\", \"synthetic lethality (sensu BioGRID)\", \"synthetic rescue (sensu BioGRID)\".", sep = ""))
+        }
         self$`method` <- this_object$`method`
       }
       if (!is.null(this_object$`class`)) {
@@ -378,6 +506,14 @@ GenesGenes <- R6::R6Class(
       self$`_id` <- this_object$`_id`
       self$`gene_1` <- GenesGenesGene1$new()$fromJSON(jsonlite::toJSON(this_object$`gene_1`, auto_unbox = TRUE, digits = NA))
       self$`gene_2` <- GenesGenesGene1$new()$fromJSON(jsonlite::toJSON(this_object$`gene_2`, auto_unbox = TRUE, digits = NA))
+      self$`pearson_correlation` <- this_object$`pearson_correlation`
+      self$`genomic_elements_from` <- ApiClient$new()$deserializeObj(this_object$`genomic_elements_from`, "array[character]", loadNamespace("igvfcatalogclient"))
+      self$`genomic_elements_to` <- ApiClient$new()$deserializeObj(this_object$`genomic_elements_to`, "array[character]", loadNamespace("igvfcatalogclient"))
+      self$`biosample_term` <- this_object$`biosample_term`
+      self$`biological_context` <- this_object$`biological_context`
+      self$`treatments_term_ids` <- ApiClient$new()$deserializeObj(this_object$`treatments_term_ids`, "array[character]", loadNamespace("igvfcatalogclient"))
+      self$`perturbation` <- this_object$`perturbation`
+      self$`inverse_name` <- this_object$`inverse_name`
       self$`z_score` <- this_object$`z_score`
       self$`associated_process` <- this_object$`associated_process`
       self$`detection_method` <- this_object$`detection_method`
@@ -388,6 +524,9 @@ GenesGenes <- R6::R6Class(
       self$`confidence_value_intact` <- this_object$`confidence_value_intact`
       self$`pmids` <- ApiClient$new()$deserializeObj(this_object$`pmids`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`label` <- this_object$`label`
+      if (!is.null(this_object$`method`) && !(this_object$`method` %in% c("COXPRESdb", "Perturb-seq", "dosage growth defect (sensu BioGRID)", "dosage lethality (sensu BioGRID)", "dosage lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID)", "dosage lethality (sensu BioGRID), synthetic lethality (sensu BioGRID)", "dosage rescue (sensu BioGRID)", "dosage rescue (sensu BioGRID), phenotypic enhancement (sensu BioGRID)", "dosage rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "dosage rescue (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)", "negative genetic interaction (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), phenotypic suppression (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)", "negative genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), positive genetic interaction (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), synthetic growth defect (sensu BioGRID)", "phenotypic enhancement (sensu BioGRID), synthetic lethality (sensu BioGRID)", "phenotypic suppression (sensu BioGRID)", "positive genetic interaction (sensu BioGRID)", "positive genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)", "positive genetic interaction (sensu BioGRID), synthetic rescue (sensu BioGRID)", "synthetic growth defect (sensu BioGRID)", "synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)", "synthetic haploinsufficiency (sensu BioGRID)", "synthetic lethality (sensu BioGRID)", "synthetic rescue (sensu BioGRID)"))) {
+        stop(paste("Error! \"", this_object$`method`, "\" cannot be assigned to `method`. Must be \"COXPRESdb\", \"Perturb-seq\", \"dosage growth defect (sensu BioGRID)\", \"dosage lethality (sensu BioGRID)\", \"dosage lethality (sensu BioGRID), phenotypic enhancement (sensu BioGRID)\", \"dosage lethality (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"dosage rescue (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), phenotypic enhancement (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"dosage rescue (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), phenotypic suppression (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), positive genetic interaction (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"negative genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic haploinsufficiency (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), phenotypic suppression (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), positive genetic interaction (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), synthetic growth defect (sensu BioGRID)\", \"phenotypic enhancement (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"phenotypic suppression (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"positive genetic interaction (sensu BioGRID), synthetic rescue (sensu BioGRID)\", \"synthetic growth defect (sensu BioGRID)\", \"synthetic growth defect (sensu BioGRID), synthetic lethality (sensu BioGRID)\", \"synthetic haploinsufficiency (sensu BioGRID)\", \"synthetic lethality (sensu BioGRID)\", \"synthetic rescue (sensu BioGRID)\".", sep = ""))
+      }
       self$`method` <- this_object$`method`
       self$`class` <- this_object$`class`
       self$`source` <- this_object$`source`
@@ -498,11 +637,6 @@ GenesGenes <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `method` is null
-      if (is.null(self$`method`)) {
-        return(FALSE)
-      }
-
       # check if the required `class` is null
       if (is.null(self$`class`)) {
         return(FALSE)
@@ -545,11 +679,6 @@ GenesGenes <- R6::R6Class(
       # check if the required `label` is null
       if (is.null(self$`label`)) {
         invalid_fields["label"] <- "Non-nullable required field `label` cannot be null."
-      }
-
-      # check if the required `method` is null
-      if (is.null(self$`method`)) {
-        invalid_fields["method"] <- "Non-nullable required field `method` cannot be null."
       }
 
       # check if the required `class` is null
