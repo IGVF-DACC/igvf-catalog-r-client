@@ -1,4 +1,4 @@
-# igvfcatalogclient::PhenotypesFromVariants37
+# igvfcatalogclient::PhenotypesFromVariants38
 
 
 ## Properties
@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **class** | **character** |  | [optional] 
 **label** | **character** |  | [optional] 
 **files_filesets** | **character** |  | 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 **biosample_term** | **character** |  | [optional] 
 **phenotype_term** | **character** |  | 
 **variant** | [**PhenotypesFromVariantsVariant**](PhenotypesFromVariants_variant.md) |  | 

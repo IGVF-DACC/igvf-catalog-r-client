@@ -32,6 +32,7 @@
 #' @field name  character
 #' @field variant  \link{PhenotypesFromVariantsVariant}
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -63,6 +64,7 @@ PhenotypesFromVariants <- R6::R6Class(
     `name` = NULL,
     `variant` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
     #' Initialize a new PhenotypesFromVariants class.
@@ -92,8 +94,9 @@ PhenotypesFromVariants <- R6::R6Class(
     #' @param label label
     #' @param version version. Default to "October 2022 (22.10)".
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`phenotype_id`, `phenotype_term`, `p_value`, `beta`, `beta_ci_lower`, `beta_ci_upper`, `oddsr_ci_lower`, `oddsr_ci_upper`, `lead_chrom`, `lead_pos`, `lead_ref`, `lead_alt`, `direction`, `source`, `name`, `variant`, `rsid` = NULL, `study` = NULL, `neg_log10_pvalue` = NULL, `source_url` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `version` = "October 2022 (22.10)", `files_filesets` = NULL, ...) {
+    initialize = function(`phenotype_id`, `phenotype_term`, `p_value`, `beta`, `beta_ci_lower`, `beta_ci_upper`, `oddsr_ci_lower`, `oddsr_ci_upper`, `lead_chrom`, `lead_pos`, `lead_ref`, `lead_alt`, `direction`, `source`, `name`, `variant`, `rsid` = NULL, `study` = NULL, `neg_log10_pvalue` = NULL, `source_url` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `version` = "October 2022 (22.10)", `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`phenotype_id`)) {
         if (!(is.character(`phenotype_id`) && length(`phenotype_id`) == 1)) {
           stop(paste("Error! Invalid data for `phenotype_id`. Must be a string:", `phenotype_id`))
@@ -217,6 +220,11 @@ PhenotypesFromVariants <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
     },
 
@@ -351,6 +359,10 @@ PhenotypesFromVariants <- R6::R6Class(
         PhenotypesFromVariantsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        PhenotypesFromVariantsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       return(PhenotypesFromVariantsObject)
     },
 
@@ -443,6 +455,9 @@ PhenotypesFromVariants <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       self
     },
 
@@ -492,6 +507,7 @@ PhenotypesFromVariants <- R6::R6Class(
       self$`name` <- this_object$`name`
       self$`variant` <- PhenotypesFromVariantsVariant$new()$fromJSON(jsonlite::toJSON(this_object$`variant`, auto_unbox = TRUE, digits = NA))
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 

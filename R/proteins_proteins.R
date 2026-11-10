@@ -25,6 +25,7 @@
 #' @field pmids  list(character)
 #' @field name  character
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -49,6 +50,7 @@ ProteinsProteins <- R6::R6Class(
     `pmids` = NULL,
     `name` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
     #' Initialize a new ProteinsProteins class.
@@ -71,8 +73,9 @@ ProteinsProteins <- R6::R6Class(
     #' @param pmids pmids
     #' @param name name
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `protein_1`, `protein_2`, `detection_method`, `detection_method_code`, `interaction_type`, `interaction_type_code`, `confidence_value_biogrid`, `confidence_value_intact`, `label`, `class`, `method`, `source_url`, `source`, `organism`, `pmids`, `name`, `files_filesets` = NULL, ...) {
+    initialize = function(`_id`, `protein_1`, `protein_2`, `detection_method`, `detection_method_code`, `interaction_type`, `interaction_type_code`, `confidence_value_biogrid`, `confidence_value_intact`, `label`, `class`, `method`, `source_url`, `source`, `organism`, `pmids`, `name`, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.character(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
@@ -167,6 +170,11 @@ ProteinsProteins <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
     },
 
@@ -273,6 +281,10 @@ ProteinsProteins <- R6::R6Class(
         ProteinsProteinsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        ProteinsProteinsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       return(ProteinsProteinsObject)
     },
 
@@ -341,6 +353,9 @@ ProteinsProteins <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       self
     },
 
@@ -380,6 +395,7 @@ ProteinsProteins <- R6::R6Class(
       self$`pmids` <- ApiClient$new()$deserializeObj(this_object$`pmids`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`name` <- this_object$`name`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 

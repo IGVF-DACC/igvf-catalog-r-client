@@ -16,6 +16,7 @@
 #' @field biological_context  character
 #' @field biosample_term  character
 #' @field files_filesets  character
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field perturbation  character [optional]
 #' @field z_score  numeric [optional]
 #' @field log2FC  numeric [optional]
@@ -46,6 +47,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     `biological_context` = NULL,
     `biosample_term` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `perturbation` = NULL,
     `z_score` = NULL,
     `log2FC` = NULL,
@@ -76,6 +78,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     #' @param files_filesets files_filesets
     #' @param genomic_element genomic_element
     #' @param phenotype phenotype
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param perturbation perturbation
     #' @param z_score z_score
     #' @param log2FC log2FC
@@ -90,7 +93,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
     #' @param fraction_guides_hit fraction_guides_hit
     #' @param phenotype_name phenotype_name
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `biological_context`, `biosample_term`, `files_filesets`, `genomic_element`, `phenotype`, `perturbation` = NULL, `z_score` = NULL, `log2FC` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, `num_guides` = NULL, `num_guides_hit` = NULL, `num_guides_nonhit` = NULL, `fraction_guides_hit` = NULL, `phenotype_name` = NULL, ...) {
+    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `biological_context`, `biosample_term`, `files_filesets`, `genomic_element`, `phenotype`, `preferred_assay_titles` = NULL, `perturbation` = NULL, `z_score` = NULL, `log2FC` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, `num_guides` = NULL, `num_guides_hit` = NULL, `num_guides_nonhit` = NULL, `fraction_guides_hit` = NULL, `phenotype_name` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -152,6 +155,11 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
       if (!missing(`phenotype`)) {
         stopifnot(R6::is.R6(`phenotype`))
         self$`phenotype` <- `phenotype`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`perturbation`)) {
         if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
@@ -270,6 +278,10 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
         GenomicElementsFromPhenotypesObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        GenomicElementsFromPhenotypesObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`perturbation`)) {
         GenomicElementsFromPhenotypesObject[["perturbation"]] <-
           self$`perturbation`
@@ -367,6 +379,9 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`perturbation`)) {
         self$`perturbation` <- this_object$`perturbation`
       }
@@ -446,6 +461,7 @@ GenomicElementsFromPhenotypes <- R6::R6Class(
       self$`biological_context` <- this_object$`biological_context`
       self$`biosample_term` <- this_object$`biosample_term`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`perturbation` <- this_object$`perturbation`
       self$`z_score` <- this_object$`z_score`
       self$`log2FC` <- this_object$`log2FC`

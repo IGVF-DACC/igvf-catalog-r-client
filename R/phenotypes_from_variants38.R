@@ -1,11 +1,11 @@
-#' Create a new PhenotypesFromVariants37
+#' Create a new PhenotypesFromVariants38
 #'
 #' @description
-#' PhenotypesFromVariants37 Class
+#' PhenotypesFromVariants38 Class
 #'
 #' @docType class
-#' @title PhenotypesFromVariants37
-#' @description PhenotypesFromVariants37 Class
+#' @title PhenotypesFromVariants38
+#' @description PhenotypesFromVariants38 Class
 #' @format An \code{R6Class} generator object
 #' @field name  character
 #' @field biological_context  character [optional]
@@ -40,6 +40,7 @@
 #' @field class  character [optional]
 #' @field label  character [optional]
 #' @field files_filesets  character
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field biosample_term  character [optional]
 #' @field phenotype_term  character
 #' @field variant  \link{PhenotypesFromVariantsVariant}
@@ -47,8 +48,8 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-PhenotypesFromVariants37 <- R6::R6Class(
-  "PhenotypesFromVariants37",
+PhenotypesFromVariants38 <- R6::R6Class(
+  "PhenotypesFromVariants38",
   public = list(
     `name` = NULL,
     `biological_context` = NULL,
@@ -83,13 +84,14 @@ PhenotypesFromVariants37 <- R6::R6Class(
     `class` = NULL,
     `label` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `biosample_term` = NULL,
     `phenotype_term` = NULL,
     `variant` = NULL,
     `phenotype_id` = NULL,
 
     #' @description
-    #' Initialize a new PhenotypesFromVariants37 class.
+    #' Initialize a new PhenotypesFromVariants38 class.
     #'
     #' @param name name
     #' @param source source
@@ -127,9 +129,10 @@ PhenotypesFromVariants37 <- R6::R6Class(
     #' @param variant_qc_flag variant_qc_flag
     #' @param class class
     #' @param label label
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param biosample_term biosample_term
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `source`, `source_url`, `method`, `files_filesets`, `phenotype_term`, `variant`, `phenotype_id`, `biological_context` = NULL, `score` = NULL, `effect_size` = NULL, `z_score` = NULL, `p_value` = NULL, `neg_log10_pvalue` = NULL, `significant` = NULL, `num_guides` = NULL, `edit_rate_mean` = NULL, `effect_size_ci95_lower` = NULL, `effect_size_ci95_upper` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue_adj` = NULL, `perturbation` = NULL, `protein_id` = NULL, `exon` = NULL, `target` = NULL, `consequence` = NULL, `standard_error` = NULL, `95_ci_upper` = NULL, `95_ci_lower` = NULL, `amino_acid_change` = NULL, `hgvs_p` = NULL, `functional_consequence` = NULL, `functional_consequence_zscore` = NULL, `variant_qc_flag` = NULL, `class` = NULL, `label` = NULL, `biosample_term` = NULL, ...) {
+    initialize = function(`name`, `source`, `source_url`, `method`, `files_filesets`, `phenotype_term`, `variant`, `phenotype_id`, `biological_context` = NULL, `score` = NULL, `effect_size` = NULL, `z_score` = NULL, `p_value` = NULL, `neg_log10_pvalue` = NULL, `significant` = NULL, `num_guides` = NULL, `edit_rate_mean` = NULL, `effect_size_ci95_lower` = NULL, `effect_size_ci95_upper` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue_adj` = NULL, `perturbation` = NULL, `protein_id` = NULL, `exon` = NULL, `target` = NULL, `consequence` = NULL, `standard_error` = NULL, `95_ci_upper` = NULL, `95_ci_lower` = NULL, `amino_acid_change` = NULL, `hgvs_p` = NULL, `functional_consequence` = NULL, `functional_consequence_zscore` = NULL, `variant_qc_flag` = NULL, `class` = NULL, `label` = NULL, `preferred_assay_titles` = NULL, `biosample_term` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -299,6 +302,11 @@ PhenotypesFromVariants37 <- R6::R6Class(
         }
         self$`label` <- `label`
       }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
+      }
       if (!is.null(`biosample_term`)) {
         if (!(is.character(`biosample_term`) && length(`biosample_term`) == 1)) {
           stop(paste("Error! Invalid data for `biosample_term`. Must be a string:", `biosample_term`))
@@ -319,9 +327,9 @@ PhenotypesFromVariants37 <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return PhenotypesFromVariants37 as a base R list.
+    #' @return PhenotypesFromVariants38 as a base R list.
     #' @examples
-    #' # convert array of PhenotypesFromVariants37 (x) to a data frame
+    #' # convert array of PhenotypesFromVariants38 (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -333,167 +341,171 @@ PhenotypesFromVariants37 <- R6::R6Class(
     },
 
     #' @description
-    #' Convert PhenotypesFromVariants37 to a base R type
+    #' Convert PhenotypesFromVariants38 to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      PhenotypesFromVariants37Object <- list()
+      PhenotypesFromVariants38Object <- list()
       if (!is.null(self$`name`)) {
-        PhenotypesFromVariants37Object[["name"]] <-
+        PhenotypesFromVariants38Object[["name"]] <-
           self$`name`
       }
       if (!is.null(self$`biological_context`)) {
-        PhenotypesFromVariants37Object[["biological_context"]] <-
+        PhenotypesFromVariants38Object[["biological_context"]] <-
           self$`biological_context`
       }
       if (!is.null(self$`source`)) {
-        PhenotypesFromVariants37Object[["source"]] <-
+        PhenotypesFromVariants38Object[["source"]] <-
           self$`source`
       }
       if (!is.null(self$`source_url`)) {
-        PhenotypesFromVariants37Object[["source_url"]] <-
+        PhenotypesFromVariants38Object[["source_url"]] <-
           self$`source_url`
       }
       if (!is.null(self$`score`)) {
-        PhenotypesFromVariants37Object[["score"]] <-
+        PhenotypesFromVariants38Object[["score"]] <-
           self$`score`
       }
       if (!is.null(self$`effect_size`)) {
-        PhenotypesFromVariants37Object[["effect_size"]] <-
+        PhenotypesFromVariants38Object[["effect_size"]] <-
           self$`effect_size`
       }
       if (!is.null(self$`z_score`)) {
-        PhenotypesFromVariants37Object[["z_score"]] <-
+        PhenotypesFromVariants38Object[["z_score"]] <-
           self$`z_score`
       }
       if (!is.null(self$`p_value`)) {
-        PhenotypesFromVariants37Object[["p_value"]] <-
+        PhenotypesFromVariants38Object[["p_value"]] <-
           self$`p_value`
       }
       if (!is.null(self$`neg_log10_pvalue`)) {
-        PhenotypesFromVariants37Object[["neg_log10_pvalue"]] <-
+        PhenotypesFromVariants38Object[["neg_log10_pvalue"]] <-
           self$`neg_log10_pvalue`
       }
       if (!is.null(self$`significant`)) {
-        PhenotypesFromVariants37Object[["significant"]] <-
+        PhenotypesFromVariants38Object[["significant"]] <-
           self$`significant`
       }
       if (!is.null(self$`num_guides`)) {
-        PhenotypesFromVariants37Object[["num_guides"]] <-
+        PhenotypesFromVariants38Object[["num_guides"]] <-
           self$`num_guides`
       }
       if (!is.null(self$`edit_rate_mean`)) {
-        PhenotypesFromVariants37Object[["edit_rate_mean"]] <-
+        PhenotypesFromVariants38Object[["edit_rate_mean"]] <-
           self$`edit_rate_mean`
       }
       if (!is.null(self$`effect_size_ci95_lower`)) {
-        PhenotypesFromVariants37Object[["effect_size_ci95_lower"]] <-
+        PhenotypesFromVariants38Object[["effect_size_ci95_lower"]] <-
           self$`effect_size_ci95_lower`
       }
       if (!is.null(self$`effect_size_ci95_upper`)) {
-        PhenotypesFromVariants37Object[["effect_size_ci95_upper"]] <-
+        PhenotypesFromVariants38Object[["effect_size_ci95_upper"]] <-
           self$`effect_size_ci95_upper`
       }
       if (!is.null(self$`p_value_adj`)) {
-        PhenotypesFromVariants37Object[["p_value_adj"]] <-
+        PhenotypesFromVariants38Object[["p_value_adj"]] <-
           self$`p_value_adj`
       }
       if (!is.null(self$`neg_log10_pvalue_adj`)) {
-        PhenotypesFromVariants37Object[["neg_log10_pvalue_adj"]] <-
+        PhenotypesFromVariants38Object[["neg_log10_pvalue_adj"]] <-
           self$`neg_log10_pvalue_adj`
       }
       if (!is.null(self$`perturbation`)) {
-        PhenotypesFromVariants37Object[["perturbation"]] <-
+        PhenotypesFromVariants38Object[["perturbation"]] <-
           self$`perturbation`
       }
       if (!is.null(self$`protein_id`)) {
-        PhenotypesFromVariants37Object[["protein_id"]] <-
+        PhenotypesFromVariants38Object[["protein_id"]] <-
           self$`protein_id`
       }
       if (!is.null(self$`exon`)) {
-        PhenotypesFromVariants37Object[["exon"]] <-
+        PhenotypesFromVariants38Object[["exon"]] <-
           self$`exon`
       }
       if (!is.null(self$`target`)) {
-        PhenotypesFromVariants37Object[["target"]] <-
+        PhenotypesFromVariants38Object[["target"]] <-
           self$`target`
       }
       if (!is.null(self$`consequence`)) {
-        PhenotypesFromVariants37Object[["consequence"]] <-
+        PhenotypesFromVariants38Object[["consequence"]] <-
           self$`consequence`
       }
       if (!is.null(self$`standard_error`)) {
-        PhenotypesFromVariants37Object[["standard_error"]] <-
+        PhenotypesFromVariants38Object[["standard_error"]] <-
           self$`standard_error`
       }
       if (!is.null(self$`95_ci_upper`)) {
-        PhenotypesFromVariants37Object[["95_ci_upper"]] <-
+        PhenotypesFromVariants38Object[["95_ci_upper"]] <-
           self$`95_ci_upper`
       }
       if (!is.null(self$`95_ci_lower`)) {
-        PhenotypesFromVariants37Object[["95_ci_lower"]] <-
+        PhenotypesFromVariants38Object[["95_ci_lower"]] <-
           self$`95_ci_lower`
       }
       if (!is.null(self$`amino_acid_change`)) {
-        PhenotypesFromVariants37Object[["amino_acid_change"]] <-
+        PhenotypesFromVariants38Object[["amino_acid_change"]] <-
           self$`amino_acid_change`
       }
       if (!is.null(self$`hgvs_p`)) {
-        PhenotypesFromVariants37Object[["hgvs_p"]] <-
+        PhenotypesFromVariants38Object[["hgvs_p"]] <-
           self$`hgvs_p`
       }
       if (!is.null(self$`functional_consequence`)) {
-        PhenotypesFromVariants37Object[["functional_consequence"]] <-
+        PhenotypesFromVariants38Object[["functional_consequence"]] <-
           self$`functional_consequence`
       }
       if (!is.null(self$`functional_consequence_zscore`)) {
-        PhenotypesFromVariants37Object[["functional_consequence_zscore"]] <-
+        PhenotypesFromVariants38Object[["functional_consequence_zscore"]] <-
           self$`functional_consequence_zscore`
       }
       if (!is.null(self$`variant_qc_flag`)) {
-        PhenotypesFromVariants37Object[["variant_qc_flag"]] <-
+        PhenotypesFromVariants38Object[["variant_qc_flag"]] <-
           self$`variant_qc_flag`
       }
       if (!is.null(self$`method`)) {
-        PhenotypesFromVariants37Object[["method"]] <-
+        PhenotypesFromVariants38Object[["method"]] <-
           self$`method`
       }
       if (!is.null(self$`class`)) {
-        PhenotypesFromVariants37Object[["class"]] <-
+        PhenotypesFromVariants38Object[["class"]] <-
           self$`class`
       }
       if (!is.null(self$`label`)) {
-        PhenotypesFromVariants37Object[["label"]] <-
+        PhenotypesFromVariants38Object[["label"]] <-
           self$`label`
       }
       if (!is.null(self$`files_filesets`)) {
-        PhenotypesFromVariants37Object[["files_filesets"]] <-
+        PhenotypesFromVariants38Object[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        PhenotypesFromVariants38Object[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`biosample_term`)) {
-        PhenotypesFromVariants37Object[["biosample_term"]] <-
+        PhenotypesFromVariants38Object[["biosample_term"]] <-
           self$`biosample_term`
       }
       if (!is.null(self$`phenotype_term`)) {
-        PhenotypesFromVariants37Object[["phenotype_term"]] <-
+        PhenotypesFromVariants38Object[["phenotype_term"]] <-
           self$`phenotype_term`
       }
       if (!is.null(self$`variant`)) {
-        PhenotypesFromVariants37Object[["variant"]] <-
+        PhenotypesFromVariants38Object[["variant"]] <-
           self$`variant`$toSimpleType()
       }
       if (!is.null(self$`phenotype_id`)) {
-        PhenotypesFromVariants37Object[["phenotype_id"]] <-
+        PhenotypesFromVariants38Object[["phenotype_id"]] <-
           self$`phenotype_id`
       }
-      return(PhenotypesFromVariants37Object)
+      return(PhenotypesFromVariants38Object)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of PhenotypesFromVariants37
+    #' Deserialize JSON string into an instance of PhenotypesFromVariants38
     #'
     #' @param input_json the JSON input
-    #' @return the instance of PhenotypesFromVariants37
+    #' @return the instance of PhenotypesFromVariants38
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`name`)) {
@@ -595,6 +607,9 @@ PhenotypesFromVariants37 <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`biosample_term`)) {
         self$`biosample_term` <- this_object$`biosample_term`
       }
@@ -616,7 +631,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return PhenotypesFromVariants37 in JSON format
+    #' @return PhenotypesFromVariants38 in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -624,10 +639,10 @@ PhenotypesFromVariants37 <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of PhenotypesFromVariants37
+    #' Deserialize JSON string into an instance of PhenotypesFromVariants38
     #'
     #' @param input_json the JSON input
-    #' @return the instance of PhenotypesFromVariants37
+    #' @return the instance of PhenotypesFromVariants38
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
@@ -663,6 +678,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
       self$`class` <- this_object$`class`
       self$`label` <- this_object$`label`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`biosample_term` <- this_object$`biosample_term`
       self$`phenotype_term` <- this_object$`phenotype_term`
       self$`variant` <- PhenotypesFromVariantsVariant$new()$fromJSON(jsonlite::toJSON(this_object$`variant`, auto_unbox = TRUE, digits = NA))
@@ -671,7 +687,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to PhenotypesFromVariants37 and throw an exception if invalid
+    #' Validate JSON input with respect to PhenotypesFromVariants38 and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -682,7 +698,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
           stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants37: the required field `name` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants38: the required field `name` is missing."))
       }
       # check the required field `source`
       if (!is.null(input_json$`source`)) {
@@ -690,7 +706,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
           stop(paste("Error! Invalid data for `source`. Must be a string:", input_json$`source`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants37: the required field `source` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants38: the required field `source` is missing."))
       }
       # check the required field `source_url`
       if (!is.null(input_json$`source_url`)) {
@@ -698,7 +714,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
           stop(paste("Error! Invalid data for `source_url`. Must be a string:", input_json$`source_url`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants37: the required field `source_url` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants38: the required field `source_url` is missing."))
       }
       # check the required field `method`
       if (!is.null(input_json$`method`)) {
@@ -706,7 +722,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
           stop(paste("Error! Invalid data for `method`. Must be a string:", input_json$`method`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants37: the required field `method` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants38: the required field `method` is missing."))
       }
       # check the required field `files_filesets`
       if (!is.null(input_json$`files_filesets`)) {
@@ -714,7 +730,7 @@ PhenotypesFromVariants37 <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", input_json$`files_filesets`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants37: the required field `files_filesets` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants38: the required field `files_filesets` is missing."))
       }
       # check the required field `phenotype_term`
       if (!is.null(input_json$`phenotype_term`)) {
@@ -722,13 +738,13 @@ PhenotypesFromVariants37 <- R6::R6Class(
           stop(paste("Error! Invalid data for `phenotype_term`. Must be a string:", input_json$`phenotype_term`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants37: the required field `phenotype_term` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants38: the required field `phenotype_term` is missing."))
       }
       # check the required field `variant`
       if (!is.null(input_json$`variant`)) {
         stopifnot(R6::is.R6(input_json$`variant`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants37: the required field `variant` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants38: the required field `variant` is missing."))
       }
       # check the required field `phenotype_id`
       if (!is.null(input_json$`phenotype_id`)) {
@@ -736,14 +752,14 @@ PhenotypesFromVariants37 <- R6::R6Class(
           stop(paste("Error! Invalid data for `phenotype_id`. Must be a string:", input_json$`phenotype_id`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants37: the required field `phenotype_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants38: the required field `phenotype_id` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of PhenotypesFromVariants37
+    #' @return String representation of PhenotypesFromVariants38
     toString = function() {
       self$toJSONString()
     },
@@ -816,13 +832,13 @@ PhenotypesFromVariants37 <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# PhenotypesFromVariants37$unlock()
+# PhenotypesFromVariants38$unlock()
 #
 ## Below is an example to define the print function
-# PhenotypesFromVariants37$set("public", "print", function(...) {
+# PhenotypesFromVariants38$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# PhenotypesFromVariants37$lock()
+# PhenotypesFromVariants38$lock()
 

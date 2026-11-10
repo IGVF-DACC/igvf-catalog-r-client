@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **cell_annotation_term** | **character** |  | [optional] 
 **treatments_term_ids** | **array[character]** |  | [optional] 
 **files_filesets** | **character** |  | 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 **perturbation** | **character** |  | [optional] 
 **score** | **numeric** |  | [optional] 
 **transcription_start_site** | **numeric** |  | [optional] 

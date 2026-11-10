@@ -36,6 +36,7 @@
 #' @field name  character [optional]
 #' @field class  character [optional]
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -71,6 +72,7 @@ GenesFromVariants <- R6::R6Class(
     `name` = NULL,
     `class` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
     #' Initialize a new GenesFromVariants class.
@@ -104,8 +106,9 @@ GenesFromVariants <- R6::R6Class(
     #' @param name name
     #' @param class class
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`gene`, `sequence_variant`, `source`, `source_url`, `label`, `biological_context`, `biosample_term`, `intron_chr` = NULL, `intron_start` = NULL, `intron_end` = NULL, `effect_size` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `log2FC` = NULL, `posterior_inclusion_probability` = NULL, `coefficient_stddev` = NULL, `power` = NULL, `significant` = NULL, `standard_error` = NULL, `z_score` = NULL, `credible_set_min_r2` = NULL, `method` = NULL, `perturbation` = NULL, `p_value` = NULL, `chr` = NULL, `study` = NULL, `name` = NULL, `class` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`gene`, `sequence_variant`, `source`, `source_url`, `label`, `biological_context`, `biosample_term`, `intron_chr` = NULL, `intron_start` = NULL, `intron_end` = NULL, `effect_size` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `log2FC` = NULL, `posterior_inclusion_probability` = NULL, `coefficient_stddev` = NULL, `power` = NULL, `significant` = NULL, `standard_error` = NULL, `z_score` = NULL, `credible_set_min_r2` = NULL, `method` = NULL, `perturbation` = NULL, `p_value` = NULL, `chr` = NULL, `study` = NULL, `name` = NULL, `class` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`gene`)) {
         stopifnot(R6::is.R6(`gene`))
         self$`gene` <- `gene`
@@ -234,6 +237,11 @@ GenesFromVariants <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
     },
 
@@ -384,6 +392,10 @@ GenesFromVariants <- R6::R6Class(
         GenesFromVariantsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        GenesFromVariantsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       return(GenesFromVariantsObject)
     },
 
@@ -487,6 +499,9 @@ GenesFromVariants <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       self
     },
 
@@ -537,6 +552,7 @@ GenesFromVariants <- R6::R6Class(
       self$`name` <- this_object$`name`
       self$`class` <- this_object$`class`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 

@@ -33,5 +33,6 @@ Name | Type | Description | Notes
 **name** | **character** |  | [optional] 
 **class** | **character** |  | [optional] 
 **files_filesets** | **character** |  | [optional] 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 
 

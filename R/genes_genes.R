@@ -34,6 +34,7 @@
 #' @field source_url  character [optional]
 #' @field name  character
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -67,6 +68,7 @@ GenesGenes <- R6::R6Class(
     `source_url` = NULL,
     `name` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
     #' Initialize a new GenesGenes class.
@@ -98,8 +100,9 @@ GenesGenes <- R6::R6Class(
     #' @param pmids pmids
     #' @param source_url source_url
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `gene_1`, `gene_2`, `label`, `method`, `class`, `source`, `name`, `pearson_correlation` = NULL, `genomic_elements_from` = NULL, `genomic_elements_to` = NULL, `biosample_term` = NULL, `biological_context` = NULL, `treatments_term_ids` = NULL, `perturbation` = NULL, `inverse_name` = NULL, `z_score` = NULL, `associated_process` = NULL, `detection_method` = NULL, `detection_method_code` = NULL, `interaction_type` = NULL, `interaction_type_code` = NULL, `confidence_value_biogrid` = NULL, `confidence_value_intact` = NULL, `pmids` = NULL, `source_url` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`_id`, `gene_1`, `gene_2`, `label`, `method`, `class`, `source`, `name`, `pearson_correlation` = NULL, `genomic_elements_from` = NULL, `genomic_elements_to` = NULL, `biosample_term` = NULL, `biological_context` = NULL, `treatments_term_ids` = NULL, `perturbation` = NULL, `inverse_name` = NULL, `z_score` = NULL, `associated_process` = NULL, `detection_method` = NULL, `detection_method_code` = NULL, `interaction_type` = NULL, `interaction_type_code` = NULL, `confidence_value_biogrid` = NULL, `confidence_value_intact` = NULL, `pmids` = NULL, `source_url` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.character(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
@@ -243,6 +246,11 @@ GenesGenes <- R6::R6Class(
         }
         self$`files_filesets` <- `files_filesets`
       }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
+      }
     },
 
     #' @description
@@ -384,6 +392,10 @@ GenesGenes <- R6::R6Class(
         GenesGenesObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        GenesGenesObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       return(GenesGenesObject)
     },
 
@@ -482,6 +494,9 @@ GenesGenes <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       self
     },
 
@@ -533,6 +548,7 @@ GenesGenes <- R6::R6Class(
       self$`source_url` <- this_object$`source_url`
       self$`name` <- this_object$`name`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 

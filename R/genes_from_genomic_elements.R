@@ -19,6 +19,7 @@
 #' @field cell_annotation_term  character [optional]
 #' @field treatments_term_ids  list(character) [optional]
 #' @field files_filesets  character
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field perturbation  character [optional]
 #' @field score  numeric [optional]
 #' @field transcription_start_site  numeric [optional]
@@ -79,6 +80,7 @@ GenesFromGenomicElements <- R6::R6Class(
     `cell_annotation_term` = NULL,
     `treatments_term_ids` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `perturbation` = NULL,
     `score` = NULL,
     `transcription_start_site` = NULL,
@@ -139,6 +141,7 @@ GenesFromGenomicElements <- R6::R6Class(
     #' @param cell_annotation cell_annotation
     #' @param cell_annotation_term cell_annotation_term
     #' @param treatments_term_ids treatments_term_ids
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param perturbation perturbation
     #' @param score score
     #' @param transcription_start_site transcription_start_site
@@ -180,7 +183,7 @@ GenesFromGenomicElements <- R6::R6Class(
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
     #' @param significant significant
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `files_filesets`, `genomic_element`, `gene`, `biological_context` = NULL, `biosample_term` = NULL, `cell_annotation` = NULL, `cell_annotation_term` = NULL, `treatments_term_ids` = NULL, `perturbation` = NULL, `score` = NULL, `transcription_start_site` = NULL, `rna_pseudobulk_tpm` = NULL, `negative_selection_log2FC` = NULL, `negative_selection_p_value` = NULL, `negative_selection_p_value_adj` = NULL, `negative_selection_neg_log10_pvalue` = NULL, `negative_selection_neg_log10_pvalue_adj` = NULL, `negative_selection_significant` = NULL, `positive_selection_log2FC` = NULL, `positive_selection_p_value` = NULL, `positive_selection_p_value_adj` = NULL, `positive_selection_neg_log10_pvalue` = NULL, `positive_selection_neg_log10_pvalue_adj` = NULL, `positive_selection_significant` = NULL, `log2FC` = NULL, `log2FC_ci95_lower` = NULL, `log2FC_ci95_upper` = NULL, `effect_size` = NULL, `effect_size_ci_95` = NULL, `z_score` = NULL, `t_score` = NULL, `idr` = NULL, `pct_1` = NULL, `pct_2` = NULL, `num_guides` = NULL, `num_cells` = NULL, `fold_change` = NULL, `background_corrected_fold_change` = NULL, `cpm_perturb` = NULL, `cpm_bg` = NULL, `gamma_approximation_ln_p_value` = NULL, `hypergeometric_ln_p_value` = NULL, `empirical_p_value` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, ...) {
+    initialize = function(`name`, `label`, `method`, `class`, `source`, `source_url`, `files_filesets`, `genomic_element`, `gene`, `biological_context` = NULL, `biosample_term` = NULL, `cell_annotation` = NULL, `cell_annotation_term` = NULL, `treatments_term_ids` = NULL, `preferred_assay_titles` = NULL, `perturbation` = NULL, `score` = NULL, `transcription_start_site` = NULL, `rna_pseudobulk_tpm` = NULL, `negative_selection_log2FC` = NULL, `negative_selection_p_value` = NULL, `negative_selection_p_value_adj` = NULL, `negative_selection_neg_log10_pvalue` = NULL, `negative_selection_neg_log10_pvalue_adj` = NULL, `negative_selection_significant` = NULL, `positive_selection_log2FC` = NULL, `positive_selection_p_value` = NULL, `positive_selection_p_value_adj` = NULL, `positive_selection_neg_log10_pvalue` = NULL, `positive_selection_neg_log10_pvalue_adj` = NULL, `positive_selection_significant` = NULL, `log2FC` = NULL, `log2FC_ci95_lower` = NULL, `log2FC_ci95_upper` = NULL, `effect_size` = NULL, `effect_size_ci_95` = NULL, `z_score` = NULL, `t_score` = NULL, `idr` = NULL, `pct_1` = NULL, `pct_2` = NULL, `num_guides` = NULL, `num_cells` = NULL, `fold_change` = NULL, `background_corrected_fold_change` = NULL, `cpm_perturb` = NULL, `cpm_bg` = NULL, `gamma_approximation_ln_p_value` = NULL, `hypergeometric_ln_p_value` = NULL, `empirical_p_value` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -259,6 +262,11 @@ GenesFromGenomicElements <- R6::R6Class(
         stopifnot(is.vector(`treatments_term_ids`), length(`treatments_term_ids`) != 0)
         sapply(`treatments_term_ids`, function(x) stopifnot(is.character(x)))
         self$`treatments_term_ids` <- `treatments_term_ids`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`perturbation`)) {
         if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
@@ -477,6 +485,10 @@ GenesFromGenomicElements <- R6::R6Class(
         GenesFromGenomicElementsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        GenesFromGenomicElementsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`perturbation`)) {
         GenesFromGenomicElementsObject[["perturbation"]] <-
           self$`perturbation`
@@ -691,6 +703,9 @@ GenesFromGenomicElements <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`perturbation`)) {
         self$`perturbation` <- this_object$`perturbation`
       }
@@ -862,6 +877,7 @@ GenesFromGenomicElements <- R6::R6Class(
       self$`cell_annotation_term` <- this_object$`cell_annotation_term`
       self$`treatments_term_ids` <- ApiClient$new()$deserializeObj(this_object$`treatments_term_ids`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`perturbation` <- this_object$`perturbation`
       self$`score` <- this_object$`score`
       self$`transcription_start_site` <- this_object$`transcription_start_site`

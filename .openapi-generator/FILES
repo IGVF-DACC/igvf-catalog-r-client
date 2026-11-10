@@ -115,7 +115,7 @@ R/pathways_from_pathways.R
 R/phenotype.R
 R/phenotype_ref.R
 R/phenotypes_from_variants.R
-R/phenotypes_from_variants37.R
+R/phenotypes_from_variants38.R
 R/phenotypes_from_variants_study.R
 R/phenotypes_from_variants_variant.R
 R/predictions.R
@@ -145,7 +145,7 @@ R/scores.R
 R/sequence_variant.R
 R/sequence_variant9.R
 R/sources.R
-R/sources4.R
+R/sources5.R
 R/study.R
 R/study2.R
 R/study_parameters.R
@@ -280,7 +280,7 @@ docs/PathwaysFromPathways.md
 docs/Phenotype.md
 docs/PhenotypeRef.md
 docs/PhenotypesFromVariants.md
-docs/PhenotypesFromVariants37.md
+docs/PhenotypesFromVariants38.md
 docs/PhenotypesFromVariantsStudy.md
 docs/PhenotypesFromVariantsVariant.md
 docs/Predictions.md
@@ -310,7 +310,7 @@ docs/Scores.md
 docs/SequenceVariant.md
 docs/SequenceVariant9.md
 docs/Sources.md
-docs/Sources4.md
+docs/Sources5.md
 docs/Study.md
 docs/Study2.md
 docs/StudyParameters.md

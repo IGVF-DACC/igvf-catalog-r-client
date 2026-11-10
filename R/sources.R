@@ -13,6 +13,7 @@
 #' @field biological_context  character
 #' @field name  character
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -25,6 +26,7 @@ Sources <- R6::R6Class(
     `biological_context` = NULL,
     `name` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
     #' Initialize a new Sources class.
@@ -35,8 +37,9 @@ Sources <- R6::R6Class(
     #' @param name name
     #' @param neg_log10_pvalue neg_log10_pvalue
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`label`, `source`, `biological_context`, `name`, `neg_log10_pvalue` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`label`, `source`, `biological_context`, `name`, `neg_log10_pvalue` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`label`)) {
         if (!(is.character(`label`) && length(`label`) == 1)) {
           stop(paste("Error! Invalid data for `label`. Must be a string:", `label`))
@@ -69,6 +72,11 @@ Sources <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
     },
 
@@ -127,6 +135,10 @@ Sources <- R6::R6Class(
         SourcesObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        SourcesObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       return(SourcesObject)
     },
 
@@ -155,6 +167,9 @@ Sources <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       self
     },
 
@@ -182,6 +197,7 @@ Sources <- R6::R6Class(
       self$`biological_context` <- this_object$`biological_context`
       self$`name` <- this_object$`name`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 

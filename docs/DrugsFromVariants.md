@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **class** | **character** |  | [optional] 
 **method** | **character** |  | [optional] 
 **files_filesets** | **character** |  | [optional] 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 
 

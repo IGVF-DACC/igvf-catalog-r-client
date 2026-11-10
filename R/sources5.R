@@ -1,36 +1,39 @@
-#' Create a new Sources4
+#' Create a new Sources5
 #'
 #' @description
-#' Sources4 Class
+#' Sources5 Class
 #'
 #' @docType class
-#' @title Sources4
-#' @description Sources4 Class
+#' @title Sources5
+#' @description Sources5 Class
 #' @format An \code{R6Class} generator object
 #' @field motif  character
 #' @field source  character
 #' @field name  character
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-Sources4 <- R6::R6Class(
-  "Sources4",
+Sources5 <- R6::R6Class(
+  "Sources5",
   public = list(
     `motif` = NULL,
     `source` = NULL,
     `name` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
-    #' Initialize a new Sources4 class.
+    #' Initialize a new Sources5 class.
     #'
     #' @param motif motif
     #' @param source source
     #' @param name name
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`motif`, `source`, `name`, `files_filesets` = NULL, ...) {
+    initialize = function(`motif`, `source`, `name`, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`motif`)) {
         if (!(is.character(`motif`) && length(`motif`) == 1)) {
           stop(paste("Error! Invalid data for `motif`. Must be a string:", `motif`))
@@ -55,6 +58,11 @@ Sources4 <- R6::R6Class(
         }
         self$`files_filesets` <- `files_filesets`
       }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
+      }
     },
 
     #' @description
@@ -69,9 +77,9 @@ Sources4 <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return Sources4 as a base R list.
+    #' @return Sources5 as a base R list.
     #' @examples
-    #' # convert array of Sources4 (x) to a data frame
+    #' # convert array of Sources5 (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -83,35 +91,39 @@ Sources4 <- R6::R6Class(
     },
 
     #' @description
-    #' Convert Sources4 to a base R type
+    #' Convert Sources5 to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      Sources4Object <- list()
+      Sources5Object <- list()
       if (!is.null(self$`motif`)) {
-        Sources4Object[["motif"]] <-
+        Sources5Object[["motif"]] <-
           self$`motif`
       }
       if (!is.null(self$`source`)) {
-        Sources4Object[["source"]] <-
+        Sources5Object[["source"]] <-
           self$`source`
       }
       if (!is.null(self$`name`)) {
-        Sources4Object[["name"]] <-
+        Sources5Object[["name"]] <-
           self$`name`
       }
       if (!is.null(self$`files_filesets`)) {
-        Sources4Object[["files_filesets"]] <-
+        Sources5Object[["files_filesets"]] <-
           self$`files_filesets`
       }
-      return(Sources4Object)
+      if (!is.null(self$`preferred_assay_titles`)) {
+        Sources5Object[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
+      return(Sources5Object)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of Sources4
+    #' Deserialize JSON string into an instance of Sources5
     #'
     #' @param input_json the JSON input
-    #' @return the instance of Sources4
+    #' @return the instance of Sources5
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`motif`)) {
@@ -126,6 +138,9 @@ Sources4 <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       self
     },
 
@@ -133,7 +148,7 @@ Sources4 <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return Sources4 in JSON format
+    #' @return Sources5 in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -141,21 +156,22 @@ Sources4 <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of Sources4
+    #' Deserialize JSON string into an instance of Sources5
     #'
     #' @param input_json the JSON input
-    #' @return the instance of Sources4
+    #' @return the instance of Sources5
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`motif` <- this_object$`motif`
       self$`source` <- this_object$`source`
       self$`name` <- this_object$`name`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 
     #' @description
-    #' Validate JSON input with respect to Sources4 and throw an exception if invalid
+    #' Validate JSON input with respect to Sources5 and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -166,7 +182,7 @@ Sources4 <- R6::R6Class(
           stop(paste("Error! Invalid data for `motif`. Must be a string:", input_json$`motif`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Sources4: the required field `motif` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for Sources5: the required field `motif` is missing."))
       }
       # check the required field `source`
       if (!is.null(input_json$`source`)) {
@@ -174,7 +190,7 @@ Sources4 <- R6::R6Class(
           stop(paste("Error! Invalid data for `source`. Must be a string:", input_json$`source`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Sources4: the required field `source` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for Sources5: the required field `source` is missing."))
       }
       # check the required field `name`
       if (!is.null(input_json$`name`)) {
@@ -182,14 +198,14 @@ Sources4 <- R6::R6Class(
           stop(paste("Error! Invalid data for `name`. Must be a string:", input_json$`name`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Sources4: the required field `name` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for Sources5: the required field `name` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of Sources4
+    #' @return String representation of Sources5
     toString = function() {
       self$toJSONString()
     },
@@ -242,13 +258,13 @@ Sources4 <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# Sources4$unlock()
+# Sources5$unlock()
 #
 ## Below is an example to define the print function
-# Sources4$set("public", "print", function(...) {
+# Sources5$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# Sources4$lock()
+# Sources5$lock()
 

@@ -11,6 +11,7 @@
 #' @field score  numeric [optional]
 #' @field source_url  character [optional]
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ Scores <- R6::R6Class(
     `score` = NULL,
     `source_url` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
     #' Initialize a new Scores class.
@@ -29,8 +31,9 @@ Scores <- R6::R6Class(
     #' @param score score
     #' @param source_url source_url
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`method`, `score` = NULL, `source_url` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`method`, `score` = NULL, `source_url` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`method`)) {
         if (!(is.character(`method`) && length(`method`) == 1)) {
           stop(paste("Error! Invalid data for `method`. Must be a string:", `method`))
@@ -51,6 +54,11 @@ Scores <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
     },
 
@@ -101,6 +109,10 @@ Scores <- R6::R6Class(
         ScoresObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        ScoresObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       return(ScoresObject)
     },
 
@@ -122,6 +134,9 @@ Scores <- R6::R6Class(
       }
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
+      }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       }
       self
     },
@@ -148,6 +163,7 @@ Scores <- R6::R6Class(
       self$`score` <- this_object$`score`
       self$`source_url` <- this_object$`source_url`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 

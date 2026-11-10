@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **name** | **character** |  | 
 **method** | **character** |  | [optional] 
 **files_filesets** | **character** |  | [optional] 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 **source** | **character** |  | [optional] 
 **source_url** | **character** |  | [optional] 
 **is_complex** | **character** |  | 

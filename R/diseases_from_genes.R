@@ -22,6 +22,7 @@
 #' @field method  character [optional]
 #' @field label  character [optional]
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field source  character [optional]
 #' @field source_url  character [optional]
 #' @field gene  \link{DiseasesFromGenesGene} [optional]
@@ -50,6 +51,7 @@ DiseasesFromGenes <- R6::R6Class(
     `method` = NULL,
     `label` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `source` = NULL,
     `source_url` = NULL,
     `gene` = NULL,
@@ -77,6 +79,7 @@ DiseasesFromGenes <- R6::R6Class(
     #' @param method method
     #' @param label label
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param source source
     #' @param source_url source_url
     #' @param gene gene
@@ -84,7 +87,7 @@ DiseasesFromGenes <- R6::R6Class(
     #' @param inheritance_mode inheritance_mode
     #' @param variants variants
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `pmids` = NULL, `term_name` = NULL, `gene_name` = NULL, `association_type` = NULL, `association_status` = NULL, `sgc_id` = NULL, `hgnc` = NULL, `classification` = NULL, `moi_id` = NULL, `moi_name` = NULL, `submitter` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, `source` = NULL, `source_url` = NULL, `gene` = NULL, `disease` = NULL, `inheritance_mode` = NULL, `variants` = NULL, ...) {
+    initialize = function(`name`, `pmids` = NULL, `term_name` = NULL, `gene_name` = NULL, `association_type` = NULL, `association_status` = NULL, `sgc_id` = NULL, `hgnc` = NULL, `classification` = NULL, `moi_id` = NULL, `moi_name` = NULL, `submitter` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, `source` = NULL, `source_url` = NULL, `gene` = NULL, `disease` = NULL, `inheritance_mode` = NULL, `variants` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -179,6 +182,11 @@ DiseasesFromGenes <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`source`)) {
         if (!(is.character(`source`) && length(`source`) == 1)) {
@@ -304,6 +312,10 @@ DiseasesFromGenes <- R6::R6Class(
         DiseasesFromGenesObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        DiseasesFromGenesObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`source`)) {
         DiseasesFromGenesObject[["source"]] <-
           self$`source`
@@ -387,6 +399,9 @@ DiseasesFromGenes <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`source`)) {
         self$`source` <- this_object$`source`
       }
@@ -448,6 +463,7 @@ DiseasesFromGenes <- R6::R6Class(
       self$`method` <- this_object$`method`
       self$`label` <- this_object$`label`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
       self$`gene` <- DiseasesFromGenesGene$new()$fromJSON(jsonlite::toJSON(this_object$`gene`, auto_unbox = TRUE, digits = NA))

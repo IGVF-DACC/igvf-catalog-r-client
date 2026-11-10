@@ -31,5 +31,6 @@ Name | Type | Description | Notes
 **source_url** | **character** |  | [optional] 
 **name** | **character** |  | 
 **files_filesets** | **character** |  | [optional] 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 
 

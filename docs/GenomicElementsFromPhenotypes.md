@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **biological_context** | **character** |  | 
 **biosample_term** | **character** |  | 
 **files_filesets** | **character** |  | 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 **perturbation** | **character** |  | [optional] 
 **z_score** | **numeric** |  | [optional] 
 **log2FC** | **numeric** |  | [optional] 

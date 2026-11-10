@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **source** | **character** |  | 
 **source_url** | **character** |  | 
 **files_filesets** | **character** |  | 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 **biological_context** | **character** |  | [optional] 
 **biosample_term** | **character** |  | [optional] 
 **treatments_term_ids** | **array[character]** |  | [optional] 

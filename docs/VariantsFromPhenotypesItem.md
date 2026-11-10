@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **name** | **character** |  | 
 **variant** | [**PhenotypesFromVariantsVariant**](PhenotypesFromVariants_variant.md) |  | 
 **files_filesets** | **character** |  | 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 **biological_context** | **character** |  | [optional] 
 **score** | **numeric** |  | [optional] 
 **effect_size** | **numeric** |  | [optional] 

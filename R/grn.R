@@ -17,6 +17,7 @@
 #' @field source  character
 #' @field biological_context  character
 #' @field files_filesets  character
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field log2FC  numeric [optional]
 #' @field neg_log10_pvalue  \link{GenesFromGenomicElementsPValue} [optional]
 #' @field neg_log10_pvalue_adj  \link{GenesFromGenomicElementsPValue} [optional]
@@ -43,6 +44,7 @@ Grn <- R6::R6Class(
     `source` = NULL,
     `biological_context` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `log2FC` = NULL,
     `neg_log10_pvalue` = NULL,
     `neg_log10_pvalue_adj` = NULL,
@@ -67,6 +69,7 @@ Grn <- R6::R6Class(
     #' @param regulator_gene regulator_gene
     #' @param transcript transcript
     #' @param perturbation perturbation
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param log2FC log2FC
     #' @param neg_log10_pvalue neg_log10_pvalue
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
@@ -78,7 +81,7 @@ Grn <- R6::R6Class(
     #' @param perturbation_efficiency_neg_log10_pvalue_adj perturbation_efficiency_neg_log10_pvalue_adj
     #' @param perturbation_efficiency_significant perturbation_efficiency_significant
     #' @param ... Other optional arguments.
-    initialize = function(`response_gene`, `class`, `method`, `source`, `biological_context`, `files_filesets`, `genomic_element` = NULL, `regulator_gene` = NULL, `transcript` = NULL, `perturbation` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `perturbation_efficiency_log2FC` = NULL, `perturbation_efficiency_neg_log10_pvalue` = NULL, `perturbation_efficiency_neg_log10_pvalue_adj` = NULL, `perturbation_efficiency_significant` = NULL, ...) {
+    initialize = function(`response_gene`, `class`, `method`, `source`, `biological_context`, `files_filesets`, `genomic_element` = NULL, `regulator_gene` = NULL, `transcript` = NULL, `perturbation` = NULL, `preferred_assay_titles` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `significant` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `perturbation_efficiency_log2FC` = NULL, `perturbation_efficiency_neg_log10_pvalue` = NULL, `perturbation_efficiency_neg_log10_pvalue_adj` = NULL, `perturbation_efficiency_significant` = NULL, ...) {
       if (!missing(`response_gene`)) {
         if (!(is.character(`response_gene`) && length(`response_gene`) == 1)) {
           stop(paste("Error! Invalid data for `response_gene`. Must be a string:", `response_gene`))
@@ -134,6 +137,11 @@ Grn <- R6::R6Class(
           stop(paste("Error! Invalid data for `perturbation`. Must be a string:", `perturbation`))
         }
         self$`perturbation` <- `perturbation`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`log2FC`)) {
         self$`log2FC` <- `log2FC`
@@ -250,6 +258,10 @@ Grn <- R6::R6Class(
         GrnObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        GrnObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`log2FC`)) {
         GrnObject[["log2FC"]] <-
           self$`log2FC`
@@ -334,6 +346,9 @@ Grn <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`log2FC`)) {
         self$`log2FC` <- this_object$`log2FC`
       }
@@ -407,6 +422,7 @@ Grn <- R6::R6Class(
       self$`source` <- this_object$`source`
       self$`biological_context` <- this_object$`biological_context`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`log2FC` <- this_object$`log2FC`
       self$`neg_log10_pvalue` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`neg_log10_pvalue`, auto_unbox = TRUE, digits = NA))
       self$`neg_log10_pvalue_adj` <- GenesFromGenomicElementsPValue$new()$fromJSON(jsonlite::toJSON(this_object$`neg_log10_pvalue_adj`, auto_unbox = TRUE, digits = NA))

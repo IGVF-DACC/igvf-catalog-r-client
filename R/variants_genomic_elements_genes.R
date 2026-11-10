@@ -18,6 +18,7 @@
 #' @field source  character
 #' @field source_url  character
 #' @field files_filesets  character
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field biological_context  character
 #' @field biosample_term  character
 #' @field perturbation  character [optional]
@@ -45,6 +46,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
     `source` = NULL,
     `source_url` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `biological_context` = NULL,
     `biosample_term` = NULL,
     `perturbation` = NULL,
@@ -72,6 +74,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
     #' @param biological_context biological_context
     #' @param biosample_term biosample_term
     #' @param distance_to_tss distance_to_tss
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param perturbation perturbation
     #' @param log2FC log2FC
     #' @param neg_log10_pvalue neg_log10_pvalue
@@ -81,7 +84,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
     #' @param effect_size effect_size
     #' @param significant significant
     #' @param ... Other optional arguments.
-    initialize = function(`variant`, `genomic_element`, `gene`, `name`, `label`, `method`, `class`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `distance_to_tss` = NULL, `perturbation` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `effect_size` = NULL, `significant` = NULL, ...) {
+    initialize = function(`variant`, `genomic_element`, `gene`, `name`, `label`, `method`, `class`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `distance_to_tss` = NULL, `preferred_assay_titles` = NULL, `perturbation` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `effect_size` = NULL, `significant` = NULL, ...) {
       if (!missing(`variant`)) {
         stopifnot(R6::is.R6(`variant`))
         self$`variant` <- `variant`
@@ -150,6 +153,11 @@ VariantsGenomicElementsGenes <- R6::R6Class(
       }
       if (!is.null(`distance_to_tss`)) {
         self$`distance_to_tss` <- `distance_to_tss`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`perturbation`)) {
         if (!(is.character(`perturbation`) && length(`perturbation`) == 1)) {
@@ -261,6 +269,10 @@ VariantsGenomicElementsGenes <- R6::R6Class(
         VariantsGenomicElementsGenesObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        VariantsGenomicElementsGenesObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`biological_context`)) {
         VariantsGenomicElementsGenesObject[["biological_context"]] <-
           self$`biological_context`
@@ -350,6 +362,9 @@ VariantsGenomicElementsGenes <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`biological_context`)) {
         self$`biological_context` <- this_object$`biological_context`
       }
@@ -418,6 +433,7 @@ VariantsGenomicElementsGenes <- R6::R6Class(
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`biological_context` <- this_object$`biological_context`
       self$`biosample_term` <- this_object$`biosample_term`
       self$`perturbation` <- this_object$`perturbation`

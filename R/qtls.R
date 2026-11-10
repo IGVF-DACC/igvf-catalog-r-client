@@ -24,6 +24,7 @@
 #' @field intron_end  numeric [optional]
 #' @field study  \link{Study2} [optional]
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -47,6 +48,7 @@ Qtls <- R6::R6Class(
     `intron_end` = NULL,
     `study` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
     #' Initialize a new Qtls class.
@@ -68,8 +70,9 @@ Qtls <- R6::R6Class(
     #' @param intron_end intron_end
     #' @param study study
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`variant`, `gene`, `protein_complex`, `genomic_element`, `source`, `method`, `regulatory_type` = NULL, `gene_consequence` = NULL, `biological_context` = NULL, `neg_log10_pvalue` = NULL, `effect_size` = NULL, `posterior_inclusion_probability` = NULL, `intron_chr` = NULL, `intron_start` = NULL, `intron_end` = NULL, `study` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`variant`, `gene`, `protein_complex`, `genomic_element`, `source`, `method`, `regulatory_type` = NULL, `gene_consequence` = NULL, `biological_context` = NULL, `neg_log10_pvalue` = NULL, `effect_size` = NULL, `posterior_inclusion_probability` = NULL, `intron_chr` = NULL, `intron_start` = NULL, `intron_end` = NULL, `study` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`variant`)) {
         stopifnot(R6::is.R6(`variant`))
         self$`variant` <- `variant`
@@ -146,6 +149,11 @@ Qtls <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
     },
 
@@ -248,6 +256,10 @@ Qtls <- R6::R6Class(
         QtlsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        QtlsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       return(QtlsObject)
     },
 
@@ -319,6 +331,9 @@ Qtls <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       self
     },
 
@@ -357,6 +372,7 @@ Qtls <- R6::R6Class(
       self$`intron_end` <- this_object$`intron_end`
       self$`study` <- Study2$new()$fromJSON(jsonlite::toJSON(this_object$`study`, auto_unbox = TRUE, digits = NA))
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 

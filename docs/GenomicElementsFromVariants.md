@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **neg_log10_pvalue** | **numeric** |  | [optional] 
 **beta** | **numeric** |  | [optional] 
 **files_filesets** | **character** |  | [optional] 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 **biological_context** | **character** |  | [optional] 
 **biosample_term** | **character** |  | [optional] 
 **source** | **character** |  | [optional] 

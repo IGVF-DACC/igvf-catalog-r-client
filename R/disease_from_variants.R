@@ -17,6 +17,7 @@
 #' @field method  character [optional]
 #' @field label  character [optional]
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field source  character [optional]
 #' @field source_url  character [optional]
 #' @field name  character
@@ -36,6 +37,7 @@ DiseaseFromVariants <- R6::R6Class(
     `method` = NULL,
     `label` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `source` = NULL,
     `source_url` = NULL,
     `name` = NULL,
@@ -54,10 +56,11 @@ DiseaseFromVariants <- R6::R6Class(
     #' @param method method
     #' @param label label
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param source source
     #' @param source_url source_url
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `sequence_variant` = NULL, `disease` = NULL, `gene_id` = NULL, `gene_name` = NULL, `assertion` = NULL, `pmids` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, `source` = NULL, `source_url` = NULL, ...) {
+    initialize = function(`name`, `sequence_variant` = NULL, `disease` = NULL, `gene_id` = NULL, `gene_name` = NULL, `assertion` = NULL, `pmids` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, `source` = NULL, `source_url` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -118,6 +121,11 @@ DiseaseFromVariants <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`source`)) {
         if (!(is.character(`source`) && length(`source`) == 1)) {
@@ -204,6 +212,10 @@ DiseaseFromVariants <- R6::R6Class(
         DiseaseFromVariantsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        DiseaseFromVariantsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`source`)) {
         DiseaseFromVariantsObject[["source"]] <-
           self$`source`
@@ -260,6 +272,9 @@ DiseaseFromVariants <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`source`)) {
         self$`source` <- this_object$`source`
       }
@@ -300,6 +315,7 @@ DiseaseFromVariants <- R6::R6Class(
       self$`method` <- this_object$`method`
       self$`label` <- this_object$`label`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
       self$`name` <- this_object$`name`

@@ -16,23 +16,23 @@ VariantsFromPhenotypesItem <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("PhenotypesFromVariants", "PhenotypesFromVariants37"),
+    any_of = list("PhenotypesFromVariants", "PhenotypesFromVariants38"),
 
     #' @description
     #' Initialize a new VariantsFromPhenotypesItem.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "PhenotypesFromVariants", "PhenotypesFromVariants37"
+    #' @param instance an instance of the object defined in the anyOf schemas: "PhenotypesFromVariants", "PhenotypesFromVariants38"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "PhenotypesFromVariants") {
         self$actual_instance <- instance
         self$actual_type <- "PhenotypesFromVariants"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "PhenotypesFromVariants37") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "PhenotypesFromVariants38") {
         self$actual_instance <- instance
-        self$actual_type <- "PhenotypesFromVariants37"
+        self$actual_type <- "PhenotypesFromVariants38"
       } else {
-        stop(paste("Failed to initialize VariantsFromPhenotypesItem with anyOf schemas PhenotypesFromVariants, PhenotypesFromVariants37. Provided class name: ",
+        stop(paste("Failed to initialize VariantsFromPhenotypesItem with anyOf schemas PhenotypesFromVariants, PhenotypesFromVariants38. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -71,22 +71,22 @@ VariantsFromPhenotypesItem <- R6::R6Class(
         error_messages <- append(error_messages, `PhenotypesFromVariants_result`["message"])
       }
 
-      `PhenotypesFromVariants37_result` <- tryCatch({
-          `PhenotypesFromVariants37`$public_methods$validateJSON(input)
-          `PhenotypesFromVariants37_instance` <- `PhenotypesFromVariants37`$new()
-          self$actual_instance <- `PhenotypesFromVariants37_instance`$fromJSON(input)
-          self$actual_type <- "PhenotypesFromVariants37"
+      `PhenotypesFromVariants38_result` <- tryCatch({
+          `PhenotypesFromVariants38`$public_methods$validateJSON(input)
+          `PhenotypesFromVariants38_instance` <- `PhenotypesFromVariants38`$new()
+          self$actual_instance <- `PhenotypesFromVariants38_instance`$fromJSON(input)
+          self$actual_type <- "PhenotypesFromVariants38"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`PhenotypesFromVariants37_result`["error"])) {
-        error_messages <- append(error_messages, `PhenotypesFromVariants37_result`["message"])
+      if (!is.null(`PhenotypesFromVariants38_result`["error"])) {
+        error_messages <- append(error_messages, `PhenotypesFromVariants38_result`["message"])
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into VariantsFromPhenotypesItem with anyOf schemas PhenotypesFromVariants, PhenotypesFromVariants37. Details: >>",
+      stop(paste("No match found when deserializing the input into VariantsFromPhenotypesItem with anyOf schemas PhenotypesFromVariants, PhenotypesFromVariants38. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

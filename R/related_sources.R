@@ -16,23 +16,23 @@ RelatedSources <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field any_of  a list of object types defined in the anyOf schema.
-    any_of = list("array[Sources4]", "array[Sources]"),
+    any_of = list("array[Sources5]", "array[Sources]"),
 
     #' @description
     #' Initialize a new RelatedSources.
     #'
-    #' @param instance an instance of the object defined in the anyOf schemas: "array[Sources4]", "array[Sources]"
+    #' @param instance an instance of the object defined in the anyOf schemas: "array[Sources5]", "array[Sources]"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "array[Sources4]") {
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "array[Sources5]") {
         self$actual_instance <- instance
-        self$actual_type <- "array[Sources4]"
+        self$actual_type <- "array[Sources5]"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "array[Sources]") {
         self$actual_instance <- instance
         self$actual_type <- "array[Sources]"
       } else {
-        stop(paste("Failed to initialize RelatedSources with anyOf schemas array[Sources4], array[Sources]. Provided class name: ",
+        stop(paste("Failed to initialize RelatedSources with anyOf schemas array[Sources5], array[Sources]. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -71,22 +71,22 @@ RelatedSources <- R6::R6Class(
         error_messages <- append(error_messages, `array[Sources]_result`["message"])
       }
 
-      `array[Sources4]_result` <- tryCatch({
-          `array[Sources4]`$public_methods$validateJSON(input)
-          `array[Sources4]_instance` <- `array[Sources4]`$new()
-          self$actual_instance <- `array[Sources4]_instance`$fromJSON(input)
-          self$actual_type <- "array[Sources4]"
+      `array[Sources5]_result` <- tryCatch({
+          `array[Sources5]`$public_methods$validateJSON(input)
+          `array[Sources5]_instance` <- `array[Sources5]`$new()
+          self$actual_instance <- `array[Sources5]_instance`$fromJSON(input)
+          self$actual_type <- "array[Sources5]"
           return(self)
         },
         error = function(err) err
       )
 
-      if (!is.null(`array[Sources4]_result`["error"])) {
-        error_messages <- append(error_messages, `array[Sources4]_result`["message"])
+      if (!is.null(`array[Sources5]_result`["error"])) {
+        error_messages <- append(error_messages, `array[Sources5]_result`["message"])
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into RelatedSources with anyOf schemas array[Sources4], array[Sources]. Details: >>",
+      stop(paste("No match found when deserializing the input into RelatedSources with anyOf schemas array[Sources5], array[Sources]. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 

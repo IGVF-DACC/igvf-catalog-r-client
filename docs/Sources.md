@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **biological_context** | **character** |  | 
 **name** | **character** |  | 
 **files_filesets** | **character** |  | [optional] 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 
 

@@ -16,6 +16,7 @@
 #' @field neg_log10_pvalue  numeric [optional]
 #' @field beta  numeric [optional]
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field biological_context  character [optional]
 #' @field biosample_term  character [optional]
 #' @field source  character [optional]
@@ -36,6 +37,7 @@ GenomicElementsFromVariants <- R6::R6Class(
     `neg_log10_pvalue` = NULL,
     `beta` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `biological_context` = NULL,
     `biosample_term` = NULL,
     `source` = NULL,
@@ -54,13 +56,14 @@ GenomicElementsFromVariants <- R6::R6Class(
     #' @param neg_log10_pvalue neg_log10_pvalue
     #' @param beta beta
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param biological_context biological_context
     #' @param biosample_term biosample_term
     #' @param source source
     #' @param source_url source_url
     #' @param genomic_element genomic_element
     #' @param ... Other optional arguments.
-    initialize = function(`variant`, `name`, `label`, `method`, `class` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `beta` = NULL, `files_filesets` = NULL, `biological_context` = NULL, `biosample_term` = NULL, `source` = NULL, `source_url` = NULL, `genomic_element` = NULL, ...) {
+    initialize = function(`variant`, `name`, `label`, `method`, `class` = NULL, `log2FC` = NULL, `neg_log10_pvalue` = NULL, `beta` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, `biological_context` = NULL, `biosample_term` = NULL, `source` = NULL, `source_url` = NULL, `genomic_element` = NULL, ...) {
       if (!missing(`variant`)) {
         stopifnot(R6::is.R6(`variant`))
         self$`variant` <- `variant`
@@ -103,6 +106,11 @@ GenomicElementsFromVariants <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`biological_context`)) {
         if (!(is.character(`biological_context`) && length(`biological_context`) == 1)) {
@@ -201,6 +209,10 @@ GenomicElementsFromVariants <- R6::R6Class(
         GenomicElementsFromVariantsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        GenomicElementsFromVariantsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`biological_context`)) {
         GenomicElementsFromVariantsObject[["biological_context"]] <-
           self$`biological_context`
@@ -260,6 +272,9 @@ GenomicElementsFromVariants <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`biological_context`)) {
         self$`biological_context` <- this_object$`biological_context`
       }
@@ -307,6 +322,7 @@ GenomicElementsFromVariants <- R6::R6Class(
       self$`neg_log10_pvalue` <- this_object$`neg_log10_pvalue`
       self$`beta` <- this_object$`beta`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`biological_context` <- this_object$`biological_context`
       self$`biosample_term` <- this_object$`biosample_term`
       self$`source` <- this_object$`source`

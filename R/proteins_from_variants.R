@@ -17,6 +17,7 @@
 #' @field name  character
 #' @field method  character [optional]
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field source  character [optional]
 #' @field source_url  character [optional]
 #' @field is_complex  character
@@ -58,6 +59,7 @@ ProteinsFromVariants <- R6::R6Class(
     `name` = NULL,
     `method` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `source` = NULL,
     `source_url` = NULL,
     `is_complex` = NULL,
@@ -98,6 +100,7 @@ ProteinsFromVariants <- R6::R6Class(
     #' @param label label
     #' @param method method
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param source source
     #' @param source_url source_url
     #' @param score score
@@ -123,7 +126,7 @@ ProteinsFromVariants <- R6::R6Class(
     #' @param ref_auc ref_auc
     #' @param alt_auc alt_auc
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `is_complex`, `sequence_variant` = NULL, `protein_complex` = NULL, `biosample_term` = NULL, `biological_context` = NULL, `regulatory_type` = NULL, `class` = NULL, `label` = NULL, `method` = NULL, `files_filesets` = NULL, `source` = NULL, `source_url` = NULL, `score` = NULL, `neg_log10_pvalue_adj_ref` = NULL, `neg_log10_pvalue_adj_alt` = NULL, `motif` = NULL, `motif_log2FC` = NULL, `beta` = NULL, `se` = NULL, `gene` = NULL, `gene_consequence` = NULL, `neg_log10_pvalue` = NULL, `p_value` = NULL, `neg_log10_pvalue_adj` = NULL, `variant_effect_score` = NULL, `SEMpl_annotation` = NULL, `SEMpl_baseline` = NULL, `alt_score` = NULL, `ref_score` = NULL, `relative_binding_affinity` = NULL, `effect_on_binding` = NULL, `pbs` = NULL, `ref_auc` = NULL, `alt_auc` = NULL, ...) {
+    initialize = function(`name`, `is_complex`, `sequence_variant` = NULL, `protein_complex` = NULL, `biosample_term` = NULL, `biological_context` = NULL, `regulatory_type` = NULL, `class` = NULL, `label` = NULL, `method` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, `source` = NULL, `source_url` = NULL, `score` = NULL, `neg_log10_pvalue_adj_ref` = NULL, `neg_log10_pvalue_adj_alt` = NULL, `motif` = NULL, `motif_log2FC` = NULL, `beta` = NULL, `se` = NULL, `gene` = NULL, `gene_consequence` = NULL, `neg_log10_pvalue` = NULL, `p_value` = NULL, `neg_log10_pvalue_adj` = NULL, `variant_effect_score` = NULL, `SEMpl_annotation` = NULL, `SEMpl_baseline` = NULL, `alt_score` = NULL, `ref_score` = NULL, `relative_binding_affinity` = NULL, `effect_on_binding` = NULL, `pbs` = NULL, `ref_auc` = NULL, `alt_auc` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -183,6 +186,11 @@ ProteinsFromVariants <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`source`)) {
         if (!(is.character(`source`) && length(`source`) == 1)) {
@@ -350,6 +358,10 @@ ProteinsFromVariants <- R6::R6Class(
         ProteinsFromVariantsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        ProteinsFromVariantsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`source`)) {
         ProteinsFromVariantsObject[["source"]] <-
           self$`source`
@@ -496,6 +508,9 @@ ProteinsFromVariants <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`source`)) {
         self$`source` <- this_object$`source`
       }
@@ -602,6 +617,7 @@ ProteinsFromVariants <- R6::R6Class(
       self$`name` <- this_object$`name`
       self$`method` <- this_object$`method`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
       self$`is_complex` <- this_object$`is_complex`

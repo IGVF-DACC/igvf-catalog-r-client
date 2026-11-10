@@ -21,5 +21,6 @@ Name | Type | Description | Notes
 **intron_end** | **numeric** |  | [optional] 
 **study** | [**Study2**](Study2.md) |  | [optional] 
 **files_filesets** | **character** |  | [optional] 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 
 

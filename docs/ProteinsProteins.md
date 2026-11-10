@@ -22,5 +22,6 @@ Name | Type | Description | Notes
 **pmids** | **array[character]** |  | 
 **name** | **character** |  | 
 **files_filesets** | **character** |  | [optional] 
+**preferred_assay_titles** | **array[character]** |  | [optional] 
 
 

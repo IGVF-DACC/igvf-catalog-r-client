@@ -22,6 +22,7 @@
 #' @field method  character [optional]
 #' @field label  character [optional]
 #' @field files_filesets  character [optional]
+#' @field preferred_assay_titles  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -43,6 +44,7 @@ AnnotationsFromGoTerms <- R6::R6Class(
     `method` = NULL,
     `label` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
 
     #' @description
     #' Initialize a new AnnotationsFromGoTerms class.
@@ -62,8 +64,9 @@ AnnotationsFromGoTerms <- R6::R6Class(
     #' @param method method
     #' @param label label
     #' @param files_filesets files_filesets
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`gene_product_id`, `go_term_name`, `source`, `gene_product_type`, `gene_product_symbol`, `qualifier`, `organism`, `evidence`, `go_id`, `name`, `gene_product_name` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, ...) {
+    initialize = function(`gene_product_id`, `go_term_name`, `source`, `gene_product_type`, `gene_product_symbol`, `qualifier`, `organism`, `evidence`, `go_id`, `name`, `gene_product_name` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`gene_product_id`)) {
         if (!(is.character(`gene_product_id`) && length(`gene_product_id`) == 1)) {
           stop(paste("Error! Invalid data for `gene_product_id`. Must be a string:", `gene_product_id`))
@@ -152,6 +155,11 @@ AnnotationsFromGoTerms <- R6::R6Class(
           stop(paste("Error! Invalid data for `files_filesets`. Must be a string:", `files_filesets`))
         }
         self$`files_filesets` <- `files_filesets`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
     },
 
@@ -246,6 +254,10 @@ AnnotationsFromGoTerms <- R6::R6Class(
         AnnotationsFromGoTermsObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        AnnotationsFromGoTermsObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       return(AnnotationsFromGoTermsObject)
     },
 
@@ -301,6 +313,9 @@ AnnotationsFromGoTerms <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       self
     },
 
@@ -337,6 +352,7 @@ AnnotationsFromGoTerms <- R6::R6Class(
       self$`method` <- this_object$`method`
       self$`label` <- this_object$`label`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self
     },
 

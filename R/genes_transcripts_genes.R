@@ -31,6 +31,7 @@
 #' @field source  character
 #' @field source_url  character
 #' @field files_filesets  character
+#' @field preferred_assay_titles  list(character) [optional]
 #' @field biological_context  character
 #' @field biosample_term  character
 #' @field treatments_term_ids  list(character) [optional]
@@ -64,6 +65,7 @@ GenesTranscriptsGenes <- R6::R6Class(
     `source` = NULL,
     `source_url` = NULL,
     `files_filesets` = NULL,
+    `preferred_assay_titles` = NULL,
     `biological_context` = NULL,
     `biosample_term` = NULL,
     `treatments_term_ids` = NULL,
@@ -97,9 +99,10 @@ GenesTranscriptsGenes <- R6::R6Class(
     #' @param p_value_adj p_value_adj
     #' @param neg_log10_pvalue neg_log10_pvalue
     #' @param neg_log10_pvalue_adj neg_log10_pvalue_adj
+    #' @param preferred_assay_titles preferred_assay_titles
     #' @param treatments_term_ids treatments_term_ids
     #' @param ... Other optional arguments.
-    initialize = function(`_id`, `gene_transcript`, `gene`, `transcript`, `readout_gene`, `morf_id`, `transcript_mapping_method`, `log2FC`, `significant`, `name`, `label`, `class`, `method`, `perturbation`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `standard_error` = NULL, `stat` = NULL, `base_mean` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `treatments_term_ids` = NULL, ...) {
+    initialize = function(`_id`, `gene_transcript`, `gene`, `transcript`, `readout_gene`, `morf_id`, `transcript_mapping_method`, `log2FC`, `significant`, `name`, `label`, `class`, `method`, `perturbation`, `source`, `source_url`, `files_filesets`, `biological_context`, `biosample_term`, `standard_error` = NULL, `stat` = NULL, `base_mean` = NULL, `p_value` = NULL, `p_value_adj` = NULL, `neg_log10_pvalue` = NULL, `neg_log10_pvalue_adj` = NULL, `preferred_assay_titles` = NULL, `treatments_term_ids` = NULL, ...) {
       if (!missing(`_id`)) {
         if (!(is.character(`_id`) && length(`_id`) == 1)) {
           stop(paste("Error! Invalid data for `_id`. Must be a string:", `_id`))
@@ -225,6 +228,11 @@ GenesTranscriptsGenes <- R6::R6Class(
       }
       if (!is.null(`neg_log10_pvalue_adj`)) {
         self$`neg_log10_pvalue_adj` <- `neg_log10_pvalue_adj`
+      }
+      if (!is.null(`preferred_assay_titles`)) {
+        stopifnot(is.vector(`preferred_assay_titles`), length(`preferred_assay_titles`) != 0)
+        sapply(`preferred_assay_titles`, function(x) stopifnot(is.character(x)))
+        self$`preferred_assay_titles` <- `preferred_assay_titles`
       }
       if (!is.null(`treatments_term_ids`)) {
         stopifnot(is.vector(`treatments_term_ids`), length(`treatments_term_ids`) != 0)
@@ -360,6 +368,10 @@ GenesTranscriptsGenes <- R6::R6Class(
         GenesTranscriptsGenesObject[["files_filesets"]] <-
           self$`files_filesets`
       }
+      if (!is.null(self$`preferred_assay_titles`)) {
+        GenesTranscriptsGenesObject[["preferred_assay_titles"]] <-
+          self$`preferred_assay_titles`
+      }
       if (!is.null(self$`biological_context`)) {
         GenesTranscriptsGenesObject[["biological_context"]] <-
           self$`biological_context`
@@ -460,6 +472,9 @@ GenesTranscriptsGenes <- R6::R6Class(
       if (!is.null(this_object$`files_filesets`)) {
         self$`files_filesets` <- this_object$`files_filesets`
       }
+      if (!is.null(this_object$`preferred_assay_titles`)) {
+        self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      }
       if (!is.null(this_object$`biological_context`)) {
         self$`biological_context` <- this_object$`biological_context`
       }
@@ -514,6 +529,7 @@ GenesTranscriptsGenes <- R6::R6Class(
       self$`source` <- this_object$`source`
       self$`source_url` <- this_object$`source_url`
       self$`files_filesets` <- this_object$`files_filesets`
+      self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`biological_context` <- this_object$`biological_context`
       self$`biosample_term` <- this_object$`biosample_term`
       self$`treatments_term_ids` <- ApiClient$new()$deserializeObj(this_object$`treatments_term_ids`, "array[character]", loadNamespace("igvfcatalogclient"))
