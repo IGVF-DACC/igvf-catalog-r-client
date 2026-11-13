@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **class** | **character** |  | [optional] 
 **method** | **character** |  | [optional] 
 **label** | **character** |  | [optional] 
-**version** | **character** |  | [optional] [default to &quot;October 2022 (22.10)&quot;] 
+**version** | **character** |  | [default to &quot;October 2022 (22.10)&quot;] 
 **name** | **character** |  | 
 **variant** | [**PhenotypesFromVariantsVariant**](PhenotypesFromVariants_variant.md) |  | 
 **files_filesets** | **character** |  | [optional] 

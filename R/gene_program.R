@@ -456,6 +456,13 @@ GeneProgram <- R6::R6Class(
         return(FALSE)
       }
 
+      if (self$`reported_gene_count` > 9007199254740991) {
+        return(FALSE)
+      }
+      if (self$`reported_gene_count` < -9007199254740991) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -503,6 +510,13 @@ GeneProgram <- R6::R6Class(
       # check if the required `reported_gene_count` is null
       if (is.null(self$`reported_gene_count`)) {
         invalid_fields["reported_gene_count"] <- "Non-nullable required field `reported_gene_count` cannot be null."
+      }
+
+      if (self$`reported_gene_count` > 9007199254740991) {
+        invalid_fields["reported_gene_count"] <- "Invalid value for `reported_gene_count`, must be smaller than or equal to 9007199254740991."
+      }
+      if (self$`reported_gene_count` < -9007199254740991) {
+        invalid_fields["reported_gene_count"] <- "Invalid value for `reported_gene_count`, must be bigger than or equal to -9007199254740991."
       }
 
       invalid_fields

@@ -1,31 +1,31 @@
-#' Create a new InlineObject
+#' Create a new ErrorBadRequest
 #'
 #' @description
-#' InlineObject Class
+#' The error information
 #'
 #' @docType class
-#' @title InlineObject
-#' @description InlineObject Class
+#' @title ErrorBadRequest
+#' @description ErrorBadRequest Class
 #' @format An \code{R6Class} generator object
-#' @field message  character
-#' @field code  character
-#' @field issues  list(\link{InlineObjectIssuesInner}) [optional]
+#' @field message The error message character
+#' @field code The error code character
+#' @field issues An array of issues that were responsible for the error list(\link{ErrorIssue}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-InlineObject <- R6::R6Class(
-  "InlineObject",
+ErrorBadRequest <- R6::R6Class(
+  "ErrorBadRequest",
   public = list(
     `message` = NULL,
     `code` = NULL,
     `issues` = NULL,
 
     #' @description
-    #' Initialize a new InlineObject class.
+    #' Initialize a new ErrorBadRequest class.
     #'
-    #' @param message message
-    #' @param code code
-    #' @param issues issues
+    #' @param message The error message
+    #' @param code The error code
+    #' @param issues An array of issues that were responsible for the error
     #' @param ... Other optional arguments.
     initialize = function(`message`, `code`, `issues` = NULL, ...) {
       if (!missing(`message`)) {
@@ -59,9 +59,9 @@ InlineObject <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return InlineObject as a base R list.
+    #' @return ErrorBadRequest as a base R list.
     #' @examples
-    #' # convert array of InlineObject (x) to a data frame
+    #' # convert array of ErrorBadRequest (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -73,31 +73,31 @@ InlineObject <- R6::R6Class(
     },
 
     #' @description
-    #' Convert InlineObject to a base R type
+    #' Convert ErrorBadRequest to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      InlineObjectObject <- list()
+      ErrorBadRequestObject <- list()
       if (!is.null(self$`message`)) {
-        InlineObjectObject[["message"]] <-
+        ErrorBadRequestObject[["message"]] <-
           self$`message`
       }
       if (!is.null(self$`code`)) {
-        InlineObjectObject[["code"]] <-
+        ErrorBadRequestObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`issues`)) {
-        InlineObjectObject[["issues"]] <-
+        ErrorBadRequestObject[["issues"]] <-
           lapply(self$`issues`, function(x) x$toSimpleType())
       }
-      return(InlineObjectObject)
+      return(ErrorBadRequestObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of InlineObject
+    #' Deserialize JSON string into an instance of ErrorBadRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of InlineObject
+    #' @return the instance of ErrorBadRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`message`)) {
@@ -107,7 +107,7 @@ InlineObject <- R6::R6Class(
         self$`code` <- this_object$`code`
       }
       if (!is.null(this_object$`issues`)) {
-        self$`issues` <- ApiClient$new()$deserializeObj(this_object$`issues`, "array[InlineObjectIssuesInner]", loadNamespace("igvfcatalogclient"))
+        self$`issues` <- ApiClient$new()$deserializeObj(this_object$`issues`, "array[ErrorIssue]", loadNamespace("igvfcatalogclient"))
       }
       self
     },
@@ -116,7 +116,7 @@ InlineObject <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return InlineObject in JSON format
+    #' @return ErrorBadRequest in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -124,20 +124,20 @@ InlineObject <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of InlineObject
+    #' Deserialize JSON string into an instance of ErrorBadRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of InlineObject
+    #' @return the instance of ErrorBadRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`message` <- this_object$`message`
       self$`code` <- this_object$`code`
-      self$`issues` <- ApiClient$new()$deserializeObj(this_object$`issues`, "array[InlineObjectIssuesInner]", loadNamespace("igvfcatalogclient"))
+      self$`issues` <- ApiClient$new()$deserializeObj(this_object$`issues`, "array[ErrorIssue]", loadNamespace("igvfcatalogclient"))
       self
     },
 
     #' @description
-    #' Validate JSON input with respect to InlineObject and throw an exception if invalid
+    #' Validate JSON input with respect to ErrorBadRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -148,7 +148,7 @@ InlineObject <- R6::R6Class(
           stop(paste("Error! Invalid data for `message`. Must be a string:", input_json$`message`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for InlineObject: the required field `message` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for ErrorBadRequest: the required field `message` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -156,14 +156,14 @@ InlineObject <- R6::R6Class(
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for InlineObject: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for ErrorBadRequest: the required field `code` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of InlineObject
+    #' @return String representation of ErrorBadRequest
     toString = function() {
       self$toJSONString()
     },
@@ -216,13 +216,13 @@ InlineObject <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# InlineObject$unlock()
+# ErrorBadRequest$unlock()
 #
 ## Below is an example to define the print function
-# InlineObject$set("public", "print", function(...) {
+# ErrorBadRequest$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# InlineObject$lock()
+# ErrorBadRequest$lock()
 

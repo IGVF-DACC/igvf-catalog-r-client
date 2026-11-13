@@ -39,6 +39,12 @@ R/drugs_from_variants_drug.R
 R/elements.R
 R/enhancer_gene_predictions.R
 R/enhancer_gene_predictions_elements.R
+R/error_bad_request.R
+R/error_forbidden.R
+R/error_internal_server_error.R
+R/error_issue.R
+R/error_not_found.R
+R/error_unauthorized.R
 R/files_filesets.R
 R/gene.R
 R/gene4.R
@@ -93,8 +99,6 @@ R/groups.R
 R/groups13.R
 R/id_name.R
 R/igvf_catalog_api.R
-R/inline_object.R
-R/inline_object_issues_inner.R
 R/linked_feature.R
 R/llm_query.R
 R/llm_query_request.R
@@ -160,7 +164,7 @@ R/variant_minimal.R
 R/variant_ref.R
 R/variant_summary.R
 R/variants.R
-R/variants_alleles_value.R
+R/variants_alleles_element.R
 R/variants_from_drugs.R
 R/variants_from_phenotypes_item.R
 R/variants_from_variant_id.R
@@ -204,6 +208,12 @@ docs/DrugsFromVariantsDrug.md
 docs/Elements.md
 docs/EnhancerGenePredictions.md
 docs/EnhancerGenePredictionsElements.md
+docs/ErrorBadRequest.md
+docs/ErrorForbidden.md
+docs/ErrorInternalServerError.md
+docs/ErrorIssue.md
+docs/ErrorNotFound.md
+docs/ErrorUnauthorized.md
 docs/FilesFilesets.md
 docs/Gene.md
 docs/Gene4.md
@@ -258,8 +268,6 @@ docs/Groups.md
 docs/Groups13.md
 docs/IdName.md
 docs/IgvfCatalogApi.md
-docs/InlineObject.md
-docs/InlineObjectIssuesInner.md
 docs/LinkedFeature.md
 docs/LlmQuery.md
 docs/LlmQueryRequest.md
@@ -325,7 +333,7 @@ docs/VariantMinimal.md
 docs/VariantRef.md
 docs/VariantSummary.md
 docs/Variants.md
-docs/VariantsAllelesValue.md
+docs/VariantsAllelesElement.md
 docs/VariantsFromDrugs.md
 docs/VariantsFromPhenotypesItem.md
 docs/VariantsFromVariantID.md

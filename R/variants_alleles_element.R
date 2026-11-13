@@ -1,15 +1,15 @@
 #' @docType class
-#' @title VariantsAllelesValue
+#' @title VariantsAllelesElement
 #'
-#' @description VariantsAllelesValue Class
+#' @description VariantsAllelesElement Class
 #'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-VariantsAllelesValue <- R6::R6Class(
-  "VariantsAllelesValue",
+VariantsAllelesElement <- R6::R6Class(
+  "VariantsAllelesElement",
   public = list(
     #' @field actual_instance the object stored in this instance.
     actual_instance = NULL,
@@ -19,7 +19,7 @@ VariantsAllelesValue <- R6::R6Class(
     any_of = list("character", "numeric"),
 
     #' @description
-    #' Initialize a new VariantsAllelesValue.
+    #' Initialize a new VariantsAllelesElement.
     #'
     #' @param instance an instance of the object defined in the anyOf schemas: "character", "numeric"
     initialize = function(instance = NULL) {
@@ -32,28 +32,28 @@ VariantsAllelesValue <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "numeric"
       } else {
-        stop(paste("Failed to initialize VariantsAllelesValue with anyOf schemas character, numeric. Provided class name: ",
+        stop(paste("Failed to initialize VariantsAllelesElement with anyOf schemas character, numeric. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of VariantsAllelesValue.
+    #' Deserialize JSON string into an instance of VariantsAllelesElement.
     #' An alias to the method `fromJSON`.
     #'
     #' @param input The input JSON.
     #'
-    #' @return An instance of VariantsAllelesValue.
+    #' @return An instance of VariantsAllelesElement.
     fromJSONString = function(input) {
       self$fromJSON(input)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of VariantsAllelesValue.
+    #' Deserialize JSON string into an instance of VariantsAllelesElement.
     #'
     #' @param input The input JSON.
     #'
-    #' @return An instance of VariantsAllelesValue.
+    #' @return An instance of VariantsAllelesElement.
     fromJSON = function(input) {
       error_messages <- list()
 
@@ -90,7 +90,7 @@ VariantsAllelesValue <- R6::R6Class(
       }
 
       # no match
-      stop(paste("No match found when deserializing the input into VariantsAllelesValue with anyOf schemas character, numeric. Details: >>",
+      stop(paste("No match found when deserializing the input into VariantsAllelesElement with anyOf schemas character, numeric. Details: >>",
                  paste(error_messages, collapse = " >> ")))
     },
 
@@ -102,7 +102,7 @@ VariantsAllelesValue <- R6::R6Class(
     },
 
     #' @description
-    #' Convert VariantsAllelesValue to a base R type
+    #' Convert VariantsAllelesElement to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
@@ -114,17 +114,17 @@ VariantsAllelesValue <- R6::R6Class(
     },
 
     #' @description
-    #' Serialize VariantsAllelesValue to JSON string.
+    #' Serialize VariantsAllelesElement to JSON string.
     #'
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return JSON string representation of the VariantsAllelesValue.
+    #' @return JSON string representation of the VariantsAllelesElement.
     toJSONString = function(...) {
       json <- jsonlite::toJSON(self$toSimpleType(), auto_unbox = TRUE, ...)
       return(as.character(jsonlite::minify(json)))
     },
 
     #' @description
-    #' Validate the input JSON with respect to VariantsAllelesValue and
+    #' Validate the input JSON with respect to VariantsAllelesElement and
     #' throw exception if invalid.
     #'
     #' @param input The input JSON.
@@ -166,13 +166,13 @@ VariantsAllelesValue <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-#VariantsAllelesValue$unlock()
+#VariantsAllelesElement$unlock()
 #
 ## Below is an example to define the print function
-#VariantsAllelesValue$set("public", "print", function(...) {
+#VariantsAllelesElement$set("public", "print", function(...) {
 #  print(jsonlite::prettify(self$toJSONString()))
 #  invisible(self)
 #})
 ## Uncomment below to lock the class to prevent modifications to the method or field
-#VariantsAllelesValue$lock()
+#VariantsAllelesElement$lock()
 

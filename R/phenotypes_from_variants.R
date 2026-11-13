@@ -28,7 +28,7 @@
 #' @field class  character [optional]
 #' @field method  character [optional]
 #' @field label  character [optional]
-#' @field version  character [optional]
+#' @field version  character
 #' @field name  character
 #' @field variant  \link{PhenotypesFromVariantsVariant}
 #' @field files_filesets  character [optional]
@@ -83,6 +83,7 @@ PhenotypesFromVariants <- R6::R6Class(
     #' @param lead_alt lead_alt
     #' @param direction direction
     #' @param source source
+    #' @param version version
     #' @param name name
     #' @param variant variant
     #' @param rsid rsid
@@ -92,11 +93,10 @@ PhenotypesFromVariants <- R6::R6Class(
     #' @param class class
     #' @param method method
     #' @param label label
-    #' @param version version. Default to "October 2022 (22.10)".
     #' @param files_filesets files_filesets
     #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`phenotype_id`, `phenotype_term`, `p_value`, `beta`, `beta_ci_lower`, `beta_ci_upper`, `oddsr_ci_lower`, `oddsr_ci_upper`, `lead_chrom`, `lead_pos`, `lead_ref`, `lead_alt`, `direction`, `source`, `name`, `variant`, `rsid` = NULL, `study` = NULL, `neg_log10_pvalue` = NULL, `source_url` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `version` = "October 2022 (22.10)", `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
+    initialize = function(`phenotype_id`, `phenotype_term`, `p_value`, `beta`, `beta_ci_lower`, `beta_ci_upper`, `oddsr_ci_lower`, `oddsr_ci_upper`, `lead_chrom`, `lead_pos`, `lead_ref`, `lead_alt`, `direction`, `source`, `version`, `name`, `variant`, `rsid` = NULL, `study` = NULL, `neg_log10_pvalue` = NULL, `source_url` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`phenotype_id`)) {
         if (!(is.character(`phenotype_id`) && length(`phenotype_id`) == 1)) {
           stop(paste("Error! Invalid data for `phenotype_id`. Must be a string:", `phenotype_id`))
@@ -163,6 +163,12 @@ PhenotypesFromVariants <- R6::R6Class(
         }
         self$`source` <- `source`
       }
+      if (!missing(`version`)) {
+        if (!(is.character(`version`) && length(`version`) == 1)) {
+          stop(paste("Error! Invalid data for `version`. Must be a string:", `version`))
+        }
+        self$`version` <- `version`
+      }
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -208,12 +214,6 @@ PhenotypesFromVariants <- R6::R6Class(
           stop(paste("Error! Invalid data for `label`. Must be a string:", `label`))
         }
         self$`label` <- `label`
-      }
-      if (!is.null(`version`)) {
-        if (!(is.character(`version`) && length(`version`) == 1)) {
-          stop(paste("Error! Invalid data for `version`. Must be a string:", `version`))
-        }
-        self$`version` <- `version`
       }
       if (!is.null(`files_filesets`)) {
         if (!(is.character(`files_filesets`) && length(`files_filesets`) == 1)) {
@@ -608,6 +608,14 @@ PhenotypesFromVariants <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants: the required field `source` is missing."))
       }
+      # check the required field `version`
+      if (!is.null(input_json$`version`)) {
+        if (!(is.character(input_json$`version`) && length(input_json$`version`) == 1)) {
+          stop(paste("Error! Invalid data for `version`. Must be a string:", input_json$`version`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for PhenotypesFromVariants: the required field `version` is missing."))
+      }
       # check the required field `name`
       if (!is.null(input_json$`name`)) {
         if (!(is.character(input_json$`name`) && length(input_json$`name`) == 1)) {
@@ -642,6 +650,11 @@ PhenotypesFromVariants <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `version` is null
+      if (is.null(self$`version`)) {
+        return(FALSE)
+      }
+
       # check if the required `name` is null
       if (is.null(self$`name`)) {
         return(FALSE)
@@ -664,6 +677,11 @@ PhenotypesFromVariants <- R6::R6Class(
       # check if the required `source` is null
       if (is.null(self$`source`)) {
         invalid_fields["source"] <- "Non-nullable required field `source` cannot be null."
+      }
+
+      # check if the required `version` is null
+      if (is.null(self$`version`)) {
+        invalid_fields["version"] <- "Non-nullable required field `version` cannot be null."
       }
 
       # check if the required `name` is null

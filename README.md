@@ -8,7 +8,7 @@ Our database uses 0-based, half-open coordinates for genomic coordinates in the 
 
 Data is licensed under the <a href=https://creativecommons.org/licenses/by/4.0/ target=\"_blank\">Creative Commons license</a> and the software is licensed under the <a href=https://spdx.org/licenses/MIT.html target=\"_blank\">MIT license</a>.
 
-- API version: 1.3.1.dev20261110000237
+- API version: 1.3.1.dev20261113221203
 - Package version: 1.3.0.9000
 - Generator version: 7.14.0
 
@@ -196,6 +196,12 @@ Class | Method | HTTP request | Description
  - [Elements](docs/Elements.md)
  - [EnhancerGenePredictions](docs/EnhancerGenePredictions.md)
  - [EnhancerGenePredictionsElements](docs/EnhancerGenePredictionsElements.md)
+ - [ErrorBadRequest](docs/ErrorBadRequest.md)
+ - [ErrorForbidden](docs/ErrorForbidden.md)
+ - [ErrorInternalServerError](docs/ErrorInternalServerError.md)
+ - [ErrorIssue](docs/ErrorIssue.md)
+ - [ErrorNotFound](docs/ErrorNotFound.md)
+ - [ErrorUnauthorized](docs/ErrorUnauthorized.md)
  - [FilesFilesets](docs/FilesFilesets.md)
  - [Gene](docs/Gene.md)
  - [Gene4](docs/Gene4.md)
@@ -249,8 +255,6 @@ Class | Method | HTTP request | Description
  - [Groups](docs/Groups.md)
  - [Groups13](docs/Groups13.md)
  - [IdName](docs/IdName.md)
- - [InlineObject](docs/InlineObject.md)
- - [InlineObjectIssuesInner](docs/InlineObjectIssuesInner.md)
  - [LinkedFeature](docs/LinkedFeature.md)
  - [LlmQuery](docs/LlmQuery.md)
  - [LlmQueryRequest](docs/LlmQueryRequest.md)
@@ -316,7 +320,7 @@ Class | Method | HTTP request | Description
  - [VariantRef](docs/VariantRef.md)
  - [VariantSummary](docs/VariantSummary.md)
  - [Variants](docs/Variants.md)
- - [VariantsAllelesValue](docs/VariantsAllelesValue.md)
+ - [VariantsAllelesElement](docs/VariantsAllelesElement.md)
  - [VariantsFromDrugs](docs/VariantsFromDrugs.md)
  - [VariantsFromPhenotypesItem](docs/VariantsFromPhenotypesItem.md)
  - [VariantsFromVariantID](docs/VariantsFromVariantID.md)

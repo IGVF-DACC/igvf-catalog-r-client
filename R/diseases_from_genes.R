@@ -10,7 +10,6 @@
 #' @field pmids  list(character) [optional]
 #' @field term_name  character [optional]
 #' @field gene_name  character [optional]
-#' @field association_type  character [optional]
 #' @field association_status  character [optional]
 #' @field sgc_id  character [optional]
 #' @field hgnc  character [optional]
@@ -27,9 +26,10 @@
 #' @field source_url  character [optional]
 #' @field gene  \link{DiseasesFromGenesGene} [optional]
 #' @field disease  \link{BiosamplesFromGenomicElementsBiosample} [optional]
-#' @field inheritance_mode  character [optional]
 #' @field variants  list(\link{VariantMinimal}) [optional]
 #' @field name  character
+#' @field Orphanet_association_type  character [optional]
+#' @field ClinGen_inheritance_mode  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -39,7 +39,6 @@ DiseasesFromGenes <- R6::R6Class(
     `pmids` = NULL,
     `term_name` = NULL,
     `gene_name` = NULL,
-    `association_type` = NULL,
     `association_status` = NULL,
     `sgc_id` = NULL,
     `hgnc` = NULL,
@@ -56,9 +55,10 @@ DiseasesFromGenes <- R6::R6Class(
     `source_url` = NULL,
     `gene` = NULL,
     `disease` = NULL,
-    `inheritance_mode` = NULL,
     `variants` = NULL,
     `name` = NULL,
+    `Orphanet_association_type` = NULL,
+    `ClinGen_inheritance_mode` = NULL,
 
     #' @description
     #' Initialize a new DiseasesFromGenes class.
@@ -67,7 +67,6 @@ DiseasesFromGenes <- R6::R6Class(
     #' @param pmids pmids
     #' @param term_name term_name
     #' @param gene_name gene_name
-    #' @param association_type association_type
     #' @param association_status association_status
     #' @param sgc_id sgc_id
     #' @param hgnc hgnc
@@ -84,10 +83,11 @@ DiseasesFromGenes <- R6::R6Class(
     #' @param source_url source_url
     #' @param gene gene
     #' @param disease disease
-    #' @param inheritance_mode inheritance_mode
     #' @param variants variants
+    #' @param Orphanet_association_type Orphanet_association_type
+    #' @param ClinGen_inheritance_mode ClinGen_inheritance_mode
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `pmids` = NULL, `term_name` = NULL, `gene_name` = NULL, `association_type` = NULL, `association_status` = NULL, `sgc_id` = NULL, `hgnc` = NULL, `classification` = NULL, `moi_id` = NULL, `moi_name` = NULL, `submitter` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, `source` = NULL, `source_url` = NULL, `gene` = NULL, `disease` = NULL, `inheritance_mode` = NULL, `variants` = NULL, ...) {
+    initialize = function(`name`, `pmids` = NULL, `term_name` = NULL, `gene_name` = NULL, `association_status` = NULL, `sgc_id` = NULL, `hgnc` = NULL, `classification` = NULL, `moi_id` = NULL, `moi_name` = NULL, `submitter` = NULL, `class` = NULL, `method` = NULL, `label` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, `source` = NULL, `source_url` = NULL, `gene` = NULL, `disease` = NULL, `variants` = NULL, `Orphanet_association_type` = NULL, `ClinGen_inheritance_mode` = NULL, ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -110,12 +110,6 @@ DiseasesFromGenes <- R6::R6Class(
           stop(paste("Error! Invalid data for `gene_name`. Must be a string:", `gene_name`))
         }
         self$`gene_name` <- `gene_name`
-      }
-      if (!is.null(`association_type`)) {
-        if (!(is.character(`association_type`) && length(`association_type`) == 1)) {
-          stop(paste("Error! Invalid data for `association_type`. Must be a string:", `association_type`))
-        }
-        self$`association_type` <- `association_type`
       }
       if (!is.null(`association_status`)) {
         if (!(is.character(`association_status`) && length(`association_status`) == 1)) {
@@ -208,16 +202,22 @@ DiseasesFromGenes <- R6::R6Class(
         stopifnot(R6::is.R6(`disease`))
         self$`disease` <- `disease`
       }
-      if (!is.null(`inheritance_mode`)) {
-        if (!(is.character(`inheritance_mode`) && length(`inheritance_mode`) == 1)) {
-          stop(paste("Error! Invalid data for `inheritance_mode`. Must be a string:", `inheritance_mode`))
-        }
-        self$`inheritance_mode` <- `inheritance_mode`
-      }
       if (!is.null(`variants`)) {
         stopifnot(is.vector(`variants`), length(`variants`) != 0)
         sapply(`variants`, function(x) stopifnot(R6::is.R6(x)))
         self$`variants` <- `variants`
+      }
+      if (!is.null(`Orphanet_association_type`)) {
+        if (!(is.character(`Orphanet_association_type`) && length(`Orphanet_association_type`) == 1)) {
+          stop(paste("Error! Invalid data for `Orphanet_association_type`. Must be a string:", `Orphanet_association_type`))
+        }
+        self$`Orphanet_association_type` <- `Orphanet_association_type`
+      }
+      if (!is.null(`ClinGen_inheritance_mode`)) {
+        if (!(is.character(`ClinGen_inheritance_mode`) && length(`ClinGen_inheritance_mode`) == 1)) {
+          stop(paste("Error! Invalid data for `ClinGen_inheritance_mode`. Must be a string:", `ClinGen_inheritance_mode`))
+        }
+        self$`ClinGen_inheritance_mode` <- `ClinGen_inheritance_mode`
       }
     },
 
@@ -263,10 +263,6 @@ DiseasesFromGenes <- R6::R6Class(
       if (!is.null(self$`gene_name`)) {
         DiseasesFromGenesObject[["gene_name"]] <-
           self$`gene_name`
-      }
-      if (!is.null(self$`association_type`)) {
-        DiseasesFromGenesObject[["association_type"]] <-
-          self$`association_type`
       }
       if (!is.null(self$`association_status`)) {
         DiseasesFromGenesObject[["association_status"]] <-
@@ -332,10 +328,6 @@ DiseasesFromGenes <- R6::R6Class(
         DiseasesFromGenesObject[["disease"]] <-
           self$`disease`$toSimpleType()
       }
-      if (!is.null(self$`inheritance_mode`)) {
-        DiseasesFromGenesObject[["inheritance_mode"]] <-
-          self$`inheritance_mode`
-      }
       if (!is.null(self$`variants`)) {
         DiseasesFromGenesObject[["variants"]] <-
           lapply(self$`variants`, function(x) x$toSimpleType())
@@ -343,6 +335,14 @@ DiseasesFromGenes <- R6::R6Class(
       if (!is.null(self$`name`)) {
         DiseasesFromGenesObject[["name"]] <-
           self$`name`
+      }
+      if (!is.null(self$`Orphanet_association_type`)) {
+        DiseasesFromGenesObject[["Orphanet_association_type"]] <-
+          self$`Orphanet_association_type`
+      }
+      if (!is.null(self$`ClinGen_inheritance_mode`)) {
+        DiseasesFromGenesObject[["ClinGen_inheritance_mode"]] <-
+          self$`ClinGen_inheritance_mode`
       }
       return(DiseasesFromGenesObject)
     },
@@ -362,9 +362,6 @@ DiseasesFromGenes <- R6::R6Class(
       }
       if (!is.null(this_object$`gene_name`)) {
         self$`gene_name` <- this_object$`gene_name`
-      }
-      if (!is.null(this_object$`association_type`)) {
-        self$`association_type` <- this_object$`association_type`
       }
       if (!is.null(this_object$`association_status`)) {
         self$`association_status` <- this_object$`association_status`
@@ -418,14 +415,17 @@ DiseasesFromGenes <- R6::R6Class(
         `disease_object`$fromJSON(jsonlite::toJSON(this_object$`disease`, auto_unbox = TRUE, digits = NA))
         self$`disease` <- `disease_object`
       }
-      if (!is.null(this_object$`inheritance_mode`)) {
-        self$`inheritance_mode` <- this_object$`inheritance_mode`
-      }
       if (!is.null(this_object$`variants`)) {
         self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[VariantMinimal]", loadNamespace("igvfcatalogclient"))
       }
       if (!is.null(this_object$`name`)) {
         self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`Orphanet_association_type`)) {
+        self$`Orphanet_association_type` <- this_object$`Orphanet_association_type`
+      }
+      if (!is.null(this_object$`ClinGen_inheritance_mode`)) {
+        self$`ClinGen_inheritance_mode` <- this_object$`ClinGen_inheritance_mode`
       }
       self
     },
@@ -451,7 +451,6 @@ DiseasesFromGenes <- R6::R6Class(
       self$`pmids` <- ApiClient$new()$deserializeObj(this_object$`pmids`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`term_name` <- this_object$`term_name`
       self$`gene_name` <- this_object$`gene_name`
-      self$`association_type` <- this_object$`association_type`
       self$`association_status` <- this_object$`association_status`
       self$`sgc_id` <- this_object$`sgc_id`
       self$`hgnc` <- this_object$`hgnc`
@@ -468,9 +467,10 @@ DiseasesFromGenes <- R6::R6Class(
       self$`source_url` <- this_object$`source_url`
       self$`gene` <- DiseasesFromGenesGene$new()$fromJSON(jsonlite::toJSON(this_object$`gene`, auto_unbox = TRUE, digits = NA))
       self$`disease` <- BiosamplesFromGenomicElementsBiosample$new()$fromJSON(jsonlite::toJSON(this_object$`disease`, auto_unbox = TRUE, digits = NA))
-      self$`inheritance_mode` <- this_object$`inheritance_mode`
       self$`variants` <- ApiClient$new()$deserializeObj(this_object$`variants`, "array[VariantMinimal]", loadNamespace("igvfcatalogclient"))
       self$`name` <- this_object$`name`
+      self$`Orphanet_association_type` <- this_object$`Orphanet_association_type`
+      self$`ClinGen_inheritance_mode` <- this_object$`ClinGen_inheritance_mode`
       self
     },
 

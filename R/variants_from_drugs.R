@@ -8,7 +8,6 @@
 #' @description VariantsFromDrugs Class
 #' @format An \code{R6Class} generator object
 #' @field sequence_variant  \link{BiosamplesFromVariantsVariant} [optional]
-#' @field _to  character
 #' @field gene_names  list(character) [optional]
 #' @field pmid  character [optional]
 #' @field study_parameters  list(\link{StudyParameters}) [optional]
@@ -20,6 +19,7 @@
 #' @field method  character [optional]
 #' @field files_filesets  character [optional]
 #' @field preferred_assay_titles  list(character) [optional]
+#' @field drug  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -27,7 +27,6 @@ VariantsFromDrugs <- R6::R6Class(
   "VariantsFromDrugs",
   public = list(
     `sequence_variant` = NULL,
-    `_to` = NULL,
     `gene_names` = NULL,
     `pmid` = NULL,
     `study_parameters` = NULL,
@@ -39,14 +38,15 @@ VariantsFromDrugs <- R6::R6Class(
     `method` = NULL,
     `files_filesets` = NULL,
     `preferred_assay_titles` = NULL,
+    `drug` = NULL,
 
     #' @description
     #' Initialize a new VariantsFromDrugs class.
     #'
-    #' @param _to _to
     #' @param source source
     #' @param source_url source_url
     #' @param name name
+    #' @param drug drug
     #' @param sequence_variant sequence_variant
     #' @param gene_names gene_names
     #' @param pmid pmid
@@ -57,13 +57,7 @@ VariantsFromDrugs <- R6::R6Class(
     #' @param files_filesets files_filesets
     #' @param preferred_assay_titles preferred_assay_titles
     #' @param ... Other optional arguments.
-    initialize = function(`_to`, `source`, `source_url`, `name`, `sequence_variant` = NULL, `gene_names` = NULL, `pmid` = NULL, `study_parameters` = NULL, `phenotype_categories` = NULL, `class` = NULL, `method` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
-      if (!missing(`_to`)) {
-        if (!(is.character(`_to`) && length(`_to`) == 1)) {
-          stop(paste("Error! Invalid data for `_to`. Must be a string:", `_to`))
-        }
-        self$`_to` <- `_to`
-      }
+    initialize = function(`source`, `source_url`, `name`, `drug`, `sequence_variant` = NULL, `gene_names` = NULL, `pmid` = NULL, `study_parameters` = NULL, `phenotype_categories` = NULL, `class` = NULL, `method` = NULL, `files_filesets` = NULL, `preferred_assay_titles` = NULL, ...) {
       if (!missing(`source`)) {
         if (!(is.character(`source`) && length(`source`) == 1)) {
           stop(paste("Error! Invalid data for `source`. Must be a string:", `source`))
@@ -81,6 +75,12 @@ VariantsFromDrugs <- R6::R6Class(
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
         }
         self$`name` <- `name`
+      }
+      if (!missing(`drug`)) {
+        if (!(is.character(`drug`) && length(`drug`) == 1)) {
+          stop(paste("Error! Invalid data for `drug`. Must be a string:", `drug`))
+        }
+        self$`drug` <- `drug`
       }
       if (!is.null(`sequence_variant`)) {
         stopifnot(R6::is.R6(`sequence_variant`))
@@ -167,10 +167,6 @@ VariantsFromDrugs <- R6::R6Class(
         VariantsFromDrugsObject[["sequence_variant"]] <-
           self$`sequence_variant`$toSimpleType()
       }
-      if (!is.null(self$`_to`)) {
-        VariantsFromDrugsObject[["_to"]] <-
-          self$`_to`
-      }
       if (!is.null(self$`gene_names`)) {
         VariantsFromDrugsObject[["gene_names"]] <-
           self$`gene_names`
@@ -215,6 +211,10 @@ VariantsFromDrugs <- R6::R6Class(
         VariantsFromDrugsObject[["preferred_assay_titles"]] <-
           self$`preferred_assay_titles`
       }
+      if (!is.null(self$`drug`)) {
+        VariantsFromDrugsObject[["drug"]] <-
+          self$`drug`
+      }
       return(VariantsFromDrugsObject)
     },
 
@@ -229,9 +229,6 @@ VariantsFromDrugs <- R6::R6Class(
         `sequence_variant_object` <- BiosamplesFromVariantsVariant$new()
         `sequence_variant_object`$fromJSON(jsonlite::toJSON(this_object$`sequence_variant`, auto_unbox = TRUE, digits = NA))
         self$`sequence_variant` <- `sequence_variant_object`
-      }
-      if (!is.null(this_object$`_to`)) {
-        self$`_to` <- this_object$`_to`
       }
       if (!is.null(this_object$`gene_names`)) {
         self$`gene_names` <- ApiClient$new()$deserializeObj(this_object$`gene_names`, "array[character]", loadNamespace("igvfcatalogclient"))
@@ -266,6 +263,9 @@ VariantsFromDrugs <- R6::R6Class(
       if (!is.null(this_object$`preferred_assay_titles`)) {
         self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
       }
+      if (!is.null(this_object$`drug`)) {
+        self$`drug` <- this_object$`drug`
+      }
       self
     },
 
@@ -288,7 +288,6 @@ VariantsFromDrugs <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`sequence_variant` <- BiosamplesFromVariantsVariant$new()$fromJSON(jsonlite::toJSON(this_object$`sequence_variant`, auto_unbox = TRUE, digits = NA))
-      self$`_to` <- this_object$`_to`
       self$`gene_names` <- ApiClient$new()$deserializeObj(this_object$`gene_names`, "array[character]", loadNamespace("igvfcatalogclient"))
       self$`pmid` <- this_object$`pmid`
       self$`study_parameters` <- ApiClient$new()$deserializeObj(this_object$`study_parameters`, "array[StudyParameters]", loadNamespace("igvfcatalogclient"))
@@ -300,6 +299,7 @@ VariantsFromDrugs <- R6::R6Class(
       self$`method` <- this_object$`method`
       self$`files_filesets` <- this_object$`files_filesets`
       self$`preferred_assay_titles` <- ApiClient$new()$deserializeObj(this_object$`preferred_assay_titles`, "array[character]", loadNamespace("igvfcatalogclient"))
+      self$`drug` <- this_object$`drug`
       self
     },
 
@@ -309,14 +309,6 @@ VariantsFromDrugs <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `_to`
-      if (!is.null(input_json$`_to`)) {
-        if (!(is.character(input_json$`_to`) && length(input_json$`_to`) == 1)) {
-          stop(paste("Error! Invalid data for `_to`. Must be a string:", input_json$`_to`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for VariantsFromDrugs: the required field `_to` is missing."))
-      }
       # check the required field `source`
       if (!is.null(input_json$`source`)) {
         if (!(is.character(input_json$`source`) && length(input_json$`source`) == 1)) {
@@ -341,6 +333,14 @@ VariantsFromDrugs <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for VariantsFromDrugs: the required field `name` is missing."))
       }
+      # check the required field `drug`
+      if (!is.null(input_json$`drug`)) {
+        if (!(is.character(input_json$`drug`) && length(input_json$`drug`) == 1)) {
+          stop(paste("Error! Invalid data for `drug`. Must be a string:", input_json$`drug`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for VariantsFromDrugs: the required field `drug` is missing."))
+      }
     },
 
     #' @description
@@ -356,11 +356,6 @@ VariantsFromDrugs <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `_to` is null
-      if (is.null(self$`_to`)) {
-        return(FALSE)
-      }
-
       # check if the required `source` is null
       if (is.null(self$`source`)) {
         return(FALSE)
@@ -376,6 +371,11 @@ VariantsFromDrugs <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `drug` is null
+      if (is.null(self$`drug`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -385,11 +385,6 @@ VariantsFromDrugs <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `_to` is null
-      if (is.null(self$`_to`)) {
-        invalid_fields["_to"] <- "Non-nullable required field `_to` cannot be null."
-      }
-
       # check if the required `source` is null
       if (is.null(self$`source`)) {
         invalid_fields["source"] <- "Non-nullable required field `source` cannot be null."
@@ -403,6 +398,11 @@ VariantsFromDrugs <- R6::R6Class(
       # check if the required `name` is null
       if (is.null(self$`name`)) {
         invalid_fields["name"] <- "Non-nullable required field `name` cannot be null."
+      }
+
+      # check if the required `drug` is null
+      if (is.null(self$`drug`)) {
+        invalid_fields["drug"] <- "Non-nullable required field `drug` cannot be null."
       }
 
       invalid_fields

@@ -1,32 +1,49 @@
-#' Create a new InlineObjectIssuesInner
+#' Create a new ErrorNotFound
 #'
 #' @description
-#' InlineObjectIssuesInner Class
+#' The error information
 #'
 #' @docType class
-#' @title InlineObjectIssuesInner
-#' @description InlineObjectIssuesInner Class
+#' @title ErrorNotFound
+#' @description ErrorNotFound Class
 #' @format An \code{R6Class} generator object
-#' @field message  character
+#' @field message The error message character
+#' @field code The error code character
+#' @field issues An array of issues that were responsible for the error list(\link{ErrorIssue}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-InlineObjectIssuesInner <- R6::R6Class(
-  "InlineObjectIssuesInner",
+ErrorNotFound <- R6::R6Class(
+  "ErrorNotFound",
   public = list(
     `message` = NULL,
+    `code` = NULL,
+    `issues` = NULL,
 
     #' @description
-    #' Initialize a new InlineObjectIssuesInner class.
+    #' Initialize a new ErrorNotFound class.
     #'
-    #' @param message message
+    #' @param message The error message
+    #' @param code The error code
+    #' @param issues An array of issues that were responsible for the error
     #' @param ... Other optional arguments.
-    initialize = function(`message`, ...) {
+    initialize = function(`message`, `code`, `issues` = NULL, ...) {
       if (!missing(`message`)) {
         if (!(is.character(`message`) && length(`message`) == 1)) {
           stop(paste("Error! Invalid data for `message`. Must be a string:", `message`))
         }
         self$`message` <- `message`
+      }
+      if (!missing(`code`)) {
+        if (!(is.character(`code`) && length(`code`) == 1)) {
+          stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
+        }
+        self$`code` <- `code`
+      }
+      if (!is.null(`issues`)) {
+        stopifnot(is.vector(`issues`), length(`issues`) != 0)
+        sapply(`issues`, function(x) stopifnot(R6::is.R6(x)))
+        self$`issues` <- `issues`
       }
     },
 
@@ -42,9 +59,9 @@ InlineObjectIssuesInner <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return InlineObjectIssuesInner as a base R list.
+    #' @return ErrorNotFound as a base R list.
     #' @examples
-    #' # convert array of InlineObjectIssuesInner (x) to a data frame
+    #' # convert array of ErrorNotFound (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -56,27 +73,41 @@ InlineObjectIssuesInner <- R6::R6Class(
     },
 
     #' @description
-    #' Convert InlineObjectIssuesInner to a base R type
+    #' Convert ErrorNotFound to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      InlineObjectIssuesInnerObject <- list()
+      ErrorNotFoundObject <- list()
       if (!is.null(self$`message`)) {
-        InlineObjectIssuesInnerObject[["message"]] <-
+        ErrorNotFoundObject[["message"]] <-
           self$`message`
       }
-      return(InlineObjectIssuesInnerObject)
+      if (!is.null(self$`code`)) {
+        ErrorNotFoundObject[["code"]] <-
+          self$`code`
+      }
+      if (!is.null(self$`issues`)) {
+        ErrorNotFoundObject[["issues"]] <-
+          lapply(self$`issues`, function(x) x$toSimpleType())
+      }
+      return(ErrorNotFoundObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of InlineObjectIssuesInner
+    #' Deserialize JSON string into an instance of ErrorNotFound
     #'
     #' @param input_json the JSON input
-    #' @return the instance of InlineObjectIssuesInner
+    #' @return the instance of ErrorNotFound
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`message`)) {
         self$`message` <- this_object$`message`
+      }
+      if (!is.null(this_object$`code`)) {
+        self$`code` <- this_object$`code`
+      }
+      if (!is.null(this_object$`issues`)) {
+        self$`issues` <- ApiClient$new()$deserializeObj(this_object$`issues`, "array[ErrorIssue]", loadNamespace("igvfcatalogclient"))
       }
       self
     },
@@ -85,7 +116,7 @@ InlineObjectIssuesInner <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return InlineObjectIssuesInner in JSON format
+    #' @return ErrorNotFound in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -93,18 +124,20 @@ InlineObjectIssuesInner <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of InlineObjectIssuesInner
+    #' Deserialize JSON string into an instance of ErrorNotFound
     #'
     #' @param input_json the JSON input
-    #' @return the instance of InlineObjectIssuesInner
+    #' @return the instance of ErrorNotFound
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`message` <- this_object$`message`
+      self$`code` <- this_object$`code`
+      self$`issues` <- ApiClient$new()$deserializeObj(this_object$`issues`, "array[ErrorIssue]", loadNamespace("igvfcatalogclient"))
       self
     },
 
     #' @description
-    #' Validate JSON input with respect to InlineObjectIssuesInner and throw an exception if invalid
+    #' Validate JSON input with respect to ErrorNotFound and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -115,14 +148,22 @@ InlineObjectIssuesInner <- R6::R6Class(
           stop(paste("Error! Invalid data for `message`. Must be a string:", input_json$`message`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for InlineObjectIssuesInner: the required field `message` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for ErrorNotFound: the required field `message` is missing."))
+      }
+      # check the required field `code`
+      if (!is.null(input_json$`code`)) {
+        if (!(is.character(input_json$`code`) && length(input_json$`code`) == 1)) {
+          stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for ErrorNotFound: the required field `code` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of InlineObjectIssuesInner
+    #' @return String representation of ErrorNotFound
     toString = function() {
       self$toJSONString()
     },
@@ -134,6 +175,11 @@ InlineObjectIssuesInner <- R6::R6Class(
     isValid = function() {
       # check if the required `message` is null
       if (is.null(self$`message`)) {
+        return(FALSE)
+      }
+
+      # check if the required `code` is null
+      if (is.null(self$`code`)) {
         return(FALSE)
       }
 
@@ -151,6 +197,11 @@ InlineObjectIssuesInner <- R6::R6Class(
         invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
       }
 
+      # check if the required `code` is null
+      if (is.null(self$`code`)) {
+        invalid_fields["code"] <- "Non-nullable required field `code` cannot be null."
+      }
+
       invalid_fields
     },
 
@@ -165,13 +216,13 @@ InlineObjectIssuesInner <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# InlineObjectIssuesInner$unlock()
+# ErrorNotFound$unlock()
 #
 ## Below is an example to define the print function
-# InlineObjectIssuesInner$set("public", "print", function(...) {
+# ErrorNotFound$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# InlineObjectIssuesInner$lock()
+# ErrorNotFound$lock()
 

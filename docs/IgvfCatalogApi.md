@@ -150,7 +150,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **AnnotationsFromGoTerms**
 > array[AnnotationsFromGoTerms] AnnotationsFromGoTerms(go_term_id, name = var.name, page = 0, limit = var.limit)
@@ -202,7 +206,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **BiosamplesFromGenomicElements**
 > array[BiosamplesFromGenomicElements] BiosamplesFromGenomicElements(region = var.region, source = var.source, method = var.method, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -262,7 +270,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **BiosamplesFromVariants**
 > array[BiosamplesFromVariants] BiosamplesFromVariants(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, files_fileset = var.files_fileset, method = var.method, element_id = var.element_id, significant = var.significant, gene_id = var.gene_id, gene_name = var.gene_name, phenotype_id = var.phenotype_id, phenotype_name = var.phenotype_name, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -342,7 +354,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **CodingVariants**
 > array[CodingVariants] CodingVariants(id = var.id, name = var.name, hgvsp = var.hgvsp, protein_id = var.protein_id, uniprot_name = var.uniprot_name, gene_name = var.gene_name, amino_acid_position = var.amino_acid_position, alt_amino_acid = var.alt_amino_acid, transcript_id = var.transcript_id, page = 0, limit = var.limit)
@@ -408,7 +424,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **CodingVariantsCountFromGene**
 > array[MethodCount] CodingVariantsCountFromGene(gene_id, files_fileset = var.files_fileset)
@@ -456,7 +476,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **CodingVariantsFromGenes**
 > array[CodingVariantsFromGenes] CodingVariantsFromGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, method = var.method, files_fileset = var.files_fileset, page = 0, limit = var.limit)
@@ -518,7 +542,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **CodingVariantsFromPhenotypes**
 > array[CodingVariantsFromPhenotypes] CodingVariantsFromPhenotypes(phenotype_id = var.phenotype_id, phenotype_name = var.phenotype_name, method = var.method, files_fileset = var.files_fileset, page = 0, limit = var.limit)
@@ -574,7 +602,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **CodingVariantsFromVariants**
 > array[CodingVariants] CodingVariantsFromVariants(spdi = var.spdi, hgvs = var.hgvs, ca_id = var.ca_id, variant_id = var.variant_id, page = 0, limit = var.limit)
@@ -630,7 +662,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **CodingVariantsSummary**
 > array[CodingVariantsSummary] CodingVariantsSummary(variant_id = var.variant_id, coding_variant_id = var.coding_variant_id, files_fileset = var.files_fileset)
@@ -680,7 +716,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Complexes**
 > array[Complex] Complexes(complex_id = var.complex_id, name = var.name, description = var.description, page = 0)
@@ -732,7 +772,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **ComplexesFromProteins**
 > array[ComplexesFromProteins] ComplexesFromProteins(protein_id = var.protein_id, protein_name = var.protein_name, uniprot_name = var.uniprot_name, uniprot_full_name = var.uniprot_full_name, dbxrefs = var.dbxrefs, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -794,7 +838,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **DeprecatedCodingVariantsSummary**
 > array[CodingVariantsSummary] DeprecatedCodingVariantsSummary(variant_id = var.variant_id, coding_variant_id = var.coding_variant_id, files_fileset = var.files_fileset)
@@ -844,7 +892,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **DeprecatedNearestGenes**
 > array[Gene] DeprecatedNearestGenes(region)
@@ -890,7 +942,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **DiseaseFromVariants**
 > array[DiseaseFromVariants] DiseaseFromVariants(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, assertion = var.assertion, pmid = var.pmid, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -958,7 +1014,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **DiseasesFromGenes**
 > array[DiseasesFromGenes] DiseasesFromGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, source = var.source, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -1022,7 +1082,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Drugs**
 > array[Drug] Drugs(drug_id = var.drug_id, name = var.name, page = 0, limit = var.limit)
@@ -1074,7 +1138,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **DrugsFromVariants**
 > array[DrugsFromVariants] DrugsFromVariants(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, phenotype_categories = var.phenotype_categories, pmid = var.pmid, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -1142,7 +1210,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **EnhancerGenePredictions**
 > array[EnhancerGenePredictions] EnhancerGenePredictions(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, method = var.method, files_fileset = var.files_fileset, page = 0, limit = var.limit)
@@ -1204,7 +1276,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **FilesFilesets**
 > array[FilesFilesets] FilesFilesets(file_fileset_id = var.file_fileset_id, fileset_id = var.fileset_id, lab = var.lab, preferred_assay_title = var.preferred_assay_title, method = var.method, perturbation = var.perturbation, donor_id = var.donor_id, sample_term = var.sample_term, sample_summary = var.sample_summary, software = var.software, cell_annotation = var.cell_annotation, cell_annotation_term = var.cell_annotation_term, has_genome_browser_link = var.has_genome_browser_link, source = var.source, class = var.class, page = 0, limit = var.limit)
@@ -1282,7 +1358,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenePrograms**
 > array[GeneProgram] GenePrograms(files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id, page = 0, limit = 25, id = var.id, program_id = var.program_id, name = var.name)
@@ -1344,7 +1424,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GeneProgramsFromGenes**
 > array[GeneProgramsFromGenes] GeneProgramsFromGenes(files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id, page = 0, limit = 25, gene_id = var.gene_id, gene_name = var.gene_name, hgnc_id = var.hgnc_id, synonym = var.synonym, gene_program_id = var.gene_program_id, label = var.label, score = var.score, log2_fc = var.log2_fc, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, significant = var.significant, verbose = "false")
@@ -1422,7 +1506,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GeneProgramsGenePrograms**
 > array[GeneProgramsGenePrograms] GeneProgramsGenePrograms(gene_program_id, files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id, page = 0, limit = 25, associated_gene_program_id = var.associated_gene_program_id, pearson_correlation = var.pearson_correlation, verbose = "false")
@@ -1486,7 +1574,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Genes**
 > array[Gene] Genes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, entrez = var.entrez, name = var.name, region = var.region, synonym = var.synonym, collection = var.collection, study_set = var.study_set, gene_type = var.gene_type, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -1554,7 +1646,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesFromDiseases**
 > array[DiseasesFromGenes] GenesFromDiseases(disease_id = var.disease_id, disease_name = var.disease_name, source = var.source, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -1612,7 +1708,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesFromGenePrograms**
 > array[GeneProgramsFromGenes] GenesFromGenePrograms(files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id, page = 0, limit = 25, gene_id = var.gene_id, gene_name = var.gene_name, hgnc_id = var.hgnc_id, synonym = var.synonym, gene_program_id = var.gene_program_id, label = var.label, score = var.score, log2_fc = var.log2_fc, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, significant = var.significant, verbose = "false")
@@ -1690,7 +1790,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesFromGenomicElements**
 > array[GenesFromGenomicElements] GenesFromGenomicElements(region = var.region, source_annotation = var.source_annotation, region_type = var.region_type, method = var.method, files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, cell_annotation = var.cell_annotation, cell_annotation_term = var.cell_annotation_term, source = var.source, score = var.score, effect_size = var.effect_size, log2_fc = var.log2_fc, neg_log10_pvalue = var.neg_log10_pvalue, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, z_score = var.z_score, idr = var.idr, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -1776,7 +1880,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesFromPathways**
 > array[GenesFromPathways] GenesFromPathways(pathway_id = var.pathway_id, pathway_name = var.pathway_name, name_aliases = var.name_aliases, disease_ontology_terms = var.disease_ontology_terms, biological_process = var.biological_process, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -1838,7 +1946,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesFromProteins**
 > array[GenesFromProteins] GenesFromProteins(protein_id = var.protein_id, protein_name = var.protein_name, uniprot_name = var.uniprot_name, uniprot_full_name = var.uniprot_full_name, dbxrefs = var.dbxrefs, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -1900,7 +2012,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesFromTranscripts**
 > array[GenesFromTranscripts] GenesFromTranscripts(transcript_id = var.transcript_id, region = var.region, transcript_type = var.transcript_type, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -1958,7 +2074,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesFromVariants**
 > array[GenesFromVariants] GenesFromVariants(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, neg_log10_pvalue = var.neg_log10_pvalue, effect_size = var.effect_size, posterior_inclusion_probability = var.posterior_inclusion_probability, log2_fc = var.log2_fc, significant = var.significant, biosample_term = var.biosample_term, biological_context = var.biological_context, label = var.label, method = var.method, files_fileset = var.files_fileset, source = var.source, name = var.name, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -2046,7 +2166,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesGenes**
 > array[GenesGenes] GenesGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, associated_gene_id = var.associated_gene_id, associated_hgnc_id = var.associated_hgnc_id, associated_gene_name = var.associated_gene_name, associated_synonym = var.associated_synonym, z_score = var.z_score, interaction_type = var.interaction_type, label = var.label, method = var.method, pearson_correlation = var.pearson_correlation, source = var.source, name = var.name, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit, biosample_term = var.biosample_term, biological_context = var.biological_context, treatment_term_id = var.treatment_term_id)
@@ -2138,7 +2262,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesGenomicElementsScoreSummary**
 > GenesGenomicElementsScoreSummary GenesGenomicElementsScoreSummary(gene_id, score_field, method = var.method, files_fileset = var.files_fileset, source = var.source, biosample_term = var.biosample_term, biological_context = var.biological_context, cell_annotation = var.cell_annotation, cell_annotation_term = var.cell_annotation_term, page = 0, limit = var.limit)
@@ -2204,7 +2332,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesProteinsFromVariants**
 > array[GenesProteinsFromVariants] GenesProteinsFromVariants(variant_id, page = 0, limit = var.limit)
@@ -2254,7 +2386,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesProteinsGenesProteins**
 > array[GenesProteinsGenesProteins] GenesProteinsGenesProteins(query, page = 0, limit = var.limit)
@@ -2304,7 +2440,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesStructure**
 > array[GenesStructure] GenesStructure(gene_id = var.gene_id, gene_name = var.gene_name, transcript_id = var.transcript_id, transcript_name = var.transcript_name, protein_id = var.protein_id, protein_name = var.protein_name, region = var.region, type = var.type, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -2370,7 +2510,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesTranscriptsGenes**
 > array[GenesTranscriptsGenes] GenesTranscriptsGenes(gene_id = var.gene_id, gene_name = var.gene_name, transcript_id = var.transcript_id, readout_gene_id = var.readout_gene_id, readout_gene_name = var.readout_gene_name, morf_id = var.morf_id, files_fileset = var.files_fileset, method = var.method, perturbation = var.perturbation, significant = var.significant, biological_context = var.biological_context, biosample_term = var.biosample_term, log2_fc = var.log2_fc, p_value = var.p_value, p_value_adj = var.p_value_adj, neg_log10_pvalue = var.neg_log10_pvalue, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -2456,7 +2600,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesTranscriptsGenomicElements**
 > array[GenesTranscriptsGenomicElements] GenesTranscriptsGenomicElements(gene_id = var.gene_id, gene_name = var.gene_name, transcript_id = var.transcript_id, genomic_element_id = var.genomic_element_id, accessible_region = var.accessible_region, files_fileset = var.files_fileset, method = var.method, perturbation = var.perturbation, source = var.source, significant = var.significant, biological_context = var.biological_context, biosample_term = var.biosample_term, base_mean = var.base_mean, log2_fc = var.log2_fc, p_value = var.p_value, p_value_adj = var.p_value_adj, neg_log10_pvalue = var.neg_log10_pvalue, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -2544,7 +2692,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenesVariantsScoreSummary**
 > GenesVariantsScoreSummary GenesVariantsScoreSummary(gene_id, score_field, files_fileset = var.files_fileset, source = var.source, biosample_term = var.biosample_term, biological_context = var.biological_context, perturbation = var.perturbation, page = 0, limit = var.limit)
@@ -2606,7 +2758,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenomicElements**
 > array[GenomicElement11] GenomicElements(region = var.region, source_annotation = var.source_annotation, type = var.type, method = var.method, source = var.source, organism = "Homo sapiens", page = 0, limit = var.limit, files_fileset = var.files_fileset)
@@ -2668,7 +2824,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenomicElementsFromBiosamples**
 > array[BiosamplesFromGenomicElements] GenomicElementsFromBiosamples(biosample_name = var.biosample_name, method = var.method, source = var.source, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -2728,7 +2888,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenomicElementsFromGenes**
 > array[GenesFromGenomicElements] GenomicElementsFromGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, method = var.method, files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, cell_annotation = var.cell_annotation, cell_annotation_term = var.cell_annotation_term, source = var.source, score = var.score, effect_size = var.effect_size, log2_fc = var.log2_fc, neg_log10_pvalue = var.neg_log10_pvalue, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, z_score = var.z_score, idr = var.idr, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -2818,7 +2982,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenomicElementsFromGenomicElements**
 > array[GenomicElementsFromGenomicElements] GenomicElementsFromGenomicElements(perturbed_region = var.perturbed_region, accessible_region = var.accessible_region, promoter_gene_id = var.promoter_gene_id, promoter_gene_name = var.promoter_gene_name, files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, method = var.method, source = var.source, perturbation = var.perturbation, significant = var.significant, log2_fc = var.log2_fc, p_value = var.p_value, p_value_adj = var.p_value_adj, neg_log10_pvalue = var.neg_log10_pvalue, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -2902,7 +3070,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenomicElementsFromPhenotypes**
 > array[GenomicElementsFromPhenotypes] GenomicElementsFromPhenotypes(files_fileset = var.files_fileset, phenotype_id = var.phenotype_id, phenotype_name = var.phenotype_name, method = var.method, significant = var.significant, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -2964,7 +3136,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenomicElementsFromVariants**
 > array[GenomicElementsFromVariants] GenomicElementsFromVariants(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, biosample_term = var.biosample_term, biological_context = var.biological_context, method = var.method, files_fileset = var.files_fileset, page = 0, limit = var.limit)
@@ -3032,7 +3208,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenomicElementsFromVariantsCount**
 > AnyType GenomicElementsFromVariantsCount(spdi = var.spdi, hgvs = var.hgvs, ca_id = var.ca_id, variant_id = var.variant_id, organism = "Homo sapiens", files_fileset = var.files_fileset)
@@ -3088,7 +3268,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GenomicElementsPredictionsFromVariant**
 > GenomicElementsPredictionsFromVariant GenomicElementsPredictionsFromVariant(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region)
@@ -3144,7 +3328,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **GoTermsFromAnnotations**
 > array[AnnotationsFromGoTerms] GoTermsFromAnnotations(query, name = var.name, page = 0, limit = var.limit)
@@ -3196,7 +3384,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Grn**
 > array[Grn] Grn(regulator_gene_id = var.regulator_gene_id, regulator_hgnc_id = var.regulator_hgnc_id, regulator_gene_name = var.regulator_gene_name, regulator_synonym = var.regulator_synonym, response_gene_id = var.response_gene_id, response_hgnc_id = var.response_hgnc_id, response_gene_name = var.response_gene_name, response_synonym = var.response_synonym, neg_log10_pvalue = var.neg_log10_pvalue, neg_log10_pvalue_adj = var.neg_log10_pvalue_adj, method = var.method, files_fileset = var.files_fileset, significant = var.significant, perturbation = var.perturbation, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -3276,7 +3468,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **LlmQuery**
 > LlmQuery LlmQuery(llm_query_request)
@@ -3322,7 +3518,10 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **500** | Internal server error |  -  |
 
 # **Motifs**
 > array[Motif] Motifs(tf_name = var.tf_name, source = var.source, files_fileset = var.files_fileset, method = var.method, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -3380,7 +3579,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **MotifsFromProteins**
 > array[MotifsFromProteins] MotifsFromProteins(protein_id = var.protein_id, protein_name = var.protein_name, uniprot_name = var.uniprot_name, uniprot_full_name = var.uniprot_full_name, dbxrefs = var.dbxrefs, files_fileset = var.files_fileset, method = var.method, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -3446,7 +3649,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **NearestGenes**
 > array[Gene] NearestGenes(region)
@@ -3492,7 +3699,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **OntologyTerm**
 > array[OntologyTerm] OntologyTerm(term_id = var.term_id, name = var.name, synonyms = var.synonyms, source = var.source, subontology = var.subontology, files_fileset = var.files_fileset, page = 0, limit = var.limit)
@@ -3552,7 +3763,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **OntologyTermChildren**
 > array[OntologyTermChildren] OntologyTermChildren(ontology_term_id, page = 0, limit = var.limit)
@@ -3602,7 +3817,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **OntologyTermParents**
 > array[OntologyTermChildren] OntologyTermParents(ontology_term_id, page = 0, limit = var.limit)
@@ -3652,7 +3871,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **OntologyTermTransitiveClosure**
 > OntologyTermTransitiveClosure OntologyTermTransitiveClosure(ontology_term_id_start, ontology_term_id_end)
@@ -3700,7 +3923,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Pathways**
 > array[Pathway] Pathways(id = var.id, name = var.name, is_in_disease = var.is_in_disease, name_aliases = var.name_aliases, is_top_level_pathway = var.is_top_level_pathway, disease_ontology_terms = var.disease_ontology_terms, biological_process = var.biological_process, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -3764,7 +3991,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **PathwaysFromGenes**
 > array[GenesFromPathways] PathwaysFromGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -3826,7 +4057,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **PathwaysFromPathways**
 > array[PathwaysFromPathways] PathwaysFromPathways(pathway_id = var.pathway_id, pathway_name = var.pathway_name, name_aliases = var.name_aliases, disease_ontology_terms = var.disease_ontology_terms, biological_process = var.biological_process, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -3888,7 +4123,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **PhenotypesFromCodingVariants**
 > array[CodingVariantsFromPhenotypes] PhenotypesFromCodingVariants(coding_variant_name = var.coding_variant_name, hgvsp = var.hgvsp, uniprot_name = var.uniprot_name, gene_name = var.gene_name, amino_acid_position = var.amino_acid_position, transcript_id = var.transcript_id, method = var.method, files_fileset = var.files_fileset, page = 0, limit = var.limit)
@@ -3952,7 +4191,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **PhenotypesFromGenomicElements**
 > array[GenomicElementsFromPhenotypes] PhenotypesFromGenomicElements(region = var.region, files_fileset = var.files_fileset, phenotype_id = var.phenotype_id, phenotype_name = var.phenotype_name, method = var.method, significant = var.significant, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4016,7 +4259,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **PhenotypesFromVariants**
 > array[VariantsFromPhenotypesItem] PhenotypesFromVariants(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, phenotype_id = var.phenotype_id, neg_log10_pvalue = var.neg_log10_pvalue, method = var.method, label = var.label, class = var.class, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit, files_fileset = var.files_fileset)
@@ -4092,7 +4339,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **PredictionsFromVariants**
 > array[PredictionsFromVariants] PredictionsFromVariants(spdi = var.spdi, hgvs = var.hgvs, ca_id = var.ca_id, variant_id = var.variant_id, organism = "Homo sapiens", files_fileset = var.files_fileset, method = var.method, limit = var.limit, page = 0)
@@ -4154,7 +4405,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Proteins**
 > array[Protein] Proteins(protein_id = var.protein_id, name = var.name, uniprot_name = var.uniprot_name, uniprot_full_name = var.uniprot_full_name, dbxrefs = var.dbxrefs, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -4214,7 +4469,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **ProteinsFromComplexes**
 > array[ComplexesFromProteins] ProteinsFromComplexes(complex_id = var.complex_id, complex_name = var.complex_name, description = var.description, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4272,7 +4531,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **ProteinsFromGenes**
 > array[GenesFromProteins] ProteinsFromGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4334,7 +4597,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **ProteinsFromMotifs**
 > array[MotifsFromProteins] ProteinsFromMotifs(tf_name = var.tf_name, source = var.source, files_fileset = var.files_fileset, method = var.method, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4394,7 +4661,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **ProteinsFromTranscripts**
 > array[ProteinsFromTranscripts] ProteinsFromTranscripts(transcript_id = var.transcript_id, region = var.region, transcript_type = var.transcript_type, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4452,7 +4723,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **ProteinsFromVariants**
 > array[ProteinsFromVariants] ProteinsFromVariants(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, label = var.label, source = var.source, method = var.method, files_fileset = var.files_fileset, name = var.name, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4526,7 +4801,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **ProteinsProteins**
 > array[ProteinsProteins] ProteinsProteins(protein_id = var.protein_id, protein_name = var.protein_name, uniprot_name = var.uniprot_name, uniprot_full_name = var.uniprot_full_name, dbxrefs = var.dbxrefs, associated_protein_id = var.associated_protein_id, associated_protein_name = var.associated_protein_name, associated_uniprot_name = var.associated_uniprot_name, associated_uniprot_full_name = var.associated_uniprot_full_name, associated_dbxrefs = var.associated_dbxrefs, pmid = var.pmid, detection_method = var.detection_method, interaction_type = var.interaction_type, label = var.label, method = var.method, source = var.source, files_fileset = var.files_fileset, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4612,10 +4891,14 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **QtlSummaryEndpoint**
-> array[QtlSummaryEndpoint] QtlSummaryEndpoint(spdi = var.spdi, hgvs = var.hgvs, ca_id = var.ca_id, variant_id = var.variant_id, organism = "Homo sapiens", page = var.page, limit = var.limit, files_fileset = var.files_fileset)
+> array[QtlSummaryEndpoint] QtlSummaryEndpoint(spdi = var.spdi, hgvs = var.hgvs, ca_id = var.ca_id, variant_id = var.variant_id, organism = "Homo sapiens", page = 0, limit = var.limit, files_fileset = var.files_fileset)
 
 
 
@@ -4631,7 +4914,7 @@ var_hgvs <- "hgvs_example" # character |  (Optional)
 var_ca_id <- "ca_id_example" # character |  (Optional)
 var_variant_id <- "variant_id_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 3.4 # numeric |  (Optional)
+var_page <- 0 # numeric |  (Optional)
 var_limit <- 3.4 # numeric |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 
@@ -4651,7 +4934,7 @@ Name | Type | Description  | Notes
  **ca_id** | **character**|  | [optional] 
  **variant_id** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] 
+ **page** | **numeric**|  | [optional] [default to 0]
  **limit** | **numeric**|  | [optional] 
  **files_fileset** | **character**|  | [optional] 
 
@@ -4672,7 +4955,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Qtls**
 > array[Qtls] Qtls(gene_id = var.gene_id, gene_name = var.gene_name, variant_id = var.variant_id, spdi = var.spdi, rsid = var.rsid, ca_id = var.ca_id, region = var.region, biological_context = var.biological_context, method = var.method, source = var.source, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -4742,7 +5029,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Studies**
 > array[Study] Studies(study_id = var.study_id, pmid = var.pmid, files_fileset = var.files_fileset, page = 0)
@@ -4794,7 +5085,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Transcripts**
 > array[Transcript] Transcripts(transcript_id = var.transcript_id, region = var.region, transcript_type = var.transcript_type, organism = "Homo sapiens", page = 0, limit = var.limit, refseq_transcript_id = var.refseq_transcript_id)
@@ -4814,7 +5109,7 @@ var_transcript_type <- "transcript_type_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_page <- 0 # numeric |  (Optional)
 var_limit <- 3.4 # numeric |  (Optional)
-var_refseq_transcript_id <- "refseq_transcript_id_example" # character | Versioned RefSeq RNA accession; exact match, human transcripts only. (Optional)
+var_refseq_transcript_id <- "refseq_transcript_id_example" # character |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4833,7 +5128,7 @@ Name | Type | Description  | Notes
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **page** | **numeric**|  | [optional] [default to 0]
  **limit** | **numeric**|  | [optional] 
- **refseq_transcript_id** | **character**| Versioned RefSeq RNA accession; exact match, human transcripts only. | [optional] 
+ **refseq_transcript_id** | **character**|  | [optional] 
 
 ### Return type
 
@@ -4852,7 +5147,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **TranscriptsFromGenes**
 > array[GenesFromTranscripts] TranscriptsFromGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4914,7 +5213,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **TranscriptsFromProteins**
 > array[ProteinsFromTranscripts] TranscriptsFromProteins(protein_id = var.protein_id, protein_name = var.protein_name, uniprot_name = var.uniprot_name, uniprot_full_name = var.uniprot_full_name, dbxrefs = var.dbxrefs, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -4976,7 +5279,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantByFrequencySource**
 > array[SequenceVariant] VariantByFrequencySource(source, spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, region = var.region, gencode_category = var.gencode_category, minimum_af = 0, maximum_af = 1, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -5044,7 +5351,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantSummary**
 > VariantSummary VariantSummary(spdi = var.spdi, hgvs = var.hgvs, ca_id = var.ca_id, variant_id = var.variant_id, organism = "Homo sapiens", igvf_only = "false")
@@ -5100,7 +5411,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **Variants**
 > array[SequenceVariant] Variants(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, gencode_category = var.gencode_category, mouse_strain = var.mouse_strain, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -5166,7 +5481,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsAlleles**
 > array[Array] VariantsAlleles(region)
@@ -5212,7 +5531,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromBiosamples**
 > array[BiosamplesFromVariants] VariantsFromBiosamples(biosample_id = var.biosample_id, biosample_name = var.biosample_name, files_fileset = var.files_fileset, method = var.method, element_id = var.element_id, significant = var.significant, gene_id = var.gene_id, gene_name = var.gene_name, phenotype_id = var.phenotype_id, phenotype_name = var.phenotype_name, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -5284,7 +5607,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromCodingVariants**
 > array[VariantBasic] VariantsFromCodingVariants(coding_variant_name = var.coding_variant_name, hgvsp = var.hgvsp, protein_id = var.protein_id, uniprot_name = var.uniprot_name, gene_name = var.gene_name, amino_acid_position = var.amino_acid_position, alt_amino_acid = var.alt_amino_acid, transcript_id = var.transcript_id, page = 0, limit = var.limit)
@@ -5348,7 +5675,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromDiseases**
 > array[DiseaseFromVariants] VariantsFromDiseases(disease_id = var.disease_id, disease_name = var.disease_name, assertion = var.assertion, pmid = var.pmid, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -5408,7 +5739,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromDrugs**
 > array[VariantsFromDrugs] VariantsFromDrugs(drug_id = var.drug_id, drug_name = var.drug_name, phenotype_categories = var.phenotype_categories, pmid = var.pmid, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -5468,7 +5803,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromGeneProteins**
 > array[GenesProteinsFromVariants] VariantsFromGeneProteins(query, page = 0, limit = var.limit)
@@ -5518,7 +5857,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromGenes**
 > array[GenesFromVariants] VariantsFromGenes(gene_id = var.gene_id, hgnc_id = var.hgnc_id, gene_name = var.gene_name, synonym = var.synonym, region = var.region, neg_log10_pvalue = var.neg_log10_pvalue, effect_size = var.effect_size, posterior_inclusion_probability = var.posterior_inclusion_probability, log2_fc = var.log2_fc, significant = var.significant, biosample_term = var.biosample_term, biological_context = var.biological_context, label = var.label, method = var.method, files_fileset = var.files_fileset, source = var.source, name = var.name, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -5604,7 +5947,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromGenomicElements**
 > array[GenomicElementsFromVariants] VariantsFromGenomicElements(region = var.region, region_type = var.region_type, biosample_term = var.biosample_term, biological_context = var.biological_context, method = var.method, files_fileset = var.files_fileset, page = 0, limit = var.limit)
@@ -5664,7 +6011,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromPhenotypes**
 > array[VariantsFromPhenotypesItem] VariantsFromPhenotypes(phenotype_id = var.phenotype_id, phenotype_name = var.phenotype_name, neg_log10_pvalue = var.neg_log10_pvalue, method = var.method, label = var.label, class = var.class, files_fileset = var.files_fileset, source = var.source, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -5732,7 +6083,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromProteins**
 > array[ProteinsFromVariants] VariantsFromProteins(protein_id = var.protein_id, protein_name = var.protein_name, uniprot_name = var.uniprot_name, uniprot_full_name = var.uniprot_full_name, dbxrefs = var.dbxrefs, label = var.label, source = var.source, method = var.method, files_fileset = var.files_fileset, name = var.name, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -5804,7 +6159,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromVariantID**
 > array[VariantsFromVariantID] VariantsFromVariantID(spdi = var.spdi, hgvs = var.hgvs, rsid = var.rsid, ca_id = var.ca_id, variant_id = var.variant_id, region = var.region, r2 = var.r2, d_prime = var.d_prime, ancestry = var.ancestry, organism = "Homo sapiens", verbose = "false", page = 0, limit = var.limit)
@@ -5874,7 +6233,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsFromVariantIDSummary**
 > array[VariantsFromVariantIDSummary] VariantsFromVariantIDSummary(spdi = var.spdi, hgvs = var.hgvs, ca_id = var.ca_id, variant_id = var.variant_id, organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -5932,7 +6295,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsGenomicElementsGenes**
 > array[VariantsGenomicElementsGenes] VariantsGenomicElementsGenes(spdi = var.spdi, hgvs = var.hgvs, ca_id = var.ca_id, variant_id = var.variant_id, files_fileset = var.files_fileset, biosample_term = var.biosample_term, biological_context = var.biological_context, nearby_genes = "true", organism = "Homo sapiens", page = 0, limit = var.limit)
@@ -5998,7 +6365,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 
 # **VariantsRegionSummary**
 > VariantsRegionSummary VariantsRegionSummary(region)
@@ -6044,5 +6415,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successful response |  -  |
-| **0** | Error response |  -  |
+| **400** | Invalid input data |  -  |
+| **401** | Authorization not provided |  -  |
+| **403** | Insufficient access |  -  |
+| **404** | Not found |  -  |
+| **500** | Internal server error |  -  |
 

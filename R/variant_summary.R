@@ -8,7 +8,7 @@
 #' @description VariantSummary Class
 #' @format An \code{R6Class} generator object
 #' @field summary  \link{Summary}
-#' @field allele_frequencies_gnomad  \link{AnyType} [optional]
+#' @field allele_frequencies_gnomad  \link{AnyType}
 #' @field cadd_scores  \link{CaddScores} [optional]
 #' @field nearest_genes  \link{NearestGenes}
 #' @field annotations  \link{Annotations}
@@ -28,15 +28,19 @@ VariantSummary <- R6::R6Class(
     #' Initialize a new VariantSummary class.
     #'
     #' @param summary summary
+    #' @param allele_frequencies_gnomad allele_frequencies_gnomad
     #' @param nearest_genes nearest_genes
     #' @param annotations annotations
-    #' @param allele_frequencies_gnomad allele_frequencies_gnomad
     #' @param cadd_scores cadd_scores
     #' @param ... Other optional arguments.
-    initialize = function(`summary`, `nearest_genes`, `annotations`, `allele_frequencies_gnomad` = NULL, `cadd_scores` = NULL, ...) {
+    initialize = function(`summary`, `allele_frequencies_gnomad`, `nearest_genes`, `annotations`, `cadd_scores` = NULL, ...) {
       if (!missing(`summary`)) {
         stopifnot(R6::is.R6(`summary`))
         self$`summary` <- `summary`
+      }
+      if (!missing(`allele_frequencies_gnomad`)) {
+        stopifnot(R6::is.R6(`allele_frequencies_gnomad`))
+        self$`allele_frequencies_gnomad` <- `allele_frequencies_gnomad`
       }
       if (!missing(`nearest_genes`)) {
         stopifnot(R6::is.R6(`nearest_genes`))
@@ -45,10 +49,6 @@ VariantSummary <- R6::R6Class(
       if (!missing(`annotations`)) {
         stopifnot(R6::is.R6(`annotations`))
         self$`annotations` <- `annotations`
-      }
-      if (!is.null(`allele_frequencies_gnomad`)) {
-        stopifnot(R6::is.R6(`allele_frequencies_gnomad`))
-        self$`allele_frequencies_gnomad` <- `allele_frequencies_gnomad`
       }
       if (!is.null(`cadd_scores`)) {
         stopifnot(R6::is.R6(`cadd_scores`))
@@ -182,6 +182,12 @@ VariantSummary <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`summary`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for VariantSummary: the required field `summary` is missing."))
+      }
+      # check the required field `allele_frequencies_gnomad`
+      if (!is.null(input_json$`allele_frequencies_gnomad`)) {
+        stopifnot(R6::is.R6(input_json$`allele_frequencies_gnomad`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for VariantSummary: the required field `allele_frequencies_gnomad` is missing."))
       }
       # check the required field `nearest_genes`
       if (!is.null(input_json$`nearest_genes`)) {

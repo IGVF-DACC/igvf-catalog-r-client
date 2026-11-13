@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **drug** | [**DrugsFromVariantsDrug**](DrugsFromVariants_drug.md) |  | [optional] 
-**_from** | **character** |  | 
 **gene_names** | **array[character]** |  | [optional] 
 **pmid** | **character** |  | [optional] 
 **study_parameters** | [**array[StudyParameters]**](StudyParameters.md) |  | [optional] 
@@ -17,5 +16,6 @@ Name | Type | Description | Notes
 **method** | **character** |  | [optional] 
 **files_filesets** | **character** |  | [optional] 
 **preferred_assay_titles** | **array[character]** |  | [optional] 
+**sequence_variant** | **character** |  | 
 
 

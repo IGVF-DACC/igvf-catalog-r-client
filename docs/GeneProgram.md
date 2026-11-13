@@ -17,6 +17,6 @@ Name | Type | Description | Notes
 **_id** | **character** |  | 
 **name** | **character** |  | 
 **program_id** | **character** |  | 
-**reported_gene_count** | **integer** |  | 
+**reported_gene_count** | **integer** |  | [Max: 9007199254740991] [Min: -9007199254740991] 
 
 
