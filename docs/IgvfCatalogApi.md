@@ -114,8 +114,8 @@ library(igvfcatalogclient)
 # prepare function argument(s)
 var_gene_id <- "gene_id_example" # character | 
 var_dataset <- "dataset_example" # character | 
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -130,8 +130,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gene_id** | **character**|  | 
  **dataset** | Enum [DUAL-IPA, ESM-1v, MutPred2, SGE, VAMP-seq, Variant painting via fluorescence] |  | 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -170,8 +170,8 @@ library(igvfcatalogclient)
 # prepare function argument(s)
 var_go_term_id <- "go_term_id_example" # character | 
 var_name <- "name_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -186,8 +186,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **go_term_id** | **character**|  | 
  **name** | Enum [contains, has component, is a function of] |  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -230,8 +230,8 @@ var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -250,8 +250,8 @@ Name | Type | Description  | Notes
  **files_fileset** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -304,8 +304,8 @@ var_phenotype_id <- "phenotype_id_example" # character |  (Optional)
 var_phenotype_name <- "phenotype_name_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -334,8 +334,8 @@ Name | Type | Description  | Notes
  **phenotype_name** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -381,8 +381,8 @@ var_gene_name <- "gene_name_example" # character |  (Optional)
 var_amino_acid_position <- "amino_acid_position_example" # character |  (Optional)
 var_alt_amino_acid <- "alt_amino_acid_example" # character |  (Optional)
 var_transcript_id <- "transcript_id_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -404,8 +404,8 @@ Name | Type | Description  | Notes
  **amino_acid_position** | **character**|  | [optional] 
  **alt_amino_acid** | Enum [A, C, D, E, F, G, H, I, K, L, M, N, P, Q, R, S, T, V, W, Y, *] |  | [optional] 
  **transcript_id** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -501,8 +501,8 @@ var_synonym <- "synonym_example" # character |  (Optional)
 var_region <- "region_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -522,8 +522,8 @@ Name | Type | Description  | Notes
  **region** | **character**|  | [optional] 
  **method** | Enum [DUAL-IPA, ESM-1v, MutPred2, SGE, VAMP-seq, Variant painting via fluorescence] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -564,8 +564,8 @@ var_phenotype_id <- "phenotype_id_example" # character |  (Optional)
 var_phenotype_name <- "phenotype_name_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -582,8 +582,8 @@ Name | Type | Description  | Notes
  **phenotype_name** | **character**|  | [optional] 
  **method** | Enum [DUAL-IPA, ESM-1v, MutPred2, SGE, VAMP-seq, Variant painting via fluorescence] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -624,8 +624,8 @@ var_spdi <- "spdi_example" # character |  (Optional)
 var_hgvs <- "hgvs_example" # character |  (Optional)
 var_ca_id <- "ca_id_example" # character |  (Optional)
 var_variant_id <- "variant_id_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -642,8 +642,8 @@ Name | Type | Description  | Notes
  **hgvs** | **character**|  | [optional] 
  **ca_id** | **character**|  | [optional] 
  **variant_id** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -737,7 +737,7 @@ library(igvfcatalogclient)
 var_complex_id <- "complex_id_example" # character |  (Optional)
 var_name <- "name_example" # character |  (Optional)
 var_description <- "description_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -753,7 +753,7 @@ Name | Type | Description  | Notes
  **complex_id** | **character**|  | [optional] 
  **name** | **character**|  | [optional] 
  **description** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
+ **page** | **integer**|  | [optional] [default to 0]
 
 ### Return type
 
@@ -797,8 +797,8 @@ var_uniprot_full_name <- "uniprot_full_name_example" # character |  (Optional)
 var_dbxrefs <- "dbxrefs_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -818,8 +818,8 @@ Name | Type | Description  | Notes
  **dbxrefs** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -970,8 +970,8 @@ var_assertion <- "assertion_example" # character |  (Optional)
 var_pmid <- "pmid_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -994,8 +994,8 @@ Name | Type | Description  | Notes
  **pmid** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1040,8 +1040,8 @@ var_region <- "region_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1062,8 +1062,8 @@ Name | Type | Description  | Notes
  **source** | Enum [GenCC, Orphanet, ClinGen] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1102,8 +1102,8 @@ library(igvfcatalogclient)
 # prepare function argument(s)
 var_drug_id <- "drug_id_example" # character |  (Optional)
 var_name <- "name_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1118,8 +1118,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **drug_id** | **character**|  | [optional] 
  **name** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1166,8 +1166,8 @@ var_phenotype_categories <- "phenotype_categories_example" # character |  (Optio
 var_pmid <- "pmid_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1190,8 +1190,8 @@ Name | Type | Description  | Notes
  **pmid** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1235,8 +1235,8 @@ var_synonym <- "synonym_example" # character |  (Optional)
 var_region <- "region_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1256,8 +1256,8 @@ Name | Type | Description  | Notes
  **region** | **character**|  | [optional] 
  **method** | Enum [ENCODE-rE2G, scE2G] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1309,8 +1309,8 @@ var_cell_annotation_term <- "cell_annotation_term_example" # character |  (Optio
 var_has_genome_browser_link <- "has_genome_browser_link_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_class <- "class_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1338,8 +1338,8 @@ Name | Type | Description  | Notes
  **has_genome_browser_link** | Enum [true, false] |  | [optional] 
  **source** | Enum [Community, ENCODE, IGVF] |  | [optional] 
  **class** | Enum [biological relationship, observed data, prediction] |  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1602,8 +1602,8 @@ var_collection <- "collection_example" # character |  (Optional)
 var_study_set <- "study_set_example" # character |  (Optional)
 var_gene_type <- "gene_type_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1626,8 +1626,8 @@ Name | Type | Description  | Notes
  **study_set** | Enum [16p11.2 Deletion - Shendure, Blood Master Regulators, Cardiac - Engreitz, Cardiac - Munshi, Cardiac - Quertermous, Cardiometabolic TFs, Cardiomyopathies-Steinmetz, CdLS-like phenotype, Coronary Artery Disease - Lettre, DiGeorge Syndrome - Park, DiGeorge Syndrome - Shendure, GREGoR Candidate - BCM, GREGoR Candidate - Broad, GREGoR Candidate - GSS, GREGoR Candidate - UW, IGVFFI6537JARB, IGVFFI7781XWZY, LDL-C uptake, MorPhiC, Pancreatic differentiation, Pulmonary arterial hypertension - Rabinovitch, SGE-Starita, Strong Selection - Sunyaev, VAMP-seq, Williams Syndrome - Park, Williams Syndrome - Shendure] |  | [optional] 
  **gene_type** | Enum [IG_C_gene, IG_C_pseudogene, IG_D_gene, IG_J_gene, IG_J_pseudogene, IG_V_gene, IG_V_pseudogene, IG_pseudogene, Mt_rRNA, Mt_tRNA, TEC, TR_C_gene, TR_D_gene, TR_J_gene, TR_J_pseudogene, TR_V_gene, TR_V_pseudogene, artifact, lncRNA, miRNA, misc_RNA, processed_pseudogene, protein_coding, pseudogene, rRNA, rRNA_pseudogene, ribozyme, sRNA, scRNA, scaRNA, snRNA, snoRNA, transcribed_processed_pseudogene, transcribed_unitary_pseudogene, transcribed_unprocessed_pseudogene, translated_processed_pseudogene, translated_unprocessed_pseudogene, unitary_pseudogene, unprocessed_pseudogene, vault_RNA] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1669,8 +1669,8 @@ var_disease_name <- "disease_name_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1688,8 +1688,8 @@ Name | Type | Description  | Notes
  **source** | Enum [GenCC, Orphanet] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1827,8 +1827,8 @@ var_z_score <- "z_score_example" # character |  (Optional)
 var_idr <- "idr_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1860,8 +1860,8 @@ Name | Type | Description  | Notes
  **idr** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1905,8 +1905,8 @@ var_disease_ontology_terms <- "disease_ontology_terms_example" # character |  (O
 var_biological_process <- "biological_process_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1926,8 +1926,8 @@ Name | Type | Description  | Notes
  **biological_process** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -1971,8 +1971,8 @@ var_uniprot_full_name <- "uniprot_full_name_example" # character |  (Optional)
 var_dbxrefs <- "dbxrefs_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -1992,8 +1992,8 @@ Name | Type | Description  | Notes
  **dbxrefs** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2035,8 +2035,8 @@ var_region <- "region_example" # character |  (Optional)
 var_transcript_type <- "transcript_type_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2054,8 +2054,8 @@ Name | Type | Description  | Notes
  **transcript_type** | Enum [IG_C_gene, IG_C_pseudogene, IG_D_gene, IG_J_gene, IG_J_pseudogene, IG_V_gene, IG_V_pseudogene, IG_pseudogene, Mt_rRNA, Mt_tRNA, TEC, TR_C_gene, TR_D_gene, TR_J_gene, TR_J_pseudogene, TR_V_gene, TR_V_pseudogene, artifact, lncRNA, miRNA, misc_RNA, non_stop_decay, nonsense_mediated_decay, processed_pseudogene, processed_transcript, protein_coding, protein_coding_CDS_not_defined, protein_coding_LoF, pseudogene, rRNA, rRNA_pseudogene, retained_intron, ribozyme, sRNA, scRNA, scaRNA, snRNA, snoRNA, transcribed_processed_pseudogene, transcribed_unitary_pseudogene, transcribed_unprocessed_pseudogene, translated_processed_pseudogene, translated_unprocessed_pseudogene, unitary_pseudogene, unprocessed_pseudogene, vault_RNA] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2112,8 +2112,8 @@ var_source <- "source_example" # character |  (Optional)
 var_name <- "name_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2146,8 +2146,8 @@ Name | Type | Description  | Notes
  **name** | Enum [modulates expression of, modulates splicing of] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2289,8 +2289,8 @@ var_biosample_term <- "biosample_term_example" # character |  (Optional)
 var_biological_context <- "biological_context_example" # character |  (Optional)
 var_cell_annotation <- "cell_annotation_example" # character |  (Optional)
 var_cell_annotation_term <- "cell_annotation_term_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2312,8 +2312,8 @@ Name | Type | Description  | Notes
  **biological_context** | **character**|  | [optional] 
  **cell_annotation** | **character**|  | [optional] 
  **cell_annotation_term** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2351,8 +2351,8 @@ library(igvfcatalogclient)
 
 # prepare function argument(s)
 var_variant_id <- "variant_id_example" # character | 
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2366,8 +2366,8 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **variant_id** | **character**|  | 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2405,8 +2405,8 @@ library(igvfcatalogclient)
 
 # prepare function argument(s)
 var_query <- "query_example" # character | 
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2420,8 +2420,8 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **character**|  | 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2467,8 +2467,8 @@ var_protein_name <- "protein_name_example" # character |  (Optional)
 var_region <- "region_example" # character |  (Optional)
 var_type <- "type_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2490,8 +2490,8 @@ Name | Type | Description  | Notes
  **region** | **character**|  | [optional] 
  **type** | Enum [CDS, UTR, exon, intron, start_codon, stop_codon] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2547,8 +2547,8 @@ var_neg_log10_pvalue <- "neg_log10_pvalue_example" # character |  (Optional)
 var_neg_log10_pvalue_adj <- "neg_log10_pvalue_adj_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2580,8 +2580,8 @@ Name | Type | Description  | Notes
  **neg_log10_pvalue_adj** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2717,8 +2717,8 @@ var_source <- "source_example" # character |  (Optional)
 var_biosample_term <- "biosample_term_example" # character |  (Optional)
 var_biological_context <- "biological_context_example" # character |  (Optional)
 var_perturbation <- "perturbation_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2738,8 +2738,8 @@ Name | Type | Description  | Notes
  **biosample_term** | **character**|  | [optional] 
  **biological_context** | **character**|  | [optional] 
  **perturbation** | Enum [CRISPR base editing, CRISPR prime editing] |  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2782,8 +2782,8 @@ var_type <- "type_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
@@ -2803,8 +2803,8 @@ Name | Type | Description  | Notes
  **method** | Enum [ATAC-seq, CRISPR screen, ENCODE-rE2G, MPRA, Multiome Perturb-seq, Perturb-seq, caQTL, candidate Cis-Regulatory Elements, scE2G] |  | [optional] 
  **source** | Enum [AFGR, ENCODE, FUNCODE, IGVF] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
  **files_fileset** | **character**|  | [optional] 
 
 ### Return type
@@ -2848,8 +2848,8 @@ var_source <- "source_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2868,8 +2868,8 @@ Name | Type | Description  | Notes
  **files_fileset** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -2927,8 +2927,8 @@ var_z_score <- "z_score_example" # character |  (Optional)
 var_idr <- "idr_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -2962,8 +2962,8 @@ Name | Type | Description  | Notes
  **idr** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3164,8 +3164,8 @@ var_biosample_term <- "biosample_term_example" # character |  (Optional)
 var_biological_context <- "biological_context_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3188,8 +3188,8 @@ Name | Type | Description  | Notes
  **biological_context** | **character**|  | [optional] 
  **method** | Enum [caQTL] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3348,8 +3348,8 @@ library(igvfcatalogclient)
 # prepare function argument(s)
 var_query <- "query_example" # character | 
 var_name <- "name_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3364,8 +3364,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **character**|  | 
  **name** | Enum [has the function, involved in, is located in] |  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3418,8 +3418,8 @@ var_significant <- "significant_example" # character |  (Optional)
 var_perturbation <- "perturbation_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3448,8 +3448,8 @@ Name | Type | Description  | Notes
  **perturbation** | Enum [CRISPR activation, CRISPR base editing, CRISPR cutting, CRISPR interference, CRISPR knockout, CRISPR prime editing, ORF overexpression] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3540,8 +3540,8 @@ var_source <- "source_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3559,8 +3559,8 @@ Name | Type | Description  | Notes
  **files_fileset** | **character**|  | [optional] 
  **method** | Enum [HOCOMOCO, SEMpl] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3606,8 +3606,8 @@ var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3629,8 +3629,8 @@ Name | Type | Description  | Notes
  **method** | Enum [HOCOMOCO, SEMpl] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3723,8 +3723,8 @@ var_synonyms <- "synonyms_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_subontology <- "subontology_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3743,8 +3743,8 @@ Name | Type | Description  | Notes
  **source** | Enum [BAO, CHEBI, CL, CLO, Cellosaurus, DOID, EFO, ENCODE, GO, HPO, IGVF, MONDO, NCIT, OBA, OBI, ORPHANET, Oncotree, PCL, UBERON, VARIO] |  | [optional] 
  **subontology** | Enum [biological_process, cellular_component, molecular_function] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3782,8 +3782,8 @@ library(igvfcatalogclient)
 
 # prepare function argument(s)
 var_ontology_term_id <- "ontology_term_id_example" # character | 
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3797,8 +3797,8 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ontology_term_id** | **character**|  | 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3836,8 +3836,8 @@ library(igvfcatalogclient)
 
 # prepare function argument(s)
 var_ontology_term_id <- "ontology_term_id_example" # character | 
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3851,8 +3851,8 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ontology_term_id** | **character**|  | 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -3949,8 +3949,8 @@ var_is_top_level_pathway <- "is_top_level_pathway_example" # character |  (Optio
 var_disease_ontology_terms <- "disease_ontology_terms_example" # character |  (Optional)
 var_biological_process <- "biological_process_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -3971,8 +3971,8 @@ Name | Type | Description  | Notes
  **disease_ontology_terms** | **character**|  | [optional] 
  **biological_process** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4016,8 +4016,8 @@ var_synonym <- "synonym_example" # character |  (Optional)
 var_region <- "region_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4037,8 +4037,8 @@ Name | Type | Description  | Notes
  **region** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4082,8 +4082,8 @@ var_disease_ontology_terms <- "disease_ontology_terms_example" # character |  (O
 var_biological_process <- "biological_process_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4103,8 +4103,8 @@ Name | Type | Description  | Notes
  **biological_process** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4149,8 +4149,8 @@ var_amino_acid_position <- 3.4 # numeric |  (Optional)
 var_transcript_id <- "transcript_id_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4171,8 +4171,8 @@ Name | Type | Description  | Notes
  **transcript_id** | **character**|  | [optional] 
  **method** | Enum [DUAL-IPA, ESM-1v, MutPred2, SGE, VAMP-seq, Variant painting via fluorescence] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4290,8 +4290,8 @@ var_label <- "label_example" # character |  (Optional)
 var_class <- "class_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
@@ -4318,8 +4318,8 @@ Name | Type | Description  | Notes
  **class** | Enum [observed data, prediction] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
  **files_fileset** | **character**|  | [optional] 
 
 ### Return type
@@ -4364,8 +4364,8 @@ var_variant_id <- "variant_id_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
-var_page <- 0 # numeric |  (Optional)
+var_limit <- 56 # integer |  (Optional)
+var_page <- 0 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4385,8 +4385,8 @@ Name | Type | Description  | Notes
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **files_fileset** | **character**|  | [optional] 
  **method** | Enum [scE2G, ENCODE-rE2G] |  | [optional] 
- **limit** | **numeric**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
 
 ### Return type
 
@@ -4429,8 +4429,8 @@ var_uniprot_name <- "uniprot_name_example" # character |  (Optional)
 var_uniprot_full_name <- "uniprot_full_name_example" # character |  (Optional)
 var_dbxrefs <- "dbxrefs_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4449,8 +4449,8 @@ Name | Type | Description  | Notes
  **uniprot_full_name** | **character**|  | [optional] 
  **dbxrefs** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4492,8 +4492,8 @@ var_complex_name <- "complex_name_example" # character |  (Optional)
 var_description <- "description_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4511,8 +4511,8 @@ Name | Type | Description  | Notes
  **description** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4556,8 +4556,8 @@ var_synonym <- "synonym_example" # character |  (Optional)
 var_region <- "region_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4577,8 +4577,8 @@ Name | Type | Description  | Notes
  **region** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4621,8 +4621,8 @@ var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4641,8 +4641,8 @@ Name | Type | Description  | Notes
  **method** | Enum [HOCOMOCO, SEMpl] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4684,8 +4684,8 @@ var_region <- "region_example" # character |  (Optional)
 var_transcript_type <- "transcript_type_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4703,8 +4703,8 @@ Name | Type | Description  | Notes
  **transcript_type** | Enum [IG_C_gene, IG_C_pseudogene, IG_D_gene, IG_J_gene, IG_J_pseudogene, IG_V_gene, IG_V_pseudogene, IG_pseudogene, Mt_rRNA, Mt_tRNA, TEC, TR_C_gene, TR_D_gene, TR_J_gene, TR_J_pseudogene, TR_V_gene, TR_V_pseudogene, artifact, lncRNA, miRNA, misc_RNA, non_stop_decay, nonsense_mediated_decay, processed_pseudogene, processed_transcript, protein_coding, protein_coding_CDS_not_defined, protein_coding_LoF, pseudogene, rRNA, rRNA_pseudogene, retained_intron, ribozyme, sRNA, scRNA, scaRNA, snRNA, snoRNA, transcribed_processed_pseudogene, transcribed_unitary_pseudogene, transcribed_unprocessed_pseudogene, translated_processed_pseudogene, translated_unprocessed_pseudogene, unitary_pseudogene, unprocessed_pseudogene, vault_RNA] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4754,8 +4754,8 @@ var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_name <- "name_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4781,8 +4781,8 @@ Name | Type | Description  | Notes
  **name** | Enum [associated with levels of, modulates binding of] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4838,8 +4838,8 @@ var_source <- "source_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -4871,8 +4871,8 @@ Name | Type | Description  | Notes
  **files_fileset** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -4914,8 +4914,8 @@ var_hgvs <- "hgvs_example" # character |  (Optional)
 var_ca_id <- "ca_id_example" # character |  (Optional)
 var_variant_id <- "variant_id_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
@@ -4934,8 +4934,8 @@ Name | Type | Description  | Notes
  **ca_id** | **character**|  | [optional] 
  **variant_id** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
  **files_fileset** | **character**|  | [optional] 
 
 ### Return type
@@ -4984,8 +4984,8 @@ var_biological_context <- "biological_context_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5009,8 +5009,8 @@ Name | Type | Description  | Notes
  **method** | Enum [eQTL, pQTL, spliceQTL, caQTL] |  | [optional] 
  **source** | Enum [AFGR, EBI, IGVF, ENCODE, UKB] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5050,7 +5050,7 @@ library(igvfcatalogclient)
 var_study_id <- "study_id_example" # character |  (Optional)
 var_pmid <- "pmid_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5066,7 +5066,7 @@ Name | Type | Description  | Notes
  **study_id** | **character**|  | [optional] 
  **pmid** | **character**|  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
+ **page** | **integer**|  | [optional] [default to 0]
 
 ### Return type
 
@@ -5107,8 +5107,8 @@ var_transcript_id <- "transcript_id_example" # character |  (Optional)
 var_region <- "region_example" # character |  (Optional)
 var_transcript_type <- "transcript_type_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 var_refseq_transcript_id <- "refseq_transcript_id_example" # character |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
@@ -5126,8 +5126,8 @@ Name | Type | Description  | Notes
  **region** | **character**|  | [optional] 
  **transcript_type** | Enum [IG_C_gene, IG_C_pseudogene, IG_D_gene, IG_J_gene, IG_J_pseudogene, IG_V_gene, IG_V_pseudogene, IG_pseudogene, Mt_rRNA, Mt_tRNA, TEC, TR_C_gene, TR_D_gene, TR_J_gene, TR_J_pseudogene, TR_V_gene, TR_V_pseudogene, artifact, lncRNA, miRNA, misc_RNA, non_stop_decay, nonsense_mediated_decay, processed_pseudogene, processed_transcript, protein_coding, protein_coding_CDS_not_defined, protein_coding_LoF, pseudogene, rRNA, rRNA_pseudogene, retained_intron, ribozyme, sRNA, scRNA, scaRNA, snRNA, snoRNA, transcribed_processed_pseudogene, transcribed_unitary_pseudogene, transcribed_unprocessed_pseudogene, translated_processed_pseudogene, translated_unprocessed_pseudogene, unitary_pseudogene, unprocessed_pseudogene, vault_RNA] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
  **refseq_transcript_id** | **character**|  | [optional] 
 
 ### Return type
@@ -5172,8 +5172,8 @@ var_synonym <- "synonym_example" # character |  (Optional)
 var_region <- "region_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5193,8 +5193,8 @@ Name | Type | Description  | Notes
  **region** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5238,8 +5238,8 @@ var_uniprot_full_name <- "uniprot_full_name_example" # character |  (Optional)
 var_dbxrefs <- "dbxrefs_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5259,8 +5259,8 @@ Name | Type | Description  | Notes
  **dbxrefs** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5307,8 +5307,8 @@ var_gencode_category <- "gencode_category_example" # character |  (Optional)
 var_minimum_af <- 0 # numeric |  (Optional)
 var_maximum_af <- 1 # numeric |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5331,8 +5331,8 @@ Name | Type | Description  | Notes
  **minimum_af** | **numeric**|  | [optional] [default to 0]
  **maximum_af** | **numeric**|  | [optional] [default to 1]
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5438,8 +5438,8 @@ var_region <- "region_example" # character |  (Optional)
 var_gencode_category <- "gencode_category_example" # character |  (Optional)
 var_mouse_strain <- "mouse_strain_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5461,8 +5461,8 @@ Name | Type | Description  | Notes
  **gencode_category** | Enum [coding, noncoding] |  | [optional] 
  **mouse_strain** | Enum [129S1_SvImJ, A_J, CAST_EiJ, NOD_ShiLtJ, NZO_HlLtJ, PWK_PhJ, WSB_EiJ] |  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5561,8 +5561,8 @@ var_phenotype_id <- "phenotype_id_example" # character |  (Optional)
 var_phenotype_name <- "phenotype_name_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5587,8 +5587,8 @@ Name | Type | Description  | Notes
  **phenotype_name** | **character**|  | [optional] 
  **organism** | Enum [Mus musculus, Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5633,8 +5633,8 @@ var_gene_name <- "gene_name_example" # character |  (Optional)
 var_amino_acid_position <- "amino_acid_position_example" # character |  (Optional)
 var_alt_amino_acid <- "alt_amino_acid_example" # character |  (Optional)
 var_transcript_id <- "transcript_id_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5655,8 +5655,8 @@ Name | Type | Description  | Notes
  **amino_acid_position** | **character**|  | [optional] 
  **alt_amino_acid** | Enum [A, C, D, E, F, G, H, I, K, L, M, N, P, Q, R, S, T, V, W, Y, *] |  | [optional] 
  **transcript_id** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5699,8 +5699,8 @@ var_assertion <- "assertion_example" # character |  (Optional)
 var_pmid <- "pmid_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5719,8 +5719,8 @@ Name | Type | Description  | Notes
  **pmid** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5763,8 +5763,8 @@ var_phenotype_categories <- "phenotype_categories_example" # character |  (Optio
 var_pmid <- "pmid_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5783,8 +5783,8 @@ Name | Type | Description  | Notes
  **pmid** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5822,8 +5822,8 @@ library(igvfcatalogclient)
 
 # prepare function argument(s)
 var_query <- "query_example" # character | 
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5837,8 +5837,8 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **character**|  | 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5894,8 +5894,8 @@ var_source <- "source_example" # character |  (Optional)
 var_name <- "name_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5927,8 +5927,8 @@ Name | Type | Description  | Notes
  **name** | Enum [expression modulated by, splicing modulated by] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -5971,8 +5971,8 @@ var_biosample_term <- "biosample_term_example" # character |  (Optional)
 var_biological_context <- "biological_context_example" # character |  (Optional)
 var_method <- "method_example" # character |  (Optional)
 var_files_fileset <- "files_fileset_example" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -5991,8 +5991,8 @@ Name | Type | Description  | Notes
  **biological_context** | **character**|  | [optional] 
  **method** | Enum [caQTL] |  | [optional] 
  **files_fileset** | **character**|  | [optional] 
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -6039,8 +6039,8 @@ var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_source <- "source_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -6063,8 +6063,8 @@ Name | Type | Description  | Notes
  **source** | Enum [IGVF, OpenTargets] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -6113,8 +6113,8 @@ var_files_fileset <- "files_fileset_example" # character |  (Optional)
 var_name <- "name_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -6139,8 +6139,8 @@ Name | Type | Description  | Notes
  **name** | Enum [binding modulated by, level associated with] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -6188,8 +6188,8 @@ var_d_prime <- "d_prime_example" # character |  (Optional)
 var_ancestry <- "ancestry_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
 var_verbose <- "false" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -6213,8 +6213,8 @@ Name | Type | Description  | Notes
  **ancestry** | Enum [AFR, EAS, EUR, SAS] |  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
  **verbose** | Enum [true, false] |  | [optional] [default to &quot;false&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -6256,8 +6256,8 @@ var_hgvs <- "hgvs_example" # character |  (Optional)
 var_ca_id <- "ca_id_example" # character |  (Optional)
 var_variant_id <- "variant_id_example" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -6275,8 +6275,8 @@ Name | Type | Description  | Notes
  **ca_id** | **character**|  | [optional] 
  **variant_id** | **character**|  | [optional] 
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
@@ -6322,8 +6322,8 @@ var_biosample_term <- "biosample_term_example" # character |  (Optional)
 var_biological_context <- "biological_context_example" # character |  (Optional)
 var_nearby_genes <- "true" # character |  (Optional)
 var_organism <- "Homo sapiens" # character |  (Optional)
-var_page <- 0 # numeric |  (Optional)
-var_limit <- 3.4 # numeric |  (Optional)
+var_page <- 0 # integer |  (Optional)
+var_limit <- 56 # integer |  (Optional)
 
 api_instance <- IgvfCatalogApi$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -6345,8 +6345,8 @@ Name | Type | Description  | Notes
  **biological_context** | **character**|  | [optional] 
  **nearby_genes** | Enum [true, false] |  | [optional] [default to &quot;true&quot;]
  **organism** | Enum [Homo sapiens] |  | [optional] [default to &quot;Homo sapiens&quot;]
- **page** | **numeric**|  | [optional] [default to 0]
- **limit** | **numeric**|  | [optional] 
+ **page** | **integer**|  | [optional] [default to 0]
+ **limit** | **integer**|  | [optional] 
 
 ### Return type
 
